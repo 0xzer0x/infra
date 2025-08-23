@@ -63,6 +63,7 @@
     droidcam
     v4l-utils
     zathura
+    poppler-utils
     flameshot
     # Programming
     uv
