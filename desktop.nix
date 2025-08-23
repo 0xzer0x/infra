@@ -61,6 +61,9 @@
     obs-studio
     droidcam
     v4l-utils
+    zathura
+    flameshot
+    xfce.mousepad
     # Programming
     uv
     go
