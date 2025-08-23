@@ -48,6 +48,7 @@
     kdePackages.breeze
     polkit_gnome
     seahorse
+    gcr
     xdg-utils
     xdg-launch
     xdg-user-dirs

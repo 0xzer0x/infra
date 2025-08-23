@@ -30,7 +30,13 @@
     # USB
     udisks2.enable = true;
 
+    # GVFS
+    gvfs.enable = true;
+
     # Secrets service
     gnome.gnome-keyring.enable = true;
   };
+
+  # NOTE: Auto-decrypt on login
+  security.pam.services.login.enableGnomeKeyring = true;
 }
