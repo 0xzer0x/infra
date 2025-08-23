@@ -47,6 +47,7 @@
     nvtopPackages.intel
     nvtopPackages.amd
     pwgen
+    hugo
     # Programming
     uv
     go
