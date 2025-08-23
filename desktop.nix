@@ -65,6 +65,8 @@
     zathura
     poppler-utils
     flameshot
+    audacious
+    gthumb
     # Programming
     uv
     go
