@@ -48,6 +48,7 @@
     nvtopPackages.amd
     pwgen
     hugo
+    terraform
     # Programming
     uv
     go
