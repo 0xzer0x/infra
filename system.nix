@@ -20,6 +20,7 @@
     unrar
     killall
     duf
+    usbutils
   ];
 
   programs = {

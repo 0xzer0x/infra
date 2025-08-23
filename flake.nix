@@ -27,6 +27,26 @@
             ./nix.nix
           ];
         };
+
+        nixfly = lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            nix-flatpak.nixosModules.nix-flatpak
+            ./hardware.nix
+            ./boot.nix
+            ./network.nix
+            ./services.nix
+            ./users.nix
+            ./system.nix
+            ./power.nix
+            ./fi
+            ./cli.nix
+            ./desktop.nix
+            ./flatpak.nix
+            ./ricing.nix
+            ./nix.nix
+          ];
+        };
       };
     };
 }

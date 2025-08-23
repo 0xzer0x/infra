@@ -9,6 +9,7 @@
     xdg-desktop-portal-hyprland
     hyprpaper
     hyprshot
+    swaylock
     waybar
     swww
     rofi-wayland
