@@ -10,10 +10,12 @@
     let
       # NOTE: Utility function for getting all modules for a specific host
       hostModules = host:
-        let files = builtins.readDir ./hosts/${host};
-        in builtins.filter (name:
-          files.${name} == "regular" && builtins.match "^.*\\.nix$" name
-          != null) (builtins.attrNames files);
+        let
+          files = builtins.readDir ./hosts/${host};
+          nixFiles = builtins.filter (name:
+            files.${name} == "regular" && builtins.match "^.*\\.nix$" name
+            != null) (builtins.attrNames files);
+        in builtins.map (filename: ./hosts/${host}/${filename}) nixFiles;
 
       # NOTE: Helper variables
       lib = nixpkgs.lib;
