@@ -49,6 +49,7 @@
     pwgen
     hugo
     terraform
+    yt-dlp
     # Programming
     uv
     go
