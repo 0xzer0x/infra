@@ -1,8 +1,6 @@
-{ hostName, ... }:
-
 {
   networking = {
-    inherit hostName;
+    hostName = "younix";
     networkmanager.enable = true;
 
     # Open ports in the firewall.

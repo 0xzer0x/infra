@@ -1,0 +1,11 @@
+{
+  imports = [
+    ../common
+    ./fingerprint.nix
+    ./hardware.nix
+    ./network.nix
+    ./packages.nix
+    ./power.nix
+    ./ssh.nix
+  ];
+}
