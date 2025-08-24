@@ -60,6 +60,7 @@
     nodejs_24
     devbox
     direnv
+    alsa-lib
   ];
 
   # Libvirt frontend
