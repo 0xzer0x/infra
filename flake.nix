@@ -27,11 +27,13 @@
       nixosConfigurations = {
         younix = lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = { hostName = "younix"; };
           modules = commonModules;
         };
 
         nixfly = lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = { hostName = "nixfly"; };
           modules = commonModules ++ [ ./power.nix ./fingerprint.nix ];
         };
       };
