@@ -12,5 +12,13 @@
       appId = "com.github.tchx84.Flatseal";
       origin = "flathub";
     }
+    {
+      appId = "org.gtk.Gtk3theme.adw-gtk3";
+      origin = "flathub";
+    }
+    {
+      appId = "org.gtk.Gtk3theme.adw-gtk3-dark";
+      origin = "flathub";
+    }
   ];
 }
