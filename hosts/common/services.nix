@@ -37,6 +37,6 @@
     gnome.gnome-keyring.enable = true;
   };
 
-  # NOTE: Auto-decrypt on login
-  security.pam.services.login.enableGnomeKeyring = true;
+  # NOTE: Auto-decrypt on greetd login
+  security.pam.services.greetd.enableGnomeKeyring = true;
 }
