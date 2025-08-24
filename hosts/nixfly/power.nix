@@ -1,6 +1,8 @@
 {
   # Power management
   services = {
+    upower.enable = true;
+
     thermald.enable = true;
 
     tlp = {

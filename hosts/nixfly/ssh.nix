@@ -7,6 +7,6 @@
 
   # NOTE: Add authorized key for user
   users.users.youfathy.openssh = {
-    authorizedKeys.keyFiles = [ ./youfathy.key.pub ];
+    authorizedKeys.keyFiles = [ ../../users/youfathy/ssh.key.pub ];
   };
 }

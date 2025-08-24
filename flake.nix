@@ -4,9 +4,10 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
+    agenix.url = "github:ryantm/agenix";
   };
 
-  outputs = { self, nixpkgs, nix-flatpak, ... }@inputs:
+  outputs = { self, nixpkgs, nix-flatpak, agenix, ... }@inputs:
     let
       # NOTE: Utility function for getting all modules for a specific host
       hostModules = host:
@@ -19,7 +20,10 @@
 
       # NOTE: Helper variables
       lib = nixpkgs.lib;
-      commonModules = [ nix-flatpak.nixosModules.nix-flatpak ]
+
+      # NOTE: List of modules to import for all hosts
+      commonModules =
+        [ nix-flatpak.nixosModules.nix-flatpak agenix.nixosModules.default ]
         ++ hostModules "common";
     in {
       nixosConfigurations = {

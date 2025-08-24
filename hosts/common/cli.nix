@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -62,6 +62,7 @@
     devbox
     direnv
     alsa-lib
+    inputs.agenix.packages.${system}.default
   ];
 
   # Libvirt frontend
@@ -85,4 +86,10 @@
       };
     };
   };
+
+  # NOTE: ShadowSocks proxy
+  # environment.etc."shadowsocks-rust/config.json" = {
+  #   enable = true;
+  #   source = ./etc/shadowsocks-rust/config.json;
+  # };
 }
