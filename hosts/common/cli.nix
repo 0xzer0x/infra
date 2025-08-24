@@ -50,6 +50,7 @@
     hugo
     terraform
     yt-dlp
+    shadowsocks-rust
     # Programming
     uv
     go
