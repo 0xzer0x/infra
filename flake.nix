@@ -6,36 +6,34 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
   };
 
-  outputs = { self, nixpkgs, nix-flatpak, ... }:
+  outputs = { self, nixpkgs, nix-flatpak, ... }@inputs:
     let
+      # NOTE: Utility function for getting all modules for a specific host
+      hostModules = host:
+        let files = builtins.readDir ./hosts/${host};
+        in builtins.filter (name:
+          files.${name} == "regular" && builtins.match "^.*\\.nix$" name
+          != null) (builtins.attrNames files);
+
+      # NOTE: Helper variables
       lib = nixpkgs.lib;
-      commonModules = [
-        nix-flatpak.nixosModules.nix-flatpak
-        ./boot.nix
-        ./network.nix
-        ./services.nix
-        ./users.nix
-        ./system.nix
-        ./cli.nix
-        ./desktop.nix
-        ./flatpak.nix
-        ./ricing.nix
-        ./nix.nix
-      ];
+      commonModules = [ nix-flatpak.nixosModules.nix-flatpak ]
+        ++ hostModules "common";
     in {
       nixosConfigurations = {
-        younix = lib.nixosSystem {
+        younix = lib.nixosSystem (let hostName = "younix";
+        in {
           system = "x86_64-linux";
-          specialArgs = { hostName = "younix"; };
-          modules = commonModules ++ [ ./hosts/younix/hardware.nix ];
-        };
+          specialArgs = { inherit hostName; };
+          modules = commonModules ++ hostModules hostName;
+        });
 
-        nixfly = lib.nixosSystem {
+        nixfly = lib.nixosSystem (let hostName = "nixfly";
+        in {
           system = "x86_64-linux";
-          specialArgs = { hostName = "nixfly"; };
-          modules = commonModules
-            ++ [ ./hosts/nixfly/hardware.nix ./power.nix ./fingerprint.nix ];
-        };
+          specialArgs = { inherit hostName; };
+          modules = commonModules ++ hostModules hostName;
+        });
       };
     };
 }
