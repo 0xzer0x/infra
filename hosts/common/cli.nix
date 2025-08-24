@@ -60,6 +60,7 @@
     nodejs_24
     devbox
     direnv
+    alsa-oss
   ];
 
   # Libvirt frontend
