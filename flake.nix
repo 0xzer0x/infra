@@ -11,7 +11,6 @@
       lib = nixpkgs.lib;
       commonModules = [
         nix-flatpak.nixosModules.nix-flatpak
-        ./hardware.nix
         ./boot.nix
         ./network.nix
         ./services.nix
@@ -28,13 +27,14 @@
         younix = lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { hostName = "younix"; };
-          modules = commonModules;
+          modules = commonModules ++ [ ./hosts/younix/hardware.nix ];
         };
 
         nixfly = lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { hostName = "nixfly"; };
-          modules = commonModules ++ [ ./power.nix ./fingerprint.nix ];
+          modules = commonModules
+            ++ [ ./hosts/nixfly/hardware.nix ./power.nix ./fingerprint.nix ];
         };
       };
     };
