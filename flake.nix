@@ -30,14 +30,14 @@
         younix = lib.nixosSystem (let hostName = "younix";
         in {
           system = "x86_64-linux";
-          specialArgs = { inherit hostName; };
+          specialArgs = { inherit hostName inputs; };
           modules = commonModules ++ hostModules hostName;
         });
 
         nixfly = lib.nixosSystem (let hostName = "nixfly";
         in {
           system = "x86_64-linux";
-          specialArgs = { inherit hostName; };
+          specialArgs = { inherit hostName inputs; };
           modules = commonModules ++ hostModules hostName;
         });
       };

@@ -3,6 +3,9 @@
 {
   system.stateVersion = "25.05";
 
+  # WARN: Make sure to have the place the secret key in place before applying the flake
+  age.identityPaths = [ "/var/lib/persistent/agenix.key" ];
+
   environment.systemPackages = with pkgs; [
     # Essentials
     git

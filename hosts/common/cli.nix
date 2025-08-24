@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -88,8 +88,9 @@
   };
 
   # NOTE: ShadowSocks proxy
-  # environment.etc."shadowsocks-rust/config.json" = {
-  #   enable = true;
-  #   source = ./etc/shadowsocks-rust/config.json;
-  # };
+  age.secrets."ss-rust.age".file = ./secrets/ss-rust.age;
+  environment.etc."shadowsocks-rust/config.json" = {
+    enable = true;
+    source = config.age.secrets."ss-rust.age".path;
+  };
 }
