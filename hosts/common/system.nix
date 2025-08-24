@@ -12,6 +12,7 @@
     curl
     nix-ld
     btrfs-progs
+    pkg-config
     # Utils
     coreutils-full
     patchelf
