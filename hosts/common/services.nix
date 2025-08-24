@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, ... }:
 
 {
   # Set your time zone.
@@ -33,10 +33,14 @@
     # GVFS
     gvfs.enable = true;
 
-    # Secrets service
-    gnome.gnome-keyring.enable = true;
+    # Tailscale VPN
+    tailscale.enable = true;
   };
 
-  # NOTE: Auto-decrypt on greetd login
+  # NOTE: Disable auto-start for tailscale
+  systemd.services.tailscaled.wantedBy = lib.mkForce [ ];
+
+  # NOTE: Auto-decrypt Gnome keyring on greetd login
+  services.gnome.gnome-keyring.enable = true;
   security.pam.services.greetd.enableGnomeKeyring = true;
 }
