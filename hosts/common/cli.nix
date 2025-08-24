@@ -93,4 +93,10 @@
     enable = true;
     source = config.age.secrets."ss-rust.age".path;
   };
+  systemd.services.shadowsocks-rust = {
+    description = "ShadowSocks Proxy server";
+    after = [ "network.target" ];
+    path = [ pkgs.shadowsocks-rust ];
+    script = "exec sslocal -c /etc/shadowsocks-rust/config.json";
+  };
 }
