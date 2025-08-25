@@ -1,13 +1,7 @@
-{ config, pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
-    # Terminal
-    zsh
-    kitty
-    tmux
-    sesh
-    neovim
     # CLI
     file
     bat
@@ -50,7 +44,6 @@
     hugo
     terraform
     yt-dlp
-    shadowsocks-rust
     # Programming
     uv
     go
@@ -62,13 +55,9 @@
     devbox
     direnv
     alsa-lib
-    inputs.agenix.packages.${system}.default
   ];
 
-  # Libvirt frontend
-  programs.virt-manager.enable = true;
-
-  # Virtualization (Docker, Podman, Libvirt)
+  # NOTE: Virtualization (Docker, Podman, Libvirt)
   virtualisation = {
     docker.enable = true;
     podman.enable = true;
@@ -85,18 +74,5 @@
         vhostUserPackages = [ pkgs.virtiofsd ];
       };
     };
-  };
-
-  # NOTE: ShadowSocks proxy
-  age.secrets."ss-rust.age".file = ./secrets/ss-rust.age;
-  environment.etc."shadowsocks-rust/config.json" = {
-    enable = true;
-    source = config.age.secrets."ss-rust.age".path;
-  };
-  systemd.services.shadowsocks-rust = {
-    description = "ShadowSocks Proxy server";
-    after = [ "network.target" ];
-    path = [ pkgs.shadowsocks-rust ];
-    script = "exec sslocal -c /etc/shadowsocks-rust/config.json";
   };
 }

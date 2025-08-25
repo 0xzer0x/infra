@@ -12,6 +12,6 @@
     ./ricing.nix
     ./services.nix
     ./system.nix
-    ./users.nix
+    ./users
   ];
 }

@@ -93,6 +93,9 @@
       xwayland.enable = true;
     };
 
+    # NOTE: Libvirt frontend
+    virt-manager.enable = true;
+
     # NOTE: Android debugging utils
     adb.enable = true;
 

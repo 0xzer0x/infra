@@ -1,7 +1,11 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
-  # Set your time zone.
+  environment.systemPackages = with pkgs; [
+    inputs.agenix.packages.${system}.default
+    shadowsocks-rust
+  ];
+
   time.timeZone = "Africa/Cairo";
   zramSwap.enable = true;
 
@@ -43,4 +47,17 @@
   # NOTE: Auto-decrypt Gnome keyring on greetd login
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.greetd.enableGnomeKeyring = true;
+
+  # NOTE: ShadowSocks proxy
+  age.secrets."ss-rust.age".file = ./secrets/ss-rust.age;
+  environment.etc."shadowsocks-rust/config.json" = {
+    enable = true;
+    source = config.age.secrets."ss-rust.age".path;
+  };
+  systemd.services.shadowsocks-rust = {
+    description = "ShadowSocks Proxy server";
+    after = [ "network.target" ];
+    path = [ pkgs.shadowsocks-rust ];
+    script = "exec sslocal -c /etc/shadowsocks-rust/config.json";
+  };
 }
