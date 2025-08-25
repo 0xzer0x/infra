@@ -1,6 +1,8 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
+  imports = [ inputs.agenix.nixosModules.default ];
+
   time.timeZone = "Africa/Cairo";
   zramSwap.enable = true;
 

@@ -1,6 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
+  imports = [ inputs.agenix.nixosModules.default ];
+
   system.stateVersion = "25.05";
 
   # WARN: Make sure to have the place the secret key in place before applying the flake
