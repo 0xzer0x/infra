@@ -1,6 +1,8 @@
 { pkgs, inputs, ... }:
 
 {
+  imports = [ ./zsh.nix ./starship.nix ];
+
   home.packages = with pkgs; [
     inputs.agenix.packages.${system}.default
     file
