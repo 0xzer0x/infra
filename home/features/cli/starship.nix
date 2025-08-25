@@ -124,7 +124,7 @@ in {
         java = {
           symbol = " ";
           style = "red";
-          format = " [${symbol}(${version})]($style)";
+          format = " [\${symbol}(\${version})]($style)";
         };
 
         jobs = {
