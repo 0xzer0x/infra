@@ -45,5 +45,6 @@
     terraform
     ansible
     yt-dlp
+    libisoburn
   ];
 }
