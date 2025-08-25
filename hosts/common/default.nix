@@ -2,7 +2,6 @@
 
 {
   imports = [
-    inputs.agenix.nixosModules.default
     inputs.home-manager.nixosModules.home-manager
     ./users
     ./boot.nix
