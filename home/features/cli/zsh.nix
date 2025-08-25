@@ -27,6 +27,12 @@ in {
           save = 5000;
         };
 
+        sessionVariables = {
+          # NOTE: ZSH VI mode configuration
+          ZVM_VI_HIGHLIGHT_FOREGROUND = "#cdd6f4";
+          ZVM_VI_HIGHLIGHT_BACKGROUND = "#45475a";
+        };
+
         shellAliases = {
           cat = "bat";
           ip = "ip -color";
@@ -41,12 +47,8 @@ in {
           czm = "chezmoi --color=auto";
           czme = "chezmoi edit";
           kubectl = "kubecolor";
-        };
-
-        sessionVariables = {
-          # NOTE: ZSH VI mode configuration
-          ZVM_VI_HIGHLIGHT_FOREGROUND = "#cdd6f4";
-          ZVM_VI_HIGHLIGHT_BACKGROUND = "#45475a";
+          nrs = "sudo nixos-rebuild switch --flake \${NIXOS_SYSTEM_FLAKE}";
+          ngc = "sudo nix-collect-garbage -d";
         };
 
         # NOTE: ZSH plugin manager
@@ -61,7 +63,9 @@ in {
 
         initContent = ''
           # ------- aws cli completion ------- #
-          source ${pkgs.awscli2.outPath}/bin/aws_zsh_completer.sh
+          autoload bashcompinit && bashcompinit
+          autoload -Uz compinit && compinit
+          complete -C '/usr/local/bin/aws_completer' aws
           # ---------------------------------- #
 
           # ------- custom functions ------- #
