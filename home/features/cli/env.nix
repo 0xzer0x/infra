@@ -3,7 +3,6 @@
 {
   home.sessionVariables = {
     # NOTE: XDG data
-    GNUPGHOME = "${config.xdg.dataHome}/gnupg";
     KREW_ROOT = "${config.xdg.dataHome}/krew";
 
     # NOTE: XDG config

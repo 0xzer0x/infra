@@ -1,18 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  environment = {
-    sessionVariables = {
-      NIXOS_OZONE_WL = "1";
-      XKB_DEFAULT_OPTIONS = "grp:alt_shift_toggle,caps:swapescape";
-    };
-
-    variables = {
-      XCURSOR_THEME = "Adwaita";
-      XCURSOR_SIZE = "22";
-      HYPRCURSOR_THEME = "Adwaita";
-      HYPRCURSOR_SIZE = "22";
-    };
+  environment.sessionVariables = {
+    XKB_DEFAULT_OPTIONS = "grp:alt_shift_toggle,caps:swapescape";
   };
 
   # Fonts

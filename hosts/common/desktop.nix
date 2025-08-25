@@ -6,25 +6,18 @@
     hyprshot
     swaylock
     waybar
-    swww
     rofi-wayland
     dunst
     libnotify
-    wl-clipboard
-    grim
-    slurp
-    wf-recorder
-    wlr-randr
-    clipman
     weston
     networkmanagerapplet
+    papirus-icon-theme
     adwaita-icon-theme
     adwaita-qt
     adwaita-qt6
     adw-gtk3
     nwg-look
     nwg-displays
-    papirus-icon-theme
     pavucontrol
     nemo
     nemo-with-extensions
