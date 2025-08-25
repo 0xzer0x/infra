@@ -1,1 +1,9 @@
-{ imports = [ ../common ./home.nix ]; }
+{
+  imports = [
+    ./home.nix
+    ../common
+    ../features/cli
+    ../features/programming
+    ../features/flatpak
+  ];
+}

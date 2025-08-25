@@ -11,5 +11,6 @@
     settings.experimental-features = [ "nix-command" "flakes" ];
   };
 
+  # NOTE: Sets default XDG directories environment variables
   xdg.enable = true;
 }

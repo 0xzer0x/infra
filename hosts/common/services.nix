@@ -1,11 +1,6 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [
-    inputs.agenix.packages.${system}.default
-    shadowsocks-rust
-  ];
-
   time.timeZone = "Africa/Cairo";
   zramSwap.enable = true;
 
@@ -50,6 +45,7 @@
 
   # NOTE: ShadowSocks proxy
   age.secrets."ss-rust.age".file = ./secrets/ss-rust.age;
+  environment.systemPackages = [ pkgs.shadowsocks-rust ];
   environment.etc."shadowsocks-rust/config.json" = {
     enable = true;
     source = config.age.secrets."ss-rust.age".path;

@@ -5,5 +5,6 @@
     sof-firmware
     batsignal
     brightnessctl
+    nvtopPackages.intel
   ];
 }

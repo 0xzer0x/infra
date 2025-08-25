@@ -3,15 +3,19 @@
 {
   imports = [
     inputs.agenix.nixosModules.default
-    inputs.nix-flatpak.nixosModules.nix-flatpak
-    ./boot.nix
-    ./cli.nix
-    ./desktop.nix
-    ./flatpak.nix
-    ./nix.nix
-    ./ricing.nix
-    ./services.nix
-    ./system.nix
+    inputs.home-manager.nixosModules.home-manager
     ./users
+    ./boot.nix
+    ./system.nix
+    ./services.nix
+    ./virtualization.nix
+    ./desktop.nix
+    ./ricing.nix
+    ./nix.nix
   ];
+
+  home-manager = {
+    useUserPackages = true;
+    extraSpecialArgs = { inherit inputs; };
+  };
 }
