@@ -2,11 +2,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-    # Desktop
-    hyprland
-    xdg-desktop-portal
-    xdg-desktop-portal-wlr
-    xdg-desktop-portal-hyprland
     hyprpaper
     hyprshot
     swaylock
@@ -67,15 +62,6 @@
     flameshot
     audacious
     gthumb
-    # Programming
-    uv
-    go
-    gnumake
-    cmake
-    rustup
-    python3Full
-    nodejs_24
-    devbox
   ];
 
   xdg.portal = {
