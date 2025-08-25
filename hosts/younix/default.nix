@@ -1,2 +1,2 @@
-{ imports = [ ../common ./hardware.nix ./network.nix ]; }
+{ imports = [ ../common ./hardware.nix ./network.nix ./packages.nix ]; }
 
