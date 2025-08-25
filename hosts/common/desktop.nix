@@ -37,7 +37,6 @@
     mpvScripts.uosc
     imv
     qview
-    pinentry-qt
     libsForQt5.qt5ct
     libsForQt5.breeze-qt5
     kdePackages.qt6ct

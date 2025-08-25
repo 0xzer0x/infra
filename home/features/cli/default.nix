@@ -1,7 +1,7 @@
 { pkgs, inputs, ... }:
 
 {
-  imports = [ ./env.nix ./zsh.nix ./starship.nix ];
+  imports = [ ./env.nix ./zsh.nix ./starship.nix ./gnupg.nix ];
 
   home.packages = with pkgs; [
     inputs.agenix.packages.${system}.default
@@ -40,6 +40,7 @@
     gopass
     gopass-jsonapi
     git-credential-gopass
+    pinentry-qt
     pwgen
     hugo
     terraform
