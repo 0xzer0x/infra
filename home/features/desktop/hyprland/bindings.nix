@@ -80,7 +80,7 @@ in {
       bind = $mainMod SHIFT, Return, exec, $term
 
       # restart waybar
-      bind = $mainMod SHIFT, W, exec, ${config.xdg.configHome}/waybar/relaunch.sh
+      bind = $mainMod SHIFT, W, exec, ${config.xdg.configHome}/hypr/scripts/restart-waybar
 
       # file manager
       bind = $mainMod, T, exec, $files
