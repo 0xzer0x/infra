@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 with lib;
 let cfg = config.features.desktop.hyprland;
@@ -9,11 +9,24 @@ in {
   imports = [ ./packages.nix ./bindings.nix ./rules.nix ];
 
   config = mkIf cfg.enable {
+    xdg.configFile = {
+      "hypr/scripts" = {
+        enable = true;
+        source = ./scripts;
+        recursive = true;
+      };
+      "hypr/wall.png" = {
+        enable = true;
+        source = ./wall.png;
+      };
+    };
+
     wayland.windowManager.hyprland = {
       enable = true;
       xwayland.enable = true;
       package = null;
       portalPackage = null;
+      systemd.variables = [ "--all" ];
 
       settings = {
         # NOTE: Layouts
@@ -48,6 +61,10 @@ in {
           "XDG_SESSION_TYPE,wayland"
           "XDG_SESSION_DESKTOP,Hyprland"
           "XDG_CURRENT_DESKTOP,Hyprland"
+          "XCURSOR_THEME,Adwaita"
+          "XCURSOR_SIZE,22"
+          "HYPRCURSOR_THEME,Adwaita"
+          "HYPRCURSOR_SIZE,22"
         ];
 
         # NOTE: Look and feel
@@ -83,6 +100,15 @@ in {
           follow_mouse = 1;
           sensitivity = 0;
         };
+
+        # NOTE: Auto-start
+        exec-once = [
+          "waybar"
+          "dunst"
+          "nm-applet"
+          "${config.xdg.configHome}/hypr/scripts/wallpaper"
+          "${pkgs.wl-clipboard.outPath}/bin/wl-paste -t text --watch clipman store --max-items=50 --no-persist"
+        ];
       };
     };
   };

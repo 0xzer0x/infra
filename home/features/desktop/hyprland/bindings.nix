@@ -13,10 +13,10 @@ in {
       $powermenu = ${config.xdg.configHome}/rofi/powermenu/powermenu
       $screenshot = ${config.xdg.configHome}/rofi/screenshot/screenshot
       $screenrec = ${config.xdg.configHome}/rofi/screenrec/screenrec
-      $volup = ${home.homeDirectory}/.local/usr/bin/audioctl sink inc
-      $voldown = ${home.homeDirectory}/.local/usr/bin/audioctl sink dec
-      $voltoggle = ${home.homeDirectory}/.local/usr/bin/audioctl sink toggle
-      $mictoggle = ${home.homeDirectory}/.local/usr/bin/audioctl source toggle
+      $volup = ${config.home.homeDirectory}/.local/usr/bin/audioctl sink inc
+      $voldown = ${config.home.homeDirectory}/.local/usr/bin/audioctl sink dec
+      $voltoggle = ${config.home.homeDirectory}/.local/usr/bin/audioctl sink toggle
+      $mictoggle = ${config.home.homeDirectory}/.local/usr/bin/audioctl source toggle
       $files = $term tmux new yazi
       $code = $term tmux new nvim
       $codium = codium --enable-features=WaylandWindowDecorations
@@ -107,7 +107,7 @@ in {
       bind=$mainMod, menu, exec, $passmenu
 
       # quick password generator
-      bind=$mainMod SHIFT, P, exec, ${home.homeDirectory}/.local/usr/bin/pass-gen
+      bind=$mainMod SHIFT, P, exec, ${config.home.homeDirectory}/.local/usr/bin/pass-gen
 
       # quit
       bind = $mainMod, Q, killactive,

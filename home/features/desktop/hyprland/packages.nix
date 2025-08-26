@@ -1,10 +1,11 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 with lib;
 let cfg = config.features.desktop.hyprland;
 in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
+      swww
       hyprpaper
       hyprshot
       swaylock
@@ -24,5 +25,7 @@ in {
       audacious
       gthumb
     ];
+
+    services.polkit-gnome.enable = true;
   };
 }

@@ -17,7 +17,6 @@ in {
       MOZ_DISABLE_RDD_SANDBOX = 1;
     };
     home.packages = with pkgs; [
-      swww
       grim
       slurp
       clipman
