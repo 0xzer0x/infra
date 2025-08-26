@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 pkill waybar
-waybar -c "${XDG_CONFIG_HOME}/waybar/config" &
+waybar &
 disown
