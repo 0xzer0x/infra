@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+running_pid=$(pgrep wf-recorder)
+if [[ -n "$running_pid" ]]; then
+  printf '{ "text": "󰑊 REC", "tooltip": "Click to stop recording", "class": "record-status" }'
+else
+  printf '{ "text": "" }'
+fi

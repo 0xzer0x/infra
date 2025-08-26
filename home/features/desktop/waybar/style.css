@@ -1,0 +1,106 @@
+@import "./catppuccin-mocha.css";
+
+@define-color accent @lavender;
+/* text when background is accent */
+
+* {
+  font-family: GeistMono Nerd Font, SF Arabic;
+  font-size: 14px;
+  border-radius: 0px;
+  /* :[ */
+  min-height: 0px;
+  box-shadow: none;
+}
+
+tooltip {
+  border-radius: 6px;
+}
+
+tooltip * {
+  font-family: GeistMono Nerd Font, SF Arabic;
+  font-size: 12px;
+}
+
+menu * {
+  font-family: Open Sans, SF Arabic;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+.modules-left {
+  background-color: @base;
+  padding: 0px 0px 0px 0px;
+}
+
+.modules-right {
+  background-color: @base;
+  padding: 0px 0px 0px 0px;
+}
+
+window#waybar {
+  background-color: @surface0;
+  color: @text;
+  opacity: 1;
+}
+
+#workspaces {
+  background-color: transparent;
+}
+
+#workspaces button {
+  padding: 0 5px;
+  color: @text;
+}
+
+#workspaces button.active {
+  background-color: @surface0;
+  color: @text;
+}
+
+#pulseaudio,
+#cpu,
+#memory,
+#temperature,
+#battery,
+#clock,
+#tray {
+  background-color: transparent;
+  color: @text;
+  margin: 0px;
+}
+
+#window {
+  color: @text;
+  background-color: @surface0;
+  padding-left: 4px;
+}
+
+#tray {
+  padding-right: 8px;
+  padding-left: 5px;
+}
+
+#clock {
+  margin-right: 1px;
+}
+
+#tray menu {
+  border-radius: 6px;
+}
+
+#keyboard-state {
+  padding: 0 4px 0 0;
+}
+
+#keyboard-state label.locked {
+  color: @peach;
+}
+
+#network {
+  padding-left: 5px;
+}
+
+#custom-record-status {
+  background: transparent;
+  color: @red;
+}
