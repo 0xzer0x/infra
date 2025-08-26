@@ -61,11 +61,11 @@ in {
           ];
         };
 
-        initContent = ''
+        initContent = mkOrder 1500 ''
           # ------- aws cli completion ------- #
           autoload bashcompinit && bashcompinit
           autoload -Uz compinit && compinit
-          complete -C '/usr/local/bin/aws_completer' aws
+          complete -C '${pkgs.awscli2.outPath}/bin/aws_completer' aws
           # ---------------------------------- #
 
           # ------- custom functions ------- #
