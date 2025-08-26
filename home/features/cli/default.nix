@@ -6,6 +6,7 @@
   home.packages = with pkgs; [
     inputs.agenix.packages.${system}.default
     file
+    procps
     bat
     eza
     fzf
