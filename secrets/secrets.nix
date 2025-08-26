@@ -6,5 +6,9 @@ in {
     publicKeys = [ youfathy ];
     armor = true;
   };
+  "synapse-wireguard.age" = {
+    publicKeys = [ youfathy ];
+    armor = true;
+  };
 }
 

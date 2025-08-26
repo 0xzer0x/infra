@@ -46,7 +46,7 @@
   security.pam.services.greetd.enableGnomeKeyring = true;
 
   # NOTE: ShadowSocks proxy
-  age.secrets."ss-rust.age".file = ./secrets/ss-rust.age;
+  age.secrets."ss-rust.age".file = ../../secrets/ss-rust.age;
   environment.systemPackages = [ pkgs.shadowsocks-rust ];
   environment.etc."shadowsocks-rust/config.json" = {
     enable = true;
