@@ -96,9 +96,10 @@ in {
           kb_model = "pc105";
           kb_options = "grp:alt_shift_toggle,caps:swapescape";
 
-          touchpad.natural_scroll = false;
-          follow_mouse = 1;
           sensitivity = 0;
+          follow_mouse = 1;
+          natural_scroll = false;
+          touchpad.natural_scroll = true;
         };
 
         # NOTE: Auto-start
