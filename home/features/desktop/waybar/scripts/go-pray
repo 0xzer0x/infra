@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+export PATH="${HOME}/.local/bin:${PATH}"
+
 _text="$(go-pray next)"
 _calendar="$(go-pray calendar)"
 _class="$(cut -d' ' -f1 <<<"${_text}")"
