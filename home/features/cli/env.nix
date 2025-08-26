@@ -4,6 +4,9 @@
   home.sessionVariables = {
     # NOTE: XDG data
     KREW_ROOT = "${config.xdg.dataHome}/krew";
+    CARGO_HOME = "${config.xdg.dataHome}/cargo";
+    RUSTUP_HOME = "${config.xdg.dataHome}/rustup";
+    GOPATH = "${config.xdg.dataHome}/go";
 
     # NOTE: XDG config
     NIXOS_SYSTEM_FLAKE = "${config.xdg.configHome}/younix";
@@ -32,4 +35,13 @@
     # NOTE: AWS
     AWS_PROFILE = "personal";
   };
+
+  # NOTE: Directories to add to PATH
+  home.sessionPath = [
+    "${config.home.homeDirectory}/.local/bin"
+    "${config.home.homeDirectory}/.local/usr/bin"
+    "${config.home.sessionVariables.GOPATH}/bin"
+    "${config.home.sessionVariables.CARGO_HOME}/bin"
+    "${config.home.sessionVariables.KREW_ROOT}/bin"
+  ];
 }
