@@ -23,18 +23,17 @@ in {
     programs.waybar = {
       enable = true;
       style = ./style.css;
-      settings = {
-        "name" = "hyprland-statusbar";
-        "layer" = "top";
-        "height" = 28;
-        "spacing" = 4;
-        "modules-left" = [
+      settings.hyprland-statusbar = {
+        layer = "top";
+        height = 28;
+        spacing = 4;
+        modules-left = [
           "hyprland/workspaces"
           "hyprland/submap"
           "custom/record-status"
           "hyprland/window"
         ];
-        "modules-right" = [
+        modules-right = [
           "network"
           "custom/separator"
           "custom/go-pray"

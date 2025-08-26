@@ -10,7 +10,6 @@ in {
     # NOTE: Additional fonts
     home.packages = with pkgs; [
       adwaita-fonts
-      nerd-fonts
       fira-go
       amiri
       scheherazade-new

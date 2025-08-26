@@ -15,14 +15,11 @@ let
   };
 in {
   config = mkIf cfg.enable {
-    programs.waybar.settings = {
+    programs.waybar.settings.hyprland-statusbar = {
       "hyprland/window" = windowRewriteRules;
       "hyprland/workspaces" = { "max-length" = workspacesCount; };
       "hyprland/submap" = { "format" = "<span style='italic'> {}  </span>"; };
       "hyprland/language" = { "format" = "{short}"; };
-      "sway/window" = windowRewriteRules;
-      "dwl/window" = windowRewriteRules;
-      "dwl/tags" = { "num-tags" = workspacesCount - 1; };
       "keyboard-state" = {
         "capslock" = true;
         "format" = "󰪛";

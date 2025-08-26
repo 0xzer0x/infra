@@ -4,7 +4,7 @@ with lib;
 let cfg = config.features.desktop.waybar;
 in {
   config = mkIf cfg.enable {
-    programs.waybar.settings = {
+    programs.waybar.settings.hyprland-statusbar = {
       "custom/separator" = {
         "format" = "|";
         "interval" = "once";
