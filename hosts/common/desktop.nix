@@ -2,12 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-    hyprpaper
-    hyprshot
-    swaylock
     waybar
-    rofi-wayland
-    dunst
     libnotify
     weston
     networkmanagerapplet
@@ -15,13 +10,6 @@
     adwaita-icon-theme
     adwaita-qt
     adwaita-qt6
-    adw-gtk3
-    nwg-look
-    nwg-displays
-    pavucontrol
-    nemo
-    nemo-with-extensions
-    ffmpegthumbnailer
     vdpauinfo
     libva-vdpau-driver
     libvdpau-va-gl
@@ -35,8 +23,6 @@
     kdePackages.qt6ct
     kdePackages.breeze
     polkit_gnome
-    seahorse
-    gcr
     xdg-utils
     xdg-launch
     xdg-user-dirs
@@ -49,11 +35,6 @@
     obs-studio
     droidcam
     v4l-utils
-    zathura
-    poppler-utils
-    flameshot
-    audacious
-    gthumb
   ];
 
   xdg.portal = {

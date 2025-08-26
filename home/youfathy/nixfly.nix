@@ -6,6 +6,7 @@
     ../features/programming
     ../features/flatpak
     ../features/colorscheme
+    ../features/desktop
   ];
 
   features = {
@@ -22,5 +23,15 @@
         enableDirEnvIntegration = true;
       };
     };
+
+    desktop = {
+      fonts.enable = true;
+      wayland.enable = true;
+      hyprland.enable = true;
+      waybar.enable = true;
+    };
   };
+
+  wayland.windowManager.hyprland.settings.monitors =
+    [ "eDP-1,1920x1080@60,0x0,1" ",preferred,auto,1,mirror,eDP-1" ];
 }

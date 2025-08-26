@@ -1,1 +1,1 @@
-{ imports = [ ./env.nix ./fonts.nix ./wayland.nix ./waybar.nix ]; }
+{ imports = [ ./env.nix ./fonts.nix ./wayland.nix ./waybar.nix ./hyprland ]; }
