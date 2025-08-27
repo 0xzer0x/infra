@@ -26,6 +26,8 @@
 
     desktop = {
       fonts.enable = true;
+      gtk.enable = true;
+      qt.enable = true;
       wayland.enable = true;
       hyprland.enable = true;
       waybar.enable = true;

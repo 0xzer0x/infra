@@ -1,1 +1,4 @@
-{ imports = [ ./wayland.nix ./fonts ./hyprland ./waybar ./rofi ./apps ]; }
+{
+  imports =
+    [ ./wayland.nix ./fonts ./gtk ./qt ./hyprland ./waybar ./rofi ./apps ];
+}
