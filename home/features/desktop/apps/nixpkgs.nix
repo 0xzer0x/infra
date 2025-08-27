@@ -5,8 +5,6 @@ let cfg = config.features.desktop.apps;
 in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      passff-host
-      gopass-jsonapi
       qview
       tutanota-desktop
       obsidian

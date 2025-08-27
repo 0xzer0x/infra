@@ -45,9 +45,6 @@
     dogdns
     lsof
     go-task
-    gopass
-    gopass-jsonapi
-    git-credential-gopass
     pinentry-qt
     pwgen
     hugo

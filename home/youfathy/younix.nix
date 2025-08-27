@@ -13,6 +13,7 @@
     cli = {
       git.enable = true;
       gnupg.enable = true;
+      gopass.enable = true;
       starship.enable = true;
       fastfetch.enable = true;
       kitty.enable = true;
