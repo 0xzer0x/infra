@@ -43,7 +43,7 @@
 
   # NOTE: Auto-decrypt Gnome keyring on greetd login
   services.gnome.gnome-keyring.enable = true;
-  security.pam.services.greetd.enableGnomeKeyring = true;
+  security.pam.services.login.enableGnomeKeyring = true;
 
   # NOTE: ShadowSocks proxy
   age.secrets."ss-rust.age".file = ../../secrets/ss-rust.age;
