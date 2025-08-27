@@ -4,6 +4,7 @@
       min-free = 32212254720;
       use-xdg-base-directories = true;
       experimental-features = [ "nix-command" "flakes" ];
+      auto-optimise-store = true;
     };
 
     gc = {
