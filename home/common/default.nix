@@ -13,4 +13,5 @@
 
   # NOTE: Sets default XDG directories environment variables
   xdg.enable = true;
+  home.preferXdgDirectories = true;
 }

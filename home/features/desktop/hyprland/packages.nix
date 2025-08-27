@@ -24,7 +24,6 @@ in {
       seahorse
       gcr
       poppler-utils
-      audacious
       gthumb
     ];
 
