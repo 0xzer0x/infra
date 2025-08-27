@@ -21,7 +21,6 @@ in {
         local plugins = {
         	"full-border",
         	"no-status",
-        	"mount",
         }
 
         for _, plugin in pairs(plugins) do
@@ -30,11 +29,18 @@ in {
       '';
 
       keymap = {
-        mgr.prepend_keymap = [{
-          on = [ "g" "w" ];
-          run = "cd ~/Workspace";
-          desc = "Go to ~/Workspace";
-        }];
+        mgr.prepend_keymap = [
+          {
+            on = [ "M" ];
+            run = "plugin mount";
+            desc = "Open mounts manager";
+          }
+          {
+            on = [ "g" "w" ];
+            run = "cd ~/Workspace";
+            desc = "Go to ~/Workspace";
+          }
+        ];
       };
     };
   };
