@@ -11,6 +11,7 @@
     ./desktop.nix
     ./ricing.nix
     ./nix.nix
+    ./ssh.nix
   ];
 
   home-manager = {

@@ -5,8 +5,11 @@
 
   system.stateVersion = "25.05";
 
-  # WARN: Make sure to have the place the secret key in place before applying the flake
-  age.identityPaths = [ "/var/lib/agenix/youfathy.key" ];
+  # WARN: Make sure to:
+  # 1. Add the host's public key to the secrets/secrets.nix file for it to be able to decrypt
+  # 2. Rekey all secrets to use the new host's public key along with old ones
+  age.identityPaths =
+    [ "/var/lib/agenix/host.key" "/var/lib/agenix/youfathy.key" ];
 
   environment.systemPackages = with pkgs; [
     # Essentials
