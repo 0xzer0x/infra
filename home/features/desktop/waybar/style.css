@@ -4,7 +4,7 @@
 /* text when background is accent */
 
 * {
-  font-family: GeistMono Nerd Font, SF Arabic;
+  font-family: monospace;
   font-size: 14px;
   border-radius: 0px;
   /* :[ */
@@ -17,12 +17,12 @@ tooltip {
 }
 
 tooltip * {
-  font-family: GeistMono Nerd Font, SF Arabic;
+  font-family: monospace;
   font-size: 12px;
 }
 
 menu * {
-  font-family: Open Sans, SF Arabic;
+  font-family: sans;
   font-size: 12px;
   border-radius: 4px;
 }

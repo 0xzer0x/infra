@@ -29,6 +29,7 @@
       wayland.enable = true;
       hyprland.enable = true;
       waybar.enable = true;
+      rofi.enable = true;
     };
   };
 

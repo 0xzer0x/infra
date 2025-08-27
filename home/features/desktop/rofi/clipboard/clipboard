@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -eu
+
+rofi_pid="$(pgrep -f "^rofi.*clipboard.rasi" | head -n 1)"
+if [[ -n "$rofi_pid" ]]; then
+  kill "$rofi_pid"
+else
+  clipman pick -t rofi --tool-args="-config $HOME/.config/rofi/clipboard/style.rasi"
+fi
