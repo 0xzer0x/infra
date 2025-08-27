@@ -15,6 +15,7 @@
       gnupg.enable = true;
       starship.enable = true;
       fastfetch.enable = true;
+      kitty.enable = true;
       tmux.enable = true;
       zsh = {
         enable = true;

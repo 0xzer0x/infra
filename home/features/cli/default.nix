@@ -3,6 +3,7 @@
 {
   imports = [
     ./env.nix
+    ./kitty.nix
     ./zsh.nix
     ./starship.nix
     ./fastfetch.nix
