@@ -12,8 +12,8 @@ let
   powermenu = "${configHome}/rofi/powermenu/powermenu";
   screenshot = "${configHome}/rofi/screenshot/screenshot";
   screenrec = "${configHome}/rofi/screenrec/screenrec";
-  volup = "audoictl sink inc";
-  voldown = "audoictl sink dec";
+  volup = "audioctl sink inc";
+  voldown = "audioctl sink dec";
   voltoggle = "audioctl sink toggle";
   mictoggle = "audioctl source toggle";
   files = "${term} tmux new yazi";
@@ -96,10 +96,10 @@ in {
           "$mod, bracketleft, cyclenext, prev"
           "$mod, bracketright, cyclenext, next"
           # ============== Multimedia =============== #
-          "$mod, F10, exec, $voldown"
-          "$mod, F11, exec, $volup"
-          ",XF86AudioRaiseVolume, exec, $volup"
-          ",XF86AudioLowerVolume, exec, $voldown"
+          "$mod, F10, exec, ${voldown}"
+          "$mod, F11, exec, ${volup}"
+          ",XF86AudioRaiseVolume, exec, ${volup}"
+          ",XF86AudioLowerVolume, exec, ${voldown}"
           # ============== Resizing =============== #
           "CTRL_$mod, L, resizeactive, 10 0"
           "CTRL_$mod, H, resizeactive, -10 0"
