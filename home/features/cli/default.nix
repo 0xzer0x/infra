@@ -5,6 +5,7 @@
     ./env.nix
     ./zsh.nix
     ./starship.nix
+    ./fastfetch.nix
     ./gnupg.nix
     ./git.nix
     ./k8s.nix
@@ -18,7 +19,6 @@
     btop.enable = true;
     htop.enable = true;
     fd.enable = true;
-    fastfetch.enable = true;
     ripgrep.enable = true;
     tealdeer.enable = true;
     lazygit.enable = true;

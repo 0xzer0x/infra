@@ -28,6 +28,14 @@ in {
         	require(plugin):setup()
         end
       '';
+
+      keymap = {
+        mgr.prepend_keymap = [{
+          on = [ "g" "w" ];
+          run = "cd ~/Workspace";
+          desc = "Go to ~/Workspace";
+        }];
+      };
     };
   };
 }
