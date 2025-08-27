@@ -4,7 +4,7 @@ let
   users = [ youfathy ];
 
   nixfly =
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMrn/SvMlKKfXr1LmD/wrWHbJootZ3wcRn86ayYMlL1t root@nixfly";
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILbZQfbrvsUfFAmyD9wEDmc+mym7Hx1S4Ob2yxzo78nf root@nixfly";
   hosts = [ nixfly ];
 
   default-keys = [ youfathy ] ++ hosts;
