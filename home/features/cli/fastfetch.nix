@@ -12,7 +12,7 @@ in {
       settings = {
         logo = {
           type = "builtin";
-          source = "nixos_small";
+          source = "nixos";
         };
         modules = [
           "title"
