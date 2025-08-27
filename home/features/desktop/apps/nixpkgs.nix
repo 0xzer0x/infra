@@ -5,20 +5,34 @@ let cfg = config.features.desktop.apps;
 in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      imv
+      passff-host
+      gopass-jsonapi
       qview
-      mpv
-      mpvScripts.uosc
       tutanota-desktop
       obsidian
       legcord
       slack
       droidcam
       v4l-utils
-      flameshot
+      xfce.mousepad
     ];
 
+    catppuccin.mpv.enable = false;
     programs = {
+      # NOTE: Image viewer
+      imv.enable = true;
+
+      # NOTE: Screenshot utilitiy
+      flameshot = {
+        enable = true;
+        settings = {
+          General = {
+            savePath = "${config.home.homeDirectory}/Pictures/screenshots";
+            savePathFixed = true;
+          };
+        };
+      };
+
       # NOTE: Screen recorder
       obs-studio = {
         enable = true;
@@ -27,6 +41,19 @@ in {
           obs-vaapi
           droidcam-obs
         ];
+      };
+
+      # NOTE: Media player
+      mpv = {
+        enable = true;
+        scripts = with pkgs; [ mpvScripts.uosc mpvScripts.thumbfast ];
+        config = {
+          osc = "no";
+          border = "no";
+          sub-font-size = 24;
+          sub-border-size = 1;
+          hwdec = "auto";
+        };
       };
 
       # NOTE: PDF reader
