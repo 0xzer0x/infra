@@ -4,6 +4,7 @@
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ./users
+    ./agenix.nix
     ./boot.nix
     ./system.nix
     ./services.nix
@@ -11,7 +12,6 @@
     ./desktop.nix
     ./ricing.nix
     ./nix.nix
-    ./ssh.nix
   ];
 
   home-manager = {

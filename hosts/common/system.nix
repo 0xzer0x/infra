@@ -1,27 +1,17 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
-  imports = [ inputs.agenix.nixosModules.default ];
 
   system.stateVersion = "25.05";
 
-  # WARN: Make sure to:
-  # 1. Add the host's public key to the secrets/secrets.nix file for it to be able to decrypt
-  # 2. Rekey all secrets to use the new host's public key along with old ones
-  age.identityPaths =
-    [ "/var/lib/agenix/host.key" "/var/lib/agenix/youfathy.key" ];
-
   environment.systemPackages = with pkgs; [
-    # Essentials
     git
     gcc
     vim
     wget
     curl
-    nix-ld
     btrfs-progs
     pkg-config
-    # Utils
     coreutils-full
     patchelf
     binutils
