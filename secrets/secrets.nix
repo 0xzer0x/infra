@@ -17,13 +17,5 @@ in {
     publicKeys = default-keys;
     armor = true;
   };
-  "gitlab-gitconfig.age" = {
-    publicKeys = default-keys;
-    armor = true;
-  };
-  "synapse-gitconfig.age" = {
-    publicKeys = default-keys;
-    armor = true;
-  };
 }
 

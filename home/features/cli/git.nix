@@ -1,11 +1,9 @@
-{ config, lib, inputs, ... }:
+{ config, lib, ... }:
 
 with lib;
 let cfg = config.features.cli.git;
 in {
   options.features.cli.git.enable = mkEnableOption "Enable Git configuration";
-
-  imports = [ inputs.agenix.nixosModules.default ];
 
   config = mkIf cfg.enable {
     programs.git = {
@@ -18,20 +16,23 @@ in {
         signByDefault = true;
       };
 
-      age.secrets."gitlab-gitconfig.age".file =
-        ../../../secrets/gitlab-gitconfig.age;
-      includes.gitlab = {
-        condition = "hasconfig:remote.*.url:git@gitlab.com:**/**";
-        path = config.age.secrets."gitlab-gitconfig.age".path;
-      };
-
-      age.secrets."synapse-gitconfig.age".file =
-        ../../../secrets/synapse-gitconfig.age;
-      includes.synapse = {
-        condition =
-          "hasconfig:remote.*.url:git@gitlab.internal.synapse-analytics.io:**/**";
-        path = config.age.secrets."synapse-gitconfig.age".path;
-      };
+      includes = [
+        {
+          condition = "hasconfig:remote.*.url:git@gitlab.com:**/**";
+          contents.user = {
+            email = "11070545-0xzer0x@users.noreply.gitlab.com";
+            signingKey = "D7AFCE504088C562CB23D7A6B00C69DE35648C40";
+          };
+        }
+        {
+          condition =
+            "hasconfig:remote.*.url:git@gitlab.internal.synapse-analytics.io:**/**";
+          contents.user = {
+            email = "yfathy@synapse-analytics.io";
+            signingKey = "95ED403730DF2BFEE61D97DE66660F342809060D";
+          };
+        }
+      ];
     };
   };
 }

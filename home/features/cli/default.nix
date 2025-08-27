@@ -1,7 +1,7 @@
 { pkgs, inputs, ... }:
 
 {
-  imports = [ ./env.nix ./zsh.nix ./starship.nix ./gnupg.nix ];
+  imports = [ ./env.nix ./zsh.nix ./starship.nix ./gnupg.nix ./git.nix ];
 
   home.packages = with pkgs; [
     inputs.agenix.packages.${system}.default

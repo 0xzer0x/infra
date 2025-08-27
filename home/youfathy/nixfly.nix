@@ -12,6 +12,7 @@
   features = {
     colorscheme.active = "catppuccin";
     cli = {
+      git.enable = true;
       gnupg.enable = true;
       starship.enable = true;
       zsh = {
