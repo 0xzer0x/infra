@@ -14,6 +14,7 @@
       git.enable = true;
       gnupg.enable = true;
       starship.enable = true;
+      tmux.enable = true;
       zsh = {
         enable = true;
         enableFzfIntegration = true;
@@ -22,6 +23,8 @@
         enableStarshipIntegration = true;
         enableDirEnvIntegration = true;
       };
+      k8s.enable = true;
+      yazi.enable = true;
     };
 
     desktop = {
@@ -39,4 +42,24 @@
   # NOTE: Host-specific configurations
   wayland.windowManager.hyprland.settings.monitor =
     [ "DP-1,1920x1080@144,0x0,1" ",preferred,auto,1,mirror,DP-1" ];
+
+  programs.yazi.keymap = {
+    mgr.prepend_keymap = [
+      {
+        on = [ "g" "s" ];
+        run = "cd /mnt/ssd";
+        desc = "Go to /mnt/ssd";
+      }
+      {
+        on = [ "g" "u" ];
+        run = "cd /mnt/ssd/UNI";
+        desc = "Go to /mnt/ssd/UNI";
+      }
+      {
+        on = [ "g" "b" ];
+        run = "cd /mnt/ssd/Work/books";
+        desc = "Go to /mnt/ssd/Work/books";
+      }
+    ];
+  };
 }

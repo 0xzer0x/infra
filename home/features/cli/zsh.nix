@@ -46,7 +46,6 @@ in {
           glg = "git log --all --graph --oneline --decorate";
           czm = "chezmoi --color=auto";
           czme = "chezmoi edit";
-          kubectl = "kubecolor";
           nrs = "sudo nixos-rebuild switch --flake \${NIXOS_SYSTEM_FLAKE}";
           ngc = "sudo nix-collect-garbage -d";
         };

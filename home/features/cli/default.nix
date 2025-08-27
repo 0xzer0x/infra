@@ -1,42 +1,48 @@
 { pkgs, inputs, ... }:
 
 {
-  imports = [ ./env.nix ./zsh.nix ./starship.nix ./gnupg.nix ./git.nix ];
+  imports = [
+    ./env.nix
+    ./zsh.nix
+    ./starship.nix
+    ./gnupg.nix
+    ./git.nix
+    ./k8s.nix
+    ./yazi.nix
+  ];
+
+  # NOTE: Use programs.<name>.enable whenever possible instead of using home.packages
+  programs = {
+    awscli.enable = true;
+    bat.enable = true;
+    btop.enable = true;
+    htop.enable = true;
+    fd.enable = true;
+    fastfetch.enable = true;
+    ripgrep.enable = true;
+    tealdeer.enable = true;
+    lazygit.enable = true;
+    lazydocker.enable = true;
+    jq.enable = true;
+    yt-dlp.enable = true;
+  };
 
   home.packages = with pkgs; [
     inputs.agenix.packages.${system}.default
     file
     procps
-    bat
-    eza
-    fzf
     duf
     gum
-    fd
-    jq
     yq-go
-    ripgrep
-    fastfetch
-    zoxide
-    starship
     chezmoi
-    lazygit
     kubernetes
-    kubecolor
-    k9s
     cosign
-    htop
-    btop
-    yazi
     ttyper
-    awscli2
     libva-utils
     docker-compose
-    lazydocker
     docker-credential-helpers
     dogdns
     lsof
-    tealdeer
     go-task
     gopass
     gopass-jsonapi
@@ -46,7 +52,6 @@
     hugo
     terraform
     ansible
-    yt-dlp
     libisoburn
   ];
 }
