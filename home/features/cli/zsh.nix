@@ -71,19 +71,19 @@ in {
           # zsh-vi-mode copy to clipboard
           my_zvm_vi_yank() {
             zvm_vi_yank
-            echo -en "\$\{CUTBUFFER}" | wl-copy
+            echo -en "''${CUTBUFFER}" | wl-copy
           }
           my_zvm_vi_delete() {
             zvm_vi_delete
-            echo -en "\$\{CUTBUFFER}" | wl-copy
+            echo -en "''${CUTBUFFER}" | wl-copy
           }
           my_zvm_vi_change() {
             zvm_vi_change
-            echo -en "\$\{CUTBUFFER}" | wl-copy
+            echo -en "''${CUTBUFFER}" | wl-copy
           }
           my_zvm_vi_change_eol() {
             zvm_vi_change_eol
-            echo -en "\$\{CUTBUFFER}" | wl-copy
+            echo -en "''${CUTBUFFER}" | wl-copy
           }
           my_zvm_vi_put_after() {
             CUTBUFFER="$(wl-paste)"
