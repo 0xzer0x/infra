@@ -13,6 +13,7 @@
     ./k8s.nix
     ./yazi.nix
     ./tmux
+    ./scripts
   ];
 
   # NOTE: Use programs.<name>.enable whenever possible instead of using home.packages
