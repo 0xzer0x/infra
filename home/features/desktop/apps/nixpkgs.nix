@@ -62,7 +62,7 @@ in {
           savePath = "${config.home.homeDirectory}/Pictures/screenshots";
           savePathFixed = true;
           useGrimAdapter = true;
-          disableGrimWarning = true;
+          disabledGrimWarning = true;
         };
       };
     };
