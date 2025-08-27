@@ -28,11 +28,14 @@ in {
       gthumb
     ];
 
-    services.polkit-gnome.enable = true;
+    programs.swaylock.enable = true;
 
-    programs = {
+    services = {
+      # NOTE: Authentication agent
+      polkit-gnome.enable = true;
+
+      # NOTE: Wallpaper manager
       swww.enable = true;
-      swaylock.enable = true;
 
       # NOTE: Notifications daemon
       dunst = {
@@ -55,6 +58,5 @@ in {
         };
       };
     };
-
   };
 }

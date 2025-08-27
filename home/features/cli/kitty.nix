@@ -9,7 +9,10 @@ in {
   config = mkIf cfg.enable {
     programs.kitty = {
       enable = true;
-      font.size = 11;
+      font = {
+        name = "monospace";
+        size = 11;
+      };
     };
   };
 }

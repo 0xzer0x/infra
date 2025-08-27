@@ -20,17 +20,6 @@ in {
       # NOTE: Image viewer
       imv.enable = true;
 
-      # NOTE: Screenshot utilitiy
-      flameshot = {
-        enable = true;
-        settings = {
-          General = {
-            savePath = "${config.home.homeDirectory}/Pictures/screenshots";
-            savePathFixed = true;
-          };
-        };
-      };
-
       # NOTE: Screen recorder
       obs-studio = {
         enable = true;
@@ -60,6 +49,17 @@ in {
         options = {
           recolor = false;
           selection-clipboard = "clipboard";
+        };
+      };
+    };
+
+    # NOTE: Screenshot utilitiy
+    services.flameshot = {
+      enable = true;
+      settings = {
+        General = {
+          savePath = "${config.home.homeDirectory}/Pictures/screenshots";
+          savePathFixed = true;
         };
       };
     };

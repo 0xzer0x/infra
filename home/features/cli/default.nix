@@ -8,9 +8,11 @@
     ./starship.nix
     ./fastfetch.nix
     ./gnupg.nix
+    ./gopass.nix
     ./git.nix
     ./k8s.nix
     ./yazi.nix
+    ./tmux
   ];
 
   # NOTE: Use programs.<name>.enable whenever possible instead of using home.packages
