@@ -7,6 +7,8 @@ in {
     mkEnableOption "Enable Rofi extended configuration";
 
   config = mkIf cfg.enable {
+    programs.rofi.enable = true;
+
     xdg.configFile = {
       "rofi/clipboard" = {
         source = ./clipboard;

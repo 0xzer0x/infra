@@ -16,6 +16,7 @@ in {
       MOZ_ENABLE_WAYLAND = 1;
       MOZ_DISABLE_RDD_SANDBOX = 1;
     };
+
     home.packages = with pkgs; [
       grim
       slurp
@@ -26,5 +27,8 @@ in {
       ydotool
       qt6.qtwayland
     ];
+
+    # NOTE: Set wayland version for rofi home-manager config
+    programs.rofi.package = pkgs.rofi-wayland;
   };
 }

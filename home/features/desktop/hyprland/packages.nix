@@ -9,7 +9,6 @@ in {
       hyprpaper
       hyprshot
       swaylock
-      rofi-wayland
       dunst
       adw-gtk3
       nwg-look
