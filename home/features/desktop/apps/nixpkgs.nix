@@ -53,7 +53,7 @@ in {
       };
     };
 
-    # NOTE: Screenshot utilitiy
+    # NOTE: Screenshot utilitiy (disable automatic startup)
     services.flameshot = {
       enable = true;
       settings = {
@@ -61,9 +61,12 @@ in {
           startupLaunch = false;
           savePath = "${config.home.homeDirectory}/Pictures/screenshots";
           savePathFixed = true;
+          useGrimAdapter = true;
+          disableGrimWarning = true;
         };
       };
     };
+    systemd.user.services.flameshot.Install.WantedBy = mkForce [ ];
 
     # NOTE: Enable Syncthing for Obsidian vault synchronization
     services.syncthing = {

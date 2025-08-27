@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
+env >>/tmp/wallpaper-script.log
+which swww >>/tmp/wallpaper-script.log
+
 if ! swww query 1>/dev/null 2>&1; then
   swww-daemon &
 fi
 
-swww img -t none "${XDG_CONFIG_HOME}/hypr/wall.png"
+swww img -t none "${XDG_CONFIG_HOME:-${HOME}/.config}/hypr/wall.png"
