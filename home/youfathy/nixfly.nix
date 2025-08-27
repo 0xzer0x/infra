@@ -4,7 +4,6 @@
     ../common
     ../features/cli
     ../features/programming
-    ../features/flatpak
     ../features/colorscheme
     ../features/desktop
   ];
@@ -31,9 +30,11 @@
       hyprland.enable = true;
       waybar.enable = true;
       rofi.enable = true;
+      apps.enable = true;
     };
   };
 
+  # NOTE: Host-specific configurations
   wayland.windowManager.hyprland.settings.monitor =
     [ "eDP-1,1920x1080@60,0x0,1" ",preferred,auto,1,mirror,eDP-1" ];
 }

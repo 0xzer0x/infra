@@ -1,6 +1,6 @@
 {
   boot = {
-    # NOTE: grub boot loader
+    # NOTE: GRUB bootloader
     loader = {
       efi.canTouchEfiVariables = true;
 
@@ -15,10 +15,10 @@
       };
     };
 
-    # NOTE: quiet boot process
+    # NOTE: Quiet boot process
     kernelParams = [ "quiet" ];
 
-    # NOTE: screen
+    # NOTE: Bootloader screen
     plymouth = {
       enable = true;
       theme = "spinner";

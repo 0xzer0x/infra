@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 with lib;
 let cfg = config.features.desktop.waybar;
@@ -19,6 +19,8 @@ in {
     xdg.configFile."waybar/catppuccin-mocha.css" = {
       source = ./catppuccin-mocha.css;
     };
+
+    home.packages = with pkgs; [ networkmanagerapplet libappindicator ];
 
     programs.waybar = {
       enable = true;
