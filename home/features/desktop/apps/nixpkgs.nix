@@ -58,6 +58,7 @@ in {
       enable = true;
       settings = {
         General = {
+          startupLaunch = false;
           savePath = "${config.home.homeDirectory}/Pictures/screenshots";
           savePathFixed = true;
         };
