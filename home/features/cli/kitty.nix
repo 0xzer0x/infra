@@ -13,6 +13,10 @@ in {
         name = "monospace";
         size = 11;
       };
+      settings = {
+        shell = "tmux";
+        tab_bar_style = "hidden";
+      };
     };
   };
 }
