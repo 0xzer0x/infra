@@ -6,6 +6,7 @@ in {
   options.features.desktop.gtk.enable = mkEnableOption "Enable GTK theming";
 
   config = mkIf cfg.enable {
+    catppuccin.gtk.icon.enable = false;
     gtk = {
       enable = true;
 

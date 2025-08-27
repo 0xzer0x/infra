@@ -7,7 +7,7 @@ in {
     home.packages = with pkgs; [ libsForQt5.qt5ct ];
 
     xdg.configFile."qt5ct/colors/Catppuccin-Mocha.conf" = {
-      source = ./config/Catppuccin-Mocha.conf;
+      source = ./Catppuccin-Mocha.conf;
     };
 
     xdg.configFile."qt5ct/qt5ct.conf" = {
@@ -15,7 +15,7 @@ in {
         [Appearance]
         color_scheme_path=${config.xdg.configHome}/qt5ct/colors/Catppuccin-Mocha.conf
         custom_palette=true
-        icon_theme=${config.gtk.iconTheme.name}
+        icon_theme=Papirus-Dark
         standard_dialogs=default
         style=Breeze
 

@@ -7,7 +7,7 @@ in {
     home.packages = with pkgs; [ kdePackages.qt6ct ];
 
     xdg.configFile."qt6ct/colors/Catppuccin-Mocha.conf" = {
-      source = ./config/Catppuccin-Mocha.conf;
+      source = ./Catppuccin-Mocha.conf;
     };
 
     xdg.configFile."qt6ct/qt6ct.conf" = {
@@ -15,7 +15,7 @@ in {
         [Appearance]
         color_scheme_path=${config.xdg.configHome}/qt6ct/colors/Catppuccin-Mocha.conf
         custom_palette=true
-        icon_theme=${config.gtk.iconTheme.name}
+        icon_theme=Papirus-Dark
         standard_dialogs=default
         style=Breeze
 
