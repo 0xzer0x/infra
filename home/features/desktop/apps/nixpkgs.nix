@@ -15,11 +15,28 @@ in {
       slack
       droidcam
       v4l-utils
+      flameshot
     ];
 
-    programs.obs-studio = {
-      enable = true;
-      plugins = with pkgs.obs-studio-plugins; [ wlrobs obs-vaapi droidcam-obs ];
+    programs = {
+      # NOTE: Screen recorder
+      obs-studio = {
+        enable = true;
+        plugins = with pkgs.obs-studio-plugins; [
+          wlrobs
+          obs-vaapi
+          droidcam-obs
+        ];
+      };
+
+      # NOTE: PDF reader
+      zathura = {
+        enable = true;
+        options = {
+          recolor = false;
+          selection-clipboard = "clipboard";
+        };
+      };
     };
 
     # NOTE: Enable Syncthing for Obsidian vault synchronization
