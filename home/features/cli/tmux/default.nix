@@ -209,6 +209,8 @@ in {
         # ╠═╝║  ║ ║║ ╦║║║║╚═╗
         # ╩  ╩═╝╚═╝╚═╝╩╝╚╝╚═╝
         # -------------------
+        # keyboard-driven url/copy mode
+        run-shell '${pkgs.tmuxPlugins.fingers}/share/tmux-plugins/tmux-fingers/tmux-fingers.tmux'
         # automatic window renaming with nerd-fonts icons
         run-shell '${config.xdg.configHome}/tmux/plugins/tmux-nerd-font-window-name/tmux-nerd-font-window-name.tmux'
       '';
