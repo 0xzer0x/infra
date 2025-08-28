@@ -58,8 +58,8 @@ in {
       "network" = {
         "interval" = 2;
         "format" = " {bandwidthDownBytes}  {bandwidthUpBytes}";
-        "tooltip-format" = "{ifname} via {gwaddr} ";
-        "format-linked" = "{ifname} (No IP) ";
+        "tooltip-format" = "{ifname} via {gwaddr}";
+        "format-linked" = "{ifname} (No IP)";
         "format-disconnected" = "Disconnected ⚠";
         "format-alt" = "{ifname}: {ipaddr}/{cidr}";
       };
