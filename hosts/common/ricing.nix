@@ -32,33 +32,16 @@
     };
   };
 
-  # Display manager (greetd + regreet)
-  programs.regreet = {
+  # Display manager (greetd + tuigreet)
+  services.greetd = {
     enable = true;
-    package = pkgs.regreet;
-    extraCss = ./etc/greetd/regreet.css;
-    cageArgs = [ "-s" "-m" "last" ];
-    settings = { GTK.application_prefer_dark_theme = true; };
-
-    font = {
-      package = pkgs.open-sans;
-      name = "Open Sans";
-      size = 10;
-    };
-
-    theme = {
-      package = pkgs.adw-gtk3;
-      name = "adw-gtk3";
-    };
-
-    iconTheme = {
-      package = pkgs.papirus-icon-theme;
-      name = "Papirus-Dark";
-    };
-
-    cursorTheme = {
-      package = pkgs.adwaita-icon-theme;
-      name = "Adwaita";
+    useTextGreeter = true;
+    settings = {
+      default_session = {
+        command = ''
+          ${pkgs.tuigreet.outPath}/bin/tuigreet -rt --window-padding 3 --theme "text=white;time=lightyellow;container=black;border=darkgray;title=lightmagenta;greet=white;prompt=lightgreen;input=lightred;action=lightblue;button=yellow" -g "Welcome Back" -c Hyprland
+        '';
+      };
     };
   };
 
