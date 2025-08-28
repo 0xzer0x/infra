@@ -31,7 +31,7 @@ in {
     systemd.user.services.go-pray = {
       Unit = {
         Description = "Prayer times notification daemon";
-        Documentaiton = "https://github.com/0xzer0x/go-pray";
+        Documentation = "https://github.com/0xzer0x/go-pray";
         After = [ "graphical-session-pre.target" ];
         PartOf = [ "graphical-session.target" ];
       };
@@ -40,7 +40,7 @@ in {
       in {
         Type = "exec";
         Environment = [ "PATH=${config.home.profileDirectory}/bin" ];
-        ExecCondition = [ "test -f ${configFile}" ];
+        ExecCondition = [ "/bin/sh -c 'test -f ${configFile}'" ];
         ExecStart = [ "${cfg.package}/bin/go-pray daemon" ];
       };
 
