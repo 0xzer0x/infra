@@ -44,5 +44,14 @@
       rofi.enable = true;
       apps.enable = true;
     };
+
+    programming = {
+      tools.enable = true;
+      cpp.enable = true;
+      go.enable = true;
+      rust.enable = true;
+      nodejs.enable = true;
+      python.enable = true;
+    };
   };
 }
