@@ -111,16 +111,6 @@ in {
             zvm_bindkey vicmd  'p' my_zvm_vi_put_after
             zvm_bindkey vicmd  'P' my_zvm_vi_put_before
           }
-
-          # yazi terminal file manager
-          yy() {
-            local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
-            yazi "$@" --cwd-file="$tmp"
-            if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-              cd -- "$cwd"
-            fi
-            rm -f -- "$tmp"
-          }
           # -------------------------------- #
         '';
       };
