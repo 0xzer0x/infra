@@ -14,9 +14,6 @@
   # release notes.
   home.stateVersion = "24.05";
 
-  # The home.packages option allows you to install Nix packages into your environment.
-  home.packages = with pkgs; [ kitty tmux sesh neovim ];
-
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
