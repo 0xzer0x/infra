@@ -6,7 +6,7 @@ in {
   options.features.desktop.hyprland.enable =
     mkEnableOption "Enable Hyprland desktop configuration";
 
-  imports = [ ./packages.nix ./bindings.nix ./rules.nix ];
+  imports = [ ./packages.nix ./bindings.nix ./rules.nix ./xdph.nix ];
 
   config = mkIf cfg.enable {
     xdg.configFile = {

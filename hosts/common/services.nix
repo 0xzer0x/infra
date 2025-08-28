@@ -36,6 +36,19 @@
 
     # Tailscale VPN
     tailscale.enable = true;
+
+    # Display manager (greetd + tuigreet)
+    greetd = {
+      enable = true;
+      useTextGreeter = true;
+      settings = {
+        default_session = {
+          command = ''
+            ${pkgs.tuigreet.outPath}/bin/tuigreet -rt --window-padding 2 -g "Welcome Back" -c Hyprland
+          '';
+        };
+      };
+    };
   };
 
   # NOTE: Disable auto-start for tailscale
