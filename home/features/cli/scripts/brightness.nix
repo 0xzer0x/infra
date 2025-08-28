@@ -8,7 +8,7 @@ pkgs.writeShellScriptBin "brightness" ''
 
   notify_level() {
     bright=$(bc <<<"scale=2; (($(brightnessctl get) / $(brightnessctl max))*100)" | cut -d'.' -f1)
-    notify-send "Brightness: ''${bright}%" -h string:hlcolor:$HL_CLR -h string:x-dunst-stack-tag:brightnessctl -h int:value:"$bright" --icon="/usr/share/icons/Papirus-Dark/symbolic/status/display-brightness-symbolic.svg"
+    notify-send "Brightness: ''${bright}%" -h string:hlcolor:$HL_CLR -h string:x-dunst-stack-tag:brightnessctl -h int:value:"$bright" --icon="${pkgs.papirus-icon-theme.outPath}/share/icons/Papirus/24x24/symbolic/status/display-brightness-symbolic.svg"
   }
 
   increment() {
