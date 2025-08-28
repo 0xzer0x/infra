@@ -26,10 +26,22 @@
 
   security.sudo.extraRules = [{
     users = [ "youfathy" ];
-    commands = [{
-      command = "ALL";
-      options = [ "NOPASSWD" ];
-    }];
+    commands = [
+      # NOTE: Allow elevating privileges (requires password)
+      {
+        command = "ALL";
+      }
+      # NOTE: NixOS management
+      {
+        command = let lib = pkgs.lib; in lib.getExe pkgs.nixos-rebuild;
+        options = [ "NOPASSWD" ];
+      }
+      {
+        command = let lib = pkgs.lib;
+        in lib.getExe' pkgs.nix "nix-collect-garbage";
+        options = [ "NOPASSWD" ];
+      }
+    ];
   }];
 
   home-manager.users.youfathy =
