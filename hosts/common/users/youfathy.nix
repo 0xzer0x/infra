@@ -33,12 +33,11 @@
       }
       # NOTE: NixOS management
       {
-        command = let lib = pkgs.lib; in lib.getExe pkgs.nixos-rebuild;
+        command = "/run/current-system/sw/bin/nixos-rebuild";
         options = [ "NOPASSWD" ];
       }
       {
-        command = let lib = pkgs.lib;
-        in lib.getExe' pkgs.nix "nix-collect-garbage";
+        command = "/run/current-system/sw/bin/nix-collect-garbage";
         options = [ "NOPASSWD" ];
       }
     ];
