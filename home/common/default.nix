@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   nixpkgs.config = {
@@ -12,6 +12,13 @@
   };
 
   # NOTE: Sets default XDG directories environment variables
-  xdg.enable = true;
   home.preferXdgDirectories = true;
+  xdg = {
+    enable = true;
+    userDirs = {
+      enable = true;
+      createDirectories = true;
+      music = "${config.home.homeDirectory}/Audio";
+    };
+  };
 }
