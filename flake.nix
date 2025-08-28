@@ -24,7 +24,9 @@
       system = "x86_64-linux";
       lib = nixpkgs.lib;
     in {
-      packages = [ (import ./pkgs nixpkgs.legacyPackages.${system}) ];
+      packages = {
+        "${system}" = (import ./pkgs nixpkgs.legacyPackages.${system});
+      };
       overlays = import ./overlays { inherit inputs; };
       homeManagerModules = import ./modules/home-manager;
 

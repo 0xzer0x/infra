@@ -32,6 +32,8 @@ in {
       Unit = {
         Description = "Prayer times notification daemon";
         Documentaiton = "https://github.com/0xzer0x/go-pray";
+        After = [ "graphical-session-pre.target" ];
+        PartOf = [ "graphical-session.target" ];
       };
 
       Service = let configFile = "${config.xdg.configHome}/go-pray/config.yml";
