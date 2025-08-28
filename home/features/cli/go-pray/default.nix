@@ -7,12 +7,12 @@ in {
     mkEnableOption "Enable go-pray CLI configuration";
 
   config = mkIf cfg.enable {
+    xdg.configFile."go-pray/qatami-takbeer.mp3" = {
+      source = ./qatami-takbeer.mp3;
+    };
+
     services.go-pray = {
       enable = true;
-
-      xdg.configFile."go-pray/qatami-takbeer.mp3" = {
-        source = ./qatami-takbeer.mp3;
-      };
 
       settings = ''
         language: en
