@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Theme
-theme="$HOME/.config/rofi/powermenu/style.rasi"
+theme="${XDG_CONFIG_HOME:-${HOME}/.config}/rofi/powermenu/style.rasi"
 
 # CMDs
 uptime=$(uptime -p | sed -e 's/up //g')
@@ -87,10 +87,10 @@ case ${chosen} in
   run_cmd --logout
   ;;
 "$lock")
-  if [[ -x '/usr/bin/swaylock' ]]; then
+  if command -v swaylock &>/dev/null; then
     swaylock
-  elif [[ -x '/usr/bin/i3lock' ]]; then
-    i3lock
+  else
+    notify-send -u critical "Screen Lock Failed" "Required binary not found: swaylock"
   fi
   ;;
 esac
