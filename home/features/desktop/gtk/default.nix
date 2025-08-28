@@ -8,11 +8,7 @@ in {
   config = mkIf cfg.enable {
     gtk = {
       enable = true;
-
-      iconTheme = {
-        name = "Papirus-Dark";
-        package = pkgs.catppuccin-papirus-folders;
-      };
+      iconTheme.name = "Papirus-Dark";
 
       cursorTheme = {
         name = "Adwaita";
