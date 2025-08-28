@@ -11,9 +11,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin.url = "github:catppuccin/nix";
+    # NOTE: Dotfiles inputs
+    nvimConfig = {
+      url = "github:0xzer0x/nvim";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, nix-flatpak, agenix, ... }@inputs:
+  outputs = { self, nixpkgs, nix-flatpak, agenix, nvimConfig, ... }@inputs:
     let lib = nixpkgs.lib;
     in {
       nixosConfigurations = {

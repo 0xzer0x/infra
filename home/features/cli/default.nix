@@ -2,18 +2,19 @@
 
 {
   imports = [
+    ./tmux
+    ./scripts
     ./env.nix
     ./kitty.nix
     ./zsh.nix
     ./starship.nix
+    ./nvim.nix
     ./fastfetch.nix
     ./gnupg.nix
     ./gopass.nix
     ./git.nix
     ./k8s.nix
     ./yazi.nix
-    ./tmux
-    ./scripts
   ];
 
   # NOTE: Use programs.<name>.enable whenever possible instead of using home.packages

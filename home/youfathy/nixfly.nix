@@ -18,6 +18,7 @@
       fastfetch.enable = true;
       kitty.enable = true;
       tmux.enable = true;
+      nvim.enable = true;
       zsh = {
         enable = true;
         enableFzfIntegration = true;
