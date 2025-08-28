@@ -44,5 +44,5 @@
   }];
 
   home-manager.users.youfathy =
-    import ../../../home/youfathy/${config.networking.hostName}.nix;
+    import ../../../home/youfathy/${config.networking.hostName};
 }
