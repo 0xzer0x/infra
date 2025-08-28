@@ -6,6 +6,5 @@ in {
   options.features.programming.rust.enable =
     mkEnableOption "Enable Rust development configuration";
 
-  config =
-    mkIf cfg.enable { home.packages = with pkgs; [ rustc cargo rustup ]; };
+  config = mkIf cfg.enable { home.packages = with pkgs; [ rustup ]; };
 }
