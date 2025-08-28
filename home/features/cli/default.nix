@@ -4,6 +4,7 @@
   imports = [
     ./tmux
     ./scripts
+    ./go-pray
     ./env.nix
     ./kitty.nix
     ./zsh.nix

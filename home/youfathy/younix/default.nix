@@ -32,6 +32,7 @@
       };
       k8s.enable = true;
       yazi.enable = true;
+      go-pray.enable = true;
     };
 
     desktop = {

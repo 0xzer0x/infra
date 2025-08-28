@@ -5,7 +5,7 @@ let cfg = config.features.desktop.hyprland;
 in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      papirus-icon-theme
+      catppuccin-papirus-folders
       xdg-utils
       xdg-launch
       xdg-user-dirs

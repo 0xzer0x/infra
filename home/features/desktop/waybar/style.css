@@ -1,4 +1,4 @@
-@import "./catppuccin-mocha.css";
+@import "./catppuccin.css";
 
 @define-color accent @lavender;
 /* text when background is accent */

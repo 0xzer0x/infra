@@ -19,18 +19,25 @@
   };
 
   outputs = { self, nixpkgs, nix-flatpak, agenix, nvimConfig, ... }@inputs:
-    let lib = nixpkgs.lib;
+    let
+      inherit (self) outputs;
+      system = "x86_64-linux";
+      lib = nixpkgs.lib;
     in {
+      packages = [ (import ./pkgs nixpkgs.legacyPackages.${system}) ];
+      overlays = import ./overlays { inherit inputs; };
+      homeManagerModules = import ./modules/home-manager;
+
       nixosConfigurations = {
         younix = lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
+          inherit system;
+          specialArgs = { inherit inputs outputs; };
           modules = [ ./hosts/younix ];
         };
 
         nixfly = lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
+          inherit system;
+          specialArgs = { inherit inputs outputs; };
           modules = [ ./hosts/nixfly ];
         };
       };

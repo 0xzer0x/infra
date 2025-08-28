@@ -1,14 +1,25 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, outputs, ... }:
 
 {
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowUnfreePredicate = _: true;
-  };
+  # NOTE: Import custom-defined home-manager modules
+  imports = builtins.attrValues outputs.homeManagerModules;
 
   nix = {
     package = lib.mkDefault pkgs.nix;
     settings.experimental-features = [ "nix-command" "flakes" ];
+  };
+
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = _: true;
+    };
+
+    overlays = [
+      outputs.overlays.additions
+      outputs.overlays.modifications
+      outputs.overlays.stable-packages
+    ];
   };
 
   # NOTE: Sets default XDG directories environment variables
