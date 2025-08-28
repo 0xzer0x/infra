@@ -32,9 +32,9 @@ in {
         extraConfig = ''
           set -g @fingers-key f
           set -g @fingers-show-copied-notification 0
-          set -gF @fingers-hint-style      "fg=green,bold"
-          set -gF @fingers-highlight-style "fg=yellow,underscore"
-          set -gF @fingers-backdrop-style  "dim"
+          set -g @fingers-hint-style      "fg=green,bold"
+          set -g @fingers-highlight-style "fg=yellow,underscore"
+          set -g @fingers-backdrop-style  "dim"
         '';
       }];
 
@@ -210,7 +210,7 @@ in {
         # ╩  ╩═╝╚═╝╚═╝╩╝╚╝╚═╝
         # -------------------
         # automatic window renaming with nerd-fonts icons
-        run '${config.xdg.configHome}/tmux/plugins/tmux-nerd-font-window-name/tmux-nerd-font-window-name.tmux'
+        run-shell '${config.xdg.configHome}/tmux/plugins/tmux-nerd-font-window-name/tmux-nerd-font-window-name.tmux'
       '';
     };
 
