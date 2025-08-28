@@ -181,6 +181,22 @@
         "type": "indirect"
       }
     },
+    "nvimConfig": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1756365253,
+        "narHash": "sha256-9z9TMMlLWutijrcinUjWQxY0hcO6xnAScY42ZpDrp6Q=",
+        "owner": "0xzer0x",
+        "repo": "nvim",
+        "rev": "486e621eb9fc48ae07d8a88caaabfd61abc13eac",
+        "type": "github"
+      },
+      "original": {
+        "owner": "0xzer0x",
+        "repo": "nvim",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -188,7 +204,8 @@
         "home-manager": "home-manager_2",
         "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs_3",
-        "nixpkgs-stable": "nixpkgs-stable"
+        "nixpkgs-stable": "nixpkgs-stable",
+        "nvimConfig": "nvimConfig"
       }
     },
     "systems": {
