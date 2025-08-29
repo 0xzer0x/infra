@@ -17,5 +17,9 @@ in {
     publicKeys = default-keys;
     armor = true;
   };
+  "synapse-wireguard-dispatcher.age" = {
+    publicKeys = default-keys;
+    armor = true;
+  };
 }
 

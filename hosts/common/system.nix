@@ -8,6 +8,7 @@
     git
     gcc
     vim
+    bash
     wget
     curl
     btrfs-progs
