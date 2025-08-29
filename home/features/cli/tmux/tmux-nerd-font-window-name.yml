@@ -10,10 +10,11 @@ icons:
   flatpak: 󰏗
   cat: 󰦨
   bat: 󰦨
-  devbox: 
   task: 
   watch: 󰈈
   ssh: 
   ffmpeg: 󱜀
   ttyper: 󰌌
   find: 
+  devbox: 
+  nix: 
