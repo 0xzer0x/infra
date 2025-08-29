@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 with lib;
 let cfg = config.features.desktop.qt;
@@ -12,8 +12,11 @@ in {
     catppuccin.kvantum.enable = false;
     qt = {
       enable = true;
-      style.name = "breeze";
       platformTheme.name = "qtct";
+      style = {
+        name = "breeze";
+        package = pkgs.kdePackages.breeze;
+      };
     };
   };
 }

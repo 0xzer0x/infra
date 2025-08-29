@@ -6,7 +6,6 @@
     adwaita-qt
     adwaita-qt6
     libsForQt5.qt5ct
-    libsForQt5.breeze-qt5
     kdePackages.qt6ct
     kdePackages.breeze
   ];
