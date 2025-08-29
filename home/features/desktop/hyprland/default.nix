@@ -65,6 +65,8 @@ in {
           "XCURSOR_SIZE,22"
           "HYPRCURSOR_THEME,Adwaita"
           "HYPRCURSOR_SIZE,22"
+          "NIXOS_OZONE_WL,1"
+          "ELECTRON_OZONE_PLATFORM_HINT,wayland"
         ];
 
         # NOTE: Look and feel
