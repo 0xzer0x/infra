@@ -45,7 +45,13 @@ in {
         ];
       };
 
-      gtk4 = { extraCss = builtins.readFile ./gtk.css; };
+      gtk4 = {
+        extraCss = builtins.readFile ./gtk.css;
+        extraConfig = {
+          gtk-application-prefer-dark-theme = 1;
+          gtk-decoration-layout = "icon:";
+        };
+      };
     };
 
     xdg.dataFile."gtksourceview-4/styles/catppuccin.xml" = {
