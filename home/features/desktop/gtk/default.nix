@@ -47,5 +47,9 @@ in {
 
       gtk4 = { extraCss = builtins.readFile ./gtk.css; };
     };
+
+    xdg.dataFile."gtksourceview-4/styles/catppuccin.xml" = {
+      source = ./gtksourceview4-style.xml;
+    };
   };
 }

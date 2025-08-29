@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<style-scheme _name="Catppuccin Mocha Alt" id="catppuccin-mocha" version="1.0">
+  <author>Adapted by Request</author>
+  <_description>Catppuccin Mocha color scheme</_description>
+  <!-- Catppuccin Mocha Color Palette -->
+  <color name="background" value="#1e1e2e"></color>
+  <color name="current-line" value="#313244"></color>
+  <color name="selection" value="#f5c2e7"></color>
+  <color name="foreground" value="#cdd6f4"></color>
+  <color name="comment" value="#6c7086"></color>
+  <color name="cyan" value="#89dceb"></color>
+  <color name="green" value="#a6e3a1"></color>
+  <color name="orange" value="#fab387"></color>
+  <color name="pink" value="#f5c2e7"></color>
+  <color name="purple" value="#cba6f7"></color>
+  <color name="red" value="#f38ba8"></color>
+  <color name="yellow" value="#f9e2af"></color>
+  <color name="white" value="#ffffff"></color>
+  <color name="bone-white" value="#cdd6f4"></color>
+  <color name="weird-gray" value="#a6adc8"></color>
+  <color name="sidebar" value="#181825"></color>
+  <!-- Global Settings -->
+  <style background="background" foreground="white" name="text"></style>
+  <style background="current-line" foreground="bone-white" name="selection"></style>
+  <style foreground="bone-white" name="cursor"></style>
+  <style foreground="white" name="secondary-cursor"></style>
+  <style background="white" foreground="background" name="selection-unfocused"></style>
+  <style background="current-line" name="current-line"></style>
+  <style background="sidebar" foreground="current-line" name="line-numbers"></style>
+  <style background="background" name="background-pattern"></style>
+  <style background="white" foreground="yellow" name="bracket-match"></style>
+  <style background="white" foreground="red" name="bracket-mismatch"></style>
+  <style background="white" foreground="white" name="search-match"></style>
+  <style bold="true" foreground="pink" name="def:keyword"></style>
+  <style foreground="pink" name="def:statement"></style>
+  <style foreground="green" name="def:function"></style>
+  <style foreground="purple" name="def:decimal"></style>
+  <style foreground="white" name="def:preprocessor"></style>
+  <style foreground="pink" name="def:type"></style>
+  <style foreground="yellow" name="def:character"></style>
+  <style foreground="comment" name="def:comment"></style>
+  <style foreground="purple" name="def:number"></style>
+  <style foreground="yellow" name="def:string"></style>
+  <style foreground="cyan" italic="true" name="def:net-address-in-comment" underline="true"></style>
+  <style italic="true" name="def:underlined" underline="true"></style>
+  <style background="background" bold="true" foreground="white" name="def:note"></style>
+  <style bold="true" foreground="red" name="def:error"></style>
+  <style foreground="purple" name="def:escape"></style>
+  <style bold="true" foreground="pink" name="def:shebang"></style>
+  <style italic="true" name="def:doc-comment-element"></style>
+  <style bold="true" foreground="green" name="def:identifier"></style>
+  <style background="purple" foreground="white" name="def:specials"></style>
+  <style foreground="orange" name="def:variable"></style>
+  <style bold="true" foreground="pink" name="def:boolean"></style>
+  <style foreground="pink" name="def:constant"></style>
+  <style bold="true" foreground="pink" name="def:special-constant"></style>
+  <style foreground="bone-white" name="diff:added-line"></style>
+  <style foreground="cyan" name="diff:removed-line"></style>
+  <style foreground="red" name="diff:changed-line"></style>
+  <style bold="true" foreground="green" name="diff:diff-file"></style>
+  <style foreground="yellow" name="diff:location"></style>
+  <style bold="true" foreground="white" name="diff:special-case"></style>
+  <style bold="true" foreground="orange" name="latex:command"></style>
+  <style name="latex:include" use-style="def:preprocessor"></style>
+  <style italic="true" name="def:emphasis"></style>
+  <style bold="true" foreground="white" name="def:strong-emphasis"></style>
+  <style foreground="background" name="def:inline-code"></style>
+  <style name="def:insertion" underline="single"></style>
+  <style name="def:deletion" strikethrough="true"></style>
+  <style foreground="cyan" name="def:link-text"></style>
+  <style bold="true" foreground="cyan" name="def:link-symbol"></style>
+  <style italic="true" name="def:link-destination" underline="single"></style>
+  <style bold="true" foreground="green" name="def:heading"></style>
+  <style bold="true" foreground="orange" name="def:thematic-break"></style>
+  <style foreground="cyan" name="def:preformatted-section"></style>
+  <style bold="true" foreground="white" name="def:list-marker"></style>
+  <style name="def:heading0" scale="5.0"></style>
+  <style name="def:heading1" scale="2.5"></style>
+  <style name="def:heading2" scale="2.0"></style>
+  <style name="def:heading3" scale="1.7"></style>
+  <style name="def:heading4" scale="1.5"></style>
+  <style name="def:heading5" scale="1.3"></style>
+  <style name="def:heading6" scale="1.2"></style>
+</style-scheme>
