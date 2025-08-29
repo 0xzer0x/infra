@@ -50,23 +50,20 @@ in {
           ngc = "sudo nix-collect-garbage -d";
         };
 
-        # NOTE: ZSH plugin manager
-        zplug = {
-          enable = true;
-          zplugHome = "${config.programs.zsh.dotDir}/zplug";
-          plugins = [
-            { name = "zsh-users/zsh-autosuggestions"; }
-            { name = "jeffreytse/zsh-vi-mode"; }
-          ];
-        };
+        # NOTE: ZSH plugins
+        plugins = [{
+          name = "zsh-vi-mode";
+          src = pkgs.zsh-vi-mode;
+          file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+        }];
 
-        initContent = mkOrder 1500 ''
-          # ------- aws cli completion ------- #
+        completionInit = ''
           autoload bashcompinit && bashcompinit
           autoload -Uz compinit && compinit
-          complete -C '${pkgs.awscli2.outPath}/bin/aws_completer' aws
-          # ---------------------------------- #
+          complete -C '${pkgs.awscli2}/bin/aws_completer' aws
+        '';
 
+        initContent = mkOrder 1500 ''
           # ------- custom functions ------- #
           # zsh-vi-mode copy to clipboard
           my_zvm_vi_yank() {
