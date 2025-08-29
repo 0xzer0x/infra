@@ -3,13 +3,17 @@
 {
   imports = [ inputs.agenix.nixosModules.default ];
 
-  age.identityPaths = [ "/var/lib/agenix/youfathy.key" ];
+  age = {
+    identityPaths = [ "/var/lib/agenix/youfathy.key" ];
+    secrets."youfathy.passwd.age".file = ../../../secrets/youfathy.passwd.age;
+  };
 
   users.users.youfathy = {
     shell = pkgs.zsh;
     isNormalUser = true;
     createHome = true;
     description = "Youssef Fathy";
+    hashedPasswordFile = config.age.secrets."youfathy.passwd.age".path;
     extraGroups = [
       "wheel"
       "networkmanager"

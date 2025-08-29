@@ -15,7 +15,7 @@
       allowUnfreePredicate = _: true;
     };
 
-    overlays = let homeManagerOverlays = import ./overlays { inherit config; };
+    overlays = let homeManagerOverlays = import ../overlays { inherit config; };
     in [
       outputs.overlays.additions
       outputs.overlays.modifications
