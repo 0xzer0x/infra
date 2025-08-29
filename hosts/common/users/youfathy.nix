@@ -1,6 +1,10 @@
 { config, pkgs, inputs, ... }:
 
 {
+  imports = [ inputs.agenix.nixosModules.default ];
+
+  age.identityPaths = [ "/var/lib/agenix/youfathy.key" ];
+
   users.users.youfathy = {
     shell = pkgs.zsh;
     isNormalUser = true;

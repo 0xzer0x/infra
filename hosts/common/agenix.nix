@@ -16,5 +16,5 @@
   # 4. Run `agenix -i <path-to-master-key> --rekey` in the secrets directory
   # 5. Pull updated flake in host
   # 6. Rebuild
-  age.identityPaths = [ "/var/lib/agenix/host.key" "/var/lib/agenix/master.key" ];
+  age.identityPaths = [ "/var/lib/agenix/host.key" ];
 }
