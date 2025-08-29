@@ -16,8 +16,6 @@ in {
       hyprshot
       libnotify
       adw-gtk3
-      nwg-look
-      nwg-displays
       pavucontrol
       nemo-with-extensions
       ffmpegthumbnailer
