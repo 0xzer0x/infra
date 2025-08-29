@@ -15,10 +15,12 @@
       allowUnfreePredicate = _: true;
     };
 
-    overlays = [
+    overlays = let homeManagerOverlays = import ./overlays { inherit config; };
+    in [
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.stable-packages
+      homeManagerOverlays.additions
     ];
   };
 

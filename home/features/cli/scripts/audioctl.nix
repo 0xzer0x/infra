@@ -5,13 +5,13 @@ pkgs.writeShellScriptBin "audioctl" ''
   set -euo pipefail
 
   declare -A __MUTE_ICONS=(
-    [@DEFAULT_SINK@]=${pkgs.catppuccin-papirus-folders.outPath}/share/icons/Papirus-Dark/24x24/actions/audio-volume-muted.svg
-    [@DEFAULT_SOURCE@]=${pkgs.catppuccin-papirus-folders.outPath}/share/icons/Papirus-Dark/24x24/symbolic/status/audio-input-microphone-muted-symbolic.svg
+    [@DEFAULT_SINK@]=${pkgs.overlayPackages.papirus-icon-theme}/share/icons/Papirus-Dark/24x24/actions/audio-volume-muted.svg
+    [@DEFAULT_SOURCE@]=${pkgs.overlayPackages.papirus-icon-theme}/share/icons/Papirus-Dark/24x24/symbolic/status/audio-input-microphone-muted-symbolic.svg
   )
 
   declare -A __ACTIVE_ICONS=(
-    [@DEFAULT_SINK@]=${pkgs.catppuccin-papirus-folders.outPath}/share/icons/Papirus-Dark/24x24/actions/audio-volume-high.svg
-    [@DEFAULT_SOURCE@]=${pkgs.catppuccin-papirus-folders.outPath}/share/icons/Papirus-Dark/24x24/symbolic/status/audio-input-microphone-high-symbolic.svg
+    [@DEFAULT_SINK@]=${pkgs.overlayPackages.papirus-icon-theme}/share/icons/Papirus-Dark/24x24/actions/audio-volume-high.svg
+    [@DEFAULT_SOURCE@]=${pkgs.overlayPackages.papirus-icon-theme}/share/icons/Papirus-Dark/24x24/symbolic/status/audio-input-microphone-high-symbolic.svg
   )
 
   __HL_CLR="#b4befe"
