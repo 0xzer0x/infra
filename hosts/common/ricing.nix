@@ -12,8 +12,6 @@
       noto-fonts
       open-sans
       ubuntu-sans
-      corefonts
-      vista-fonts
       nerd-fonts.geist-mono
       nerd-fonts.ubuntu
     ];
