@@ -44,8 +44,7 @@ in {
           lg = "lazygit";
           gst = "git status";
           glg = "git log --all --graph --oneline --decorate";
-          czm = "chezmoi --color=auto";
-          czme = "chezmoi edit";
+          nfe = "cd \${NIXOS_SYSTEM_FLAKE} && nvim .";
           nrs = "sudo nixos-rebuild switch --flake \${NIXOS_SYSTEM_FLAKE}";
           ngc = "sudo nix-collect-garbage -d";
         };
