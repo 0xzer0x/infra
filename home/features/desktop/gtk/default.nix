@@ -33,6 +33,16 @@ in {
           gtk-application-prefer-dark-theme = 1;
           gtk-decoration-layout = "icon:";
         };
+        # NOTE: File browser bookmarks
+        bookmarks = let inherit (config.home) homeDirectory;
+        in [
+          "file:///${homeDirectory}/Documents Documents"
+          "file:///${homeDirectory}/Downloads Downloads"
+          "file:///${homeDirectory}/Audio Audio"
+          "file:///${homeDirectory}/Pictures Pictures"
+          "file:///${homeDirectory}/Videos Videos"
+          "file:///${homeDirectory}/Workspace Workspace"
+        ];
       };
 
       gtk4 = { extraCss = builtins.readFile ./gtk.css; };

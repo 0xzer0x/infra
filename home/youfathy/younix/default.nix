@@ -9,6 +9,7 @@
     ./hyprland.nix
     ./waybar.nix
     ./yazi.nix
+    ./gtk.nix
   ];
 
   features = {
