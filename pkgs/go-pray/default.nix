@@ -1,4 +1,5 @@
-{ lib, pkg-config, alsa-lib, buildGoModule, fetchFromGitHub }:
+{ lib, buildGoModule, fetchFromGitHub, installShellFiles, pkg-config, alsa-lib,
+}:
 
 buildGoModule (finalAttrs: {
   pname = "go-pray";
@@ -7,24 +8,48 @@ buildGoModule (finalAttrs: {
   src = fetchFromGitHub {
     owner = "0xzer0x";
     repo = "go-pray";
-    rev = "v${finalAttrs.version}";
-    hash = "sha256-wi/sUjzNbVLbqwtM1BglmXgkaqMamjIsGS6EjlyeC9Y=";
+    tag = "v${finalAttrs.version}";
+    hash = "sha256-EJWmV6HeGOlHje4FYcYikBGWQHc8Huk9R+19SYnTWtM=";
+    # NOTE: Required for setting version commit and build time
+    leaveDotGit = true;
+    postFetch = ''
+      cd $out
+      git rev-parse HEAD > $out/COMMIT
+      date -u -d "@$(git log -1 --pretty=%ct)" "+%Y-%m-%dT%H:%M:%SZ" > $out/SOURCE_DATE_EPOCH
+      find "$out" -name .git -print0 | xargs -0 rm -rf
+    '';
   };
+
   vendorHash = "sha256-qMTg2Vsk0nte1O8sbNWN5CCCpgpWLvcb2RuGMoEngYE=";
 
-  nativeBuildInputs = [ pkg-config alsa-lib ];
+  nativeBuildInputs = [ pkg-config alsa-lib installShellFiles ];
   ldflags = [
     "-X 'github.com/0xzer0x/go-pray/internal/version.version=${finalAttrs.version}'"
-    "-X 'github.com/0xzer0x/go-pray/internal/version.buildCommit=${finalAttrs.version}'"
-    "-X 'github.com/0xzer0x/go-pray/internal/version.buildTime=1970-01-01T00:00:00Z'"
   ];
+
+  preBuild = ''
+    ldflags+=" -X github.com/0xzer0x/go-pray/internal/version.buildCommit=$(cat COMMIT)"
+    ldflags+=" -X github.com/0xzer0x/go-pray/internal/version.buildTime=$(cat SOURCE_DATE_EPOCH)"
+  '';
 
   buildInputs = [ alsa-lib ];
 
+  postInstall = ''
+    # NOTE: Create temporary config file to supress missing config error
+    printf 'calculation: { method: "UAQ" }\nlocation: { lat: 0, long: 0 }\n' > tmpconfig.yml
+    installShellCompletion --cmd go-pray \
+      --bash <($out/bin/go-pray --config=tmpconfig.yml completion bash) \
+      --fish <($out/bin/go-pray --config=tmpconfig.yml completion fish) \
+      --zsh <($out/bin/go-pray --config=tmpconfig.yml completion zsh)
+  '';
+
   meta = with lib; {
-    description = "Prayer time CLI to remind you to Go pray";
+    description = "Prayer times CLI to remind you to Go pray";
     homepage = "https://github.com/0xzer0x/go-pray";
+    changelog = "https://github.com/0xzer0x/go-pray/releases/tag/v${version}";
     license = licenses.gpl3Plus;
     maintainers = with maintainers; [ _0xzer0x ];
+    platforms = platforms.linux;
+    mainProgram = "go-pray";
   };
 })
