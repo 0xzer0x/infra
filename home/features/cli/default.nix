@@ -56,5 +56,6 @@
     terraform
     ansible
     libisoburn
+    openssl
   ];
 }
