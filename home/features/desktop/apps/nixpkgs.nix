@@ -8,6 +8,7 @@ in {
       qview
       tutanota-desktop
       obsidian
+      legcord
       slack
       droidcam
       v4l-utils

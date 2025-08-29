@@ -13,7 +13,6 @@ in {
       "org.gtk.Gtk3theme.adw-gtk3"
       "org.gtk.Gtk3theme.adw-gtk3-dark"
       "io.github._0xzer0x.qurancompanion"
-      "io.github.spacingbat3.webcord"
     ];
   };
 }
