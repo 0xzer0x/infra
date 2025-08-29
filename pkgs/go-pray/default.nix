@@ -1,4 +1,4 @@
-{ lib, pkgs, buildGoModule, fetchFromGitHub }:
+{ lib, pkg-config, alsa-lib, buildGoModule, fetchFromGitHub }:
 
 buildGoModule (finalAttrs: {
   pname = "go-pray";
@@ -12,17 +12,14 @@ buildGoModule (finalAttrs: {
   };
   vendorHash = "sha256-qMTg2Vsk0nte1O8sbNWN5CCCpgpWLvcb2RuGMoEngYE=";
 
-  nativeBuildInputs = with pkgs; [ pkg-config alsa-lib.dev ];
-  preBuild = ''
-    export PKG_CONFIG_PATH=''${PKG_CONFIG_PATH}:${pkgs.alsa-lib.dev.outPath}/lib/pkgconfig
-  '';
+  nativeBuildInputs = [ pkg-config alsa-lib ];
   ldflags = [
     "-X 'github.com/0xzer0x/go-pray/internal/version.version=${finalAttrs.version}'"
     "-X 'github.com/0xzer0x/go-pray/internal/version.buildCommit=${finalAttrs.version}'"
     "-X 'github.com/0xzer0x/go-pray/internal/version.buildTime=1970-01-01T00:00:00Z'"
   ];
 
-  buildInputs = with pkgs; [ alsa-lib ];
+  buildInputs = [ alsa-lib ];
 
   meta = with lib; {
     description = "Prayer time CLI to remind you to Go pray";
