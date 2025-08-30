@@ -176,7 +176,7 @@ in {
         python = {
           symbol = " ";
           format =
-            " [\${symbol}\${pyenv_prefix}(\${version})(($virtualenv))]($style)";
+            " [\${symbol}\${pyenv_prefix}(\${version})(\\($virtualenv\\))]($style)";
           style = "bold yellow";
         };
 
