@@ -41,13 +41,10 @@ in {
       };
       "clock" = {
         "interval" = 1;
-        "tooltip" = false;
+        "tooltip" = true;
         "format" = "{:%a %d %b %I:%M %p}";
         "format-alt" = "{:%F %T}";
-        "tooltip-format" = ''
-          <big>{:%Y %B}</big>
-          <tt>{calendar}</tt>
-        '';
+        "tooltip-format" = "<tt>{calendar}</tt>";
       };
       "cpu" = {
         "format" = "  {usage}% ";
