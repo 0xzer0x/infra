@@ -9,7 +9,7 @@ buildGoModule (finalAttrs: {
     owner = "0xzer0x";
     repo = "go-pray";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-EJWmV6HeGOlHje4FYcYikBGWQHc8Huk9R+19SYnTWtM=";
+    hash = "sha256-wwTAwiO1XONxd6NPXKjzu5B7R211xAgBGPPAvQwOp8I=";
     # NOTE: Required for setting version commit and build time
     leaveDotGit = true;
     postFetch = ''
