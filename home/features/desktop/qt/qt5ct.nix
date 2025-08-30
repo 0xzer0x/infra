@@ -17,7 +17,7 @@ in {
         custom_palette=true
         icon_theme=Papirus-Dark
         standard_dialogs=default
-        style=Breeze
+        style=Fusion
 
         [Fonts]
         fixed="${config.gtk.font.name},10,-1,5,50,0,0,0,0,0"
