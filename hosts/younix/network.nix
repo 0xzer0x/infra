@@ -16,6 +16,7 @@
 
   networking = {
     hostName = "younix";
+    nftables.enable = true;
     firewall.enable = false;
     networkmanager.enable = true;
     networkmanager.dispatcherScripts = [{

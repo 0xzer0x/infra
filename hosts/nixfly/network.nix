@@ -16,6 +16,7 @@
 
   networking = {
     hostName = "nixfly";
+    nftables.enable = true;
     firewall.enable = false;
     networkmanager.enable = true;
     networkmanager.dispatcherScripts = [{
