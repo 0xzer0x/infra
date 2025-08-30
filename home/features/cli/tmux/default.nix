@@ -1,24 +1,13 @@
 { config, lib, pkgs, ... }:
 
 with lib;
-let
-  cfg = config.features.cli.tmux;
-  tmuxNerdFontWindowName = builtins.fetchGit {
-    url = "https://github.com/joshmedeski/tmux-nerd-font-window-name";
-    rev = "ab9c2cd2bfbbcf6f85ffff359d69b6a8712daf05";
-  };
+let cfg = config.features.cli.tmux;
 in {
   options.features.cli.tmux.enable = mkEnableOption "Enable TMUX configuration";
 
   imports = [ ./theme.nix ./sesh.nix ];
 
   config = mkIf cfg.enable {
-    # NOTE: Install plugin from git repo
-    xdg.configFile."tmux/plugins/tmux-nerd-font-window-name" = {
-      source = tmuxNerdFontWindowName.outPath;
-      recursive = true;
-    };
-
     xdg.configFile."tmux/tmux-nerd-font-window-name.yml" = {
       source = ./tmux-nerd-font-window-name.yml;
     };
@@ -27,16 +16,19 @@ in {
       enable = true;
       sensibleOnTop = false;
 
-      plugins = with pkgs; [{
-        plugin = tmuxPlugins.fingers;
-        extraConfig = ''
-          set -g @fingers-key f
-          set -g @fingers-show-copied-notification 0
-          set -g @fingers-hint-style      "fg=green,bold"
-          set -g @fingers-highlight-style "fg=yellow,underscore"
-          set -g @fingers-backdrop-style  "dim"
-        '';
-      }];
+      plugins = with pkgs; [
+        { plugin = extraTmuxPlugins.nerd-font-window-name; }
+        {
+          plugin = tmuxPlugins.fingers;
+          extraConfig = ''
+            set -g @fingers-key f
+            set -g @fingers-show-copied-notification 0
+            set -g @fingers-hint-style      "fg=green,bold"
+            set -g @fingers-highlight-style "fg=yellow,underscore"
+            set -g @fingers-backdrop-style  "dim"
+          '';
+        }
+      ];
 
       extraConfig = ''
         # -------------------
@@ -53,8 +45,6 @@ in {
         set -ga terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'
         # Automatic window renaming
         set -g automatic-rename on
-        # Format of automatic window renaming
-        set -g automatic-rename-format '#{pane_current_command}'
         # Allow programs to change the window name
         set -g allow-rename off
         # Destroy window when program exits
@@ -211,8 +201,6 @@ in {
         # -------------------
         # keyboard-driven url/copy mode
         run-shell '${pkgs.tmuxPlugins.fingers}/share/tmux-plugins/tmux-fingers/tmux-fingers.tmux'
-        # automatic window renaming with nerd-fonts icons
-        run-shell '${config.xdg.configHome}/tmux/plugins/tmux-nerd-font-window-name/tmux-nerd-font-window-name.tmux'
       '';
     };
 

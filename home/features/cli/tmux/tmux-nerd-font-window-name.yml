@@ -1,5 +1,58 @@
+config:
+  fallback-icon: "?"
+  show-name: true
+
 icons:
-  doas: 󰒘
+  apt: 
+  bash: 
+  caffeinate: 
+  cargo: 
+  beam.smp: 
+  beam: 
+  brew: 
+  cfdisk: 
+  dnf: 
+  docker: 
+  dpkg: 
+  emacs: 
+  fdisk: 
+  fish: 
+  git: 
+  gitui: 
+  gh: 
+  go: 
+  helm: 󱃾
+  hx: 󰔤
+  htop: 
+  java: 
+  k9s: 󱃾
+  kubectl: 󱃾
+  lazydocker: 
+  lf: 
+  lfcd: 
+  lvim: 
+  nala: 
+  node: 
+  nu: 
+  pacman: 
+  parted: 
+  paru: 
+  Python: 
+  ranger: 
+  ruby: 
+  rustc: 
+  rustup: 
+  tcsh: 
+  tig: 
+  tmux: 
+  top: 
+  topgrade: 󰚰
+  yay: 
+  yazi: 
+  yum: 
+  vim: 
+  zsh: 
+  sudo: 󰒘
   sudoedit: 󱆠
   nvim: 
   chezmoi: 
