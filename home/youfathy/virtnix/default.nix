@@ -8,8 +8,6 @@
     ../../features/desktop
     ./hyprland.nix
     ./waybar.nix
-    ./yazi.nix
-    ./gtk.nix
   ];
 
   features = {
@@ -27,7 +25,7 @@
 
       git.enable = true;
       gnupg.enable = true;
-      gopass.enable = true;
+      gopass.enable = false;
       starship.enable = true;
       fastfetch.enable = true;
       kitty.enable = true;
@@ -46,13 +44,13 @@
       hyprland.enable = true;
       waybar.enable = true;
       rofi.enable = true;
-      apps.enable = true;
+      apps.enable = false;
     };
 
     programming = {
-      cpp.enable = true;
-      go.enable = true;
-      rust.enable = true;
+      cpp.enable = false;
+      rust.enable = false;
+      go.enable = false;
       nodejs.enable = true;
       python.enable = true;
       tools.enable = true;

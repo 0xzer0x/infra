@@ -13,15 +13,8 @@
 
   features = {
     colorscheme.active = "catppuccin";
+
     cli = {
-      git.enable = true;
-      gnupg.enable = true;
-      gopass.enable = true;
-      starship.enable = true;
-      fastfetch.enable = true;
-      kitty.enable = true;
-      tmux.enable = true;
-      nvim.enable = true;
       zsh = {
         enable = true;
         enableFzfIntegration = true;
@@ -30,6 +23,15 @@
         enableStarshipIntegration = true;
         enableDirEnvIntegration = true;
       };
+
+      git.enable = true;
+      gnupg.enable = true;
+      gopass.enable = true;
+      starship.enable = true;
+      fastfetch.enable = true;
+      kitty.enable = true;
+      tmux.enable = true;
+      nvim.enable = true;
       k8s.enable = true;
       yazi.enable = true;
       go-pray.enable = true;
@@ -47,12 +49,12 @@
     };
 
     programming = {
-      tools.enable = true;
       cpp.enable = true;
       go.enable = true;
       rust.enable = true;
       nodejs.enable = true;
       python.enable = true;
+      tools.enable = true;
     };
   };
 }
