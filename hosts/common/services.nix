@@ -44,7 +44,7 @@
       settings = {
         default_session = {
           command = ''
-            ${pkgs.tuigreet.outPath}/bin/tuigreet -rt --window-padding 2 -g "Welcome Back" -c Hyprland
+            ${pkgs.tuigreet}/bin/tuigreet -rt --window-padding 1 -g "Welcome Back" -c Hyprland
           '';
         };
       };
