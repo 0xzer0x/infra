@@ -55,5 +55,21 @@ in {
         };
       };
     };
+
+    dconf.settings = {
+      "org/nemo/preferences" = { "disable-menu-warning" = true; };
+      "org/nemo/window-state" = {
+        "maximized" = true;
+        "my-computer-expanded" = true;
+        "bookmarks-expanded" = true;
+        "devices-expanded" = false;
+        "network-expanded" = false;
+        "start-with-menu-bar" = false;
+        "start-with-status-bar" = false;
+        "start-with-sidebar" = true;
+        "sidebar-bookmark-breakpoint" = 0;
+      };
+      "org/virt-manager/virt-manager/details" = { "show-toolbar" = false; };
+    };
   };
 }
