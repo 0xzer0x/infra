@@ -5,9 +5,6 @@
     adwaita-icon-theme
     adwaita-qt
     adwaita-qt6
-    libsForQt5.qt5ct
-    kdePackages.qt6ct
-    kdePackages.breeze
   ];
 
   xdg.portal = {

@@ -4,7 +4,7 @@ with lib;
 let cfg = config.features.desktop.qt;
 in {
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ libsForQt5.qt5ct ];
+    home.packages = with pkgs; [ libsForQt5.qt5ct kdePackages.breeze.qt5 ];
 
     xdg.configFile."qt5ct/colors/Catppuccin-Mocha.conf" = {
       source = ./Catppuccin-Mocha.conf;
@@ -17,7 +17,7 @@ in {
         custom_palette=true
         icon_theme=Papirus-Dark
         standard_dialogs=default
-        style=Fusion
+        style=Breeze
 
         [Fonts]
         fixed="${config.gtk.font.name},10,-1,5,50,0,0,0,0,0"
