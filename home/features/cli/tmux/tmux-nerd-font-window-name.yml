@@ -69,6 +69,8 @@ icons:
   ffmpeg: 󱜀
   ttyper: 󰌌
   find: 
+  fastfetch: 
   devbox: 
   nix: 
-  fastfetch: 
+  nix-collect-garbage: 
+  nixos-rebuild: 󱑞
