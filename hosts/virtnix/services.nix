@@ -4,7 +4,7 @@
     enable = true;
 
     banner = ''
-      [ MISSION STATUS: ACTIVE | AUTHORIZED LINK ESTABLISHED ]
+      [ SYSTEM STATUS: ACTIVE | AUTHORIZED LINK ESTABLISHED ]
       Welcome back, Administrator.
       The system has been waiting for you.
     '';
