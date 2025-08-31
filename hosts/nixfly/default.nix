@@ -7,6 +7,6 @@
     ./network.nix
     ./packages.nix
     ./power.nix
-    ./ssh.nix
+    ./services.nix
   ];
 }

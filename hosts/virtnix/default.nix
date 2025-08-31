@@ -8,6 +8,7 @@
     ./disks.nix
     ./network.nix
     ./virtualization.nix
+    ./services.nix
   ];
 
 }
