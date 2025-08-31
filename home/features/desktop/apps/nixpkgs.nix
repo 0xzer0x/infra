@@ -5,7 +5,6 @@ let cfg = config.features.desktop.apps;
 in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      qview
       tutanota-desktop
       obsidian
       legcord
