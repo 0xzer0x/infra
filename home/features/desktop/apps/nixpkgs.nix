@@ -18,7 +18,16 @@ in {
     catppuccin.mpv.enable = false;
     programs = {
       # NOTE: Image viewer
-      imv.enable = true;
+      imv = {
+        enable = true;
+        settings = {
+          options.overlay_font = "monospace:10";
+          binds = {
+            "<Shift+H>" = "prev";
+            "<Shift+L>" = "next";
+          };
+        };
+      };
 
       # NOTE: Screen recorder
       obs-studio = {

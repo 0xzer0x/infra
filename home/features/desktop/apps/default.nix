@@ -86,10 +86,10 @@ in {
         "audio/x-wav" = [ "mpv.desktop" ];
         "audio/x-wavpack" = [ "mpv.desktop" ];
         "audio/x-xm" = [ "mpv.desktop" ];
-        "image/jpeg" = [ "com.interversehq.qView.desktop" ];
-        "image/png" = [ "com.interversehq.qView.desktop" ];
-        "image/webp" = [ "com.interversehq.qView.desktop" ];
-        "image/gif" = [ "com.interversehq.qView.desktop" ];
+        "image/jpeg" = [ "imv.desktop" ];
+        "image/png" = [ "imv.desktop" ];
+        "image/webp" = [ "imv.desktop" ];
+        "image/gif" = [ "imv.desktop" ];
         "inode/directory" = [ "nemo.desktop" ];
         "text/html" = [ "app.zen_browser.zen.desktop" ];
         "text/plain" = [ "org.xfce.mousepad.desktop" ];
