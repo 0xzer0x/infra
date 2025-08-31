@@ -11,4 +11,5 @@
     ./services.nix
   ];
 
+  authn.youfathy.hashedPasswordFile.enable = false;
 }

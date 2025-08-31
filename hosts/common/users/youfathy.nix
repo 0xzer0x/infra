@@ -1,19 +1,25 @@
-{ config, pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
-{
-  imports = [ inputs.agenix.nixosModules.default ];
-
-  age = {
+with lib;
+let authnCfg = config.authn.youfathy;
+in {
+  age = mkIf authnCfg.hashedPasswordFile.enable {
     identityPaths = [ "/var/lib/agenix/youfathy.key" ];
     secrets."youfathy.passwd.age".file = ../../../secrets/youfathy.passwd.age;
   };
 
-  users.users.youfathy = {
+  users.users.youfathy = let
+    passwordAttrSet = (if authnCfg.hashedPasswordFile.enable then {
+      hashedPasswordFile = config.age.secrets."youfathy.passwd.age".path;
+    } else {
+      initialHashedPassword =
+        "$y$j9T$Dn0eeaH0T73fTCJwryaMm1$dq5xw1pKZWZ.uN6S1JMEHS7wpVwfajHUIdDb00NCUgB";
+    });
+  in {
     shell = pkgs.zsh;
     isNormalUser = true;
     createHome = true;
     description = "Youssef Fathy";
-    hashedPasswordFile = config.age.secrets."youfathy.passwd.age".path;
     extraGroups = [
       "wheel"
       "networkmanager"
@@ -30,7 +36,7 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKQ6RpkBluDPdk7jMEDIXp1t+FTL402RJQVtGRL322/w youfathy"
     ];
     packages = [ inputs.home-manager.packages.${pkgs.system}.default ];
-  };
+  } // passwordAttrSet;
 
   security.sudo.extraRules = [{
     users = [ "youfathy" ];

@@ -9,4 +9,6 @@
     ./power.nix
     ./services.nix
   ];
+
+  authn.youfathy.hashedPasswordFile.enable = true;
 }
