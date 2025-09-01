@@ -50,6 +50,7 @@ in {
           nrs = "sudo nixos-rebuild switch --flake \${NIXOS_SYSTEM_FLAKE}";
           ngc = "sudo nix-collect-garbage";
           ngd = "sudo nix-collect-garbage -d";
+          nps = "nix search nixpkgs";
         };
 
         # NOTE: ZSH plugins

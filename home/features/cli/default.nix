@@ -31,6 +31,7 @@
     lazydocker.enable = true;
     jq.enable = true;
     yt-dlp.enable = true;
+    nix-index.enable = true;
   };
 
   home.packages = with pkgs; [
@@ -57,5 +58,6 @@
     ansible
     libisoburn
     openssl
+    sshpass
   ];
 }
