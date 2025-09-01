@@ -25,6 +25,9 @@
     usbutils
   ];
 
+  # NOTE: Required for completion of system-wide packages
+  environment.pathsToLink = [ "/share/zsh" ];
+
   programs = {
     nix-ld.enable = true;
 

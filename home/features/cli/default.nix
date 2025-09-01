@@ -27,11 +27,18 @@
     fd.enable = true;
     jq.enable = true;
     bat.enable = true;
+    fzf.enable = true;
+    eza.enable = true;
     btop.enable = true;
     htop.enable = true;
+    zoxide.enable = true;
     ripgrep.enable = true;
     tealdeer.enable = true;
     nix-index.enable = true;
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
   };
 
   home.packages = with pkgs; [

@@ -14,15 +14,7 @@
     colorscheme.active = "catppuccin";
 
     cli = {
-      zsh = {
-        enable = true;
-        enableFzfIntegration = true;
-        enableEzaIntegration = true;
-        enableZoxideIntegration = true;
-        enableStarshipIntegration = true;
-        enableDirEnvIntegration = true;
-      };
-
+      zsh.enable = true;
       gopass.enable = false;
       aws.enable = false;
       ansible.enable = false;

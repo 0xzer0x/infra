@@ -15,15 +15,7 @@
     colorscheme.active = "catppuccin";
 
     cli = {
-      zsh = {
-        enable = true;
-        enableFzfIntegration = true;
-        enableEzaIntegration = true;
-        enableZoxideIntegration = true;
-        enableStarshipIntegration = true;
-        enableDirEnvIntegration = true;
-      };
-
+      zsh.enable = true;
       git.enable = true;
       gnupg.enable = true;
       gopass.enable = true;

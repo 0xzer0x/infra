@@ -10,7 +10,6 @@ in {
     programs.kubecolor = {
       enable = true;
       enableAlias = true;
-      enableZshIntegration = true;
     };
 
     # NOTE: TUI
