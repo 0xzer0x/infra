@@ -1,5 +1,3 @@
 #!/usr/bin/env bash
 
-pkill waybar
-waybar &
-disown
+systemctl --user restart waybar.service

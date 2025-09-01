@@ -51,6 +51,9 @@ in {
       [ "graphical-session.target" ];
 
     services = {
+      # NOTE: NetworkManager applet
+      network-manager-applet.enable = true;
+
       # NOTE: Authentication agent
       polkit-gnome.enable = true;
 
