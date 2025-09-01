@@ -27,33 +27,35 @@ in {
 
     programs.swaylock.enable = true;
 
+    # NOTE: Notifications daemon
+    services.dunst = {
+      enable = true;
+      settings = {
+        global = {
+          font = "monospace, 10";
+          icon_theme = "Papirus-Dark";
+          separator_color = "frame";
+          offset = "(5, 5)";
+          frame_width = 2;
+          corner_radius = 6;
+          gap_size = 2;
+          progress_bar_height = 15;
+          progress_bar_corner_radius = 2;
+          always_run_script = true;
+          enable_recursive_icon_lookup = true;
+          mouse_left_click = "do_action, close_current";
+        };
+      };
+    };
+    systemd.user.services.dunst.Install.WantedBy =
+      [ "graphical-session.target" ];
+
     services = {
       # NOTE: Authentication agent
       polkit-gnome.enable = true;
 
       # NOTE: Wallpaper manager
       swww.enable = true;
-
-      # NOTE: Notifications daemon
-      dunst = {
-        enable = true;
-        settings = {
-          global = {
-            font = "monospace, 10";
-            icon_theme = "Papirus-Dark";
-            separator_color = "frame";
-            offset = "(5, 5)";
-            frame_width = 2;
-            corner_radius = 6;
-            gap_size = 2;
-            progress_bar_height = 15;
-            progress_bar_corner_radius = 2;
-            always_run_script = true;
-            enable_recursive_icon_lookup = true;
-            mouse_left_click = "do_action, close_current";
-          };
-        };
-      };
     };
 
     dconf.settings = {

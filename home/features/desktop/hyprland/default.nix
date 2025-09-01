@@ -104,7 +104,6 @@ in {
         # NOTE: Auto-start
         exec-once = [
           "waybar"
-          "dunst"
           "nm-applet"
           "${config.xdg.configHome}/hypr/scripts/wallpaper"
           "${pkgs.wl-clipboard.outPath}/bin/wl-paste -t text --watch clipman store --max-items=50 --no-persist"
