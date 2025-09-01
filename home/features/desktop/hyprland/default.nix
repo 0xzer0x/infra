@@ -67,6 +67,7 @@ in {
           "HYPRCURSOR_SIZE,22"
           "NIXOS_OZONE_WL,1"
           "ELECTRON_OZONE_PLATFORM_HINT,wayland"
+          "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
         ];
 
         # NOTE: Look and feel
