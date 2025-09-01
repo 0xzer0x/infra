@@ -17,7 +17,7 @@ in {
       sensibleOnTop = false;
 
       plugins = with pkgs; [
-        { plugin = extraTmuxPlugins.nerd-font-window-name; }
+        { plugin = tmux-nerd-font-window-name; }
         {
           plugin = tmuxPlugins.fingers;
           extraConfig = ''
