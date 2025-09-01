@@ -31,6 +31,8 @@ in {
           # NOTE: ZSH VI mode configuration
           ZVM_VI_HIGHLIGHT_FOREGROUND = "#cdd6f4";
           ZVM_VI_HIGHLIGHT_BACKGROUND = "#45475a";
+          # NOTE: Use system-wide QEMU - virsh(1)
+          LIBVIRT_DEFAULT_URI = "qemu:///system";
         };
 
         shellAliases = {
@@ -46,7 +48,8 @@ in {
           glg = "git log --all --graph --oneline --decorate";
           nfe = "cd \${NIXOS_SYSTEM_FLAKE} && nvim .";
           nrs = "sudo nixos-rebuild switch --flake \${NIXOS_SYSTEM_FLAKE}";
-          ngc = "sudo nix-collect-garbage -d";
+          ngc = "sudo nix-collect-garbage";
+          ngd = "sudo nix-collect-garbage -d";
         };
 
         # NOTE: ZSH plugins
