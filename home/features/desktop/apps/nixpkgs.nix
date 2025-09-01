@@ -14,7 +14,21 @@ in {
       xfce.mousepad
     ];
 
+    # NOTE: Media player
     catppuccin.mpv.enable = false;
+    home.sessionVariables = { VIDEO = "mpv"; };
+    programs.mpv = {
+      enable = true;
+      scripts = with pkgs; [ mpvScripts.uosc mpvScripts.thumbfast ];
+      config = {
+        osc = "no";
+        border = "no";
+        sub-font-size = 24;
+        sub-border-size = 1;
+        hwdec = "auto";
+      };
+    };
+
     programs = {
       # NOTE: Image viewer
       imv = {
@@ -36,19 +50,6 @@ in {
           obs-vaapi
           droidcam-obs
         ];
-      };
-
-      # NOTE: Media player
-      mpv = {
-        enable = true;
-        scripts = with pkgs; [ mpvScripts.uosc mpvScripts.thumbfast ];
-        config = {
-          osc = "no";
-          border = "no";
-          sub-font-size = 24;
-          sub-border-size = 1;
-          hwdec = "auto";
-        };
       };
 
       # NOTE: PDF reader

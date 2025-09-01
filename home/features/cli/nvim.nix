@@ -18,6 +18,9 @@ in {
       source = inputs.nvimConfig;
       recursive = true;
     };
+
+    # NOTE: Use as default viewer for man pages
+    home.sessionVariables = { MANPAGER = "nvim +Man!"; };
   };
 }
 

@@ -1,26 +1,30 @@
 { config, lib, pkgs, ... }:
 
 with lib;
-let cfg = config.features.desktop.wayland;
+let
+  cfg = config.features.desktop.wayland;
+  waylandCommonVariables = {
+    XDG_SESSION_TYPE = "wayland";
+    GDK_BACKEND = "wayland,x11,*";
+    GDK_SCALE = 1;
+    QT_QPA_PLATFORM = "wayland;xcb";
+    QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
+    MOZ_ENABLE_WAYLAND = 1;
+    MOZ_DISABLE_RDD_SANDBOX = 1;
+    NIXOS_OZONE_WL = "1";
+    ELECTRON_OZONE_PLATFORM_HINT = "auto";
+  };
 in {
   options.features.desktop.wayland.enable =
     mkEnableOption "Enable Wayland desktop configuration";
 
   config = mkIf cfg.enable {
-    home.sessionVariables = {
-      NIXOS_OZONE_WL = "1";
-      ELECTRON_OZONE_PLATFORM_HINT = "auto";
-      GDK_BACKEND = "wayland,x11,*";
-      GDK_SCALE = 1;
-      QT_QPA_PLATFORM = "wayland;xcb";
-      QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
-      MOZ_ENABLE_WAYLAND = 1;
-      MOZ_DISABLE_RDD_SANDBOX = 1;
-    };
+    home.sessionVariables = waylandCommonVariables;
+    wayland.windowManager.hyprland.settings.env = builtins.attrValues
+      (builtins.mapAttrs (name: value: "${name},${builtins.toString value}")
+        waylandCommonVariables);
 
     home.packages = with pkgs; [
-      grim
-      slurp
       clipman
       wl-clipboard
       wf-recorder

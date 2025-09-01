@@ -18,6 +18,8 @@ in {
         tab_bar_style = "hidden";
       };
     };
+
+    home.sessionVariables = { TERM_PROGRAM = "kitty"; };
   };
 }
 

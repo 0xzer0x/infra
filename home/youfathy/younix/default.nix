@@ -36,6 +36,10 @@
       k8s.enable = true;
       yazi.enable = true;
       go-pray.enable = true;
+      aws.enable = true;
+      ansible.enable = true;
+      multimedia.enable = true;
+      docker.enable = true;
     };
 
     desktop = {

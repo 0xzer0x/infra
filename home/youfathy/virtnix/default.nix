@@ -23,9 +23,12 @@
         enableDirEnvIntegration = true;
       };
 
-      git.enable = true;
-      gnupg.enable = true;
       gopass.enable = false;
+      aws.enable = false;
+      ansible.enable = false;
+      multimedia.enable = false;
+      git.enable = false;
+      gnupg.enable = true;
       starship.enable = true;
       fastfetch.enable = true;
       kitty.enable = true;
@@ -34,6 +37,7 @@
       k8s.enable = true;
       yazi.enable = true;
       go-pray.enable = true;
+      docker.enable = true;
     };
 
     desktop = {

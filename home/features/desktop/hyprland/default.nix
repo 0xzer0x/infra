@@ -58,16 +58,12 @@ in {
 
         # NOTE: Environment variables
         env = [
-          "XDG_SESSION_TYPE,wayland"
           "XDG_SESSION_DESKTOP,Hyprland"
           "XDG_CURRENT_DESKTOP,Hyprland"
           "XCURSOR_THEME,Adwaita"
           "XCURSOR_SIZE,22"
           "HYPRCURSOR_THEME,Adwaita"
           "HYPRCURSOR_SIZE,22"
-          "NIXOS_OZONE_WL,1"
-          "ELECTRON_OZONE_PLATFORM_HINT,wayland"
-          "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
         ];
 
         # NOTE: Look and feel

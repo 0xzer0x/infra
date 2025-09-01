@@ -6,6 +6,11 @@ in {
   options.features.programming.nodejs.enable =
     mkEnableOption "Enable NodeJS development configuration";
 
-  config = mkIf cfg.enable { home.packages = with pkgs; [ nodejs_24 ]; };
+  config = mkIf cfg.enable {
+    home.packages = with pkgs; [ nodejs_24 ];
+    home.sessionVariables = {
+      NPM_CONFIG_CACHE = "${config.xdg.cacheHome}/npm";
+    };
+  };
 }
 
