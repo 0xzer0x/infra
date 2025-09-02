@@ -13,13 +13,12 @@ in {
         {
           name = "quran-companion";
           path =
-            "${config.home.homeDirectory}/Workspace/projects/quran-companion/repository";
+            "${config.home.homeDirectory}/Workspace/github/quran-companion/repository";
           startup_command = "nvim";
         }
         {
           name = "go-pray";
-          path =
-            "${config.home.homeDirectory}/Workspace/projects/go-pray/repository";
+          path = "${config.home.homeDirectory}/Workspace/github/go-pray";
           startup_command = "nvim";
         }
       ];
