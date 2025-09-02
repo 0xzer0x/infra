@@ -37,7 +37,7 @@ in {
           }
           {
             condition =
-              "hasconfig:remote.*.url:git@gitlab.com:synapse-analytics/**";
+              "hasconfig:remote.*.url:git@gitlab.com-yfathy:synapse-analytics/**";
             contents.user = synapseUser;
           }
           {
