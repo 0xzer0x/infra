@@ -16,7 +16,7 @@ in {
     catppuccin.k9s.transparent = true;
     programs.k9s = {
       enable = true;
-      settings = { ui.headless = true; };
+      settings = { k9s.ui.headless = true; };
     };
 
     # NOTE: Additional packages
