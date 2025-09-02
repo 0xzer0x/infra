@@ -5,6 +5,7 @@ let cfg = config.features.desktop.apps;
 in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
+      libreoffice
       tutanota-desktop
       obsidian
       legcord
