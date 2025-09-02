@@ -59,8 +59,6 @@ in {
       }];
 
       completionInit = ''
-        autoload bashcompinit && bashcompinit
-        autoload -Uz compinit && compinit
         complete -C '${pkgs.awscli2}/bin/aws_completer' aws
       '';
 
