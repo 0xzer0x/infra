@@ -43,10 +43,12 @@ in {
         gst = "git status";
         glg = "git log --all --graph --oneline --decorate";
         nfe = "cd \${NIXOS_SYSTEM_FLAKE} && nvim .";
+        nps = "nix search nixpkgs";
         nrs = "sudo nixos-rebuild switch --flake \${NIXOS_SYSTEM_FLAKE}";
         ngc = "sudo nix-collect-garbage";
         ngd = "sudo nix-collect-garbage -d";
-        nps = "nix search nixpkgs";
+        nsg =
+          "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
       };
 
       # NOTE: ZSH plugins
