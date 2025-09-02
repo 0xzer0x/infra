@@ -90,5 +90,21 @@ in {
         path = "${config.home.homeDirectory}/Documents/obsidian";
       };
     };
+
+    # NOTE: Scratchpad
+    xdg.configFile."Mousepad/settings.conf" = {
+      force = true;
+      text = ''
+        [org/xfce/mousepad/preferences/window]
+        menubar-visible=false
+
+        [org/xfce/mousepad/preferences/view]
+        color-scheme='catppuccin-mocha-blue'
+        use-default-monospace-font=false
+        font-name='monospace 11'
+        show-line-numbers=true
+        word-wrap=true
+      '';
+    };
   };
 }
