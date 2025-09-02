@@ -8,7 +8,7 @@ in {
 
   config = mkIf cfg.enable {
     programs.yt-dlp.enable = true;
-    home.packages = with pkgs; [ grim slurp ffmpeg libisoburn ];
+    home.packages = with pkgs; [ ffmpeg libisoburn ];
     home.sessionVariables = {
       FFMPEG_DATADIR = "${config.xdg.configHome}/ffmpeg";
     };

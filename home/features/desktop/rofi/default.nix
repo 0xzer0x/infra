@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 with lib;
 let cfg = config.features.desktop.rofi;
@@ -8,6 +8,8 @@ in {
 
   config = mkIf cfg.enable {
     programs.rofi.enable = true;
+
+    home.packages = with pkgs; [ grim slurp ];
 
     xdg.configFile = {
       "rofi/clipboard" = {
