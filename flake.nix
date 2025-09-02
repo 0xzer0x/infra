@@ -21,13 +21,13 @@
     # NOTE: Colorscheme
     catppuccin.url = "github:catppuccin/nix";
     # NOTE: Dotfiles
-    nvimConfig = {
+    nvimdots = {
       url = "github:0xzer0x/nvim";
       flake = false;
     };
   };
 
-  outputs = { self, nixpkgs, nix-flatpak, agenix, nvimConfig, ... }@inputs:
+  outputs = { self, nixpkgs, nix-flatpak, agenix, nvimdots, ... }@inputs:
     let
       inherit (self) outputs;
       system = "x86_64-linux";

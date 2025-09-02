@@ -15,7 +15,7 @@ in {
     # NOTE: Disable catppuccin integration, managed through external configuration
     catppuccin.nvim.enable = false;
     xdg.configFile.nvim = {
-      source = inputs.nvimConfig;
+      source = inputs.nvimdots;
       recursive = true;
     };
 
