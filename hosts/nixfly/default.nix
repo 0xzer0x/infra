@@ -11,5 +11,5 @@
   ];
 
   networking.hostName = "nixfly";
-  authn.youfathy.hashedPasswordFile.enable = true;
+  customization.users.youfathy.hashedPasswordFile.enable = true;
 }

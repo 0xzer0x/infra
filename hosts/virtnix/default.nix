@@ -12,5 +12,5 @@
   ];
 
   networking.hostName = "virtnix";
-  authn.youfathy.hashedPasswordFile.enable = false;
+  customization.users.youfathy.hashedPasswordFile.enable = false;
 }

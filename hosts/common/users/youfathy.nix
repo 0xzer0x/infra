@@ -1,15 +1,15 @@
 { config, lib, pkgs, inputs, ... }:
 
 with lib;
-let authnCfg = config.authn.youfathy;
+let cfg = config.customization.users.youfathy;
 in {
-  age = mkIf authnCfg.hashedPasswordFile.enable {
+  age = mkIf cfg.hashedPasswordFile.enable {
     identityPaths = [ "/var/lib/agenix/youfathy.key" ];
     secrets."youfathy.passwd.age".file = ../../../secrets/youfathy.passwd.age;
   };
 
   users.users.youfathy = let
-    passwordAttrSet = (if authnCfg.hashedPasswordFile.enable then {
+    passwordAttrSet = (if cfg.hashedPasswordFile.enable then {
       hashedPasswordFile = config.age.secrets."youfathy.passwd.age".path;
     } else {
       initialHashedPassword =
