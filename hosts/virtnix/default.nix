@@ -11,5 +11,6 @@
     ./services.nix
   ];
 
+  networking.hostName = "virtnix";
   authn.youfathy.hashedPasswordFile.enable = false;
 }

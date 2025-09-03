@@ -14,16 +14,9 @@
     target = "NetworkManager/system-connections/synapse-wireguard.nmconnection";
   };
 
-  networking = {
-    hostName = "younix";
-    nftables.enable = true;
-    firewall.enable = false;
-    networkmanager.enable = true;
-    networkmanager.dispatcherScripts = [{
-      type = "basic";
-      source = config.age.secrets."synapse-wireguard-dispatcher.age".path;
-    }];
-  };
-
+  networking.networkmanager.dispatcherScripts = [{
+    type = "basic";
+    source = config.age.secrets."synapse-wireguard-dispatcher.age".path;
+  }];
   systemd.services.NetworkManager-dispatcher.path = [ pkgs.bash ];
 }

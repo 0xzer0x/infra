@@ -7,6 +7,7 @@
     ./agenix.nix
     ./boot.nix
     ./system.nix
+    ./network.nix
     ./services.nix
     ./virtualization.nix
     ./desktop.nix

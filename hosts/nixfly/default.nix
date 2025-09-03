@@ -10,5 +10,6 @@
     ./services.nix
   ];
 
+  networking.hostName = "nixfly";
   authn.youfathy.hashedPasswordFile.enable = true;
 }
