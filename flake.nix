@@ -19,7 +19,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # NOTE: Colorscheme
-    catppuccin.url = "github:catppuccin/nix";
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # NOTE: Dotfiles
     nvimdots = {
       url = "github:0xzer0x/nvim";
