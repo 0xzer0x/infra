@@ -1,7 +1,27 @@
 { config, lib, ... }:
 
 with lib;
-let cfg = config.features.cli.tmux;
+let
+  cfg = config.features.cli.tmux;
+  inherit (config.home) homeDirectory;
+  workspaceDir = "${homeDirectory}/Workspace";
+  editorSessions = builtins.map ({ name, path }: {
+    inherit name path;
+    startup_command = "\${EDITOR}";
+  }) [
+    {
+      name = "quran-companion";
+      path = "${workspaceDir}/github/quran-companion/repository";
+    }
+    {
+      name = "go-pray";
+      path = "${workspaceDir}/github/go-pray";
+    }
+    {
+      name = "younix";
+      path = "${config.xdg.configHome}/younix";
+    }
+  ];
 in {
   config = mkIf cfg.enable {
     programs.sesh = {
@@ -9,19 +29,7 @@ in {
       icons = true;
       enableAlias = false;
       enableTmuxIntegration = false;
-      settings.session = [
-        {
-          name = "quran-companion";
-          path =
-            "${config.home.homeDirectory}/Workspace/github/quran-companion/repository";
-          startup_command = "nvim";
-        }
-        {
-          name = "go-pray";
-          path = "${config.home.homeDirectory}/Workspace/github/go-pray";
-          startup_command = "nvim";
-        }
-      ];
+      settings.session = editorSessions;
     };
   };
 }
