@@ -34,7 +34,10 @@
     zoxide.enable = true;
     ripgrep.enable = true;
     tealdeer.enable = true;
-    nix-index.enable = true;
+    nix-index = {
+      enable = true;
+      enableZshIntegration = false;
+    };
     direnv = {
       enable = true;
       nix-direnv.enable = true;
