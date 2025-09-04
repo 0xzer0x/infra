@@ -95,7 +95,7 @@ wf-notify() {
     msg="$*"
     ;;
   esac
-  notify-send -i media-record "WF Recorder" "$msg"
+  notify-send -i video-x-generic "WF Recorder" "$msg"
 }
 
 set-mode() {
