@@ -11,9 +11,13 @@ in {
     home.packages = with pkgs; [
       adwaita-fonts
       fira-go
+      liberation_ttf
+      carlito
       amiri
       scheherazade-new
       noto-fonts-color-emoji
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
     ];
 
     # NOTE: Custom Arabic font

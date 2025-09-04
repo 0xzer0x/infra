@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   environment.sessionVariables.XKB_DEFAULT_OPTIONS = "caps:swapescape";
