@@ -30,6 +30,7 @@
       yazi.enable = true;
       go-pray.enable = true;
       docker.enable = true;
+      virtualization.enable = false;
     };
 
     desktop = {

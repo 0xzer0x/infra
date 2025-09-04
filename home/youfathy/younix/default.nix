@@ -6,6 +6,7 @@
     ../../features/programming
     ../../features/colorscheme
     ../../features/desktop
+    ./virtualization.nix
     ./hyprland.nix
     ./waybar.nix
     ./yazi.nix
@@ -32,6 +33,7 @@
       ansible.enable = true;
       multimedia.enable = true;
       docker.enable = true;
+      virtualization.enable = true;
     };
 
     desktop = {

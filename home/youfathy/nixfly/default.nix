@@ -31,6 +31,7 @@
       ansible.enable = true;
       multimedia.enable = true;
       docker.enable = true;
+      virtualization.enable = true;
     };
 
     desktop = {

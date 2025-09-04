@@ -19,6 +19,7 @@
     ./aws.nix
     ./ansible.nix
     ./docker.nix
+    ./virtualization.nix
     ./multimedia.nix
   ];
 
