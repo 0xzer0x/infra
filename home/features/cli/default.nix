@@ -61,5 +61,6 @@
     pwgen
     openssl
     sshpass
+    age
   ];
 }
