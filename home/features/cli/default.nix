@@ -13,6 +13,7 @@
     ./fastfetch.nix
     ./gnupg.nix
     ./gopass.nix
+    ./ssh.nix
     ./git.nix
     ./k8s.nix
     ./yazi.nix

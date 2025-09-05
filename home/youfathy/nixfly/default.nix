@@ -16,6 +16,7 @@
 
     cli = {
       zsh.enable = true;
+      ssh.enable = true;
       git.enable = true;
       gnupg.enable = true;
       gopass.enable = true;

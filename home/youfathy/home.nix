@@ -1,6 +1,8 @@
-{ config, lib, ... }:
+{ config, inputs, lib, ... }:
 
 {
+  imports = [ inputs.sops-nix.homeManagerModules.sops ];
+
   # Home Manager needs a bit of information about you and the paths it should manage.
   home.username = lib.mkDefault "youfathy";
   home.homeDirectory = lib.mkDefault "/home/${config.home.username}";
@@ -16,4 +18,9 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  sops = {
+    defaultSopsFile = ../../secrets/users/${config.home.username}.yml;
+    age.keyFile = "${config.xdg.configHome}/sops/age/key.txt";
+  };
 }
