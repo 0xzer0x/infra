@@ -3,14 +3,13 @@
 with lib;
 let cfg = config.customization.users.youfathy;
 in {
-  age = mkIf cfg.hashedPasswordFile.enable {
-    identityPaths = [ "/var/lib/agenix/youfathy.key" ];
-    secrets."youfathy.passwd.age".file = ../../../secrets/youfathy.passwd.age;
-  };
+  sops.secrets."users/youfathy/hashedPassword" =
+    mkIf cfg.hashedPasswordFile.enable { neededForUsers = true; };
 
   users.users.youfathy = let
     passwordAttrSet = (if cfg.hashedPasswordFile.enable then {
-      hashedPasswordFile = config.age.secrets."youfathy.passwd.age".path;
+      hashedPasswordFile =
+        config.sops.secrets."users/youfathy/hashedPassword".path;
     } else {
       initialHashedPassword =
         "$y$j9T$Dn0eeaH0T73fTCJwryaMm1$dq5xw1pKZWZ.uN6S1JMEHS7wpVwfajHUIdDb00NCUgB";

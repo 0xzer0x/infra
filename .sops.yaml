@@ -1,0 +1,31 @@
+keys:
+  - &master age1rygx8uwjn8e67avxufw07a42s28upma2j5tlrwf3ck6gsg5uf4dslfxnsk
+  # NOTE: Users
+  - &youfathy age15wsmgha9lcal7jtrc7qguwjqguje52qaghw7cn6xqnwhtmqqxukqrvntyj
+  # NOTE: Hosts
+  - &younix age1ggd3re4gnq7h9jmn5nu027pezm7t4cqk9dakl6rjt9502qw62ugsqrk0lw
+  - &nixfly age1hhk4tg59hht5a5szattftyj8pkvkrhrlxq50ve70pp5vaygnssvq2lv994
+creation_rules:
+  # NOTE: Users secrets
+  - path_regex: secrets/users/youfathy\.(yaml|yml|json|env|ini)$
+    key_groups:
+      - age:
+          - *master
+          - *youfathy
+  # NOTE: Hosts secrets
+  - path_regex: secrets/hosts/common\.(yaml|yml|json|env|ini)$
+    key_groups:
+      - age:
+          - *master
+          - *younix
+          - *nixfly
+  - path_regex: secrets/hosts/younix\.(yaml|yml|json|env|ini)$
+    key_groups:
+      - age:
+          - *master
+          - *younix
+  - path_regex: secrets/hosts/nixfly\.(yaml|yml|json|env|ini)$
+    key_groups:
+      - age:
+          - *master
+          - *nixfly

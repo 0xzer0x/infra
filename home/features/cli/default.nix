@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -46,7 +46,6 @@
   };
 
   home.packages = with pkgs; [
-    inputs.agenix.packages.${system}.default
     file
     procps
     duf
@@ -62,5 +61,6 @@
     openssl
     sshpass
     age
+    sops
   ];
 }

@@ -1,8 +1,6 @@
-{ config, lib, pkgs, inputs, ... }:
+{ lib, pkgs, ... }:
 
 {
-  imports = [ inputs.agenix.nixosModules.default ];
-
   time.timeZone = "Africa/Cairo";
   zramSwap.enable = true;
 
@@ -57,18 +55,4 @@
   # NOTE: Auto-decrypt Gnome keyring on greetd login
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.login.enableGnomeKeyring = true;
-
-  # NOTE: ShadowSocks proxy
-  age.secrets."ss-rust.age".file = ../../secrets/ss-rust.age;
-  environment.systemPackages = [ pkgs.shadowsocks-rust ];
-  environment.etc."shadowsocks-rust/config.json" = {
-    enable = true;
-    source = config.age.secrets."ss-rust.age".path;
-  };
-  systemd.services.shadowsocks-rust = {
-    description = "ShadowSocks Proxy server";
-    after = [ "network.target" ];
-    path = [ pkgs.shadowsocks-rust ];
-    script = "exec sslocal -c /etc/shadowsocks-rust/config.json";
-  };
 }

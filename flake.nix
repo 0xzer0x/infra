@@ -5,7 +5,10 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     # NOTE: Secrets management
-    agenix.url = "github:ryantm/agenix";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # NOTE: Disks and partitioning
     disko = {
       url = "github:nix-community/disko/latest";
@@ -30,7 +33,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nix-flatpak, agenix, nvimdots, ... }@inputs:
+  outputs = { self, nixpkgs, nix-flatpak, sops-nix, nvimdots, ... }@inputs:
     let
       inherit (self) outputs;
       system = "x86_64-linux";

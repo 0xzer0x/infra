@@ -2,9 +2,10 @@
 
 {
   imports = [
+    inputs.sops-nix.nixosModules.sops
     inputs.home-manager.nixosModules.home-manager
     ./users
-    ./agenix.nix
+    ./sops.nix
     ./boot.nix
     ./system.nix
     ./network.nix
@@ -13,6 +14,7 @@
     ./desktop.nix
     ./ricing.nix
     ./nix.nix
+    ./synapse.nix
   ];
 
   home-manager = {
