@@ -1,3 +1,11 @@
+# WARN: Fresh installation steps:
+# 1. Generate a new age key for the new host
+# 2. Add the host key here and add it to appropriate sections (hosts/common.yml, hosts/<new-host>.yml)
+# 3. Move the private key.txt file to <install-root>/var/lib/sops-nix/key.txt on the remote host
+# 4. Install, ignore sops-nix.service error (missing users keys)
+# 5. Boot into installed system
+# 6. Add each user's appropriate private key.txt file to /home/<username>/.config/sops/age/key.txt
+# 7. Rebuild, home-manager should work fine now
 keys:
   - &master age1rygx8uwjn8e67avxufw07a42s28upma2j5tlrwf3ck6gsg5uf4dslfxnsk
   # NOTE: Users
