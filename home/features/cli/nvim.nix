@@ -1,4 +1,4 @@
-{ config, lib, inputs, ... }:
+{ inputs, config, lib, pkgs, ... }:
 
 with lib;
 let cfg = config.features.cli.nvim;
@@ -7,6 +7,9 @@ in {
     mkEnableOption "Enable Neovim configuration";
 
   config = mkIf cfg.enable {
+    # NOTE: Nix LSP (not supported in mason.nvim)
+    home.packages = with pkgs; [ nixd ];
+
     programs.neovim = {
       enable = true;
       defaultEditor = true;
