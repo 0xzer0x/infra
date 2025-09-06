@@ -49,6 +49,7 @@ in {
         ngd = "sudo nix-collect-garbage -d";
         nsg =
           "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
+        nph = "nix profile history --profile /nix/var/nix/profiles/system";
       };
 
       # NOTE: ZSH plugins
