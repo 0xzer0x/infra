@@ -17,71 +17,84 @@ in {
   config = mkIf cfg.enable {
     programs.waybar.settings.hyprland-statusbar = {
       "hyprland/window" = windowRewriteRules;
-      "hyprland/workspaces" = { "max-length" = workspacesCount; };
-      "hyprland/submap" = { "format" = "<span style='italic'> {}  </span>"; };
-      "hyprland/language" = { "format" = "{short}"; };
-      "keyboard-state" = {
-        "capslock" = true;
-        "format" = "󰪛";
-        "format-icons" = {
-          "locked" = "󰪛  ON";
-          "unlocked" = "󰪛  OFF";
+      "hyprland/workspaces" = { max-length = workspacesCount; };
+      "hyprland/submap" = { format = "<span style='italic'> {}  </span>"; };
+      "hyprland/language" = { format = "{short}"; };
+      keyboard-state = {
+        capslock = true;
+        format = "󰪛";
+        format-icons = {
+          locked = "󰪛  ON";
+          unlocked = "󰪛  OFF";
         };
       };
-      "idle_inhibitor" = {
-        "format" = "{icon}";
-        "format-icons" = {
-          "activated" = "";
-          "deactivated" = "";
+      idle_inhibitor = {
+        format = "{icon}";
+        format-icons = {
+          activated = "";
+          deactivated = "";
         };
       };
-      "tray" = {
-        "icon-size" = 16;
-        "spacing" = 10;
+      tray = {
+        icon-size = 16;
+        spacing = 10;
       };
-      "clock" = {
-        "interval" = 1;
-        "tooltip" = true;
-        "format" = "{:%a %d %b %I:%M %p}";
-        "format-alt" = "{:%F %T}";
-        "tooltip-format" = "<tt>{calendar}</tt>";
+      clock = {
+        interval = 1;
+        tooltip = true;
+        format = "{:%I:%M %p}";
+        format-alt = "{:%a %d %b %I:%M %p}";
+        tooltip-format = "<tt>{calendar}</tt>";
+        calendar = {
+          mode = "month";
+          on-scroll = 1;
+          format = {
+            months = "<b>{}</b>";
+            weekdays = "<b>{}</b>";
+            today = "<b><u>{}</u></b>";
+          };
+        };
+        actions = {
+          on-scroll-up = "shift_up";
+          on-scroll-down = "shift_down";
+        };
       };
-      "cpu" = {
-        "format" = "  {usage}% ";
-        "tooltip" = false;
-        "on-click" = "${pkgs.kitty.outPath}/bin/kitty -e btop";
+      cpu = {
+        format = "  {usage}% ";
+        tooltip = false;
+        on-click = "${pkgs.kitty}/bin/kitty -e btop";
       };
-      "memory" = { "format" = "  {}%"; };
-      "network" = {
-        "interval" = 2;
-        "format" = " {bandwidthDownBytes}  {bandwidthUpBytes}";
-        "tooltip-format" = "{ifname} via {gwaddr}";
-        "format-linked" = "{ifname} (No IP)";
-        "format-disconnected" = "Disconnected ⚠";
-        "format-alt" = "{ifname}: {ipaddr}/{cidr}";
+      memory = { format = "  {}%"; };
+      network = {
+        interval = 2;
+        format = " {bandwidthDownBytes}  {bandwidthUpBytes}";
+        tooltip-format = "{ifname} via {gwaddr}";
+        format-linked = "{ifname} (No IP)";
+        format-disconnected = "Disconnected ⚠";
+        format-alt = "{ifname}: {ipaddr}/{cidr}";
       };
-      "disk" = {
-        "interval" = 30;
-        "format" = " {free}";
-        "path" = "/";
+      disk = {
+        interval = 30;
+        format = " {free}";
+        path = "/";
       };
-      "pulseaudio" = {
-        "scroll-step" = 5;
-        "on-click" = "${pkgs.pavucontrol.outPath}/bin/pavucontrol";
-        "format" = "{icon} {volume}% {format_source}";
-        "format-bluetooth" = "{volume}% {icon} {format_source}";
-        "format-bluetooth-muted" = "󰖁 {icon} {format_source}";
-        "format-muted" = "󰖁  {format_source}";
-        "format-source" = "󰍬 {volume}%";
-        "format-source-muted" = "󰍭 ";
-        "format-icons" = {
-          "headphone" = " ";
-          "hands-free" = " ";
-          "headset" = " ";
-          "phone" = " ";
-          "portable" = " ";
-          "car" = " ";
-          "default" = [ "󰕿" "󰖀" "󰕾" ];
+      pulseaudio = {
+        scroll-step = 5;
+        on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
+        format = "{icon} {volume}% {format_source}";
+        format-bluetooth = "{volume}% {icon} {format_source}";
+        format-bluetooth-muted = "󰖁 {icon} {format_source}";
+        format-muted = "󰖁  {format_source}";
+        format-source = "󰍬 {volume}%";
+        format-source-muted = "󰍭 ";
+        format-icons = {
+          headphone = " ";
+          hands-free = " ";
+          headset = " ";
+          phone = " ";
+          portable = " ";
+          car = " ";
+          default = [ "󰕿" "󰖀" "󰕾" ];
         };
       };
     };

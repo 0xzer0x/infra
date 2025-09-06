@@ -80,10 +80,6 @@ window#waybar {
   padding-left: 5px;
 }
 
-#clock {
-  margin-right: 1px;
-}
-
 #tray menu {
   border-radius: 6px;
 }
