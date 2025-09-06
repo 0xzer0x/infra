@@ -6,7 +6,6 @@
     ../common
     ./hardware.nix
     ./disks.nix
-    ./network.nix
     ./virtualization.nix
     ./services.nix
   ];
