@@ -33,7 +33,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nix-flatpak, sops-nix, nvimdots, ... }@inputs:
+  outputs = { self, nixpkgs, ... }@inputs:
     let
       inherit (self) outputs;
       system = "x86_64-linux";
