@@ -32,7 +32,7 @@ in {
             contents.user = githubUser;
           }
           {
-            condition = "hasconfig:remote.*.url:git@gitlab.com:**/**";
+            condition = "hasconfig:remote.*.url:git@gitlab.com-0xzer0x:**/**";
             contents.user = gitlabUser;
           }
           {
