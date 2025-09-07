@@ -21,6 +21,6 @@
 
   sops = {
     defaultSopsFile = ../../secrets/users/${config.home.username}.yml;
-    age.keyFile = "${config.xdg.configHome}/sops/age/key.txt";
+    age.keyFile = "${config.xdg.configHome}/sops/age/keys.txt";
   };
 }
