@@ -82,7 +82,7 @@ in {
     services.syncthing = {
       enable = true;
       overrideDevices = false;
-      overrideFolders = true;
+      overrideFolders = false;
       settings.folders.obsidianVault = {
         enable = true;
         label = "Obsidian";
