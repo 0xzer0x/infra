@@ -5,6 +5,7 @@
     inputs.sops-nix.nixosModules.sops
     inputs.home-manager.nixosModules.home-manager
     ./users
+    ./synapse
     ./sops.nix
     ./boot.nix
     ./system.nix
@@ -14,7 +15,6 @@
     ./desktop.nix
     ./ricing.nix
     ./nix.nix
-    ./synapse.nix
   ];
 
   home-manager = {

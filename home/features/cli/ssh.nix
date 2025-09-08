@@ -7,10 +7,10 @@ in {
     mkEnableOption "Enable SSH client configuration";
 
   config = mkIf cfg.enable {
-    sops.secrets.sshConfig = { };
+    sops.secrets.ssh-config = { };
 
     sops.templates."${config.home.username}-sshconfig" = {
-      content = config.sops.placeholder.sshConfig;
+      content = config.sops.placeholder.ssh-config;
       path = "${config.home.homeDirectory}/.ssh/config.d/default";
     };
 
