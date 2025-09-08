@@ -78,8 +78,7 @@ in {
       # NOTE: Dispatcher script
       dispatcherScripts = [{
         type = "basic";
-        source =
-          config.sops.secrets."networking/synapse-wireguard/dispatcher".path;
+        source = config.sops.secrets.${secretPath "dispatcher"}.path;
       }];
     };
     systemd.services.NetworkManager-dispatcher.path = [ pkgs.bash ];
@@ -88,8 +87,7 @@ in {
     environment.systemPackages = [ pkgs.shadowsocks-rust ];
     environment.etc."shadowsocks-rust/config.json" = {
       enable = true;
-      source =
-        config.sops.secrets."networking/synapse-wireguard/shadowsocks-config".path;
+      source = config.sops.secrets.${secretPath "shadowsocks-config"}.path;
     };
     systemd.services.shadowsocks-rust = {
       description = "ShadowSocks Proxy server";

@@ -6,5 +6,6 @@
     batsignal
     brightnessctl
     nvtopPackages.intel
+    bluez
   ];
 }
