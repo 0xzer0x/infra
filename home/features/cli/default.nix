@@ -31,11 +31,14 @@
     bat.enable = true;
     fzf.enable = true;
     eza.enable = true;
-    btop.enable = true;
     htop.enable = true;
     zoxide.enable = true;
     ripgrep.enable = true;
     tealdeer.enable = true;
+    btop = {
+      enable = true;
+      settings = { vim_keys = true; };
+    };
     nix-index = {
       enable = true;
       enableZshIntegration = false;
