@@ -1,17 +1,17 @@
 {
   boot = {
-    # NOTE: GRUB bootloader
+    # NOTE: Bootloader
     loader = {
-      efi.canTouchEfiVariables = true;
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot/efi";
+      };
 
-      grub = {
+      systemd-boot = {
         enable = true;
-        device = "nodev";
-        efiSupport = true;
-        useOSProber = true;
-        gfxmodeEfi = "1920x1080,auto";
-        extraGrubInstallArgs =
-          [ "--efi-directory=/boot/efi" "--bootloader-id=NIX" ];
+        edk2-uefi-shell.enable = true;
+        configurationLimit = 100;
+        consoleMode = "max";
       };
     };
 
