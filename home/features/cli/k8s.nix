@@ -20,7 +20,13 @@ in {
     };
 
     # NOTE: Additional packages
-    home.packages = with pkgs; [ kubernetes kubernetes-helm minikube krew ];
+    home.packages = with pkgs; [
+      kubernetes
+      krew
+      kubernetes-helm
+      minikube
+      kind
+    ];
 
     # NOTE: Extra environment variables
     home.sessionVariables = {
