@@ -11,6 +11,7 @@
     ./waybar.nix
     ./yazi.nix
     ./gtk.nix
+    ./apps.nix
   ];
 
   features = {

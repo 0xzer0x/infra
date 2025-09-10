@@ -1,7 +1,9 @@
 { config, lib, pkgs, ... }:
 
 with lib;
-let cfg = config.features.desktop.apps;
+let
+  cfg = config.features.desktop.apps;
+  inherit (config.home) homeDirectory;
 in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
@@ -69,7 +71,7 @@ in {
       settings = {
         General = {
           startupLaunch = false;
-          savePath = "${config.home.homeDirectory}/Pictures/screenshots";
+          savePath = "${homeDirectory}/Pictures/screenshots";
           savePathFixed = true;
           useGrimAdapter = true;
           disabledGrimWarning = true;
@@ -81,13 +83,22 @@ in {
     # NOTE: Enable Syncthing for Obsidian vault synchronization
     services.syncthing = {
       enable = true;
-      overrideDevices = false;
-      overrideFolders = false;
-      settings.folders.obsidianVault = {
-        enable = true;
-        label = "Obsidian";
-        type = "sendreceive";
-        path = "${config.home.homeDirectory}/Documents/obsidian";
+      settings = {
+        devices = {
+          phone = {
+            id =
+              "4EBCMTO-XYQYAVB-X4XHTMW-J3GALVG-C7UWCJA-LVTI5HO-LGXK7GM-2ZE2PAZ";
+            name = "Phone";
+          };
+        };
+
+        folders.obsidianVault = {
+          enable = true;
+          label = "Obsidian";
+          type = "sendreceive";
+          path = "${homeDirectory}/Documents/obsidian";
+          devices = [ "phone" ];
+        };
       };
     };
 

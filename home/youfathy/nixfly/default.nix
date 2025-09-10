@@ -9,6 +9,7 @@
     ./scripts
     ./hyprland.nix
     ./waybar.nix
+    ./apps.nix
   ];
 
   features = {
