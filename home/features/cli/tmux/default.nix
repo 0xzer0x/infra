@@ -183,7 +183,7 @@ in {
         set -g window-status-separator ""
         set -g status-right ""
         set -g status-left-length 0
-        set -g status-left "#[fg=#{@thm_fg} bold] TMUX (#S) "
+        set -g status-left "#[fg=#{@thm_fg} bold] [#S] "
         set -ga status-left "\
         #{?#{==:#{client_key_table},prefix},#[fg=#{@thm_red} bold]PREFIX,\
         #{?#{==:#{pane_mode},copy-mode},#[fg=#{@thm_yellow} bold]COPY,\

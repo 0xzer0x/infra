@@ -18,8 +18,8 @@ let
       path = "${workspaceDir}/github/go-pray";
     }
     {
-      name = "younix";
-      path = "${config.xdg.configHome}/younix";
+      name = "infra";
+      path = "${config.xdg.configHome}/infra";
     }
   ];
 in {
