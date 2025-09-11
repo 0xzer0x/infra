@@ -4,33 +4,32 @@ pkgs.writeShellScriptBin "brightness" ''
   #!/usr/bin/env bash
   set -euo pipefail
 
-  HL_CLR="#b4befe"
-
-  notify_level() {
-    bright=$(bc <<<"scale=2; (($(brightnessctl get) / $(brightnessctl max))*100)" | cut -d'.' -f1)
-    notify-send "Brightness: ''${bright}%" -h string:hlcolor:$HL_CLR -h string:x-dunst-stack-tag:brightnessctl -h int:value:"$bright" --icon="${pkgs.overlayPackages.papirus-icon-theme}/share/icons/Papirus/24x24/symbolic/status/display-brightness-symbolic.svg"
+  _notify_level() {
+    local _brightness
+    _brightness="$(bc <<<"scale=2; (($(brightnessctl get) / $(brightnessctl max))*100)" | cut -d'.' -f1)"
+    notify-send "Brightness: ''${_brightness}%" -h string:x-dunst-stack-tag:brightnessctl -h int:value:"''${_brightness}" -i display-brightness"
   }
 
-  increment() {
+  _increment() {
     sudo brightnessctl set +5%
   }
 
-  decrement() {
+  _decrement() {
     sudo brightnessctl set 5%-
   }
 
-  main() {
+  _main() {
     case "$1" in
     inc)
-      increment
+      _increment
       ;;
     dec)
-      decrement
+      _decrement
       ;;
     *) ;;
     esac
   }
 
-  main "$@"
-  notify_level
+  _main "$@"
+  _notify_level
 ''
