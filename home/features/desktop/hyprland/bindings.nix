@@ -6,12 +6,12 @@ let
   inherit (config.home) homeDirectory;
   cfg = config.features.desktop.hyprland;
   term = "${pkgs.kitty.outPath}/bin/kitty --single-instance";
-  menu = "${configHome}/rofi/launcher/launcher";
-  passmenu = "${configHome}/rofi/gopass/gopass";
-  clipboard = "${configHome}/rofi/clipboard/clipboard";
-  powermenu = "${configHome}/rofi/powermenu/powermenu";
-  screenshot = "${configHome}/rofi/screenshot/screenshot";
-  screenrec = "${configHome}/rofi/screenrec/screenrec";
+  menu = "${pkgs.rofi-wayland}/bin/rofi -show drun -show-icons";
+  passmenu = "${configHome}/rofi/runners/passmenu";
+  powermenu = "${configHome}/rofi/runners/powermenu";
+  clipboard = "${configHome}/rofi/runners/clipboard";
+  screenshot = "${configHome}/rofi/runners/screenshot";
+  screenrec = "${configHome}/rofi/runners/screenrec";
   volup = "audioctl sink inc";
   voldown = "audioctl sink dec";
   voltoggle = "audioctl sink toggle";

@@ -20,7 +20,7 @@ in {
         "interval" = 60;
         "return-type" = "json";
         "exec" = "${config.xdg.configHome}/waybar/scripts/record-status";
-        "on-click" = "${config.xdg.configHome}/rofi/screenrec/screenrec";
+        "on-click" = "${config.xdg.configHome}/rofi/runners/screenrec";
         "signal" = 1;
       };
     };

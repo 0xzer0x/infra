@@ -1,0 +1,126 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# NOTE: Rofi
+__UPTIME=$(uptime -p | sed -e 's/up //g')
+__ICON_SHUTDOWN=''
+__ICON_REBOOT=''
+__ICON_LOCK=''
+__ICON_SUSPEND=''
+__ICON_LOGOUT=''
+__ICON_YES=''
+__ICON_NO=''
+_PROMPT="Power"
+_MESSAGE="  Uptime: ${__UPTIME}"
+_SELECTION="${1:-}"
+
+_check_dependencies() {
+  for _cmd in systemctl swaylock hyprctl; do
+    if ! command -v "${_cmd}" &>/dev/null; then
+      printf "required command not found: %s\n" "${_cmd}"
+      exit 1
+    fi
+  done
+}
+
+confirm_rofi() {
+  rofi \
+    -dmenu \
+    -mesg "${1:-Are you sure?}" \
+    -kb-mode-complete "Control+Shift+l" \
+    -kb-remove-char-back "BackSpace" \
+    -kb-row-up "Control+h" \
+    -kb-row-down "Control+l" \
+    -theme-str 'window { width: 20%; }' \
+    -theme-str 'mainbox { children: [ "message", "listview" ]; }' \
+    -theme-str "element-text { font: 'GeistMono NFM, 32'; horizontal-align: 0.5; }" \
+    -theme-str 'listview { columns: 2; lines: 1; }' \
+    -theme-str 'element-text { horizontal-align: 0.5; }' \
+    -theme-str 'textbox { horizontal-align: 0.5; }'
+}
+
+_print_options() {
+  _SELECTION="$(echo -e "${__ICON_LOCK}\n${__ICON_SUSPEND}\n${__ICON_LOGOUT}\n${__ICON_REBOOT}\n${__ICON_SHUTDOWN}" |
+    rofi \
+      -dmenu \
+      -mesg "${_MESSAGE}" \
+      -markup-rows \
+      -kb-mode-complete "Control+Shift+l" \
+      -kb-remove-char-back "BackSpace" \
+      -kb-row-up "Control+h" \
+      -kb-row-down "Control+l" \
+      -theme-str "mainbox { children: [ message, listview ]; }" \
+      -theme-str "listview { columns: 5; lines: 1; }" \
+      -theme-str "element-text { font: 'GeistMono NFM, 32'; horizontal-align: 0.5; }")"
+}
+
+__confirm_selection() {
+  local _confirmed
+  local _action
+
+  case "${_SELECTION}" in
+  "${__ICON_SHUTDOWN}")
+    _action="shutdown"
+    ;;
+  "${__ICON_REBOOT}")
+    _action="reboot"
+    ;;
+  "${__ICON_LOGOUT}")
+    _action="logout"
+    ;;
+  "${__ICON_SUSPEND}")
+    _action="suspend"
+    ;;
+  *)
+    printf 1
+    exit 0
+    ;;
+  esac
+
+  _confirmed="$(confirm_rofi "Are you sure you want to <b>${_action}</b>?" < <(echo -e "${__ICON_YES}\n${__ICON_NO}"))"
+  if [ "${_confirmed}" = "${__ICON_YES}" ]; then
+    printf 1
+  else
+    printf 0
+  fi
+}
+
+_parse_selection() {
+  if [ -z "${_SELECTION}" ]; then exit 1; fi
+
+  local _confirmation
+  _confirmation="$(__confirm_selection)"
+  if [ "${_confirmation}" = "0" ]; then
+    exit 1
+  fi
+
+  case "${_SELECTION}" in
+  "${__ICON_SHUTDOWN}")
+    systemctl poweroff
+    ;;
+  "${__ICON_REBOOT}")
+    systemctl reboot
+    ;;
+  "${__ICON_SUSPEND}")
+    systemctl suspend && swaylock
+    ;;
+  "${__ICON_LOGOUT}")
+    if [[ "${XDG_CURRENT_DESKTOP}" == 'Hyprland' ]]; then
+      hyprctl dispatch exit
+    elif [[ "${XDG_CURRENT_DESKTOP}" == 'sway' || "${XDG_CURRENT_DESKTOP}" == "swayfx-nvidia" ]]; then
+      swaymsg exit
+    fi
+    ;;
+  "${__ICON_LOCK}")
+    swaylock
+    ;;
+  esac
+}
+
+_main() {
+  _check_dependencies
+  _print_options
+  _parse_selection
+}
+
+_main "${@}"

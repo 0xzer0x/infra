@@ -29,6 +29,9 @@
     virt-manager.enable = true;
   };
 
+  # NOTE: Enable swaylock PAM authentication
+  security.pam.services.swaylock = { };
+
   # NOTE: Required for virtual cameras (droidcam - /dev/video0, obs - /dev/video1)
   security.polkit.enable = true;
   boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];

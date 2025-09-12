@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -eu
+
+_ROFI_PID="$(pgrep -f "rofi -p pick" | head -n 1)"
+if [ -n "${_ROFI_PID}" ]; then
+  kill "${_ROFI_PID}"
+else
+  clipman pick -t rofi --tool-args='-theme-str "window {width: 800px;}"'
+fi

@@ -1,54 +1,56 @@
 { config, lib, pkgs, ... }:
 
 with lib;
-let cfg = config.features.desktop.rofi;
+let
+  cfg = config.features.desktop.rofi;
+  inherit (config.lib.formats.rasi) mkLiteral;
 in {
   options.features.desktop.rofi.enable =
     mkEnableOption "Enable Rofi extended configuration";
 
   config = mkIf cfg.enable {
-    programs.rofi.enable = true;
+    home.packages = with pkgs; [ grim slurp pulseaudio ];
 
-    home.packages = with pkgs; [ grim slurp ];
+    programs.rofi = {
+      enable = true;
+
+      modes = [ "drun" "run" "window" "passmenu" ];
+
+      extraConfig = {
+        # NOTE: Vim-like navigation in vertical menus
+        kb-row-up = "Control+k";
+        kb-row-down = "Control+j";
+        kb-accept-entry = "Return";
+        kb-mode-complete = "Control+Shift+l";
+        kb-remove-to-eol = "Control+Shift+u";
+        kb-remove-char-back = "BackSpace";
+        # NOTE: Additional configuration
+        show-icons = false;
+        display-drun = " ";
+        display-run = " ";
+        display-window = " ";
+        drun-display-format = "{name}";
+        window-format = "{w} · {c} · {t}";
+      };
+
+      theme = {
+        window = {
+          width = mkLiteral "600px";
+          border-radius = mkLiteral "8px";
+        };
+
+        element = { padding = mkLiteral "0 0.5em 0 0.5em"; };
+      };
+    };
 
     xdg.configFile = {
-      "rofi/clipboard" = {
-        source = ./clipboard;
+      "rofi/runners" = {
+        source = ./runners;
         recursive = true;
       };
 
-      "rofi/colors" = {
-        source = ./colors;
-        recursive = true;
-      };
-
-      "rofi/gopass" = {
-        source = ./gopass;
-        recursive = true;
-      };
-
-      "rofi/launcher" = {
-        source = ./launcher;
-        recursive = true;
-      };
-
-      "rofi/powermenu" = {
-        source = ./powermenu;
-        recursive = true;
-      };
-
-      "rofi/screenrec" = {
-        source = ./screenrec;
-        recursive = true;
-      };
-
-      "rofi/screenshot" = {
-        source = ./screenshot;
-        recursive = true;
-      };
-
-      "rofi/shared" = {
-        source = ./shared;
+      "rofi/scripts" = {
+        source = ./scripts;
         recursive = true;
       };
     };

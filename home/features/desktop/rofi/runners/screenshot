@@ -1,0 +1,98 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# NOTE: Rofi
+__OPTION_SCREEN=""
+__OPTION_SELECTION=""
+__OPTION_WINDOW=""
+__OPTION_SCREEN5="󱇸"
+__OPTION_SCREEN10="󰵱"
+_PROMPT="Screenshot"
+# NOTE: Config
+_OUTDIR="${HOME}/Pictures/screenshots"
+_OUTFILE="screenshot_$(date +%Y-%m-%d_%H-%M-%S).png"
+_MESSAGE="󰄀  DIR: ${_OUTDIR}"
+_SELECTION="${1:-}"
+
+_check_dependencies() {
+  if ! command -v hyprshot &>/dev/null; then
+    printf "required command not found: gopass\n"
+    exit 1
+  fi
+}
+
+_countdown() {
+  for sec in $(seq "$1" -1 1); do
+    dunstify -t 1000 --replace=999 "Taking shot in: ${sec}"
+    sleep 1
+  done
+}
+
+_shotnow() {
+  hyprshot -o "${_OUTDIR}" -f "${_OUTFILE}" -m output -- imv
+}
+
+_shot5() {
+  _countdown 5
+  hyprshot -o "${_OUTDIR}" -f "${_OUTFILE}" -m output -- imv
+}
+
+_shot10() {
+  _countdown 10
+  hyprshot -o "${_OUTDIR}" -f "${_OUTFILE}" -m output -- imv
+}
+
+_shotwin() {
+  hyprshot -o "${_OUTDIR}" -f "${_OUTFILE}" -m window -- imv
+}
+
+_shotarea() {
+  hyprshot -o "${_OUTDIR}" -f "${_OUTFILE}" -m region -- imv
+}
+
+_print_options() {
+  _SELECTION="$(rofi -dmenu \
+    -mesg "${_MESSAGE}" \
+    -markup-rows \
+    -kb-mode-complete "Control+Shift+l" \
+    -kb-remove-char-back "BackSpace" \
+    -kb-row-up "Control+h" \
+    -kb-row-down "Control+l" \
+    -theme-str "mainbox { children: [ message, listview ]; }" \
+    -theme-str "listview {columns: 5; lines: 1;}" \
+    -theme-str "element-text { font: 'GeistMono NFM, 32'; horizontal-align: 0.5; }" < <(echo -e "${__OPTION_SCREEN}\n${__OPTION_SELECTION}\n${__OPTION_WINDOW}\n${__OPTION_SCREEN5}\n${__OPTION_SCREEN10}"))"
+}
+
+_parse_selection() {
+  if [ -z "${_SELECTION}" ]; then exit 0; fi
+
+  if [ ! -d "${_OUTDIR}" ]; then
+    mkdir -p "${_OUTDIR}"
+  fi
+
+  case "${_SELECTION}" in
+  "${__OPTION_SCREEN}")
+    _shotnow
+    ;;
+  "${__OPTION_SELECTION}")
+    _shotarea
+    ;;
+  "${__OPTION_WINDOW}")
+    _shotwin
+    ;;
+  "${__OPTION_SCREEN5}")
+    _shot5
+    ;;
+  "${__OPTION_SCREEN10}")
+    _shot10
+    ;;
+  esac
+}
+
+_main() {
+  _check_dependencies
+  _print_options
+  _parse_selection
+}
+
+_main "${@}"

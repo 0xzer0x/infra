@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+export GNUPGHOME="${XDG_DATA_HOME:-${HOME}/.local/share}/gnupg"
+
+_PROMPT="Pass"
+_SELECTION="${1:-}"
+
+_check_dependencies() {
+  if ! command -v gopass &>/dev/null; then
+    printf "required command not found: gopass\n"
+    exit 1
+  fi
+}
+
+_print_options() {
+  gopass ls --flat
+}
+
+_parse_selection() {
+  if [[ "${_SELECTION}" =~ ^otp/.* ]]; then
+    gopass otp -c "${_SELECTION}" &>/dev/null &
+  else
+    gopass show -c "${_SELECTION}" &>/dev/null &
+  fi
+}
+
+_main() {
+  _check_dependencies
+  if [ -n "${_SELECTION}" ]; then
+    _parse_selection
+  else
+    _print_options
+  fi
+}
+
+echo -e "\0prompt\x1f${_PROMPT}"
+_main "${@}"

@@ -1,0 +1,180 @@
+#!/usr/bin/env bash
+set -eu
+# SEE wf-recorder man page for options
+# -r FRAMERATE
+# -a [DEVICE] (capture audio from DEVICE) (pactl list sources | grep Name)
+# -c VIDEO_CODEC (ffmpeg -hide_banner -encoders | grep -E '^ V' | grep -F '(codec' | cut -c 8- | sort)
+# -C AUDIO_CODEC (ffmpeg -hide_banner -encoders | grep -E '^ A' | grep -F '(codec' | cut -c 8- | sort)
+# -b 0 (nvenc encoder fix)[https://github.com/ammen99/wf-recorder/issues/205]
+# -f FILE (filename with extension)
+# -g GEOMETRY (x,y WxH)
+
+# NOTE: Script variables
+declare -A _AUDIO_DEVICES
+__WAYBAR_SLEEP_TIMER="0"
+__WAYBAR_PID=""
+_SOUND=""
+_TIMER=""
+_MODE=""
+# NOTE: WF recorder
+__RECORDER_PID=""
+_OUTDIR="$(xdg-user-dir VIDEOS)/recordings"
+_OUTFILE="$_OUTDIR/$(date +%F_%H_%M_%S_$RANDOM).mp4"
+_ENCODING='h264_vaapi'
+_PARAMS="-r 60 -c $_ENCODING -f $_OUTFILE"
+
+# NOTE: Rofi
+__ICON_SCREEN=""
+__ICON_AREA=""
+__ICON_RECORD5="󱇸"
+__ICON_RECORD10="󰵱"
+__ICON_YES=""
+__ICON_NO=""
+_MESSAGE="  DIR: ${_OUTDIR}"
+
+select-mode-rofi() {
+  echo -e "${__ICON_SCREEN}\n${__ICON_AREA}\n${__ICON_RECORD5}\n${__ICON_RECORD10}" |
+    rofi \
+      -dmenu \
+      -mesg "${_MESSAGE}" \
+      -markup-rows \
+      -kb-mode-complete "Control+Shift+l" \
+      -kb-remove-char-back "BackSpace" \
+      -kb-row-up "Control+h" \
+      -kb-row-down "Control+l" \
+      -theme-str "mainbox { children: [ message, listview ]; }" \
+      -theme-str "listview { columns: 4; lines: 1; }" \
+      -theme-str "element-text { font: 'GeistMono NFM, 32'; horizontal-align: 0.5; }"
+}
+
+select-audio-rofi() {
+  local _sources_list
+  mapfile -t _sources_list < <(pactl list sources | grep Name | awk '{ print $2 }')
+  for source in "${_sources_list[@]}"; do
+    local _source_key
+    _source_key="$(awk -F '.' '{ type="source"; dev=$NF } /\.monitor$/ { type="monitor"; dev=$(NF-1) } { print type,"(" dev ")" } ' <<<"$source")"
+    _AUDIO_DEVICES["${_source_key}"]="${source}"
+  done
+
+  local IFS=$'\n'
+  _AUDIO_DEVICE=$(echo -en "default\n${!_AUDIO_DEVICES[*]}" | rofi -dmenu -p Record -theme-str 'window { width: 20%; height: 30%; }' -theme-str 'entry { placeholder: "Pick audio device"; }')
+  if [ -z "${_AUDIO_DEVICE}" ]; then
+    exit 1
+  fi
+}
+
+confirm-rofi() {
+  rofi \
+    -dmenu \
+    -mesg "${1}" \
+    -kb-mode-complete "Control+Shift+l" \
+    -kb-remove-char-back "BackSpace" \
+    -kb-row-up "Control+h" \
+    -kb-row-down "Control+l" \
+    -theme-str 'window { width: 20%; }' \
+    -theme-str 'mainbox { children: [ "message", "listview" ]; }' \
+    -theme-str "element-text { font: 'GeistMono NFM, 32'; horizontal-align: 0.5; }" \
+    -theme-str 'listview { columns: 2; lines: 1; }' \
+    -theme-str 'element-text { horizontal-align: 0.5; }' \
+    -theme-str 'textbox { horizontal-align: 0.5; }'
+}
+
+wf-notify() {
+  [[ "$#" -ne "1" ]] && echo "$0: exactly 1 argument required." && exit 1
+  local _msg=""
+  case "${1}" in
+  started)
+    local _mode_text="screen"
+    local _sound_text="no audio"
+    [ "${_MODE}" = "${__ICON_AREA}" ] && _mode_text="area"
+    [ "${_SOUND}" = "${__ICON_YES}" ] && _sound_text="${_AUDIO_DEVICE}"
+    _msg="Recording started\nencoding: ${_ENCODING}\nmode: ${_mode_text}\nsound: ${_sound_text}\npath: ${_OUTFILE}"
+    ;;
+  stopped)
+    _msg="Recording saved to ${_OUTFILE}"
+    ;;
+  *)
+    shift
+    _msg="${*}"
+    ;;
+  esac
+  notify-send -i video-x-generic "WF Recorder" "${_msg}"
+}
+
+set-mode() {
+  _MODE="$(select-mode-rofi)"
+  if [ "${_MODE}" = "${__ICON_AREA}" ]; then
+    geom="$(slurp)"
+    _PARAMS="-g '${geom}' ${_PARAMS}"
+  elif [ "${_MODE}" = "${__ICON_RECORD5}" ]; then
+    _TIMER="5"
+  elif [ "${_MODE}" = "${__ICON_RECORD10}" ]; then
+    _TIMER="10"
+  fi
+}
+
+set-sound() {
+  _SOUND=$(echo -e "${__ICON_YES}\n${__ICON_NO}" | confirm-rofi "Capture Audio?")
+  local _audioparam
+
+  if [ "${_SOUND}" = "${__ICON_YES}" ]; then
+    select-audio-rofi
+    case "${_AUDIO_DEVICE}" in
+    "default" | "")
+      _audioparam="-a"
+      ;;
+    *)
+      _audioparam="--audio=${_AUDIO_DEVICES["${_AUDIO_DEVICE}"]}"
+      ;;
+    esac
+    _PARAMS="${_audioparam} ${_PARAMS}"
+  fi
+}
+
+recording() {
+  __RECORDER_PID=$(pgrep wf-recorder)
+  test -n "${__RECORDER_PID}"
+  return "${?}"
+}
+
+start-recording() {
+  echo "${_PARAMS}" | xargs wf-recorder 1>"${_OUTFILE}.log" 2>&1 &
+  wf-notify started
+}
+
+stop-recording() {
+  kill "${__RECORDER_PID}"
+  wf-notify stopped
+}
+
+countdown() {
+  [[ "$#" -ne "1" ]] && echo "$0: exactly 1 argument required." && exit 1
+  for sec in $(seq "$1" -1 1); do
+    dunstify -t 1000 --replace=999 "Recording in: ${sec}"
+    sleep 1
+  done
+}
+
+if [ ! -d "${_OUTDIR}" ]; then
+  mkdir -p "${_OUTDIR}"
+fi
+
+if recording; then
+  __WAYBAR_SLEEP_TIMER=0.4
+  stop-recording
+else
+  set-mode
+  set-sound
+  if [[ "${_TIMER}" -gt "0" ]]; then
+    countdown "${_TIMER}"
+  else
+    sleep 0.4
+  fi
+  start-recording
+fi
+
+__WAYBAR_PID=$(pgrep waybar)
+if [[ -n "${__WAYBAR_PID}" ]]; then
+  sleep "${__WAYBAR_SLEEP_TIMER}"
+  kill -35 "${__WAYBAR_PID}"
+fi

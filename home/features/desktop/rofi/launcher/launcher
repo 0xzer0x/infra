@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-set -euo pipefail
-
-__SCRIPT_DIR="$(cd "$(dirname "${0}")" && pwd)"
-
-rofi -show drun -theme "${__SCRIPT_DIR}/style.rasi"
