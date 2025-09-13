@@ -4,10 +4,11 @@
   nix = let flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
   in {
     settings = {
-      min-free = 32212254720;
-      use-xdg-base-directories = true;
       experimental-features = [ "nix-command" "flakes" ];
+      trusted-users = [ "@wheel" ];
+      use-xdg-base-directories = true;
       auto-optimise-store = true;
+      min-free = 32212254720;
     };
 
     gc = {
