@@ -30,6 +30,7 @@ __ICON_RECORD5="󱇸"
 __ICON_RECORD10="󰵱"
 __ICON_YES=""
 __ICON_NO=""
+__ICON_FONT_SIZE='38'
 _MESSAGE="  DIR: ${_OUTDIR}"
 
 select-mode-rofi() {
@@ -42,9 +43,10 @@ select-mode-rofi() {
       -kb-remove-char-back "BackSpace" \
       -kb-row-up "Control+h" \
       -kb-row-down "Control+l" \
+      -theme-str "window { width: 25%; }" \
       -theme-str "mainbox { children: [ message, listview ]; }" \
       -theme-str "listview { columns: 4; lines: 1; }" \
-      -theme-str "element-text { font: 'GeistMono NFM, 32'; horizontal-align: 0.5; }"
+      -theme-str "element-text { font: 'GeistMono NFM, ${__ICON_FONT_SIZE}'; horizontal-align: 0.5; }"
 }
 
 select-audio-rofi() {
@@ -73,7 +75,7 @@ confirm-rofi() {
     -kb-row-down "Control+l" \
     -theme-str 'window { width: 20%; }' \
     -theme-str 'mainbox { children: [ "message", "listview" ]; }' \
-    -theme-str "element-text { font: 'GeistMono NFM, 32'; horizontal-align: 0.5; }" \
+    -theme-str "element-text { font: 'GeistMono NFM, ${__ICON_FONT_SIZE}'; horizontal-align: 0.5; }" \
     -theme-str 'listview { columns: 2; lines: 1; }' \
     -theme-str 'element-text { horizontal-align: 0.5; }' \
     -theme-str 'textbox { horizontal-align: 0.5; }'

@@ -7,6 +7,7 @@ __OPTION_SELECTION=""
 __OPTION_WINDOW=""
 __OPTION_SCREEN5="󱇸"
 __OPTION_SCREEN10="󰵱"
+__ICON_FONT_SIZE="38"
 _PROMPT="Screenshot"
 # NOTE: Config
 _OUTDIR="${HOME}/Pictures/screenshots"
@@ -58,9 +59,10 @@ _print_options() {
     -kb-remove-char-back "BackSpace" \
     -kb-row-up "Control+h" \
     -kb-row-down "Control+l" \
+    -theme-str "window { width: 25%; }" \
     -theme-str "mainbox { children: [ message, listview ]; }" \
     -theme-str "listview {columns: 5; lines: 1;}" \
-    -theme-str "element-text { font: 'GeistMono NFM, 32'; horizontal-align: 0.5; }" < <(echo -e "${__OPTION_SCREEN}\n${__OPTION_SELECTION}\n${__OPTION_WINDOW}\n${__OPTION_SCREEN5}\n${__OPTION_SCREEN10}"))"
+    -theme-str "element-text { font: 'GeistMono NFM, ${__ICON_FONT_SIZE}'; horizontal-align: 0.5; }" < <(echo -e "${__OPTION_SCREEN}\n${__OPTION_SELECTION}\n${__OPTION_WINDOW}\n${__OPTION_SCREEN5}\n${__OPTION_SCREEN10}"))"
 }
 
 _parse_selection() {
