@@ -42,8 +42,12 @@
   hardware.cpu.amd.updateMicrocode =
     lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-  hardware.graphics = {
-    enable = true;
-    extraPackages = with pkgs; [ mesa libvdpau-va-gl ];
+  hardware = {
+    amdgpu.initrd.enable = true;
+    graphics = {
+      enable = true;
+      extraPackages = with pkgs; [ mesa libvdpau-va-gl ];
+    };
   };
+  services.xserver.videoDrivers = [ "amdgpu" ];
 }
