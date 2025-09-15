@@ -6,5 +6,5 @@ in {
   options.features.programming.python.enable =
     mkEnableOption "Enable Python development configuration";
 
-  config = mkIf cfg.enable { home.packages = with pkgs; [ uv python3Full ]; };
+  config = mkIf cfg.enable { home.packages = with pkgs; [ uv python3 ]; };
 }

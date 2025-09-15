@@ -32,8 +32,5 @@ in {
       ydotool
       qt6.qtwayland
     ];
-
-    # NOTE: Set wayland version for rofi home-manager config
-    programs.rofi.package = pkgs.rofi-wayland;
   };
 }

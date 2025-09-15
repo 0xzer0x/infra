@@ -3,10 +3,9 @@
 with lib;
 let
   inherit (config.xdg) configHome;
-  inherit (config.home) homeDirectory;
   cfg = config.features.desktop.hyprland;
-  term = "${pkgs.kitty.outPath}/bin/kitty --single-instance";
-  menu = "${pkgs.rofi-wayland}/bin/rofi -show drun -show-icons";
+  term = "${pkgs.kitty}/bin/kitty --single-instance";
+  menu = "${pkgs.rofi}/bin/rofi -show drun -show-icons";
   passmenu = "${configHome}/rofi/runners/passmenu";
   powermenu = "${configHome}/rofi/runners/powermenu";
   clipboard = "${configHome}/rofi/runners/clipboard";
