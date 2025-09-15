@@ -12,6 +12,12 @@ in {
       package = pkgs.awscli2;
     };
 
+    sops.secrets.aws-config = { };
+    sops.templates."${config.home.username}-aws-config" = {
+      content = config.sops.placeholder.aws-config;
+      path = "${config.home.homeDirectory}/.aws/config";
+    };
+
     # NOTE: Additional packages
     home.packages = with pkgs; [ terraform ];
 
