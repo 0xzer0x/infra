@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
@@ -66,5 +66,7 @@
     sshpass
     age
     sops
+    nix-output-monitor
+    nvd
   ];
 }

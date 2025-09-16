@@ -44,6 +44,15 @@
       enableSSHSupport = true;
       pinentryPackage = pkgs.pinentry-qt;
     };
+
+    nh = {
+      enable = true;
+      clean = {
+        enable = true;
+        dates = "weekly";
+        extraArgs = "--keep-since 15d";
+      };
+    };
   };
 
   i18n.defaultLocale = "en_US.UTF-8";

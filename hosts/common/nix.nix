@@ -1,6 +1,9 @@
 { inputs, outputs, lib, ... }:
 
 {
+  # NOTE: Use nixos-rebuilld-ng instead of nixos-rebuild
+  system.rebuild.enableNg = true;
+
   nix = let flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
   in {
     settings = {
@@ -9,12 +12,6 @@
       use-xdg-base-directories = true;
       auto-optimise-store = true;
       min-free = 32212254720;
-    };
-
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 15d";
     };
 
     registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;

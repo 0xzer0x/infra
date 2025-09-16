@@ -2,7 +2,7 @@
 
 {
   home.sessionVariables = {
-    NIXOS_SYSTEM_FLAKE = "${config.xdg.configHome}/infra";
+    NH_OS_FLAKE = "${config.xdg.configHome}/infra";
     LESSKEY = "${config.xdg.configHome}/less/lesskey";
     LESSHISTFILE = "${config.xdg.cacheHome}/less/history";
     VIMDOTDIR = "${config.xdg.configHome}/vim";

@@ -42,14 +42,11 @@ in {
         lg = "lazygit";
         gst = "git status";
         glg = "git log --all --graph --oneline --decorate";
-        nfe = "cd \${NIXOS_SYSTEM_FLAKE} && nvim .";
-        nps = "nix search nixpkgs";
-        nrs = "sudo nixos-rebuild switch --flake \${NIXOS_SYSTEM_FLAKE}";
-        ngc = "sudo nix-collect-garbage";
-        ngd = "sudo nix-collect-garbage -d";
-        nsg =
-          "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
-        nph = "nix profile history --profile /nix/var/nix/profiles/system";
+        nfe = "cd \${NH_OS_FLAKE} && nvim .";
+        nhs = "nh search";
+        nrs = "nh os switch";
+        noi = "nh os info";
+        ngc = "sudo nh clean all -a --keep-since 15d";
       };
 
       # NOTE: ZSH plugins
@@ -65,6 +62,10 @@ in {
 
       initContent = mkOrder 1500 ''
         # ------- custom functions ------- #
+        # nix-locate binary shorthand
+        nlb() {
+          nix-locate -r "bin/''${1}\$"
+        }
         # zsh-vi-mode copy to clipboard
         my_zvm_vi_yank() {
           zvm_vi_yank
