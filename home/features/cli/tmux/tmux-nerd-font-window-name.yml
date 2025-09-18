@@ -74,6 +74,10 @@ icons:
   fastfetch: 
   devbox: 
   nix: 
+  nom: 
+  nvd: 
+  dix: 
+  nh: 
   nix-collect-garbage: 
   nixos-rebuild: 󱑞
   uv: 
