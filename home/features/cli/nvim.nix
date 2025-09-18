@@ -7,12 +7,19 @@ in {
     mkEnableOption "Enable Neovim configuration";
 
   config = mkIf cfg.enable {
-    # NOTE: Nix LSP (not supported in mason.nvim)
-    home.packages = with pkgs; [ nixd ];
-
     programs.neovim = {
       enable = true;
       defaultEditor = true;
+      withNodeJs = true;
+      withPython3 = true;
+      withRuby = true;
+      extraPackages = with pkgs; [
+        nixd
+        luajit
+        luajitPackages.luarocks
+        texliveMedium
+        sqlite
+      ];
     };
 
     # NOTE: Disable catppuccin integration, managed through external configuration
