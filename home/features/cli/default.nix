@@ -23,6 +23,7 @@
     ./virtualization.nix
     ./multimedia.nix
     ./nettools.nix
+    ./rss.nix
   ];
 
   # NOTE: Use programs.<name>.enable whenever possible instead of using home.packages

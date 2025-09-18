@@ -35,6 +35,7 @@
       docker.enable = true;
       virtualization.enable = true;
       nettools.enable = true;
+      rss.enable = true;
     };
 
     desktop = {
