@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -22,6 +22,7 @@
     ./docker.nix
     ./virtualization.nix
     ./multimedia.nix
+    ./nettools.nix
   ];
 
   # NOTE: Use programs.<name>.enable whenever possible instead of using home.packages
@@ -57,7 +58,6 @@
     yq-go
     ttyper
     libva-utils
-    dogdns
     lsof
     go-task
     pinentry-qt

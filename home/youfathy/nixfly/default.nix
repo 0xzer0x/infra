@@ -34,6 +34,7 @@
       multimedia.enable = true;
       docker.enable = true;
       virtualization.enable = true;
+      nettools.enable = true;
     };
 
     desktop = {
