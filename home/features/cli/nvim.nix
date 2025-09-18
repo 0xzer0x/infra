@@ -15,8 +15,8 @@ in {
       withRuby = true;
       extraPackages = with pkgs; [
         nixd
-        luajit
-        luajitPackages.luarocks
+        lua5_1
+        lua51Packages.luarocks
         texliveMedium
         sqlite
       ];
