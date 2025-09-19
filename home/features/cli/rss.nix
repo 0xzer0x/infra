@@ -23,10 +23,6 @@ in {
           tags = [ "linux" "foss" ];
         }
         {
-          url = "https://linuxhandbook.com/newsletter/rss/";
-          tags = [ "linux" "foss" ];
-        }
-        {
           url = "https://www.bleepingcomputer.com/feed/";
           tags = [ "security" ];
         }

@@ -15,6 +15,7 @@ in {
       droidcam
       v4l-utils
       xfce.mousepad
+      qalculate-gtk
     ];
 
     # NOTE: Media player
