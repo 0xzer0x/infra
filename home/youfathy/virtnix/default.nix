@@ -23,7 +23,6 @@
       gnupg.enable = true;
       starship.enable = true;
       fastfetch.enable = true;
-      kitty.enable = true;
       tmux.enable = true;
       nvim.enable = true;
       k8s.enable = true;
@@ -34,6 +33,7 @@
     };
 
     desktop = {
+      terminal.default = "kitty";
       fonts.enable = true;
       gtk.enable = true;
       qt.enable = true;

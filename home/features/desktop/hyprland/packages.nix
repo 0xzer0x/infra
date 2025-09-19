@@ -16,6 +16,7 @@ in {
       hyprshot
       libnotify
       adw-gtk3
+      wiremix
       pavucontrol
       nemo-with-extensions
       ffmpegthumbnailer

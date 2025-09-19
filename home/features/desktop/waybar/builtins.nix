@@ -3,6 +3,8 @@
 with lib;
 let
   cfg = config.features.desktop.waybar;
+  terminal = config.features.desktop.terminal.default;
+  terminalPkg = pkgs.${terminal};
   workspacesCount = 10;
   windowRewriteRules = {
     "format" = "{}";
@@ -62,7 +64,7 @@ in {
       cpu = {
         format = "  {usage}% ";
         tooltip = false;
-        on-click = "${pkgs.kitty}/bin/kitty -e btop";
+        on-click = "${terminalPkg}/bin/${terminal} -e btop";
       };
       memory = { format = "  {}%"; };
       network = {
@@ -80,7 +82,7 @@ in {
       };
       pulseaudio = {
         scroll-step = 5;
-        on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
+        on-click = "${terminalPkg}/bin/${terminal} -e wiremix";
         format = "{icon} {volume}% {format_source}";
         format-bluetooth = "{volume}% {icon} {format_source}";
         format-bluetooth-muted = "󰖁 {icon} {format_source}";

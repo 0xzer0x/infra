@@ -4,7 +4,10 @@ with lib;
 let
   inherit (config.xdg) configHome;
   cfg = config.features.desktop.hyprland;
-  term = "${pkgs.kitty}/bin/kitty --single-instance";
+  terminal = config.features.desktop.terminal.default;
+  terminalPkg = pkgs.${terminal};
+  term = "${terminalPkg}/bin/${terminal}"
+    + (if (terminal == "kitty") then " --single-instance" else "");
   menu = "${pkgs.rofi}/bin/rofi -show drun -show-icons";
   passmenu = "${configHome}/rofi/runners/passmenu";
   powermenu = "${configHome}/rofi/runners/powermenu";
@@ -17,13 +20,12 @@ let
   mictoggle = "audioctl source toggle";
   files = "${term} tmux new yazi";
   code = "${term} tmux new nvim";
-  codium = "codium --enable-features=WaylandWindowDecorations";
   notes = "obsidian --enable-features=WaylandWindowDecorations";
   browser = "flatpak run app.zen_browser.zen";
   telegram = "flatpak run org.telegram.desktop";
-  flameshot = "${pkgs.flameshot.outPath}/bin/flameshot";
-  mousepad = "${pkgs.xfce.mousepad.outPath}/bin/mousepad";
-  zathura = "${pkgs.zathura.outPath}/bin/zathura";
+  flameshot = "${pkgs.flameshot}/bin/flameshot";
+  mousepad = "${pkgs.xfce.mousepad}/bin/mousepad";
+  zathura = "${pkgs.zathura}/bin/zathura";
   restart-waybar = "${configHome}/hypr/scripts/restart-waybar";
 
   workspaceBinds = builtins.concatLists (builtins.genList (x:
