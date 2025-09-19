@@ -104,7 +104,7 @@ in {
         # NOTE: Auto-start
         exec-once = [
           "${config.xdg.configHome}/hypr/scripts/wallpaper"
-          "${pkgs.wl-clipboard.outPath}/bin/wl-paste -t text --watch clipman store --max-items=50 --no-persist"
+          "${pkgs.wl-clipboard}/bin/wl-paste -t text --watch clipman store --max-items=50 --no-persist"
         ];
       };
     };

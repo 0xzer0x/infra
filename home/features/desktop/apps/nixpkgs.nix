@@ -45,6 +45,21 @@ in {
         };
       };
 
+      # NOTE: Screenshot editor used in scripts
+      satty = {
+        enable = true;
+        settings = {
+          general = {
+            early-exit = true;
+            save-after-copy = true;
+            action-on-enter = "save-to-clipboard";
+            copy-command = "${pkgs.wl-clipboard}/bin/wl-copy";
+            output-filename =
+              "${homeDirectory}/Pictures/screenshots/screenshot_%Y-%m-%d_%H-%M-%S.png";
+          };
+        };
+      };
+
       # NOTE: Screen recorder
       obs-studio = {
         enable = true;
@@ -64,21 +79,6 @@ in {
         };
       };
     };
-
-    # NOTE: Screenshot utilitiy (disable automatic startup)
-    services.flameshot = {
-      enable = true;
-      settings = {
-        General = {
-          startupLaunch = false;
-          savePath = "${homeDirectory}/Pictures/screenshots";
-          savePathFixed = true;
-          useGrimAdapter = true;
-          disabledGrimWarning = true;
-        };
-      };
-    };
-    systemd.user.services.flameshot.Install.WantedBy = mkForce [ ];
 
     # NOTE: Enable Syncthing for Obsidian vault synchronization
     services.syncthing = {

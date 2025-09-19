@@ -30,25 +30,25 @@ _countdown() {
 }
 
 _shotnow() {
-  hyprshot -o "${_OUTDIR}" -f "${_OUTFILE}" -m output -- imv
+  hyprshot -m output --raw
 }
 
 _shot5() {
   _countdown 5
-  hyprshot -o "${_OUTDIR}" -f "${_OUTFILE}" -m output -- imv
+  hyprshot -m output --raw
 }
 
 _shot10() {
   _countdown 10
-  hyprshot -o "${_OUTDIR}" -f "${_OUTFILE}" -m output -- imv
+  hyprshot -m output --raw
 }
 
 _shotwin() {
-  hyprshot -o "${_OUTDIR}" -f "${_OUTFILE}" -m window -- imv
+  hyprshot -m window --raw
 }
 
 _shotarea() {
-  hyprshot -o "${_OUTDIR}" -f "${_OUTFILE}" -m region -- imv
+  hyprshot -m region --raw
 }
 
 _print_options() {
@@ -74,19 +74,19 @@ _parse_selection() {
 
   case "${_SELECTION}" in
   "${__OPTION_SCREEN}")
-    _shotnow
+    _shotnow | satty -f -
     ;;
   "${__OPTION_SELECTION}")
-    _shotarea
+    _shotarea | satty -f -
     ;;
   "${__OPTION_WINDOW}")
-    _shotwin
+    _shotwin | satty -f -
     ;;
   "${__OPTION_SCREEN5}")
-    _shot5
+    _shot5 | satty -f -
     ;;
   "${__OPTION_SCREEN10}")
-    _shot10
+    _shot10 | satty -f -
     ;;
   esac
 }

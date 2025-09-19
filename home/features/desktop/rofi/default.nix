@@ -11,35 +11,36 @@ in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [ grim slurp pulseaudio ];
 
-    programs.rofi = {
-      enable = true;
+    programs = {
+      rofi = {
+        enable = true;
+        modes = [ "drun" "run" "window" "passmenu" ];
 
-      modes = [ "drun" "run" "window" "passmenu" ];
-
-      extraConfig = {
-        # NOTE: Vim-like navigation in vertical menus
-        kb-row-up = "Control+k";
-        kb-row-down = "Control+j";
-        kb-accept-entry = "Return";
-        kb-mode-complete = "Control+Shift+l";
-        kb-remove-to-eol = "Control+Shift+u";
-        kb-remove-char-back = "BackSpace";
-        # NOTE: Additional configuration
-        show-icons = false;
-        display-drun = " ";
-        display-run = " ";
-        display-window = " ";
-        drun-display-format = "{name}";
-        window-format = "{w} · {c} · {t}";
-      };
-
-      theme = {
-        window = {
-          width = mkLiteral "600px";
-          border-radius = mkLiteral "8px";
+        extraConfig = {
+          # NOTE: Vim-like navigation in vertical menus
+          kb-row-up = "Control+k";
+          kb-row-down = "Control+j";
+          kb-accept-entry = "Return";
+          kb-mode-complete = "Control+Shift+l";
+          kb-remove-to-eol = "Control+Shift+u";
+          kb-remove-char-back = "BackSpace";
+          # NOTE: Additional configuration
+          show-icons = false;
+          display-drun = " ";
+          display-run = " ";
+          display-window = " ";
+          drun-display-format = "{name}";
+          window-format = "{w} · {c} · {t}";
         };
 
-        element = { padding = mkLiteral "0 0.5em 0 0.5em"; };
+        theme = {
+          window = {
+            width = mkLiteral "600px";
+            border-radius = mkLiteral "8px";
+          };
+
+          element = { padding = mkLiteral "0 0.5em 0 0.5em"; };
+        };
       };
     };
 

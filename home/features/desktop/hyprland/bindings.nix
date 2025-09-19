@@ -23,7 +23,6 @@ let
   notes = "obsidian --enable-features=WaylandWindowDecorations";
   browser = "flatpak run app.zen_browser.zen";
   telegram = "flatpak run org.telegram.desktop";
-  flameshot = "${pkgs.flameshot}/bin/flameshot";
   mousepad = "${pkgs.xfce.mousepad}/bin/mousepad";
   zathura = "${pkgs.zathura}/bin/zathura";
   restart-waybar = "${configHome}/hypr/scripts/restart-waybar";
@@ -130,8 +129,6 @@ in {
       bind =, T, submap, reset
       bind =, C, exec, ${code}
       bind =, C, submap, reset
-      bind =, S, exec, env XDG_CURRENT_DESKTOP=sway ${flameshot}
-      bind =, S, submap, reset
       bind =, M, exec, ${mousepad}
       bind =, M, submap, reset
       bind =, N, exec, ${notes}
