@@ -80,6 +80,7 @@ icons:
   nh: 
   nix-collect-garbage: 
   nixos-rebuild: 󱑞
+  nix-locate: 
   uv: 
   kind: 󱃾
   limactl: 
