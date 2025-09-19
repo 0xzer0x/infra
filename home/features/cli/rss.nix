@@ -23,12 +23,16 @@ in {
           tags = [ "linux" "foss" ];
         }
         {
+          url = "https://linuxhandbook.com/newsletter/rss/";
+          tags = [ "linux" "foss" ];
+        }
+        {
           url = "https://www.bleepingcomputer.com/feed/";
           tags = [ "security" ];
         }
         {
-          url = "https://feeds.feedburner.com/TheHackersNews";
-          tags = [ "security" ];
+          url = "https://news.ycombinator.com/rss";
+          tags = [ "security" "hackernews" ];
         }
         {
           url = "https://www.docker.com/feed/";
