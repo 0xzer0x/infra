@@ -16,6 +16,7 @@ in {
       v4l-utils
       xfce.mousepad
       qalculate-gtk
+      transmission_4-gtk
     ];
 
     # NOTE: Media player
