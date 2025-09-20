@@ -25,7 +25,7 @@ in {
       style = ./style.css;
       settings.hyprland-statusbar = {
         layer = "top";
-        height = 28;
+        height = 25;
         spacing = 4;
         modules-left = [
           "hyprland/workspaces"
