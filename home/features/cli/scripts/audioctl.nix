@@ -1,7 +1,10 @@
 { pkgs }:
 
-pkgs.writeShellScriptBin "audioctl" ''
-  #!/usr/bin/env bash
+let
+  wpctl = "${pkgs.wireplumber}/bin/wpctl";
+  notify-send = "${pkgs.libnotify}/bin/notify-send";
+  grep = "${pkgs.gnugrep}/bin/grep";
+in pkgs.writeShellScriptBin "audioctl" ''
   set -euo pipefail
 
   declare -A __MUTE_ICONS=(
@@ -19,7 +22,7 @@ pkgs.writeShellScriptBin "audioctl" ''
 
   __audio-percentage() {
     local __level
-    __level="$(wpctl get-volume "''${_DEVICE}")"
+    __level="$(${wpctl} get-volume "''${_DEVICE}")"
     if [[ "$__level" == "Volume: 1.00" ]]; then
       __level="100"
     else
@@ -32,7 +35,7 @@ pkgs.writeShellScriptBin "audioctl" ''
   _notify-audio-level() {
     local __percent
     __percent=$(__audio-percentage)
-    notify-send "Audio: ''${__percent}%" -h string:x-dunst-stack-tag:audioctl -h "int:value:$__percent" -h "string:hlcolor:$__HL_CLR" --icon="''${__ACTIVE_ICONS["''${_DEVICE}"]}"
+    ${notify-send} "Audio: ''${__percent}%" -h string:x-dunst-stack-tag:audioctl -h "int:value:$__percent" -h "string:hlcolor:$__HL_CLR" --icon="''${__ACTIVE_ICONS["''${_DEVICE}"]}"
   }
 
   _notify-mute-state() {
@@ -40,7 +43,7 @@ pkgs.writeShellScriptBin "audioctl" ''
     local __icon
     local __title
 
-    if grep -q MUTED < <(wpctl get-volume "''${_DEVICE}"); then
+    if ${grep} -q MUTED < <(${wpctl} get-volume "''${_DEVICE}"); then
       __icon="''${__MUTE_ICONS["''${_DEVICE}"]}"
       __title="Audio: MUTED"
     else
@@ -48,7 +51,7 @@ pkgs.writeShellScriptBin "audioctl" ''
       __title="Audio: $(__audio-percentage)%"
     fi
 
-    notify-send "''${__title}" -h string:x-dunst-stack-tag:audioctl --icon="''${__icon}"
+    ${notify-send} "''${__title}" -h string:x-dunst-stack-tag:audioctl --icon="''${__icon}"
   }
 
   case "''${1}" in
@@ -65,19 +68,19 @@ pkgs.writeShellScriptBin "audioctl" ''
 
   case "''${2}" in
     inc)
-      wpctl set-volume -l 1.0 "''${_DEVICE}" 5%+
+      ${wpctl} set-volume -l 1.0 "''${_DEVICE}" 5%+
       _notify-audio-level
       ;;
     dec)
-      wpctl set-volume -l 0.0 "''${_DEVICE}" 5%-
+      ${wpctl} set-volume -l 0.0 "''${_DEVICE}" 5%-
       _notify-audio-level
       ;;
     toggle)
-      wpctl set-mute "''${_DEVICE}" toggle
+      ${wpctl} set-mute "''${_DEVICE}" toggle
       _notify-mute-state
       ;;
     *)
-      if grep -q MUTED < <(wpctl get-volume @DEFAULT_SINK@); then
+      if ${grep} -q MUTED < <(${wpctl} get-volume @DEFAULT_SINK@); then
         echo "MUTED"
       else
         echo "$(__audio-percentage)%"

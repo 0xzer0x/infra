@@ -1,7 +1,6 @@
 { pkgs }:
 
 pkgs.writeShellScriptBin "vm-init" ''
-  #!/usr/bin/env bash
   set -euo pipefail
 
   VIRT_HOME=/mnt/ssd/Virtualization
