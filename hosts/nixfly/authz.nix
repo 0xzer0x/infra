@@ -1,10 +1,12 @@
+{ pkgs, ... }:
+
 {
   security.sudo.extraRules = [{
     groups = [ "users" ];
     commands = [
       # NOTE: Easier for controlling screen brightness
       {
-        command = "/run/current-system/sw/bin/brightnessctl";
+        command = "${pkgs.brightnessctl}/bin/brightnessctl";
         options = [ "NOPASSWD" ];
       }
     ];

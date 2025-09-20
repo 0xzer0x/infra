@@ -3,12 +3,13 @@
 let
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
   notify-send = "${pkgs.libnotify}/bin/notify-send";
+  bc = "${pkgs.bc}/bin/bc";
 in pkgs.writeShellScriptBin "brightness" ''
   set -euo pipefail
 
   _notify_level() {
     local _brightness
-    _brightness="$(${pkgs.bc} <<<"scale=2; (($(${brightnessctl} get) / $(${brightnessctl} max))*100)" | cut -d'.' -f1)"
+    _brightness="$(${bc} <<<"scale=2; (($(${brightnessctl} get) / $(${brightnessctl} max))*100)" | cut -d'.' -f1)"
     ${notify-send} "Brightness: ''${_brightness}%" -h string:x-dunst-stack-tag:brightnessctl -h int:value:"''${_brightness}" -i display-brightness
   }
 
