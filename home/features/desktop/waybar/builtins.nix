@@ -82,7 +82,6 @@ in {
       };
       pulseaudio = {
         scroll-step = 5;
-        on-click = "${terminalPkg}/bin/${terminal} -e wiremix";
         format = "{icon} {volume}% {format_source}";
         format-bluetooth = "{volume}% {icon} {format_source}";
         format-bluetooth-muted = "󰖁 {icon} {format_source}";
@@ -98,6 +97,11 @@ in {
           car = " ";
           default = [ "󰕿" "󰖀" "󰕾" ];
         };
+        on-click = let
+          extraTerminalOpts = { kitty = "--single-instance --app-id=Wiremix"; };
+        in "${terminalPkg}/bin/${terminal} ${
+          extraTerminalOpts.${terminal} or ""
+        } -e wiremix";
       };
     };
   };

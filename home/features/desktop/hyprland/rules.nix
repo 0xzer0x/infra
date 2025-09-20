@@ -30,6 +30,9 @@ in {
         "center,class:(nemo)"
         "size 1000 600,class:(nemo),title:(Home|Downloads)"
         "workspace special:magic,class:^(com\\.github\\.wwmm\\.easyeffects)$"
+        "float,class:(Wiremix)"
+        "center,class:(Wiremix)"
+        "size 800 500,class:(Wiremix)"
       ];
     };
   };
