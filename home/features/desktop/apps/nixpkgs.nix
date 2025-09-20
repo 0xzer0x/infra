@@ -16,6 +16,7 @@ in {
       v4l-utils
       xfce.mousepad
       qalculate-gtk
+      qbittorrent
     ];
 
     # NOTE: Media player
