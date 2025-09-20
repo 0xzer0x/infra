@@ -12,11 +12,11 @@ in {
       urls = [
         {
           url = "https://www.redhat.com/en/rss/blog";
-          tags = [ "linux" ];
+          tags = [ "linux" "redhat" ];
         }
         {
           url = "https://lwn.net/headlines/newrss";
-          tags = [ "linux" ];
+          tags = [ "linux" "news" ];
         }
         {
           url = "https://itsfoss.com/rss/";
@@ -24,7 +24,11 @@ in {
         }
         {
           url = "https://www.bleepingcomputer.com/feed/";
-          tags = [ "security" ];
+          tags = [ "security" "news" ];
+        }
+        {
+          url = "https://krebsonsecurity.com/feed/";
+          tags = [ "security" "kerbsonsecurity" ];
         }
         {
           url = "https://news.ycombinator.com/rss";
@@ -48,7 +52,19 @@ in {
         }
         {
           url = "https://www.lastweekinaws.com/feed/";
-          tags = [ "cloud" "aws" ];
+          tags = [ "cloud" "news" "aws" ];
+        }
+        {
+          url = "https://aws.amazon.com/blogs/aws/feed";
+          tags = [ "cloud" "news" "aws" ];
+        }
+        {
+          url = "https://aws.amazon.com/blogs/devops/feed";
+          tags = [ "cloud" "devops" "aws" ];
+        }
+        {
+          url = "https://aws.amazon.com/security/security-bulletins/rss/feed/";
+          tags = [ "cloud" "security" "aws" ];
         }
         {
           url = "https://github.blog/feed/";
