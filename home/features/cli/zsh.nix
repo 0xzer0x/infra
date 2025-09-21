@@ -16,6 +16,7 @@ in {
       enableCompletion = true;
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
+      enableVteIntegration = true;
 
       # NOTE: Shell history
       history = {
