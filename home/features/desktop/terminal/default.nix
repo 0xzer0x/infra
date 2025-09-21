@@ -4,7 +4,7 @@ with lib;
 let cfg = config.features.desktop.terminal;
 
 in {
-  imports = [ ./kitty.nix ];
+  imports = [ ./kitty.nix ./foot.nix ];
 
   options.features.desktop.terminal.default = mkOption {
     type = types.str;
