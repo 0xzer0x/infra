@@ -13,6 +13,7 @@ icons:
   cfdisk: 
   dnf: 
   docker: 
+  podman: 
   dpkg: 
   emacs: 
   fdisk: 
