@@ -32,7 +32,7 @@ in {
         # NOTE: Layouts
         general = {
           gaps_in = 2;
-          gaps_out = 5;
+          gaps_out = 2;
           border_size = 2;
           "col.active_border" = "$blue";
           "col.inactive_border" = "$surface1";
@@ -68,14 +68,7 @@ in {
 
         # NOTE: Look and feel
         cursor.sync_gsettings_theme = true;
-        decoration = {
-          rounding = 6;
-          blur = {
-            enabled = true;
-            size = 3;
-            passes = 1;
-          };
-        };
+        decoration.rounding = 6;
         # NOTE: Fast animations
         # Ref: https://github.com/HyDE-Project/HyDE/blob/master/Configs/.config/hypr/animations/fast.conf
         animations = {
