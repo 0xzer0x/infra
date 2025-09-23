@@ -14,9 +14,24 @@ in {
       enable = true;
       platformTheme.name = "qtct";
       style = {
-        name = "breeze";
-        package = pkgs.kdePackages.breeze;
+        name = "Darkly";
+        package = with pkgs; [ darkly-qt5 darkly ];
       };
+    };
+
+    # NOTE: Fix KDE applications theming and icons
+    # Ref: https://github.com/DarkKronicle/nazarick/blob/cd4d87d2399f3025bc618ecf1b5471804010b7a2/modules/home/gui/qt/default.nix#L127
+    xdg.configFile."kdeglobals" = {
+      enable = true;
+      text = lib.generators.toINI { } {
+        UiSettings = { ColorScheme = "*"; };
+        Icons = { Theme = "Papirus-Dark"; };
+      } + (builtins.readFile "${
+          pkgs.catppuccin-kde.override {
+            flavour = [ "mocha" ];
+            accents = [ "blue" ];
+          }
+        }/share/color-schemes/CatppuccinMochaBlue.colors");
     };
   };
 }
