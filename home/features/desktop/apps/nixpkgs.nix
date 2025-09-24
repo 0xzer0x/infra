@@ -55,8 +55,8 @@ in {
             corner-roundness = 0;
             early-exit = true;
             save-after-copy = true;
-            action-on-escape = [ ];
-            action-on-enter = "save-to-clipboard";
+            actions-on-escape = [ ];
+            actions-on-enter = [ "save-to-clipboard" ];
             copy-command = "${pkgs.wl-clipboard}/bin/wl-copy";
             output-filename =
               "${homeDirectory}/Pictures/screenshots/screenshot_%Y-%m-%d_%H-%M-%S.png";
