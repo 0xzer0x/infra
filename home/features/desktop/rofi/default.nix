@@ -34,10 +34,7 @@ in {
         };
 
         theme = {
-          window = {
-            width = mkLiteral "600px";
-            border-radius = mkLiteral "8px";
-          };
+          window = { width = mkLiteral "600px"; };
 
           element = { padding = mkLiteral "0 0.5em 0 0.5em"; };
         };

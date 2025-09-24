@@ -68,7 +68,7 @@ in {
 
         # NOTE: Look and feel
         cursor.sync_gsettings_theme = true;
-        decoration.rounding = 6;
+        decoration.rounding = 0;
         # NOTE: Fast animations
         # Ref: https://github.com/HyDE-Project/HyDE/blob/master/Configs/.config/hypr/animations/fast.conf
         animations = {

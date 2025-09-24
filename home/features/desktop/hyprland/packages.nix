@@ -38,10 +38,10 @@ in {
           separator_color = "frame";
           offset = "(5, 5)";
           frame_width = 2;
-          corner_radius = 6;
+          corner_radius = 0;
           gap_size = 2;
           progress_bar_height = 15;
-          progress_bar_corner_radius = 2;
+          progress_bar_corner_radius = 0;
           always_run_script = true;
           enable_recursive_icon_lookup = true;
           mouse_left_click = "do_action, close_current";
