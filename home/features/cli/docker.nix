@@ -10,7 +10,7 @@ in {
     programs = {
       docker-cli = {
         enable = true;
-        configDir = "${config.xdg.configHome}/docker";
+        configDir = ".config/docker";
       };
       lazydocker.enable = true;
     };
