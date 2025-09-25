@@ -9,15 +9,20 @@ in {
   config = mkIf cfg.enable {
     # NOTE: Additional fonts
     home.packages = with pkgs; [
-      adwaita-fonts
-      fira-go
       liberation_ttf
+      fira-go
+      caladea
       carlito
+      ubuntu-sans
       amiri
       scheherazade-new
       noto-fonts-color-emoji
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
+      nerd-fonts.arimo
+      nerd-fonts.tinos
+      nerd-fonts.cousine
+      nerd-fonts.ubuntu
     ];
 
     # NOTE: Custom Arabic font

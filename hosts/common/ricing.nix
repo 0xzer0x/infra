@@ -11,9 +11,8 @@
       adwaita-fonts
       noto-fonts
       open-sans
-      ubuntu-sans
       nerd-fonts.geist-mono
-      nerd-fonts.ubuntu
+      nerd-fonts.liberation
     ];
 
     fontconfig = {

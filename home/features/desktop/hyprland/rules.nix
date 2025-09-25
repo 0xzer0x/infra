@@ -5,6 +5,12 @@ let cfg = config.features.desktop.hyprland;
 in {
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland.settings = {
+      layerrule = [
+        # NOTE: Remove border around hyprshot screenshots
+        "noanim, selection"
+        # NOTE: No animations for rofi
+        "noanim, rofi"
+      ];
       # NOTE: Smart gaps
       workspace = [ "w[tv1], gapsout:0, gapsin:0" "f[1], gapsout:0, gapsin:0" ];
       windowrulev2 = [
