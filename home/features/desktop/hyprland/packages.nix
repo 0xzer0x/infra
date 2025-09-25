@@ -18,12 +18,12 @@ in {
       adw-gtk3
       wiremix
       pavucontrol
-      nemo-with-extensions
       ffmpegthumbnailer
       seahorse
       gcr
       poppler-utils
       gthumb
+      nemo-with-extensions
     ];
 
     programs.swaylock.enable = true;

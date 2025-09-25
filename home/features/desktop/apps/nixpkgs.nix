@@ -17,6 +17,7 @@ in {
       xfce.mousepad
       qalculate-gtk
       qbittorrent
+      kdePackages.kdenlive
     ];
 
     # NOTE: Media player

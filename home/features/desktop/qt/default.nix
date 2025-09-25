@@ -24,6 +24,10 @@ in {
     xdg.configFile."kdeglobals" = {
       enable = true;
       text = lib.generators.toINI { } {
+        General = {
+          TerminalApplication = config.features.desktop.terminal.default;
+        };
+        Wallet = { Enabled = false; };
         UiSettings = { ColorScheme = "*"; };
         Icons = { Theme = "Papirus-Dark"; };
       } + (builtins.readFile "${
