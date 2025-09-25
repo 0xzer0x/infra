@@ -19,6 +19,7 @@ in {
       settings = {
         shell = "tmux";
         tab_bar_style = "hidden";
+        confirm_os_window_close = 0;
       };
     };
   };
