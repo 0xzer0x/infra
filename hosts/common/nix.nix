@@ -15,8 +15,8 @@
     };
 
     registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
-    nixPath = [ "/etc/nix/path" ]
-      ++ lib.mapAttrsToList (flakeName: _: "${flakeName}=flake:${flakeName}")
+    nixPath =
+      lib.mapAttrsToList (flakeName: _: "${flakeName}=flake:${flakeName}")
       flakeInputs;
   };
 
