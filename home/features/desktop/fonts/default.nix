@@ -10,6 +10,7 @@ in {
     # NOTE: Additional fonts
     home.packages = with pkgs; [
       liberation_ttf
+      open-sans
       fira-go
       caladea
       carlito
@@ -39,6 +40,9 @@ in {
 
     fonts.fontconfig = {
       enable = true;
+      antialiasing = true;
+      hinting = "slight";
+      subpixelRendering = "rgb";
       defaultFonts = {
         serif = [ "Adwaita Sans" "SF Arabic" ];
         sansSerif = [ "Adwaita Sans" "SF Arabic" ];

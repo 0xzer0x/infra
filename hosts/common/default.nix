@@ -13,7 +13,7 @@
     ./services.nix
     ./virtualization.nix
     ./desktop.nix
-    ./ricing.nix
+    ./fonts.nix
     ./nix.nix
   ];
 

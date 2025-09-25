@@ -1,8 +1,6 @@
 { pkgs, ... }:
 
 {
-  environment.sessionVariables.XKB_DEFAULT_OPTIONS = "caps:swapescape";
-
   # NOTE: Fonts
   environment.systemPackages = with pkgs; [ fontconfig ];
   fonts = {
@@ -10,7 +8,6 @@
     packages = with pkgs; [
       adwaita-fonts
       noto-fonts
-      open-sans
       nerd-fonts.geist-mono
       nerd-fonts.liberation
     ];
@@ -25,11 +22,5 @@
         monospace = [ "GeistMono Nerd Font" ];
       };
     };
-  };
-
-  # Qt
-  qt = {
-    enable = true;
-    platformTheme = "qt5ct";
   };
 }
