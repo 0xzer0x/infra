@@ -4,7 +4,7 @@ with lib;
 let cfg = config.features.desktop.qt;
 in {
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ kdePackages.qt6ct kdePackages.breeze.qt5 ];
+    home.packages = with pkgs; [ kdePackages.qt6ct kdePackages.breeze ];
 
     xdg.configFile."qt6ct/colors/Catppuccin-Mocha.conf" = {
       enable = true;

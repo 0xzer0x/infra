@@ -17,7 +17,9 @@ in {
       ubuntu-sans
       amiri
       scheherazade-new
-      noto-fonts-color-emoji
+      noto-fonts-emoji
+      vazir-fonts
+      vazir-code-font
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
       nerd-fonts.arimo
@@ -47,6 +49,7 @@ in {
         serif = [ "Adwaita Sans" "SF Arabic" ];
         sansSerif = [ "Adwaita Sans" "SF Arabic" ];
         monospace = [ "GeistMono Nerd Font" "SF Arabic" ];
+        emoji = [ "Noto Color Emoji" ];
       };
     };
   };

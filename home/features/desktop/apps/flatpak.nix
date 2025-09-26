@@ -22,12 +22,10 @@ in {
             sockets = [ "wayland" "fallback-x11" "!x11" ];
             devices = [ "dri" ];
             filesystems = [
-              # NOTE: Makes system fonts accessible in Flatpaks
-              # See https://nixos.wiki/wiki/Fonts
-              "/nix/store:ro"
-              "xdg-data/fonts:ro"
+              # NOTE: Pass user fonts and fontconfig (system fonts should be available by default under /run/host)
               "xdg-config/fontconfig:ro"
               # NOTE: Make Flatpaks follow system Gtk theme
+              "/nix/store:ro"
               "xdg-config/gtk-3.0:ro"
               "xdg-config/gtk-4.0:ro"
             ];
