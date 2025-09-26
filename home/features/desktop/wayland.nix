@@ -20,10 +20,6 @@ in {
 
   config = mkIf cfg.enable {
     home.sessionVariables = waylandCommonVariables;
-    wayland.windowManager.hyprland.settings.env = builtins.attrValues
-      (builtins.mapAttrs (name: value: "${name},${builtins.toString value}")
-        waylandCommonVariables);
-
     home.packages = with pkgs; [
       clipman
       wl-clipboard
