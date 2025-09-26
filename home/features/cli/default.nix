@@ -18,7 +18,7 @@
     ./yazi.nix
     ./aws.nix
     ./ansible.nix
-    ./docker.nix
+    ./containers.nix
     ./virtualization.nix
     ./multimedia.nix
     ./nettools.nix

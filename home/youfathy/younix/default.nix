@@ -33,7 +33,7 @@
       aws.enable = true;
       ansible.enable = true;
       multimedia.enable = true;
-      docker.enable = true;
+      containers.enable = true;
       virtualization.enable = true;
       nettools.enable = true;
       rss.enable = true;

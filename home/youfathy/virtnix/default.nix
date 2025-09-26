@@ -28,7 +28,7 @@
       k8s.enable = true;
       yazi.enable = true;
       go-pray.enable = true;
-      docker.enable = true;
+      containers.enable = true;
       virtualization.enable = false;
     };
 
