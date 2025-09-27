@@ -6,12 +6,7 @@ in {
   options.features.desktop.gtk.enable = mkEnableOption "Enable GTK theming";
 
   config = mkIf cfg.enable {
-    gtk = let
-      extraCss = builtins.readFile ./gtk.css;
-      extraConfig = {
-        gtk-application-prefer-dark-theme = 1;
-        gtk-decoration-layout = "icon:";
-      };
+    gtk = let extraCss = builtins.readFile ./gtk.css;
     in {
       enable = true;
       iconTheme.name = "Papirus-Dark";
@@ -34,13 +29,25 @@ in {
       gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
 
       gtk3 = {
-        inherit extraCss extraConfig;
+        inherit extraCss;
         # NOTE: File browser bookmarks
         bookmarks = let inherit (config.home) homeDirectory;
         in [ "file:///${homeDirectory}/Workspace Workspace" ];
+        extraConfig = {
+          gtk-application-prefer-dark-theme = true;
+          gtk-decoration-layout = "menu:";
+        };
       };
 
-      gtk4 = { inherit extraCss extraConfig; };
+      gtk4 = {
+        inherit extraCss;
+        extraConfig = { gtk-decoration-layout = "menu:"; };
+      };
+    };
+
+    # NOTE: GTK4 configuration
+    dconf.settings = {
+      "org/gnome/desktop/interface" = { "color-scheme" = "prefer-dark"; };
     };
 
     xdg.dataFile."gtksourceview-4/styles/catppuccin.xml" = {
