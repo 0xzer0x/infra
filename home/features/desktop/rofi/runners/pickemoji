@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-rofi -modi passmenu -show passmenu \
+rofi -modi emoji -show emoji \
   -theme-str 'window { width: 20%; height: 30%; }'

@@ -14,6 +14,7 @@ let
   clipboard = "${configHome}/rofi/runners/clipboard";
   screenshot = "${configHome}/rofi/runners/screenshot";
   screenrec = "${configHome}/rofi/runners/screenrec";
+  pickemoji = "${configHome}/rofi/runners/pickemoji";
   volup = "audioctl sink inc";
   voldown = "audioctl sink dec";
   voltoggle = "audioctl sink toggle";
@@ -75,6 +76,8 @@ in {
           # Screenshot and screenrecording
           ",Print, exec, ${screenshot}"
           "$mod,Print, exec, ${screenrec}"
+          # Emoji picker
+          "$mod, period, exec, ${pickemoji}"
           # Password manager
           "$mod, menu, exec, ${passmenu}"
           # Quick password generator

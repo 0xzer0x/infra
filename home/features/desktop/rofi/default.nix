@@ -14,7 +14,8 @@ in {
     programs = {
       rofi = {
         enable = true;
-        modes = [ "drun" "run" "window" "passmenu" ];
+        modes = [ "drun" "run" "window" ];
+        plugins = [ pkgs.rofi-emoji ];
 
         extraConfig = {
           # NOTE: Vim-like navigation in vertical menus
