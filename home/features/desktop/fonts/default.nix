@@ -48,7 +48,7 @@ in {
       defaultFonts = {
         serif = [ "Adwaita Sans" "SF Arabic" ];
         sansSerif = [ "Adwaita Sans" "SF Arabic" ];
-        monospace = [ "GeistMono Nerd Font" "SF Arabic" ];
+        monospace = [ "GeistMono Nerd Font" "Vazir Code" ];
         emoji = [ "Noto Color Emoji" ];
       };
     };
