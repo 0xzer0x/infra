@@ -28,26 +28,14 @@ in {
       nerd-fonts.ubuntu
     ];
 
-    # NOTE: Custom Arabic font
-    xdg.dataFile."fonts/SF-Arabic" = {
-      source = ./SF-Arabic;
-      recursive = true;
-    };
-
-    # NOTE: Monospace Arabic font
-    xdg.dataFile."fonts/Kawkab-Mono" = {
-      source = ./Kawkab-Mono;
-      recursive = true;
-    };
-
     fonts.fontconfig = {
       enable = true;
       antialiasing = true;
       hinting = "slight";
       subpixelRendering = "rgb";
       defaultFonts = {
-        serif = [ "Adwaita Sans" "SF Arabic" ];
-        sansSerif = [ "Adwaita Sans" "SF Arabic" ];
+        serif = [ "Adwaita Sans" "Vazirmatn" ];
+        sansSerif = [ "Adwaita Sans" "Vazirmatn" ];
         monospace = [ "GeistMono Nerd Font" "Vazir Code" ];
         emoji = [ "Noto Color Emoji" ];
       };
