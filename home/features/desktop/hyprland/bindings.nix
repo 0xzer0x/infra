@@ -95,6 +95,8 @@ in {
           "$mod, F9, exec, ${voltoggle}"
           ",XF86AudioMute, exec, ${voltoggle}"
           ",XF86AudioMicMute, exec, ${mictoggle}"
+          # ============== Submaps =============== #
+          "$mod, O, submap, launch  "
         ];
 
         binde = [
@@ -120,34 +122,31 @@ in {
           "$mod, mouse:273, resizewindow"
         ];
       };
+
+      submaps = {
+        "launch  " = {
+          settings = {
+            bind = [
+              "$mod, O, submap, reset"
+              ", escape, submap, reset"
+              ", B, exec, ${browser}"
+              ", B, submap, reset"
+              ", T, exec, ${telegram}"
+              ", T, submap, reset"
+              ", C, exec, ${code}"
+              ", C, submap, reset"
+              ", M, exec, ${mousepad}"
+              ", M, submap, reset"
+              ", N, exec, ${notes}"
+              ", N, submap, reset"
+              ", S, exec, ${slack}"
+              ", S, submap, reset"
+              ", Z, exec, ${zathura}"
+              ", Z, submap, reset"
+            ];
+          };
+        };
+      };
     };
-
-    # NOTE: Submaps not supported in home-manager settings
-    # https://github.com/nix-community/home-manager/issues/6062
-    wayland.windowManager.hyprland.extraConfig = ''
-      # ============== Launch Mode ============== #
-      bind = $mod, O, submap, launch  
-      submap = launch  
-
-      bind =, B, exec, ${browser}
-      bind =, B, submap, reset
-      bind =, T, exec, ${telegram}
-      bind =, T, submap, reset
-      bind =, C, exec, ${code}
-      bind =, C, submap, reset
-      bind =, M, exec, ${mousepad}
-      bind =, M, submap, reset
-      bind =, N, exec, ${notes}
-      bind =, N, submap, reset
-      bind =, S, exec, ${slack}
-      bind =, S, submap, reset
-      bind =, Z, exec, ${zathura}
-      bind =, Z, submap, reset
-
-      bind = $mod, O, submap, reset
-      bind =, escape, submap, reset
-      submap = reset
-      # ========================================= #
-    '';
   };
 }
