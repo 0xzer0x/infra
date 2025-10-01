@@ -18,6 +18,7 @@ in {
       qalculate-gtk
       qbittorrent
       kdePackages.kdenlive
+      localsend
     ];
 
     # NOTE: Media player
