@@ -104,11 +104,11 @@ in {
             "easeOutExpo, 0.16, 1, 0.3, 1"
           ];
           animation = [
-            "windows, 1, 3, md3_decel, popin 60%"
-            "border, 1, 10, default"
-            "fade, 1, 2.5, md3_decel"
-            "workspaces, 1, 3.5, easeOutExpo, slide"
-            "specialWorkspace, 1, 3, md3_decel, slidevert"
+            "windows, 1, 2, md3_decel, popin 60%"
+            "border, 1, 2, default"
+            "fade, 1, 2, md3_decel"
+            "workspaces, 1, 2, easeOutExpo, slide"
+            "specialWorkspace, 1, 2, md3_decel, slidevert"
           ];
         };
 
