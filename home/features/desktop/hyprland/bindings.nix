@@ -21,9 +21,12 @@ let
   mictoggle = "audioctl source toggle";
   files = "${term} tmux new yazi";
   code = "${term} tmux new nvim";
-  notes = "obsidian --enable-features=WaylandWindowDecorations";
   browser = "flatpak run app.zen_browser.zen";
   telegram = "flatpak run org.telegram.desktop";
+  slack =
+    "${pkgs.slack}/bin/slack --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland";
+  notes =
+    "${pkgs.obsidian}/bin/obsidian --enable-features=WaylandWindowDecorations";
   mousepad = "${pkgs.xfce.mousepad}/bin/mousepad";
   zathura = "${pkgs.zathura}/bin/zathura";
   restart-waybar = "${configHome}/hypr/scripts/restart-waybar";
@@ -136,6 +139,8 @@ in {
       bind =, M, submap, reset
       bind =, N, exec, ${notes}
       bind =, N, submap, reset
+      bind =, S, exec, ${slack}
+      bind =, S, submap, reset
       bind =, Z, exec, ${zathura}
       bind =, Z, submap, reset
 
