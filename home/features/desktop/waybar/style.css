@@ -12,13 +12,11 @@
 }
 
 tooltip * {
-  font-family: monospace;
-  font-size: 12px;
+  font-size: 10px;
 }
 
 menu * {
-  font-family: sans;
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .modules-left {
