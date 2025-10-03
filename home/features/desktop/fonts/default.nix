@@ -9,6 +9,8 @@ in {
   config = mkIf cfg.enable {
     # NOTE: Additional fonts
     home.packages = with pkgs; [
+      sf-pro-font
+      sf-arabic-font
       liberation_ttf
       open-sans
       fira-go
@@ -35,8 +37,8 @@ in {
       hinting = "slight";
       subpixelRendering = "rgb";
       defaultFonts = {
-        serif = [ "Adwaita Sans" "Vazirmatn UI" ];
-        sansSerif = [ "Adwaita Sans" "Vazirmatn UI" ];
+        serif = [ "Adwaita Sans" "SF Arabic" ];
+        sansSerif = [ "Adwaita Sans" "SF Arabic" ];
         monospace = [ "GeistMono Nerd Font" "Vazir Code" ];
         emoji = [ "Noto Color Emoji" ];
       };
