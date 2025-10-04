@@ -1,7 +1,6 @@
 @import "./catppuccin.css";
 
-@define-color accent @lavender;
-/* text when background is accent */
+@define-color accent @blue;
 
 * {
   font-family: monospace;
@@ -32,7 +31,6 @@ menu * {
 window#waybar {
   background-color: @surface0;
   color: @text;
-  opacity: 1;
 }
 
 #workspaces {
@@ -62,9 +60,9 @@ window#waybar {
 }
 
 #window {
-  color: @text;
-  background-color: @surface0;
   padding-left: 4px;
+  background-color: @surface0;
+  color: @text;
 }
 
 #tray {
