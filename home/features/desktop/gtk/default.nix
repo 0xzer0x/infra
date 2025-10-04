@@ -17,7 +17,7 @@ in {
       };
 
       font = {
-        name = "Adwaita Sans";
+        name = builtins.elemAt config.fonts.fontconfig.defaultFonts.sansSerif 0;
         size = 10;
       };
 
