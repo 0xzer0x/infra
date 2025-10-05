@@ -47,11 +47,6 @@ in {
         source = ./runners;
         recursive = true;
       };
-
-      "rofi/scripts" = {
-        source = ./scripts;
-        recursive = true;
-      };
     };
   };
 }

@@ -1,5 +1,66 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-rofi -modi passmenu -show passmenu \
-  -theme-str 'window { width: 20%; height: 30%; }'
+_PROMPT="󱕴"
+_SECRET=""
+_MODE=""
+
+_check_dependencies() {
+  if ! command -v gopass &>/dev/null; then
+    printf "required command not found: gopass\n"
+    exit 1
+  fi
+}
+
+_notify() {
+  local _msg="${1:-}"
+  if [ -n "${_msg}" ]; then
+    notify-send -i password Passmenu "${_msg}"
+  fi
+}
+
+_drofi() {
+  rofi -dmenu -i -p "${_PROMPT}" -no-custom -theme-str 'window { width: 20%; height: 30%; }'
+}
+
+_select_password() {
+  _SECRET="$(gopass ls --flat | _drofi)"
+}
+
+_select_mode() {
+  _MODE="$(printf 'Password\nOTP\nLogin' | _drofi)"
+}
+
+_copy() {
+  local _type=""
+  local _value=""
+
+  case "${_MODE}" in
+  Password)
+    _type="password"
+    _value="$(gopass show -o "${_SECRET}")"
+    ;;
+  OTP)
+    _type="OTP token"
+    _value="$(gopass otp "${_SECRET}")"
+    ;;
+  Login)
+    _type="login"
+    _value="$(gopass show "${_SECRET}" | awk '/(email|user|username):/ {printf "%s", $2; exit}')"
+    ;;
+  esac
+
+  if [ -n "${_type}" ] && [ -n "${_value}" ]; then
+    printf "%s" "${_value}" | wl-copy
+    _notify "Copied ${_type} for ${_SECRET} to clipboard"
+  fi
+}
+
+_main() {
+  _select_password
+  _select_mode
+  _copy
+}
+
+_check_dependencies
+_main "${@}"
