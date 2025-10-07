@@ -19,7 +19,7 @@ let
   voldown = "audioctl sink dec";
   voltoggle = "audioctl sink toggle";
   mictoggle = "audioctl source toggle";
-  files = "${term} tmux new yazi";
+  files = "${term} yazi";
   code = "${term} tmux new nvim";
   browser = "flatpak run app.zen_browser.zen";
   telegram = "flatpak run org.telegram.desktop";
