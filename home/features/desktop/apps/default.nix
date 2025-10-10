@@ -6,7 +6,7 @@ in {
   options.features.desktop.apps.enable =
     mkEnableOption "Enable desktop GUI apps";
 
-  imports = [ ./nixpkgs.nix ./flatpak.nix ];
+  imports = [ ./nixpkgs.nix ./flatpak.nix ./browser.nix ];
 
   # NOTE: Set default applications
   config = mkIf cfg.enable {

@@ -21,7 +21,7 @@ let
   mictoggle = "audioctl source toggle";
   files = "${term} yazi";
   code = "${term} tmux new nvim";
-  browser = "flatpak run app.zen_browser.zen";
+  browser = "${config.programs.zen-browser.package}/bin/zen";
   telegram = "flatpak run org.telegram.desktop";
   slack =
     "${pkgs.slack}/bin/slack --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland";
