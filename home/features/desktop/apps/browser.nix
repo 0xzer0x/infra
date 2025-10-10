@@ -77,6 +77,7 @@ in {
           "zen.welcome-screen.seen" = true;
           "zen.theme.accent-color" = "#181825";
           "zen.theme.gradient.show-custom-colors" = true;
+          "zen.theme.content-element-separation" = 6;
           "zen.urlbar.behavior" = "normal";
           "zen.urlbar.replace-newtab" = false;
           "zen.view.experimental-no-window-controls" = true;
