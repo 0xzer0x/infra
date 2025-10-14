@@ -21,7 +21,6 @@
       onShutdown = "shutdown";
 
       qemu = {
-        ovmf.enable = true;
         swtpm.enable = true;
         vhostUserPackages = [ pkgs.virtiofsd ];
       };
