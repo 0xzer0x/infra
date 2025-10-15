@@ -18,7 +18,6 @@
     colorscheme.active = "catppuccin";
 
     cli = {
-      zsh.enable = true;
       ssh.enable = true;
       git.enable = true;
       gnupg.enable = true;

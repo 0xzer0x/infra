@@ -8,6 +8,10 @@ in {
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [ lima ];
-    home.sessionVariables = { LIMA_HOME = "${config.xdg.dataHome}/lima"; };
+    home.sessionVariables = {
+      LIMA_HOME = "${config.xdg.dataHome}/lima";
+      # NOTE: Use system-wide QEMU - virsh(1)
+      LIBVIRT_DEFAULT_URI = "qemu:///system";
+    };
   };
 }

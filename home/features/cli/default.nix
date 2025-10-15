@@ -2,11 +2,11 @@
 
 {
   imports = [
+    ./shell
     ./tmux
     ./scripts
     ./go-pray
     ./env.nix
-    ./zsh.nix
     ./starship.nix
     ./nvim.nix
     ./fastfetch.nix
@@ -42,7 +42,9 @@
     };
     nix-index = {
       enable = true;
+      enableBashIntegration = false;
       enableZshIntegration = false;
+      enableFishIntegration = false;
     };
     direnv = {
       enable = true;

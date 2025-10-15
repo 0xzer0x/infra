@@ -1,13 +1,16 @@
 { config, lib, pkgs, ... }:
 
-with lib;
-let cfg = config.features.cli.zsh;
+let cfg = config.features.cli.shell;
 in {
-  options.features.cli.zsh = {
-    enable = mkEnableOption "Enable extended ZSH configuration";
+  options.features.cli.shell.zsh = {
+    enable = lib.mkOption {
+      type = lib.types.bool;
+      description = "Enable extended ZSH configuration";
+      default = cfg.default == "zsh";
+    };
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.zsh.enable {
     home.shell.enableZshIntegration = true;
 
     programs.zsh = {
@@ -61,7 +64,7 @@ in {
         complete -C '${pkgs.awscli2}/bin/aws_completer' aws
       '';
 
-      initContent = mkOrder 1500 ''
+      initContent = lib.mkOrder 1500 ''
         # ------- custom functions ------- #
         # nix-locate binary shorthand
         nlb() {

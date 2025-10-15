@@ -14,7 +14,6 @@
     colorscheme.active = "catppuccin";
 
     cli = {
-      zsh.enable = true;
       gopass.enable = false;
       aws.enable = false;
       ansible.enable = false;

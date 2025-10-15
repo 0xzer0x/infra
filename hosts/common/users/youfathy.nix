@@ -15,7 +15,7 @@ in {
         "$y$j9T$Dn0eeaH0T73fTCJwryaMm1$dq5xw1pKZWZ.uN6S1JMEHS7wpVwfajHUIdDb00NCUgB";
     });
   in {
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
     isNormalUser = true;
     createHome = true;
     description = "Youssef Fathy";

@@ -34,4 +34,7 @@
       music = "${config.home.homeDirectory}/Audio";
     };
   };
+
+  # NOTE: Set default shell
+  features.cli.shell.default = "fish";
 }
