@@ -7,7 +7,7 @@ in {
   imports = [ ./kitty.nix ./foot.nix ];
 
   options.features.desktop.terminal.default = mkOption {
-    type = types.str;
+    type = types.enum [ "kitty" "foot" ];
     description = "Name of default terminal program";
     default = "kitty";
   };
