@@ -17,7 +17,7 @@ in {
         size = 11;
       };
       settings = {
-        shell = "tmux";
+        shell = "tmux -N";
         tab_bar_style = "hidden";
         confirm_os_window_close = 0;
       };

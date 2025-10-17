@@ -20,7 +20,7 @@ let
   voltoggle = "audioctl sink toggle";
   mictoggle = "audioctl source toggle";
   files = "${term} yazi";
-  code = "${term} tmux new nvim";
+  code = "${term} tmux -N new nvim";
   browser = "${config.programs.zen-browser.package}/bin/zen";
   telegram = "flatpak run org.telegram.desktop";
   slack =

@@ -204,6 +204,20 @@ in {
       '';
     };
 
+    systemd.user.services.tmux-server = {
+      Unit = {
+        Description = "Tmux server mode";
+        Documentation = [ "man:tmux(1)" ];
+      };
+
+      Service = {
+        Type = "exec";
+        ExecStart = "${pkgs.tmux}/bin/tmux -D";
+      };
+
+      Install = { WantedBy = [ "graphical-session.target" ]; };
+    };
+
   };
 }
 
