@@ -34,6 +34,12 @@ in {
         ngc = "sudo nh clean all -a --keep-since 15d";
       };
 
+      shellAbbrs = {
+        tree = ''
+          eza --icons --color=auto --sort=type --tree --no-filesize --no-git --no-user --no-time --no-permissions --ignore-glob ".git|.devbox"
+        '';
+      };
+
       functions = { nlb = ''nix-locate -r "$(printf 'bin/%s$' $argv[1])"''; };
 
       interactiveShellInit = ''
