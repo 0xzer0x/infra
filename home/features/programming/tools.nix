@@ -6,5 +6,5 @@ in {
   options.features.programming.tools.enable =
     mkEnableOption "Enable development environment tools";
 
-  config = mkIf cfg.enable { home.packages = with pkgs; [ devbox ]; };
+  config = mkIf cfg.enable { home.packages = with pkgs; [ devbox devenv ]; };
 }
