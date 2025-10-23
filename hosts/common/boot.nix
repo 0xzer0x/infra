@@ -31,5 +31,8 @@
       enable = true;
       theme = "spinner";
     };
+
+    # NOTE: Cleanup for /tmp
+    tmp.cleanOnBoot = true;
   };
 }
