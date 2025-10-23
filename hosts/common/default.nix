@@ -19,7 +19,8 @@
 
   home-manager = {
     useUserPackages = true;
-    backupFileExtension = "bak";
     extraSpecialArgs = { inherit inputs outputs; };
+    backupFileExtension = "bak";
+    overwriteBackup = true;
   };
 }
