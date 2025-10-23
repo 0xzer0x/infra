@@ -30,6 +30,7 @@ in {
       "audio"
       "video"
       "plugdev"
+      "wireshark"
     ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKQ6RpkBluDPdk7jMEDIXp1t+FTL402RJQVtGRL322/w youfathy"

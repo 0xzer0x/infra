@@ -7,5 +7,13 @@
     brightnessctl
     nvtopPackages.intel
     bluez
+    wireshark
   ];
+
+  programs = {
+    wireshark = {
+      enable = true;
+      dumpcap.enable = true;
+    };
+  };
 }
