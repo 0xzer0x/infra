@@ -3,13 +3,13 @@
 
 buildGoModule (finalAttrs: {
   pname = "go-pray";
-  version = "0.1.13";
+  version = "0.1.14";
 
   src = fetchFromGitHub {
     owner = "0xzer0x";
     repo = "go-pray";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-wi/sUjzNbVLbqwtM1BglmXgkaqMamjIsGS6EjlyeC9Y=";
+    hash = "sha256-8DMGw/lHawORwELIedcml2Kew/q5EGL1Jbf70amHuJU=";
   };
 
   vendorHash = "sha256-qMTg2Vsk0nte1O8sbNWN5CCCpgpWLvcb2RuGMoEngYE=";
