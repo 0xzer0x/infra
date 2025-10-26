@@ -36,8 +36,7 @@ in {
 
       shellAbbrs = {
         tree = ''
-          eza --icons --color=auto --sort=type --tree --no-filesize --no-git --no-user --no-time --no-permissions --ignore-glob ".git|.devbox"
-        '';
+          eza --icons --color=auto --sort=type --tree --no-filesize --no-git --no-user --no-time --no-permissions --ignore-glob ".git|.devbox"'';
       };
 
       functions = { nlb = ''nix-locate -r "$(printf 'bin/%s$' $argv[1])"''; };
