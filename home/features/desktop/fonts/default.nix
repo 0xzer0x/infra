@@ -22,7 +22,7 @@ in {
       vazir-fonts
       vazir-code-font
       noto-fonts
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
       nerd-fonts.arimo

@@ -10,7 +10,7 @@ in {
       git = {
         enable = true;
         lfs.enable = true;
-        userName = "Youssef Fathy";
+        settings.user.name = "Youssef Fathy";
         signing.signByDefault = true;
 
         includes = let

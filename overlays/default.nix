@@ -12,7 +12,7 @@
   # NOTE: Allow installing stable packages alongside nixos-unstable
   stable-packages = final: _prev: {
     stable = import inputs.nixpkgs-stable {
-      system = final.system;
+      inherit (final.stdenv.hostPlatform) system;
       config.allowUnfree = true;
     };
   };

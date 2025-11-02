@@ -35,7 +35,8 @@ in {
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKQ6RpkBluDPdk7jMEDIXp1t+FTL402RJQVtGRL322/w youfathy"
     ];
-    packages = [ inputs.home-manager.packages.${pkgs.system}.default ];
+    packages = let inherit (pkgs.stdenv.hostPlatform) system;
+    in [ inputs.home-manager.packages.${system}.default ];
   } // passwordAttrSet;
 
   security.sudo.extraRules = [{

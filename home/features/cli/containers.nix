@@ -16,7 +16,7 @@ in {
     };
 
     home.packages = with pkgs; [
-      cosign
+      stable.cosign
       docker-compose
       docker-credential-helpers
       podman-compose
