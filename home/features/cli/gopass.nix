@@ -14,6 +14,10 @@ in {
       passff-host
     ];
 
+    home.sessionVariables = {
+      PASSWORD_STORE_DIR = "${config.xdg.dataHome}/gopass/stores/root";
+    };
+
     xdg.configFile."gopass/config" = {
       text = ''
         [core]
