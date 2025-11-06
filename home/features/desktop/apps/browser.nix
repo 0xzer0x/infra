@@ -72,6 +72,8 @@ in {
       };
 
       profiles.default = {
+        id = 0;
+        isDefault = true;
         settings = {
           "browser.tabs.closeWindowWithLastTab" = false;
           "zen.welcome-screen.seen" = true;
