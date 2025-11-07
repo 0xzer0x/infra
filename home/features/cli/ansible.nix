@@ -20,6 +20,8 @@ in {
     # NOTE: Extra environment variables
     home.sessionVariables = {
       ANISBLE_HOME = "${config.xdg.configHome}/ansible";
+      # FIX: Fixes issue with ansible hanging forever in setup step
+      ANSIBLE_SSH_USETTY = "false";
       # WARN: Required for ansible-language-server
       ANSIBLE_COLLECTIONS_PATH =
         "${pkgs.python3Packages.ansible}/lib/python${pkgs.python3.pythonVersion}/site-packages";
