@@ -76,11 +76,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1762590873,
-        "narHash": "sha256-NiZvdos1p8e3wV+d41HCNOkiesoJdckh3iNhOh9amy4=",
+        "lastModified": 1762604655,
+        "narHash": "sha256-1thF4O8bFGJEVxpY74bB+Opzir35jiO4iKmTKYMKPzk=",
         "owner": "0xzer0x",
         "repo": "go-pray",
-        "rev": "6c2bfc0bf97c3c0c2f6ef9299452687a5b6cd2fa",
+        "rev": "ac5154c71d95e287a0929136d803a75b30ec13e9",
         "type": "github"
       },
       "original": {
