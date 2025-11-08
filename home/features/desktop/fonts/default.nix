@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ inputs, config, lib, pkgs, ... }:
 
 with lib;
 let cfg = config.features.desktop.fonts;
@@ -8,9 +8,12 @@ in {
 
   config = mkIf cfg.enable {
     # NOTE: Additional fonts
-    home.packages = with pkgs; [
-      sf-pro-font
-      sf-arabic-font
+    home.packages = let
+      inherit (inputs.apple-fonts.packages.${pkgs.stdenv.hostPlatform.system})
+        sf-pro sf-arabic;
+    in with pkgs; [
+      sf-pro
+      sf-arabic
       liberation_ttf
       open-sans
       fira-go

@@ -27,12 +27,22 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    # NOTE: Extra packages flakes
+    go-pray = {
+      url = "github:0xzer0x/go-pray";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # NOTE: SF Fonts
+    apple-fonts = {
+      url = "github:Lyndeno/apple-fonts.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # NOTE: Colorscheme
     catppuccin = {
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # NOTE: Dotfiles
+    # NOTE: Externally-managed dotfiles
     nvimdots = {
       url = "github:0xzer0x/nvim";
       flake = false;
