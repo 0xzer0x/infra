@@ -52,29 +52,27 @@
   outputs = { self, nixpkgs, ... }@inputs:
     let
       inherit (self) outputs;
+      inherit (nixpkgs.lib) nixosSystem;
       system = "x86_64-linux";
-      lib = nixpkgs.lib;
     in {
-      packages = {
-        "${system}" = (import ./pkgs nixpkgs.legacyPackages.${system});
-      };
+      lib = (import ./lib { inherit (nixpkgs) lib; });
+      packages.${system} = (import ./pkgs nixpkgs.legacyPackages.${system});
       overlays = import ./overlays { inherit inputs; };
       homeManagerModules = import ./modules/home-manager;
-
       nixosConfigurations = {
-        younix = lib.nixosSystem {
+        younix = nixosSystem {
           inherit system;
           specialArgs = { inherit inputs outputs; };
           modules = [ ./hosts/younix ];
         };
 
-        nixfly = lib.nixosSystem {
+        nixfly = nixosSystem {
           inherit system;
           specialArgs = { inherit inputs outputs; };
           modules = [ ./hosts/nixfly ];
         };
 
-        virtnix = lib.nixosSystem {
+        virtnix = nixosSystem {
           inherit system;
           specialArgs = { inherit inputs outputs; };
           modules = [ ./hosts/virtnix ];
