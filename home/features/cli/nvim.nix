@@ -15,6 +15,7 @@ in {
       withRuby = true;
       extraPackages = with pkgs; [
         nixd
+        nixfmt
         lua5_1
         lua51Packages.luarocks
         texliveMedium
