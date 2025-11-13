@@ -1,75 +1,87 @@
-{ inputs, config, lib, pkgs, ... }:
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.features.desktop.apps;
   inherit (lib) mkIf;
-in {
+in
+{
   imports = [ inputs.zen-browser.homeModules.default ];
 
   config = mkIf cfg.enable {
     programs.zen-browser = {
       enable = true;
 
-      policies = let
-        mkLockedAttrs = builtins.mapAttrs (_: value: {
-          Value = value;
-          Status = "locked";
-        });
+      policies =
+        let
+          mkLockedAttrs = builtins.mapAttrs (
+            _: value: {
+              Value = value;
+              Status = "locked";
+            }
+          );
 
-        mkPluginUrl = id:
-          "https://addons.mozilla.org/firefox/downloads/latest/${id}/latest.xpi";
+          mkPluginUrl = id: "https://addons.mozilla.org/firefox/downloads/latest/${id}/latest.xpi";
 
-        mkExtensionEntry = { id, pinned ? false, }:
-          let
-            base = {
-              install_url = mkPluginUrl id;
-              installation_mode = "force_installed";
+          mkExtensionEntry =
+            {
+              id,
+              pinned ? false,
+            }:
+            let
+              base = {
+                install_url = mkPluginUrl id;
+                installation_mode = "force_installed";
+              };
+            in
+            if pinned then base // { default_area = "navbar"; } else base;
+
+          mkExtensionSettings = builtins.mapAttrs (
+            _: entry: if builtins.isAttrs entry then entry else mkExtensionEntry { id = entry; }
+          );
+        in
+        {
+          AutofillAddressEnabled = false;
+          AutofillCreditCardEnabled = false;
+          DisableAppUpdate = true;
+          DisableFeedbackCommands = true;
+          DisableFirefoxStudies = true;
+          DisablePocket = true;
+          DisableTelemetry = true;
+          DontCheckDefaultBrowser = true;
+          OfferToSaveLogins = false;
+          HardwareAcceleration = true;
+          SearchEngines.Default = "DuckDuckGo";
+
+          ExtensionSettings = mkExtensionSettings {
+            "uBlock0@raymondhill.net" = "ublock-origin";
+            "leechblockng@proginosko.com" = "leechblock-ng";
+            "extension@tabliss.io" = "tabliss";
+            "markdown-viewer@outofindex.com" = "markdown-viewer-chrome";
+            "{7a7a4a92-a2a0-41d1-9fd7-1e92480d612d}" = "styl-us";
+            "{3c6bf0cc-3ae2-42fb-9993-0d33104fdcaf}" = "youtube-addon";
+            "{05528bd5-3341-4084-bac0-c3a61d568e44}" = "youtube-speedup";
+            "{d7742d87-e61d-4b78-b8a1-b469842139fa}" = "vimium-ff";
+            "{bbb880ce-43c9-47ae-b746-c3e0096c5b76}" = "catppuccin-web-file-icons";
+            "addon@darkreader.org" = mkExtensionEntry {
+              id = "darkreader";
+              pinned = true;
             };
-          in if pinned then base // { default_area = "navbar"; } else base;
+          };
 
-        mkExtensionSettings = builtins.mapAttrs (_: entry:
-          if builtins.isAttrs entry then
-            entry
-          else
-            mkExtensionEntry { id = entry; });
-      in {
-        AutofillAddressEnabled = false;
-        AutofillCreditCardEnabled = false;
-        DisableAppUpdate = true;
-        DisableFeedbackCommands = true;
-        DisableFirefoxStudies = true;
-        DisablePocket = true;
-        DisableTelemetry = true;
-        DontCheckDefaultBrowser = true;
-        OfferToSaveLogins = false;
-        HardwareAcceleration = true;
-        SearchEngines.Default = "DuckDuckGo";
-
-        ExtensionSettings = mkExtensionSettings {
-          "uBlock0@raymondhill.net" = "ublock-origin";
-          "leechblockng@proginosko.com" = "leechblock-ng";
-          "extension@tabliss.io" = "tabliss";
-          "markdown-viewer@outofindex.com" = "markdown-viewer-chrome";
-          "{7a7a4a92-a2a0-41d1-9fd7-1e92480d612d}" = "styl-us";
-          "{3c6bf0cc-3ae2-42fb-9993-0d33104fdcaf}" = "youtube-addon";
-          "{05528bd5-3341-4084-bac0-c3a61d568e44}" = "youtube-speedup";
-          "{d7742d87-e61d-4b78-b8a1-b469842139fa}" = "vimium-ff";
-          "{bbb880ce-43c9-47ae-b746-c3e0096c5b76}" =
-            "catppuccin-web-file-icons";
-          "addon@darkreader.org" = mkExtensionEntry {
-            id = "darkreader";
-            pinned = true;
+          Preferences = mkLockedAttrs {
+            "browser.aboutConfig.showWarning" = false;
+            "browser.newtab.extensionControlled" = true;
+            "privacy.resistFingerprinting" = true;
+            "privacy.firstparty.isolate" = true;
+            "gfx.webrender.all" = true;
           };
         };
-
-        Preferences = mkLockedAttrs {
-          "browser.aboutConfig.showWarning" = false;
-          "browser.newtab.extensionControlled" = true;
-          "privacy.resistFingerprinting" = true;
-          "privacy.firstparty.isolate" = true;
-          "gfx.webrender.all" = true;
-        };
-      };
 
       profiles.default = {
         id = 0;
@@ -90,75 +102,84 @@ in {
         spaces = {
           Space = {
             id = "f1b6fb21-0b09-42c9-8850-9c5598917783";
-            theme.colors = [{
-              red = 24;
-              green = 24;
-              blue = 37;
-            }];
+            theme.colors = [
+              {
+                red = 24;
+                green = 24;
+                blue = 37;
+              }
+            ];
           };
         };
         search = {
           default = "duckduckgo";
-          engines = let
-            nixSnowflakeIcon =
-              "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-          in {
-            "Nix Packages" = {
-              icon = nixSnowflakeIcon;
-              definedAliases = [ "@np" ];
-              urls = [{
-                template = "https://search.nixos.org/packages";
-                params = [
+          engines =
+            let
+              nixSnowflakeIcon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            in
+            {
+              "Nix Packages" = {
+                icon = nixSnowflakeIcon;
+                definedAliases = [ "@np" ];
+                urls = [
                   {
-                    name = "type";
-                    value = "packages";
-                  }
-                  {
-                    name = "channel";
-                    value = "unstable";
-                  }
-                  {
-                    name = "query";
-                    value = "{searchTerms}";
-                  }
-                ];
-              }];
-            };
-            "Nix Options" = {
-              icon = nixSnowflakeIcon;
-              definedAliases = [ "@nop" ];
-              urls = [{
-                template = "https://search.nixos.org/options";
-                params = [
-                  {
-                    name = "channel";
-                    value = "unstable";
-                  }
-                  {
-                    name = "query";
-                    value = "{searchTerms}";
+                    template = "https://search.nixos.org/packages";
+                    params = [
+                      {
+                        name = "type";
+                        value = "packages";
+                      }
+                      {
+                        name = "channel";
+                        value = "unstable";
+                      }
+                      {
+                        name = "query";
+                        value = "{searchTerms}";
+                      }
+                    ];
                   }
                 ];
-              }];
-            };
-            "Home Manager Options" = {
-              icon = nixSnowflakeIcon;
-              definedAliases = [ "@hmop" ];
-              urls = [{
-                template = "https://home-manager-options.extranix.com/";
-                params = [
+              };
+              "Nix Options" = {
+                icon = nixSnowflakeIcon;
+                definedAliases = [ "@nop" ];
+                urls = [
                   {
-                    name = "query";
-                    value = "{searchTerms}";
-                  }
-                  {
-                    name = "release";
-                    value = "master";
+                    template = "https://search.nixos.org/options";
+                    params = [
+                      {
+                        name = "channel";
+                        value = "unstable";
+                      }
+                      {
+                        name = "query";
+                        value = "{searchTerms}";
+                      }
+                    ];
                   }
                 ];
-              }];
+              };
+              "Home Manager Options" = {
+                icon = nixSnowflakeIcon;
+                definedAliases = [ "@hmop" ];
+                urls = [
+                  {
+                    template = "https://home-manager-options.extranix.com/";
+                    params = [
+                      {
+                        name = "query";
+                        value = "{searchTerms}";
+                      }
+                      {
+                        name = "release";
+                        value = "master";
+                      }
+                    ];
+                  }
+                ];
+              };
             };
-          };
         };
 
         userContent = ''

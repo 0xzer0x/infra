@@ -1,10 +1,16 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.features.cli.containers;
-in {
-  options.features.cli.containers.enable =
-    mkEnableOption "Enable containers CLI utilities";
+let
+  cfg = config.features.cli.containers;
+in
+{
+  options.features.cli.containers.enable = mkEnableOption "Enable containers CLI utilities";
 
   config = mkIf cfg.enable {
     programs = {

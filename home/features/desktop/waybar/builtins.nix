@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 let
@@ -15,13 +20,20 @@ let
       "~(.*)" = " ";
     };
   };
-in {
+in
+{
   config = mkIf cfg.enable {
     programs.waybar.settings.hyprland-statusbar = {
       "hyprland/window" = windowRewriteRules;
-      "hyprland/workspaces" = { max-length = workspacesCount; };
-      "hyprland/submap" = { format = "<span style='italic'> {}  </span>"; };
-      "hyprland/language" = { format = "{short}"; };
+      "hyprland/workspaces" = {
+        max-length = workspacesCount;
+      };
+      "hyprland/submap" = {
+        format = "<span style='italic'> {}  </span>";
+      };
+      "hyprland/language" = {
+        format = "{short}";
+      };
       keyboard-state = {
         capslock = true;
         format = "󰪛";
@@ -66,7 +78,9 @@ in {
         tooltip = false;
         on-click = "${terminalPkg}/bin/${terminal} -e btop";
       };
-      memory = { format = "  {}%"; };
+      memory = {
+        format = "  {}%";
+      };
       network = {
         interval = 2;
         format = " {bandwidthDownBytes}  {bandwidthUpBytes}";
@@ -95,13 +109,19 @@ in {
           phone = " ";
           portable = " ";
           car = " ";
-          default = [ "󰕿" "󰖀" "󰕾" ];
+          default = [
+            "󰕿"
+            "󰖀"
+            "󰕾"
+          ];
         };
-        on-click = let
-          extraTerminalOpts = { kitty = "--single-instance --app-id=Wiremix"; };
-        in "${terminalPkg}/bin/${terminal} ${
-          extraTerminalOpts.${terminal} or ""
-        } -e wiremix";
+        on-click =
+          let
+            extraTerminalOpts = {
+              kitty = "--single-instance --app-id=Wiremix";
+            };
+          in
+          "${terminalPkg}/bin/${terminal} ${extraTerminalOpts.${terminal} or ""} -e wiremix";
       };
     };
   };

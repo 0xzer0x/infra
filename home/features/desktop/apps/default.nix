@@ -1,12 +1,17 @@
 { config, lib, ... }:
 
 with lib;
-let cfg = config.features.desktop.apps;
-in {
-  options.features.desktop.apps.enable =
-    mkEnableOption "Enable desktop GUI apps";
+let
+  cfg = config.features.desktop.apps;
+in
+{
+  options.features.desktop.apps.enable = mkEnableOption "Enable desktop GUI apps";
 
-  imports = [ ./nixpkgs.nix ./flatpak.nix ./browser.nix ];
+  imports = [
+    ./nixpkgs.nix
+    ./flatpak.nix
+    ./browser.nix
+  ];
 
   # NOTE: Set default applications
   config = mkIf cfg.enable {

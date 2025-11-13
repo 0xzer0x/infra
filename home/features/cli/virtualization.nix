@@ -1,10 +1,16 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.features.cli.virtualization;
-in {
-  options.features.cli.virtualization.enable =
-    mkEnableOption "Enable virtualization CLI utilities";
+let
+  cfg = config.features.cli.virtualization;
+in
+{
+  options.features.cli.virtualization.enable = mkEnableOption "Enable virtualization CLI utilities";
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [ lima ];

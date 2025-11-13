@@ -3,7 +3,8 @@
 let
   wl-copy = "${pkgs.wl-clipboard}/bin/wl-copy";
   notify-send = "${pkgs.libnotify}/bin/notify-send";
-in pkgs.writeShellScriptBin "passgen" ''
+in
+pkgs.writeShellScriptBin "passgen" ''
   set -euo pipefail
 
   ${wl-copy} "$(pwgen -s1y 24)"

@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.features.cli.starship;
-in {
+let
+  cfg = config.features.cli.starship;
+in
+{
   options.features.cli.starship.enable =
     mkEnableOption "Enable extended Starship prompt configuration";
 
@@ -18,8 +25,7 @@ in {
         aws = {
           disabled = true;
           symbol = " ";
-          format =
-            " [$symbol($profile)(\\($region\\))(\\[$duration\\])]($style)";
+          format = " [$symbol($profile)(\\($region\\))(\\[$duration\\])]($style)";
         };
 
         buf.symbol = " ";
@@ -175,8 +181,7 @@ in {
 
         python = {
           symbol = " ";
-          format =
-            " [\${symbol}\${pyenv_prefix}(\${version})(\\($virtualenv\\))]($style)";
+          format = " [\${symbol}\${pyenv_prefix}(\${version})(\\($virtualenv\\))]($style)";
           style = "bold yellow";
         };
 

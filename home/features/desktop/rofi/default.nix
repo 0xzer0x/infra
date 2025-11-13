@@ -1,20 +1,33 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 let
   cfg = config.features.desktop.rofi;
   inherit (config.lib.formats.rasi) mkLiteral;
-in {
-  options.features.desktop.rofi.enable =
-    mkEnableOption "Enable Rofi extended configuration";
+in
+{
+  options.features.desktop.rofi.enable = mkEnableOption "Enable Rofi extended configuration";
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ grim slurp pulseaudio ];
+    home.packages = with pkgs; [
+      grim
+      slurp
+      pulseaudio
+    ];
 
     programs = {
       rofi = {
         enable = true;
-        modes = [ "drun" "run" "window" ];
+        modes = [
+          "drun"
+          "run"
+          "window"
+        ];
         plugins = [ pkgs.rofi-emoji ];
 
         extraConfig = {
@@ -35,9 +48,13 @@ in {
         };
 
         theme = {
-          window = { width = mkLiteral "600px"; };
+          window = {
+            width = mkLiteral "600px";
+          };
 
-          element = { padding = mkLiteral "0 0.5em 0 0.5em"; };
+          element = {
+            padding = mkLiteral "0 0.5em 0 0.5em";
+          };
         };
       };
     };

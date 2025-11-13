@@ -1,7 +1,9 @@
 { config, lib, ... }:
 
-let cfg = config.features.cli.shell;
-in {
+let
+  cfg = config.features.cli.shell;
+in
+{
   options.features.cli.shell.fish = {
     enable = lib.mkOption {
       type = lib.types.bool;
@@ -35,11 +37,12 @@ in {
       };
 
       shellAbbrs = {
-        tree = ''
-          eza --icons --color=auto --sort=type --tree --no-filesize --no-git --no-user --no-time --no-permissions --ignore-glob ".git|.devbox"'';
+        tree = ''eza --icons --color=auto --sort=type --tree --no-filesize --no-git --no-user --no-time --no-permissions --ignore-glob ".git|.devbox"'';
       };
 
-      functions = { nlb = ''nix-locate -r "$(printf 'bin/%s$' $argv[1])"''; };
+      functions = {
+        nlb = ''nix-locate -r "$(printf 'bin/%s$' $argv[1])"'';
+      };
 
       interactiveShellInit = ''
         set -U fish_greeting

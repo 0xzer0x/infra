@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 let
@@ -6,8 +11,8 @@ let
   cfg = config.features.desktop.hyprland;
   terminal = config.features.desktop.terminal.default;
   terminalPkg = pkgs.${terminal};
-  term = "${terminalPkg}/bin/${terminal}"
-    + (if (terminal == "kitty") then " --single-instance" else "");
+  term =
+    "${terminalPkg}/bin/${terminal}" + (if (terminal == "kitty") then " --single-instance" else "");
   menu = "${pkgs.rofi}/bin/rofi -show drun -show-icons";
   passmenu = "${configHome}/rofi/runners/passmenu";
   powermenu = "${configHome}/rofi/runners/powermenu";
@@ -23,25 +28,32 @@ let
   code = "${term} tmux -N new nvim";
   browser = "${config.programs.zen-browser.package}/bin/zen-beta";
   telegram = "flatpak run org.telegram.desktop";
-  slack =
-    "${pkgs.slack}/bin/slack --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland";
-  notes =
-    "${pkgs.obsidian}/bin/obsidian --enable-features=WaylandWindowDecorations";
+  slack = "${pkgs.slack}/bin/slack --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland";
+  notes = "${pkgs.obsidian}/bin/obsidian --enable-features=WaylandWindowDecorations";
   mousepad = "${pkgs.xfce.mousepad}/bin/mousepad";
   zathura = "${pkgs.zathura}/bin/zathura";
   restart-waybar = "${configHome}/hypr/scripts/restart-waybar";
 
-  workspaceBinds = builtins.concatLists (builtins.genList (x:
-    let key = builtins.toString (x + 1 - (((x + 1) / 10) * 10));
-    in [
-      "$mod, ${key}, workspace, ${toString (x + 1)}"
-      "$mod SHIFT, ${key}, movetoworkspace, ${toString (x + 1)}"
-    ]) 10);
-in {
+  workspaceBinds = builtins.concatLists (
+    builtins.genList (
+      x:
+      let
+        key = builtins.toString (x + 1 - (((x + 1) / 10) * 10));
+      in
+      [
+        "$mod, ${key}, workspace, ${toString (x + 1)}"
+        "$mod SHIFT, ${key}, movetoworkspace, ${toString (x + 1)}"
+      ]
+    ) 10
+  );
+in
+{
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
       settings = {
-        general = { "$mod" = "SUPER"; };
+        general = {
+          "$mod" = "SUPER";
+        };
 
         bind = workspaceBinds ++ [
           # ============== Navigation =============== #

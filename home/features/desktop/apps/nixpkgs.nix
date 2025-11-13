@@ -1,10 +1,16 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 let
   cfg = config.features.desktop.apps;
   inherit (config.home) homeDirectory;
-in {
+in
+{
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       libreoffice
@@ -24,10 +30,15 @@ in {
 
     # NOTE: Media player
     catppuccin.mpv.enable = false;
-    home.sessionVariables = { VIDEO = "mpv"; };
+    home.sessionVariables = {
+      VIDEO = "mpv";
+    };
     programs.mpv = {
       enable = true;
-      scripts = with pkgs; [ mpvScripts.uosc mpvScripts.thumbfast ];
+      scripts = with pkgs; [
+        mpvScripts.uosc
+        mpvScripts.thumbfast
+      ];
       config = {
         osc = "no";
         border = "no";
@@ -61,8 +72,7 @@ in {
             actions-on-escape = [ ];
             actions-on-enter = [ "save-to-clipboard" ];
             copy-command = "${pkgs.wl-clipboard}/bin/wl-copy";
-            output-filename =
-              "${homeDirectory}/Pictures/screenshots/screenshot_%Y-%m-%d_%H-%M-%S.png";
+            output-filename = "${homeDirectory}/Pictures/screenshots/screenshot_%Y-%m-%d_%H-%M-%S.png";
           };
         };
       };
@@ -93,8 +103,7 @@ in {
       settings = {
         devices = {
           phone = {
-            id =
-              "4EBCMTO-XYQYAVB-X4XHTMW-J3GALVG-C7UWCJA-LVTI5HO-LGXK7GM-2ZE2PAZ";
+            id = "4EBCMTO-XYQYAVB-X4XHTMW-J3GALVG-C7UWCJA-LVTI5HO-LGXK7GM-2ZE2PAZ";
             name = "Phone";
           };
         };

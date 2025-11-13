@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.features.programming.nodejs;
-in {
+let
+  cfg = config.features.programming.nodejs;
+in
+{
   options.features.programming.nodejs.enable =
     mkEnableOption "Enable NodeJS development configuration";
 
@@ -13,4 +20,3 @@ in {
     };
   };
 }
-

@@ -1,24 +1,33 @@
-{ inputs, outputs, lib, ... }:
+{
+  inputs,
+  outputs,
+  lib,
+  ...
+}:
 
 {
   # NOTE: Use nixos-rebuilld-ng instead of nixos-rebuild
   system.rebuild.enableNg = true;
 
-  nix = let flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
-  in {
-    settings = {
-      experimental-features = [ "nix-command" "flakes" ];
-      trusted-users = [ "@wheel" ];
-      use-xdg-base-directories = true;
-      auto-optimise-store = true;
-      min-free = 32212254720;
-    };
+  nix =
+    let
+      flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
+    in
+    {
+      settings = {
+        experimental-features = [
+          "nix-command"
+          "flakes"
+        ];
+        trusted-users = [ "@wheel" ];
+        use-xdg-base-directories = true;
+        auto-optimise-store = true;
+        min-free = 32212254720;
+      };
 
-    registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
-    nixPath =
-      lib.mapAttrsToList (flakeName: _: "${flakeName}=flake:${flakeName}")
-      flakeInputs;
-  };
+      registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
+      nixPath = lib.mapAttrsToList (flakeName: _: "${flakeName}=flake:${flakeName}") flakeInputs;
+    };
 
   nixpkgs = {
     config.allowUnfree = true;

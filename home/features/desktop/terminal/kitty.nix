@@ -1,8 +1,10 @@
 { config, lib, ... }:
 
 with lib;
-let cfg = config.features.desktop.terminal;
-in {
+let
+  cfg = config.features.desktop.terminal;
+in
+{
   options.features.desktop.terminal.kitty.enable = mkOption {
     type = types.bool;
     description = "Enable kitty terminal configuration";
@@ -24,4 +26,3 @@ in {
     };
   };
 }
-

@@ -1,12 +1,18 @@
-{ inputs, config, lib, ... }:
+{
+  inputs,
+  config,
+  lib,
+  ...
+}:
 
 with lib;
-let cfg = config.features.cli.go-pray;
-in {
+let
+  cfg = config.features.cli.go-pray;
+in
+{
   imports = [ inputs.go-pray.homeManagerModules.default ];
 
-  options.features.cli.go-pray.enable =
-    mkEnableOption "Enable go-pray CLI configuration";
+  options.features.cli.go-pray.enable = mkEnableOption "Enable go-pray CLI configuration";
 
   config = mkIf cfg.enable {
     xdg.configFile."go-pray/qatami-takbeer.mp3" = {

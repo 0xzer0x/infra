@@ -6,27 +6,36 @@ let
   homeWifiSecret = "networking/home-wifi/psk";
   synapseWifiSSID = "Synapse Analytics";
   synapseWifiSecret = "networking/synapse-wifi/psk";
-  wifiProfile = { wifiSSID, pskVar, hiddenSSID }: {
-    connection = {
-      id = wifiSSID;
-      type = "802-11-wireless";
-      autoconnect = true;
-    };
+  wifiProfile =
+    {
+      wifiSSID,
+      pskVar,
+      hiddenSSID,
+    }:
+    {
+      connection = {
+        id = wifiSSID;
+        type = "802-11-wireless";
+        autoconnect = true;
+      };
 
-    ipv4 = { method = "auto"; };
+      ipv4 = {
+        method = "auto";
+      };
 
-    wifi = {
-      hidden = hiddenSSID;
-      ssid = wifiSSID;
-      mode = "infrastructure";
-    };
+      wifi = {
+        hidden = hiddenSSID;
+        ssid = wifiSSID;
+        mode = "infrastructure";
+      };
 
-    wifi-security = {
-      key-mgmt = "wpa-psk";
-      psk = "\$${pskVar}";
+      wifi-security = {
+        key-mgmt = "wpa-psk";
+        psk = "\$${pskVar}";
+      };
     };
-  };
-in {
+in
+{
   sops.secrets = {
     "${homeWifiSecret}" = { };
     "${synapseWifiSecret}" = {
@@ -39,8 +48,7 @@ in {
   '';
 
   networking.networkmanager.ensureProfiles = {
-    environmentFiles =
-      [ config.sops.templates."networkmanager-${hostName}.env".path ];
+    environmentFiles = [ config.sops.templates."networkmanager-${hostName}.env".path ];
     profiles = {
       home-wifi = wifiProfile {
         hiddenSSID = true;

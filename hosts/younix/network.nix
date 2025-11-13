@@ -4,15 +4,15 @@ let
   inherit (config.networking) hostName;
   homeWifiSSID = "Pluto";
   homeWifiSecret = "networking/home-wifi/psk";
-in {
+in
+{
   sops.secrets."${homeWifiSecret}" = { };
   sops.templates."networkmanager-${hostName}.env".content = ''
     HOMEWIFIPSK=${config.sops.placeholder."${homeWifiSecret}"}
   '';
 
   networking.networkmanager.ensureProfiles = {
-    environmentFiles =
-      [ config.sops.templates."networkmanager-${hostName}.env".path ];
+    environmentFiles = [ config.sops.templates."networkmanager-${hostName}.env".path ];
     profiles = {
       ethernet = {
         connection = {
@@ -22,7 +22,9 @@ in {
           autoconnect-priority = 10;
         };
 
-        ipv4 = { method = "auto"; };
+        ipv4 = {
+          method = "auto";
+        };
       };
 
       home-wifi = {
@@ -32,7 +34,9 @@ in {
           autoconnect = true;
         };
 
-        ipv4 = { method = "auto"; };
+        ipv4 = {
+          method = "auto";
+        };
 
         wifi = {
           hidden = true;

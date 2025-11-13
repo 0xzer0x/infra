@@ -4,7 +4,8 @@ let
   wpctl = "${pkgs.wireplumber}/bin/wpctl";
   notify-send = "${pkgs.libnotify}/bin/notify-send";
   grep = "${pkgs.gnugrep}/bin/grep";
-in pkgs.writeShellScriptBin "audioctl" ''
+in
+pkgs.writeShellScriptBin "audioctl" ''
   set -euo pipefail
 
   declare -A __MUTE_ICONS=(

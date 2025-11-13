@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.features.cli.k8s;
-in {
+let
+  cfg = config.features.cli.k8s;
+in
+{
   options.features.cli.k8s.enable = mkEnableOption "Enable K8s CLI utilities";
 
   config = mkIf cfg.enable {
@@ -16,7 +23,9 @@ in {
     catppuccin.k9s.transparent = true;
     programs.k9s = {
       enable = true;
-      settings = { k9s.ui.headless = true; };
+      settings = {
+        k9s.ui.headless = true;
+      };
     };
 
     # NOTE: Additional packages

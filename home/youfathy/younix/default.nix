@@ -1,6 +1,8 @@
 { outputs, ... }:
-let inherit (outputs.lib) featuresConfiguration;
-in {
+let
+  inherit (outputs.lib) featuresConfiguration;
+in
+{
   imports = [
     ../home.nix
     ../../common
@@ -20,9 +22,24 @@ in {
     colorscheme = "catppuccin";
     terminal = "kitty";
     # NOTE: Enabled features
-    programmingFeatures = [ "cpp" "go" "rust" "nodejs" "python" "tools" ];
-    desktopFeatures =
-      [ "fonts" "gtk" "qt" "wayland" "hyprland" "waybar" "rofi" "apps" ];
+    programmingFeatures = [
+      "cpp"
+      "go"
+      "rust"
+      "nodejs"
+      "python"
+      "tools"
+    ];
+    desktopFeatures = [
+      "fonts"
+      "gtk"
+      "qt"
+      "wayland"
+      "hyprland"
+      "waybar"
+      "rofi"
+      "apps"
+    ];
     cliFeatures = [
       "ssh"
       "git"

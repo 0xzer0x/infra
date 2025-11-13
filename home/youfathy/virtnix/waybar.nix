@@ -1,8 +1,10 @@
 { config, lib, ... }:
 
 with lib;
-let cfg = config.features.desktop.waybar;
-in {
+let
+  cfg = config.features.desktop.waybar;
+in
+{
   config = mkIf cfg.enable {
     programs.waybar.settings.hyprland-statusbar = {
       modules-right = [

@@ -1,10 +1,11 @@
 { config, lib, ... }:
 
 with lib;
-let cfg = config.features.cli.fastfetch;
-in {
-  options.features.cli.fastfetch.enable =
-    mkEnableOption "Enable fastfetch configuration";
+let
+  cfg = config.features.cli.fastfetch;
+in
+{
+  options.features.cli.fastfetch.enable = mkEnableOption "Enable fastfetch configuration";
 
   config = mkIf cfg.enable {
     programs.fastfetch = {
@@ -13,9 +14,13 @@ in {
       settings = {
         logo = {
           type = "small";
-          padding = { top = 1; };
+          padding = {
+            top = 1;
+          };
         };
-        display = { separator = " "; };
+        display = {
+          separator = " ";
+        };
         modules = [
           {
             key = "╭───────────╮";
@@ -92,4 +97,3 @@ in {
     };
   };
 }
-

@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 let
@@ -15,35 +20,25 @@ let
     "dispatcher"
     "shadowsocks-config"
   ];
-in {
+in
+{
   options.work.synapse.wireguard.enable =
     mkEnableOption "Enable Synapse Wireguard network configuration";
 
   config = mkIf cfg.enable {
     sops.secrets = genAttrs requiredSecrets (name: { });
     sops.templates."synapse-wireguard.env".content = ''
-      SYNAPSE_WIREGUARD_PRIVATE_KEY=${
-        config.sops.placeholder.${secretPath "private-key"}
-      }
-      SYNAPSE_WIREGUARD_ENDPOINT=${
-        config.sops.placeholder.${secretPath "wireguard-peer/endpoint"}
-      }
-      SYNAPSE_WIREGUARD_PSK=${
-        config.sops.placeholder.${secretPath "wireguard-peer/psk"}
-      }
-      SYNAPSE_WIREGUARD_ALLOWED_IPS=${
-        config.sops.placeholder.${secretPath "wireguard-peer/allowed-ips"}
-      }
-      SYNAPSE_WIREGUARD_IPV4_ADDRESSES=${
-        config.sops.placeholder.${secretPath "ipv4/addresses"}
-      }
+      SYNAPSE_WIREGUARD_PRIVATE_KEY=${config.sops.placeholder.${secretPath "private-key"}}
+      SYNAPSE_WIREGUARD_ENDPOINT=${config.sops.placeholder.${secretPath "wireguard-peer/endpoint"}}
+      SYNAPSE_WIREGUARD_PSK=${config.sops.placeholder.${secretPath "wireguard-peer/psk"}}
+      SYNAPSE_WIREGUARD_ALLOWED_IPS=${config.sops.placeholder.${secretPath "wireguard-peer/allowed-ips"}}
+      SYNAPSE_WIREGUARD_IPV4_ADDRESSES=${config.sops.placeholder.${secretPath "ipv4/addresses"}}
     '';
 
     networking.networkmanager = {
       # NOTE: NetworkManager profile
       ensureProfiles = {
-        environmentFiles =
-          [ config.sops.templates."synapse-wireguard.env".path ];
+        environmentFiles = [ config.sops.templates."synapse-wireguard.env".path ];
         profiles.synapse-wireguard = {
           connection = {
             id = connId;
@@ -71,15 +66,19 @@ in {
             dns-search = "~";
           };
 
-          ipv6 = { method = "disabled"; };
+          ipv6 = {
+            method = "disabled";
+          };
         };
       };
 
       # NOTE: Dispatcher script
-      dispatcherScripts = [{
-        type = "basic";
-        source = config.sops.secrets.${secretPath "dispatcher"}.path;
-      }];
+      dispatcherScripts = [
+        {
+          type = "basic";
+          source = config.sops.secrets.${secretPath "dispatcher"}.path;
+        }
+      ];
     };
     systemd.services.NetworkManager-dispatcher.path = [ pkgs.bash ];
 

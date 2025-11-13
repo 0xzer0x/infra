@@ -4,7 +4,8 @@ let
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
   notify-send = "${pkgs.libnotify}/bin/notify-send";
   bc = "${pkgs.bc}/bin/bc";
-in pkgs.writeShellScriptBin "brightness" ''
+in
+pkgs.writeShellScriptBin "brightness" ''
   set -euo pipefail
 
   _notify_level() {

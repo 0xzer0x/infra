@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.features.desktop.hyprland;
-in {
+let
+  cfg = config.features.desktop.hyprland;
+in
+{
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       overlayPackages.papirus-icon-theme
@@ -48,8 +55,7 @@ in {
         };
       };
     };
-    systemd.user.services.dunst.Install.WantedBy =
-      [ "graphical-session.target" ];
+    systemd.user.services.dunst.Install.WantedBy = [ "graphical-session.target" ];
 
     services = {
       # NOTE: NetworkManager applet
@@ -63,7 +69,9 @@ in {
     };
 
     dconf.settings = {
-      "org/nemo/preferences" = { "disable-menu-warning" = true; };
+      "org/nemo/preferences" = {
+        "disable-menu-warning" = true;
+      };
       "org/nemo/window-state" = {
         "maximized" = true;
         "my-computer-expanded" = true;
@@ -75,7 +83,9 @@ in {
         "start-with-sidebar" = true;
         "sidebar-bookmark-breakpoint" = 0;
       };
-      "org/virt-manager/virt-manager/details" = { "show-toolbar" = false; };
+      "org/virt-manager/virt-manager/details" = {
+        "show-toolbar" = false;
+      };
     };
   };
 }

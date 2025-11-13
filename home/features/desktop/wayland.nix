@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 let
@@ -14,9 +19,9 @@ let
     NIXOS_OZONE_WL = "1";
     ELECTRON_OZONE_PLATFORM_HINT = "auto";
   };
-in {
-  options.features.desktop.wayland.enable =
-    mkEnableOption "Enable Wayland desktop configuration";
+in
+{
+  options.features.desktop.wayland.enable = mkEnableOption "Enable Wayland desktop configuration";
 
   config = mkIf cfg.enable {
     home.sessionVariables = waylandCommonVariables;

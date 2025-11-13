@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.features.cli.aws;
-in {
+let
+  cfg = config.features.cli.aws;
+in
+{
   options.features.cli.aws.enable = mkEnableOption "Enable AWS CLI utilities";
 
   config = mkIf cfg.enable {
@@ -22,6 +29,8 @@ in {
     home.packages = with pkgs; [ terraform ];
 
     # NOTE: Extra environment variables
-    home.sessionVariables = { AWS_PROFILE = "personal"; };
+    home.sessionVariables = {
+      AWS_PROFILE = "personal";
+    };
   };
 }

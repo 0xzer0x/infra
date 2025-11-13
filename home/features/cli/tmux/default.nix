@@ -1,11 +1,21 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.features.cli.tmux;
-in {
+let
+  cfg = config.features.cli.tmux;
+in
+{
   options.features.cli.tmux.enable = mkEnableOption "Enable TMUX configuration";
 
-  imports = [ ./theme.nix ./sesh.nix ];
+  imports = [
+    ./theme.nix
+    ./sesh.nix
+  ];
 
   config = mkIf cfg.enable {
     xdg.configFile."tmux/tmux-nerd-font-window-name.yml" = {
@@ -215,9 +225,10 @@ in {
         ExecStart = "${pkgs.tmux}/bin/tmux -D";
       };
 
-      Install = { WantedBy = [ "graphical-session.target" ]; };
+      Install = {
+        WantedBy = [ "graphical-session.target" ];
+      };
     };
 
   };
 }
-

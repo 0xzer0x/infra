@@ -6,7 +6,10 @@
   fonts = {
     fontDir.enable = true;
     enableDefaultPackages = true;
-    packages = with pkgs; [ adwaita-fonts nerd-fonts.geist-mono ];
+    packages = with pkgs; [
+      adwaita-fonts
+      nerd-fonts.geist-mono
+    ];
     fontconfig = {
       enable = true;
       includeUserConf = true;

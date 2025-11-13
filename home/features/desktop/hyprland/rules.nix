@@ -1,8 +1,10 @@
 { config, lib, ... }:
 
 with lib;
-let cfg = config.features.desktop.hyprland;
-in {
+let
+  cfg = config.features.desktop.hyprland;
+in
+{
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland.settings = {
       layerrule = [
@@ -12,7 +14,10 @@ in {
         "noanim, rofi"
       ];
       # NOTE: Smart gaps
-      workspace = [ "w[tv1], gapsout:0, gapsin:0" "f[1], gapsout:0, gapsin:0" ];
+      workspace = [
+        "w[tv1], gapsout:0, gapsin:0"
+        "f[1], gapsout:0, gapsin:0"
+      ];
       windowrulev2 = [
         # NOTE: Smart gaps
         "bordersize 0, floating:0, onworkspace:w[tv1]"

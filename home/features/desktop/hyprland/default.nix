@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 let
@@ -6,16 +11,33 @@ let
   # WARN: Must not contain shell expansion syntax (raw strings only)
   environmentVariables = {
     inherit (config.home.sessionVariables)
-      XDG_CONFIG_HOME XDG_DATA_HOME XDG_CACHE_HOME XDG_STATE_HOME
-      XDG_DOCUMENTS_DIR XDG_DOWNLOAD_DIR XDG_MUSIC_DIR XDG_DESKTOP_DIR
-      XDG_PICTURES_DIR XDG_TEMPLATES_DIR XDG_VIDEOS_DIR XDG_PUBLICSHARE_DIR
+      XDG_CONFIG_HOME
+      XDG_DATA_HOME
+      XDG_CACHE_HOME
+      XDG_STATE_HOME
+      XDG_DOCUMENTS_DIR
+      XDG_DOWNLOAD_DIR
+      XDG_MUSIC_DIR
+      XDG_DESKTOP_DIR
+      XDG_PICTURES_DIR
+      XDG_TEMPLATES_DIR
+      XDG_VIDEOS_DIR
+      XDG_PUBLICSHARE_DIR
       # NOTE: Wayland
-      NIXOS_OZONE_WL ELECTRON_OZONE_PLATFORM_HINT GDK_BACKEND GDK_SCALE
+      NIXOS_OZONE_WL
+      ELECTRON_OZONE_PLATFORM_HINT
+      GDK_BACKEND
+      GDK_SCALE
       # NOTE: Qt
-      QT_QPA_PLATFORM QT_QPA_PLATFORMTHEME QT_STYLE_OVERRIDE
+      QT_QPA_PLATFORM
+      QT_QPA_PLATFORMTHEME
+      QT_STYLE_OVERRIDE
       QT_WAYLAND_DISABLE_WINDOWDECORATION
       # NOTE: Misc
-      GNUPGHOME VIDEO EDITOR;
+      GNUPGHOME
+      VIDEO
+      EDITOR
+      ;
     # NOTE: Hyprland
     XDG_SESSION_DESKTOP = "Hyprland";
     XDG_CURRENT_DESKTOP = "Hyprland";
@@ -24,11 +46,16 @@ let
     HYPRCURSOR_THEME = "Adwaita";
     HYPRCURSOR_SIZE = 22;
   };
-in {
-  options.features.desktop.hyprland.enable =
-    mkEnableOption "Enable Hyprland desktop configuration";
+in
+{
+  options.features.desktop.hyprland.enable = mkEnableOption "Enable Hyprland desktop configuration";
 
-  imports = [ ./packages.nix ./bindings.nix ./rules.nix ./xdph.nix ];
+  imports = [
+    ./packages.nix
+    ./bindings.nix
+    ./rules.nix
+    ./xdph.nix
+  ];
 
   config = mkIf cfg.enable {
     xdg.configFile = {
@@ -79,9 +106,9 @@ in {
         };
 
         # NOTE: Environment variables (imported session variables and add additional ones)
-        env = (lib.attrsets.mapAttrsToList
-          (name: value: "${name},${builtins.toString value}")
-          environmentVariables);
+        env = (
+          lib.attrsets.mapAttrsToList (name: value: "${name},${builtins.toString value}") environmentVariables
+        );
 
         # NOTE: Look and feel
         cursor.sync_gsettings_theme = true;

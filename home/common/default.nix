@@ -1,4 +1,10 @@
-{ config, lib, pkgs, outputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  outputs,
+  ...
+}:
 
 {
   # NOTE: Import custom-defined home-manager modules
@@ -6,7 +12,10 @@
 
   nix = {
     package = lib.mkDefault pkgs.nix;
-    settings.experimental-features = [ "nix-command" "flakes" ];
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
   };
 
   nixpkgs = {
@@ -15,13 +24,16 @@
       allowUnfreePredicate = _: true;
     };
 
-    overlays = let homeManagerOverlays = import ../overlays { inherit config; };
-    in [
-      outputs.overlays.additions
-      outputs.overlays.modifications
-      outputs.overlays.stable-packages
-      homeManagerOverlays.additions
-    ];
+    overlays =
+      let
+        homeManagerOverlays = import ../overlays { inherit config; };
+      in
+      [
+        outputs.overlays.additions
+        outputs.overlays.modifications
+        outputs.overlays.stable-packages
+        homeManagerOverlays.additions
+      ];
   };
 
   # NOTE: Sets default XDG directories environment variables

@@ -1,10 +1,16 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.features.cli.yazi;
-in {
-  options.features.cli.yazi.enable =
-    mkEnableOption "Enable Yazi terminal file manager";
+let
+  cfg = config.features.cli.yazi;
+in
+{
+  options.features.cli.yazi.enable = mkEnableOption "Enable Yazi terminal file manager";
 
   config = mkIf cfg.enable {
     programs.yazi = {
@@ -35,7 +41,10 @@ in {
             desc = "Open mounts manager";
           }
           {
-            on = [ "g" "w" ];
+            on = [
+              "g"
+              "w"
+            ];
             run = "cd ~/Workspace";
             desc = "Go to ~/Workspace";
           }

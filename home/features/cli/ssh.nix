@@ -1,10 +1,11 @@
 { config, lib, ... }:
 
 with lib;
-let cfg = config.features.cli.ssh;
-in {
-  options.features.cli.ssh.enable =
-    mkEnableOption "Enable SSH client configuration";
+let
+  cfg = config.features.cli.ssh;
+in
+{
+  options.features.cli.ssh.enable = mkEnableOption "Enable SSH client configuration";
 
   config = mkIf cfg.enable {
     sops.secrets.ssh-config = { };

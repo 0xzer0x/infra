@@ -1,8 +1,10 @@
 { config, lib, ... }:
 
 with lib;
-let cfg = config.features.desktop.gtk;
-in {
+let
+  cfg = config.features.desktop.gtk;
+in
+{
   config = mkIf cfg.enable {
     gtk.gtk3.bookmarks = [
       "file:///mnt/ssd SSD"

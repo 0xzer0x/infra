@@ -1,12 +1,21 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.features.desktop.waybar;
-in {
-  options.features.desktop.waybar.enable =
-    mkEnableOption "Enable Waybar extended configuration";
+let
+  cfg = config.features.desktop.waybar;
+in
+{
+  options.features.desktop.waybar.enable = mkEnableOption "Enable Waybar extended configuration";
 
-  imports = [ ./builtins.nix ./custom.nix ];
+  imports = [
+    ./builtins.nix
+    ./custom.nix
+  ];
 
   config = mkIf cfg.enable {
     # NOTE: Create a symlink to catppuccin theme in ~/.config/waybar/catppuccin.css
@@ -17,7 +26,10 @@ in {
       recursive = true;
     };
 
-    home.packages = with pkgs; [ networkmanagerapplet libappindicator ];
+    home.packages = with pkgs; [
+      networkmanagerapplet
+      libappindicator
+    ];
 
     programs.waybar = {
       enable = true;

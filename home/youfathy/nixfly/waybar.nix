@@ -1,8 +1,10 @@
 { config, lib, ... }:
 
 with lib;
-let cfg = config.features.desktop.waybar;
-in {
+let
+  cfg = config.features.desktop.waybar;
+in
+{
   config = mkIf cfg.enable {
     programs.waybar.settings.hyprland-statusbar = {
       battery = {
@@ -14,12 +16,21 @@ in {
         };
         format = "{icon} {capacity}%";
         format-charging = " {capacity}%";
-        format-icons = [ " " " " " " " " " " ];
+        format-icons = [
+          " "
+          " "
+          " "
+          " "
+          " "
+        ];
         max-length = 100;
       };
       backlight = {
         format = "{icon}  {percent}%";
-        format-icons = [ "" "" ];
+        format-icons = [
+          ""
+          ""
+        ];
         max-length = 100;
       };
       modules-right = [

@@ -1,8 +1,10 @@
 { config, lib, ... }:
 
 with lib;
-let cfg = config.features.cli.tmux;
-in {
+let
+  cfg = config.features.cli.tmux;
+in
+{
   config = mkIf cfg.enable {
     catppuccin.tmux.extraConfig = ''
       set -g @catppuccin_window_status_style "rounded"
@@ -28,4 +30,3 @@ in {
     '';
   };
 }
-

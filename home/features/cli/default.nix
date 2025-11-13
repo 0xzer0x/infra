@@ -38,7 +38,9 @@
     tealdeer.enable = true;
     btop = {
       enable = true;
-      settings = { vim_keys = true; };
+      settings = {
+        vim_keys = true;
+      };
     };
     nix-index = {
       enable = true;

@@ -1,10 +1,16 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.features.cli.gopass;
-in {
-  options.features.cli.gopass.enable =
-    mkEnableOption "Enable Gopass configuration";
+let
+  cfg = config.features.cli.gopass;
+in
+{
+  options.features.cli.gopass.enable = mkEnableOption "Enable Gopass configuration";
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
@@ -31,4 +37,3 @@ in {
     };
   };
 }
-

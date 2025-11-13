@@ -1,7 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
-let cfg = config.features.cli.shell;
-in {
+let
+  cfg = config.features.cli.shell;
+in
+{
   options.features.cli.shell.zsh = {
     enable = lib.mkOption {
       type = lib.types.bool;
@@ -54,11 +61,13 @@ in {
       };
 
       # NOTE: ZSH plugins
-      plugins = [{
-        name = "zsh-vi-mode";
-        src = pkgs.zsh-vi-mode;
-        file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
-      }];
+      plugins = [
+        {
+          name = "zsh-vi-mode";
+          src = pkgs.zsh-vi-mode;
+          file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+        }
+      ];
 
       completionInit = ''
         complete -C '${pkgs.awscli2}/bin/aws_completer' aws

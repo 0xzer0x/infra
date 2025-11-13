@@ -1,15 +1,24 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.features.desktop.qt;
-in {
+let
+  cfg = config.features.desktop.qt;
+in
+{
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ libsForQt5.qt5ct kdePackages.breeze.qt5 ];
+    home.packages = with pkgs; [
+      libsForQt5.qt5ct
+      kdePackages.breeze.qt5
+    ];
 
     xdg.configFile."qt5ct/colors/Catppuccin-Mocha.conf" = {
       enable = true;
-      source =
-        "${pkgs.catppuccin-qt5ct}/share/qt5ct/colors/catppuccin-mocha-blue.conf";
+      source = "${pkgs.catppuccin-qt5ct}/share/qt5ct/colors/catppuccin-mocha-blue.conf";
     };
 
     xdg.configFile."qt5ct/qt5ct.conf" = {
@@ -19,8 +28,7 @@ in {
           standard_dialogs = "default";
           icon_theme = "Papirus-Dark";
           custom_palette = true;
-          color_scheme_path =
-            "${config.xdg.configHome}/qt5ct/colors/Catppuccin-Mocha.conf";
+          color_scheme_path = "${config.xdg.configHome}/qt5ct/colors/Catppuccin-Mocha.conf";
         };
 
         Fonts = {
@@ -45,13 +53,11 @@ in {
         };
 
         QSSEditor = {
-          geometry =
-            "@ByteArray(\\x1\\xd9\\xd0\\xcb\\0\\x3\\0\\0\\0\\0\\x4^\\0\\0\\x1Z\\0\\0\\x6\\xe2\\0\\0\\x3N\\0\\0\\x4_\\0\\0\\x1[\\0\\0\\x6\\xe1\\0\\0\\x3M\\0\\0\\0\\0\\0\\0\\0\\0\\a\\x80\\0\\0\\x4_\\0\\0\\x1[\\0\\0\\x6\\xe1\\0\\0\\x3M)";
+          geometry = "@ByteArray(\\x1\\xd9\\xd0\\xcb\\0\\x3\\0\\0\\0\\0\\x4^\\0\\0\\x1Z\\0\\0\\x6\\xe2\\0\\0\\x3N\\0\\0\\x4_\\0\\0\\x1[\\0\\0\\x6\\xe1\\0\\0\\x3M\\0\\0\\0\\0\\0\\0\\0\\0\\a\\x80\\0\\0\\x4_\\0\\0\\x1[\\0\\0\\x6\\xe1\\0\\0\\x3M)";
         };
 
         SettingsWindow = {
-          geometry =
-            "@ByteArray(\\x1\\xd9\\xd0\\xcb\\0\\x3\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\a\\x7f\\0\\0\\x4\\x1b\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\a\\x7f\\0\\0\\x4\\x37\\0\\0\\0\\0\\x2\\0\\0\\0\\a\\x80\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\a\\x7f\\0\\0\\x4\\x1b)";
+          geometry = "@ByteArray(\\x1\\xd9\\xd0\\xcb\\0\\x3\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\a\\x7f\\0\\0\\x4\\x1b\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\a\\x7f\\0\\0\\x4\\x37\\0\\0\\0\\0\\x2\\0\\0\\0\\a\\x80\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\a\\x7f\\0\\0\\x4\\x1b)";
         };
 
         Troubleshooting = {

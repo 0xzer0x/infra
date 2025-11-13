@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.features.cli.gnupg;
-in {
+let
+  cfg = config.features.cli.gnupg;
+in
+{
   options.features.cli.gnupg.enable = mkEnableOption "Enable GPG configuration";
 
   config = mkIf cfg.enable {

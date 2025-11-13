@@ -1,4 +1,4 @@
-{ mkTmuxPlugin, fetchFromGitHub, }:
+{ mkTmuxPlugin, fetchFromGitHub }:
 
 mkTmuxPlugin rec {
   pluginName = "nerd-font-window-name";
@@ -11,4 +11,3 @@ mkTmuxPlugin rec {
     hash = "sha256-bnlOAfdBv5Rg4z1hu1jtdx5oZ6kAZE40K4zqLxmyYQE=";
   };
 }
-

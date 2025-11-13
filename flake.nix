@@ -49,13 +49,16 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs =
+    { self, nixpkgs, ... }@inputs:
     let
       inherit (self) outputs;
       inherit (nixpkgs.lib) nixosSystem;
       system = "x86_64-linux";
-    in {
+    in
+    {
       lib = (import ./lib { inherit (nixpkgs) lib; });
+      formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-tree;
       packages.${system} = (import ./pkgs nixpkgs.legacyPackages.${system});
       overlays = import ./overlays { inherit inputs; };
       homeManagerModules = import ./modules/home-manager;

@@ -1,8 +1,15 @@
-{ config, lib, inputs, ... }:
+{
+  config,
+  lib,
+  inputs,
+  ...
+}:
 
 with lib;
-let cfg = config.features.desktop.apps;
-in {
+let
+  cfg = config.features.desktop.apps;
+in
+{
   imports = [ inputs.nix-flatpak.homeManagerModules.nix-flatpak ];
 
   config = mkIf cfg.enable {
@@ -18,7 +25,11 @@ in {
       overrides = {
         global = {
           Context = {
-            sockets = [ "wayland" "fallback-x11" "!x11" ];
+            sockets = [
+              "wayland"
+              "fallback-x11"
+              "!x11"
+            ];
             devices = [ "dri" ];
             filesystems = [
               # NOTE: Pass user fonts and fontconfig (system fonts should be available by default under /run/host)
