@@ -23,6 +23,7 @@ in
 
     home.packages = with pkgs; [
       stable.cosign
+      dive
       docker-compose
       docker-credential-helpers
       podman-compose
