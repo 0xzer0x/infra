@@ -26,7 +26,10 @@ in
     };
 
     # NOTE: Additional packages
-    home.packages = with pkgs; [ terraform ];
+    home.packages = with pkgs; [
+      terraform
+      opentofu
+    ];
 
     # NOTE: Extra environment variables
     home.sessionVariables = {
