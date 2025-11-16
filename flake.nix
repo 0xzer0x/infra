@@ -57,10 +57,10 @@
       system = "x86_64-linux";
     in
     {
-      lib = (import ./lib { inherit (nixpkgs) lib; });
-      formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-tree;
-      packages.${system} = (import ./pkgs nixpkgs.legacyPackages.${system});
+      lib = import ./lib { inherit (nixpkgs) lib; };
       overlays = import ./overlays { inherit inputs; };
+      formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-tree;
+      packages.${system} = import ./pkgs nixpkgs.legacyPackages.${system};
       homeManagerModules = import ./modules/home-manager;
       nixosConfigurations = {
         younix = nixosSystem {
