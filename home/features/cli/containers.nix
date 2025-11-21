@@ -22,7 +22,7 @@ in
     };
 
     home.packages = with pkgs; [
-      stable.cosign
+      cosign
       dive
       docker-compose
       docker-credential-helpers
