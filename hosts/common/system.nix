@@ -23,6 +23,9 @@
     killall
     duf
     usbutils
+    man-db
+    man-pages
+    man-pages-posix
   ];
 
   # NOTE: Required for completion of system-wide packages
