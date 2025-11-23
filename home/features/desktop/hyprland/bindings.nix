@@ -9,10 +9,10 @@ with lib;
 let
   inherit (config.xdg) configHome;
   cfg = config.features.desktop.hyprland;
-  terminal = config.features.desktop.terminal.default;
-  terminalPkg = pkgs.${terminal};
-  term =
-    "${terminalPkg}/bin/${terminal}" + (if (terminal == "kitty") then " --single-instance" else "");
+  terminalName = config.features.desktop.terminal.default;
+  terminalExtraArgs = if (terminalName == "kitty") then " --single-instance" else "";
+  terminal = lib.getExe pkgs.${terminalName};
+  term = "${terminal}${terminalExtraArgs} tmux -N new-session -As main";
   menu = "${pkgs.rofi}/bin/rofi -show drun -show-icons";
   passmenu = "${configHome}/rofi/runners/passmenu";
   powermenu = "${configHome}/rofi/runners/powermenu";
