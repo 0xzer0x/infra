@@ -11,7 +11,7 @@ let
         { name, path }:
         {
           inherit name path;
-          startup_command = "\${EDITOR}";
+          startup_command = config.home.sessionVariables.EDITOR;
         }
       )
       [
