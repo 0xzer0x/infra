@@ -35,6 +35,7 @@ in
       kubernetes-helm
       minikube
       kind
+      k3d
     ];
 
     # NOTE: Extra environment variables
