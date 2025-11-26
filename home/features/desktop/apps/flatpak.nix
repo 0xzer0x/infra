@@ -15,11 +15,12 @@ in
   config = mkIf cfg.enable {
     services.flatpak = {
       packages = [
-        "org.telegram.desktop"
         "com.github.tchx84.Flatseal"
         "org.gtk.Gtk3theme.adw-gtk3"
         "org.gtk.Gtk3theme.adw-gtk3-dark"
         "io.github._0xzer0x.qurancompanion"
+        "org.telegram.desktop"
+        "com.rustdesk.RustDesk"
       ];
 
       overrides = {
