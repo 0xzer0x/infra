@@ -27,8 +27,9 @@ in
 
     # NOTE: Additional packages
     home.packages = with pkgs; [
-      terraform
       opentofu
+      terraform
+      terragrunt
     ];
 
     # NOTE: Extra environment variables
