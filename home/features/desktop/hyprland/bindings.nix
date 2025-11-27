@@ -12,8 +12,8 @@ let
   terminalName = config.features.desktop.terminal.default;
   terminalExtraArgs = if (terminalName == "kitty") then " --single-instance" else "";
   terminal = lib.getExe pkgs.${terminalName};
-  term = "${terminal}${terminalExtraArgs} tmux -N new-session -As main";
-  menu = "${pkgs.rofi}/bin/rofi -show drun -show-icons";
+  term = "${terminal}${terminalExtraArgs}";
+  menu = "${lib.getExe pkgs.rofi} -show drun -show-icons";
   passmenu = "${configHome}/rofi/runners/passmenu";
   powermenu = "${configHome}/rofi/runners/powermenu";
   clipboard = "${configHome}/rofi/runners/clipboard";
@@ -25,13 +25,13 @@ let
   voltoggle = "audioctl sink toggle";
   mictoggle = "audioctl source toggle";
   files = "${term} yazi";
-  code = "${term} tmux -N new nvim";
-  browser = "${config.programs.zen-browser.package}/bin/zen-beta";
+  code = "${term} tmux -N new-session nvim";
+  browser = lib.getExe' config.programs.zen-browser.package "zen-beta";
+  slack = "${lib.getExe pkgs.slack} --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland";
+  notes = "${lib.getExe pkgs.obsidian} --enable-features=WaylandWindowDecorations";
+  mousepad = lib.getExe pkgs.xfce.mousepad;
+  zathura = lib.getExe pkgs.zathura;
   telegram = "flatpak run org.telegram.desktop";
-  slack = "${pkgs.slack}/bin/slack --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland";
-  notes = "${pkgs.obsidian}/bin/obsidian --enable-features=WaylandWindowDecorations";
-  mousepad = "${pkgs.xfce.mousepad}/bin/mousepad";
-  zathura = "${pkgs.zathura}/bin/zathura";
   restart-waybar = "${configHome}/hypr/scripts/restart-waybar";
 
   workspaceBinds = builtins.concatLists (
