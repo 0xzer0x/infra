@@ -63,10 +63,10 @@ in
             "leechblockng@proginosko.com" = "leechblock-ng";
             "extension@tabliss.io" = "tabliss";
             "markdown-viewer@outofindex.com" = "markdown-viewer-chrome";
-            "{7a7a4a92-a2a0-41d1-9fd7-1e92480d612d}" = "styl-us";
+            "youtube-custom-speed@niziolek.dev" = "youtube-custom-speed";
             "{3c6bf0cc-3ae2-42fb-9993-0d33104fdcaf}" = "youtube-addon";
-            "{05528bd5-3341-4084-bac0-c3a61d568e44}" = "youtube-speedup";
             "{d7742d87-e61d-4b78-b8a1-b469842139fa}" = "vimium-ff";
+            "{7a7a4a92-a2a0-41d1-9fd7-1e92480d612d}" = "styl-us";
             "{bbb880ce-43c9-47ae-b746-c3e0096c5b76}" = "catppuccin-web-file-icons";
             "addon@darkreader.org" = mkExtensionEntry {
               id = "darkreader";
