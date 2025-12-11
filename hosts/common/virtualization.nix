@@ -1,6 +1,12 @@
 { pkgs, ... }:
 
 {
+  # NOTE: Required for cross-compilation of container images
+  boot.binfmt = {
+    preferStaticEmulators = true;
+    emulatedSystems = [ "aarch64-linux" ];
+  };
+
   # NOTE: Virtualization (Docker, Podman, Libvirt)
   virtualisation = {
     docker.enable = true;
