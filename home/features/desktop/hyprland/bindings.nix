@@ -31,7 +31,6 @@ let
   notes = "${lib.getExe pkgs.obsidian} --enable-features=WaylandWindowDecorations";
   mousepad = lib.getExe pkgs.xfce.mousepad;
   zathura = lib.getExe pkgs.zathura;
-  telegram = "flatpak run org.telegram.desktop";
   restart-waybar = "${configHome}/hypr/scripts/restart-waybar";
 
   workspaceBinds = builtins.concatLists (
@@ -143,8 +142,6 @@ in
               ", escape, submap, reset"
               ", B, exec, ${browser}"
               ", B, submap, reset"
-              ", T, exec, ${telegram}"
-              ", T, submap, reset"
               ", C, exec, ${code}"
               ", C, submap, reset"
               ", M, exec, ${mousepad}"
