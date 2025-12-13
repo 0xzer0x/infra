@@ -14,6 +14,7 @@ in
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       libreoffice
+      signal-desktop
       tutanota-desktop
       obsidian
       legcord
