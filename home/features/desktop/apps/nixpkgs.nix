@@ -27,6 +27,7 @@ in
       kdePackages.kdenlive
       tenacity
       localsend
+      bottles
     ];
 
     # NOTE: Media player
