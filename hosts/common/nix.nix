@@ -6,9 +6,6 @@
 }:
 
 {
-  # NOTE: Use nixos-rebuilld-ng instead of nixos-rebuild
-  system.rebuild.enableNg = true;
-
   nix =
     let
       flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
