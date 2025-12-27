@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   # NOTE: Required for cross-compilation of container images
@@ -9,7 +9,16 @@
 
   # NOTE: Virtualization (Docker, Podman, Libvirt)
   virtualisation = {
-    docker.enable = true;
+    docker = {
+      enable = true;
+      daemon.settings = {
+        default-runtime = "crun";
+        runtimes = {
+          crun.path = lib.getExe pkgs.crun;
+        };
+      };
+    };
+
     podman = {
       enable = true;
       defaultNetwork.settings.dns_enabled = true;
