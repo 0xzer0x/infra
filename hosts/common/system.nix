@@ -23,13 +23,18 @@
     killall
     duf
     usbutils
-    man-db
     man-pages
     man-pages-posix
   ];
 
   # NOTE: Required for completion of system-wide packages
   environment.pathsToLink = [ "/share/zsh" ];
+
+  documentation = {
+    enable = true;
+    dev.enable = true;
+    man.enable = true;
+  };
 
   programs = {
     nix-ld.enable = true;
