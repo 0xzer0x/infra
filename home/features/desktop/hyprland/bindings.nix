@@ -29,7 +29,7 @@ let
   browser = lib.getExe' config.programs.zen-browser.package "zen-beta";
   slack = "${lib.getExe pkgs.slack} --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland";
   notes = "${lib.getExe pkgs.obsidian} --enable-features=WaylandWindowDecorations";
-  mousepad = lib.getExe pkgs.xfce.mousepad;
+  mousepad = lib.getExe pkgs.mousepad;
   zathura = lib.getExe pkgs.zathura;
   restart-waybar = "${configHome}/hypr/scripts/restart-waybar";
 

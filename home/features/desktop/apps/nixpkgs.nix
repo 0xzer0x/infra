@@ -21,11 +21,11 @@ in
       slack
       droidcam
       v4l-utils
-      xfce.mousepad
+      mousepad
       qalculate-gtk
       qbittorrent
+      stable.tenacity
       kdePackages.kdenlive
-      tenacity
       localsend
       bottles
     ];

@@ -42,7 +42,7 @@
       settings = {
         default_session = {
           command = ''
-            ${pkgs.tuigreet}/bin/tuigreet -rtg "Welcome Back" -c Hyprland
+            ${lib.getExe pkgs.tuigreet} -rtg "Welcome Back" -c start-hyprland
           '';
         };
       };
