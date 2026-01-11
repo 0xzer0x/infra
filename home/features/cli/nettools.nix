@@ -19,8 +19,8 @@ in
       tcpdump
       tshark
       vnstat
-      dogdns
       ldns
+      dig
     ];
   };
 }

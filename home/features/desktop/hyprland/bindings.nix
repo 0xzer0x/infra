@@ -37,11 +37,11 @@ let
     builtins.genList (
       x:
       let
-        key = builtins.toString (x + 1 - (((x + 1) / 10) * 10));
+        key = toString (x + 1 - (((x + 1) / 10) * 10));
       in
       [
-        "$mod, ${key}, workspace, ${toString (x + 1)}"
-        "$mod SHIFT, ${key}, movetoworkspace, ${toString (x + 1)}"
+        "$MOD, ${key}, workspace, ${toString (x + 1)}"
+        "$MOD SHIFT, ${key}, movetoworkspace, ${toString (x + 1)}"
       ]
     ) 10
   );
@@ -50,87 +50,85 @@ in
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
       settings = {
-        general = {
-          "$mod" = "SUPER";
-        };
+        "$MOD" = "SUPER";
 
         bind = workspaceBinds ++ [
           # ============== Navigation =============== #
-          "$mod, H, movefocus, l"
-          "$mod, J, movefocus, d"
-          "$mod, K, movefocus, u"
-          "$mod, L, movefocus, r"
-          "$mod SHIFT, H, movewindow, l"
-          "$mod SHIFT, J, movewindow, d"
-          "$mod SHIFT, K, movewindow, u"
-          "$mod SHIFT, L, movewindow, r"
+          "$MOD, H, movefocus, l"
+          "$MOD, J, movefocus, d"
+          "$MOD, K, movefocus, u"
+          "$MOD, L, movefocus, r"
+          "$MOD SHIFT, H, movewindow, l"
+          "$MOD SHIFT, J, movewindow, d"
+          "$MOD SHIFT, K, movewindow, u"
+          "$MOD SHIFT, L, movewindow, r"
           # Special workspace (scratchpad)
-          "$mod, S, togglespecialworkspace, magic"
-          "$mod SHIFT, S, movetoworkspace, special:magic"
+          "$MOD, S, togglespecialworkspace, magic"
+          "$MOD SHIFT, S, movetoworkspace, special:magic"
           # Scroll through existing workspaces with mod + scroll
-          "$mod, mouse_down, workspace, e+1"
-          "$mod, mouse_up, workspace, e-1"
+          "$MOD, mouse_down, workspace, e+1"
+          "$MOD, mouse_up, workspace, e-1"
           # ============== Essentials =============== #
           # Terminal
-          "$mod SHIFT, Return, exec, ${term}"
+          "$MOD SHIFT, Return, exec, ${term}"
           # Restart Waybar
-          "$mod SHIFT, W, exec, ${restart-waybar}"
+          "$MOD SHIFT, W, exec, ${restart-waybar}"
           # File manager
-          "$mod, T, exec, ${files}"
+          "$MOD, T, exec, ${files}"
           # Floating
-          "$mod, space, togglefloating,"
+          "$MOD, space, togglefloating,"
           # Clipboard manager
-          "$mod, V, exec, ${clipboard}"
+          "$MOD, V, exec, ${clipboard}"
           # Fullscreen
-          "$mod, F, fullscreenstate,3 3"
-          "$mod SHIFT, F, fullscreenstate,0 3"
+          "$MOD, F, fullscreenstate,3 3"
+          "$MOD SHIFT, F, fullscreenstate,0 3"
           # Lauchers
-          "$mod, P, exec, ${menu}"
-          "$mod SHIFT, backspace, exec, ${powermenu}"
+          "$MOD, P, exec, ${menu}"
+          "$MOD SHIFT, backspace, exec, ${powermenu}"
           # Screenshot and screenrecording
           ",Print, exec, ${screenshot}"
-          "$mod,Print, exec, ${screenrec}"
+          "$MOD, Print, exec, ${screenrec}"
           # Emoji picker
-          "$mod, period, exec, ${pickemoji}"
+          "$MOD, period, exec, ${pickemoji}"
           # Password manager
-          "$mod, menu, exec, ${passmenu}"
+          "$MOD, menu, exec, ${passmenu}"
           # Quick password generator
-          "$mod SHIFT, P, exec, passgen"
+          "$MOD SHIFT, P, exec, passgen"
           # Quit
-          "$mod, Q, killactive,"
+          "$MOD, Q, killactive,"
           "CTRLALT, Delete, exit,"
           # ============== Resizing =============== #
           # Equal tile sizes
-          "CTRL_$mod, E, splitratio, exact 0.5"
+          "CTRL_$MOD, E, splitratio, exact 0.5"
           # ============== Multimedia =============== #
-          "$mod, F9, exec, ${voltoggle}"
+          "$MOD, F9, exec, ${voltoggle}"
           ",XF86AudioMute, exec, ${voltoggle}"
           ",XF86AudioMicMute, exec, ${mictoggle}"
           # ============== Submaps =============== #
-          "$mod, O, submap, launch  "
+          "$MOD, O, submap, launch  "
         ];
 
         binde = [
           # ============== Navigation =============== #
-          "$mod, bracketleft, cyclenext, prev"
-          "$mod, bracketright, cyclenext, next"
+          "$MOD, bracketleft, cyclenext, prev"
+          "$MOD, bracketright, cyclenext, next"
           # ============== Multimedia =============== #
-          "$mod, F10, exec, ${voldown}"
-          "$mod, F11, exec, ${volup}"
+          "$MOD, F10, exec, ${voldown}"
+          "$MOD, F11, exec, ${volup}"
           ",XF86AudioRaiseVolume, exec, ${volup}"
           ",XF86AudioLowerVolume, exec, ${voldown}"
           # ============== Resizing =============== #
-          "CTRL_$mod, L, resizeactive, 10 0"
-          "CTRL_$mod, H, resizeactive, -10 0"
-          "CTRL_$mod, K, resizeactive, 0 -10"
-          "CTRL_$mod, J, resizeactive, 0 10"
+          "CTRL_$MOD, L, resizeactive, 10 0"
+          "CTRL_$MOD, H, resizeactive, -10 0"
+          "CTRL_$MOD, K, resizeactive, 0 -10"
+          "CTRL_$MOD, J, resizeactive, 0 10"
         ];
 
         bindm = [
           # ============== Navigation =============== #
           # Move/resize windows with mod + LMB/RMB and dragging
-          "$mod, mouse:272, movewindow"
-          "$mod, mouse:273, resizewindow"
+          "$MOD, mouse:272, movewindow"
+          "$MOD, mouse:273, resizewindow"
         ];
       };
 
@@ -138,7 +136,7 @@ in
         "launch  " = {
           settings = {
             bind = [
-              "$mod, O, submap, reset"
+              "$MOD, O, submap, reset"
               ", escape, submap, reset"
               ", B, exec, ${browser}"
               ", B, submap, reset"
