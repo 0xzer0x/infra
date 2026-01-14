@@ -40,6 +40,7 @@ in
 
     # NOTE: Extra environment variables
     home.sessionVariables = {
+      KUBECOLOR_CONFIG = lib.mkForce "${config.xdg.configHome}/color.yaml";
       KUBECONFIG = "${config.xdg.configHome}/kube/config";
       KUBECACHEDIR = "${config.xdg.cacheHome}/kube";
       MINIKUBE_HOME = "${config.xdg.configHome}/minikube";
