@@ -1,1 +1,6 @@
-{ imports = [ ./wireguard.nix ]; }
+{
+  imports = [
+    ./openfortivpn.nix
+    ./wireguard.nix
+  ];
+}
