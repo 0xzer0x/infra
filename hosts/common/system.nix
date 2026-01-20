@@ -25,6 +25,7 @@
     usbutils
     man-pages
     man-pages-posix
+    linuxHeaders
   ];
 
   # NOTE: Required for completion of system-wide packages
