@@ -117,7 +117,7 @@ in
 
         helm = {
           symbol = "󰠳 ";
-          format = " [$symbol($version )]($style)";
+          format = " [$symbol($version)]($style)";
         };
 
         hostname = {
