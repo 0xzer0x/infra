@@ -24,10 +24,10 @@ in
       mousepad
       qalculate-gtk
       qbittorrent
-      stable.tenacity
-      kdePackages.kdenlive
       localsend
       bottles
+      stable.tenacity
+      stable.kdePackages.kdenlive
     ];
 
     # NOTE: Media player
