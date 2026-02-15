@@ -47,6 +47,7 @@ in
         sub-font-size = 24;
         sub-border-size = 1;
         hwdec = "auto";
+        target-colorspace-hint-mode = "source";
       };
     };
 
