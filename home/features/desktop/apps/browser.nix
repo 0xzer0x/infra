@@ -14,6 +14,8 @@ in
   imports = [ inputs.zen-browser.homeModules.default ];
 
   config = mkIf cfg.enable {
+    home.sessionVariables.MOZ_LEGACY_PROFILES = 1;
+
     programs.zen-browser = {
       enable = true;
 
