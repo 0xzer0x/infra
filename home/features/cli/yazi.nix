@@ -15,6 +15,7 @@ in
   config = mkIf cfg.enable {
     programs.yazi = {
       enable = true;
+      shellWrapperName = "yy";
 
       plugins = {
         mount = pkgs.yaziPlugins.mount;
