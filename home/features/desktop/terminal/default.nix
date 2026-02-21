@@ -10,6 +10,7 @@ in
     ./kitty.nix
     ./foot.nix
     ./alacritty.nix
+    ./ghostty.nix
   ];
 
   options.features.desktop.terminal.default = mkOption {
@@ -17,6 +18,7 @@ in
       "kitty"
       "foot"
       "alacritty"
+      "ghostty"
     ];
     description = "Name of default terminal program";
     default = "kitty";
