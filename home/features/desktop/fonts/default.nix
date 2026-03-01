@@ -17,10 +17,7 @@ in
     # NOTE: Additional fonts
     home.packages =
       let
-        inherit (inputs.apple-fonts.packages.${pkgs.stdenv.hostPlatform.system})
-          sf-pro
-          sf-arabic
-          ;
+        inherit (inputs.apple-fonts.packages.${pkgs.stdenv.hostPlatform.system}) sf-pro sf-arabic;
       in
       with pkgs;
       [
