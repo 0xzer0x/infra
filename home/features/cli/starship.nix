@@ -142,7 +142,7 @@ in
         kotlin.symbol = " ";
 
         kubernetes = {
-          disabled = true;
+          disabled = false;
           symbol = "󱃾 ";
           style = "bold blue";
           format = " [$symbol$context( \\($namespace\\))]($style)";
