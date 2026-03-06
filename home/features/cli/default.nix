@@ -14,6 +14,7 @@
     ./gopass.nix
     ./ssh.nix
     ./git.nix
+    ./github.nix
     ./k8s.nix
     ./yazi.nix
     ./aws.nix

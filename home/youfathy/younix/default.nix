@@ -43,6 +43,7 @@ in
     cliFeatures = [
       "ssh"
       "git"
+      "github"
       "gnupg"
       "gopass"
       "starship"
