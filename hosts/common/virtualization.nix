@@ -35,10 +35,12 @@
     spiceUSBRedirection.enable = true;
     libvirtd = {
       enable = true;
+      package = pkgs.stable.libvirt;
       onBoot = "ignore";
       onShutdown = "shutdown";
 
       qemu = {
+        package = pkgs.stable.qemu;
         swtpm.enable = true;
         vhostUserPackages = [ pkgs.virtiofsd ];
       };
