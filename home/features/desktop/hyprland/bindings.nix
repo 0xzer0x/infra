@@ -99,7 +99,7 @@ in
           "CTRLALT, Delete, exit,"
           # ============== Resizing =============== #
           # Equal tile sizes
-          "CTRL_$MOD, E, splitratio, exact 0.5"
+          "CTRL_$MOD, E, layoutmsg, mfact exact 0.5"
           # ============== Multimedia =============== #
           "$MOD, F9, exec, ${voltoggle}"
           ",XF86AudioMute, exec, ${voltoggle}"
