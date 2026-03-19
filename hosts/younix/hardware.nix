@@ -41,6 +41,10 @@
   fileSystems."/mnt/ssd" = {
     device = "/dev/disk/by-uuid/18c7a44f-3ffa-46d7-8beb-3d4b9c6db80a";
     fsType = "ext4";
+    options = [
+      "defaults"
+      "nofail"
+    ];
   };
 
   swapDevices = [ ];
