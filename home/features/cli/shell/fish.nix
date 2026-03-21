@@ -41,7 +41,7 @@ in
       };
 
       shellAbbrs = {
-        tree = ''eza --icons --color=auto --sort=type --tree --no-filesize --no-git --no-user --no-time --no-permissions --ignore-glob ".git|.devbox"'';
+        tree = ''eza --icons --color=auto --sort=type --tree --no-filesize --no-git --no-user --no-time --no-permissions --ignore-glob ".git|.devbox|.direnv|.devenv|.terraform"'';
       };
 
       functions = {
