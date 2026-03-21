@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.features.cli.shell;
@@ -25,7 +30,6 @@ in
         ls = "ls --color=auto -l";
         ll = "eza --icons --sort=type --color=auto";
         v = "nvim";
-        se = "sudoedit";
         lg = "lazygit";
         gst = "git status";
         glg = "git log --all --graph --oneline --decorate";
@@ -42,6 +46,7 @@ in
 
       functions = {
         nlb = ''nix-locate -r "$(printf 'bin/%s$' $argv[1])"'';
+        kctx = ''kubectl config use-context "$(kubectl config get-contexts -o name | fzf --height 10 --reverse)"'';
       };
 
       interactiveShellInit = ''
