@@ -14,6 +14,14 @@ in
   options.features.programming.tools.enable = mkEnableOption "Enable development environment tools";
 
   config = mkIf cfg.enable {
+    programs.mise = {
+      enable = true;
+      globalConfig = {
+        settings.color_theme =
+          if (config.features.colorscheme.active == "catppuccin") then "catppuccin" else "default";
+      };
+    };
+
     home.packages = with pkgs; [
       devenv
       posting
