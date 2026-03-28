@@ -26,6 +26,7 @@ in
       qbittorrent
       localsend
       bottles
+      stable.gimp
       stable.tenacity
       stable.kdePackages.kdenlive
     ];
