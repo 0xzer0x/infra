@@ -43,6 +43,7 @@
     userDirs = {
       enable = true;
       createDirectories = true;
+      setSessionVariables = true;
       music = "${config.home.homeDirectory}/Audio";
     };
   };

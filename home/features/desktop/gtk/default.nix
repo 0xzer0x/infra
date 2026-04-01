@@ -54,6 +54,7 @@ in
 
         gtk4 = {
           inherit extraCss;
+          theme = null;
           extraConfig = {
             gtk-decoration-layout = "menu:";
           };
