@@ -23,6 +23,7 @@
     killall
     duf
     usbutils
+    mandoc
     man-pages
     man-pages-posix
     linuxHeaders
