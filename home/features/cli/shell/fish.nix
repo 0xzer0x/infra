@@ -46,7 +46,22 @@ in
 
       functions = {
         nlb = ''nix-locate -r "$(printf 'bin/%s$' $argv[1])"'';
-        kctx = ''kubectl config use-context "$(kubectl config get-contexts -o name | fzf --height 10 --reverse)"'';
+        # NOTE: Quickly switch kubeconfig context
+        kctx = ''
+          set -l _selected_context "$(kubectl config get-contexts -o name | fzf --reverse --height=10 --border --border-label=" $(kubectl config current-context)" --preview="printf 'Cluster: %s\nUser: %s' \"\$(kubectl config view -o jsonpath='{.contexts[?(@.name == \"{r}\")].context.cluster}')\" \"\$(kubectl config view -o jsonpath='{.contexts[?(@.name == \"{r}\")].context.user}')\"" --preview-border=line --preview-window=wrap --highlight-line)"
+          if [ -n "$_selected_context" ]
+            kubectl config use-context "$_selected_context" >/dev/null
+            echo -e "\x1b[38;5;12m󱃾 Switched to Kubernetes context: $_selected_context\x1b[0m"
+          end
+        '';
+        # NOTE: Quickly switch AWS profile
+        awsctx = ''
+          set -l _selected_profile "$(aws configure list-profiles | fzf --reverse --height=12 --border --border-label="  $AWS_PROFILE" --preview='grep -A 5 "profile {r}" "$HOME/.aws/config"' --preview-border=line --highlight-line)"
+          if [ -n "$_selected_profile" ]
+            set -x AWS_PROFILE "$_selected_profile"
+            echo -e "\x1b[38;5;11m  Switched to AWS profile: $_selected_profile\x1b[0m"
+          end
+        '';
       };
 
       interactiveShellInit = ''
