@@ -65,7 +65,7 @@ in
       polkit-gnome.enable = true;
 
       # NOTE: Wallpaper manager
-      swww.enable = true;
+      awww.enable = true;
     };
 
     dconf.settings = {

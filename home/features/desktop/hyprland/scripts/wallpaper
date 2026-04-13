@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-if ! swww query 1>/dev/null 2>&1; then
-  swww-daemon &
+if ! awww query 1>/dev/null 2>&1; then
+  awww-daemon &
 fi
 
-swww img -t none "${XDG_CONFIG_HOME:-${HOME}/.config}/hypr/wall.png"
+awww img -t none "${XDG_CONFIG_HOME:-${HOME}/.config}/hypr/wall.png"
