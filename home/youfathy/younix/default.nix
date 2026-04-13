@@ -60,6 +60,7 @@ in
       "nettools"
       "go-pray"
       "rss"
+      "ai"
     ];
   };
 }

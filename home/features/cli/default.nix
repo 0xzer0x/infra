@@ -24,6 +24,7 @@
     ./multimedia.nix
     ./nettools.nix
     ./rss.nix
+    ./ai.nix
   ];
 
   # NOTE: Use programs.<name>.enable whenever possible instead of using home.packages
