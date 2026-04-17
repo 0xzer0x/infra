@@ -60,18 +60,10 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
+  services.xserver.videoDrivers = [ "nvidia" ];
   hardware = {
-    amdgpu.initrd.enable = true;
-    graphics = {
-      enable = true;
-      extraPackages = with pkgs; [
-        mesa
-        libvdpau-va-gl
-      ];
-    };
-  };
-  services = {
-    xserver.videoDrivers = [ "amdgpu" ];
-    lact.enable = true;
+    graphics.enable = true;
+    nvidia.open = true;
+    nvidia-container-toolkit.enable = true;
   };
 }

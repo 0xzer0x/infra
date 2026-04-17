@@ -105,9 +105,7 @@ in
         };
 
         # NOTE: Environment variables (imported session variables and add additional ones)
-        env = (
-          lib.attrsets.mapAttrsToList (name: value: "${name},${builtins.toString value}") environmentVariables
-        );
+        env = lib.attrsets.mapAttrsToList (name: value: "${name},${toString value}") environmentVariables;
 
         # NOTE: Look and feel
         cursor.sync_gsettings_theme = true;

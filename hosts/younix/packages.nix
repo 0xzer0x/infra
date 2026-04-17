@@ -1,5 +1,5 @@
 { pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [ nvtopPackages.amd ];
+  environment.systemPackages = with pkgs; [ nvtopPackages.nvidia ];
 }
