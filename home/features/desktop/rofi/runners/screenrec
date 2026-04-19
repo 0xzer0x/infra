@@ -18,10 +18,10 @@ _TIMER=""
 _MODE=""
 # NOTE: WF recorder
 __RECORDER_PID=""
+_ENCODING=""
 _OUTDIR="$(xdg-user-dir VIDEOS)/recordings"
 _OUTFILE="$_OUTDIR/$(date +%F_%H_%M_%S_$RANDOM).mp4"
-_ENCODING='h264_vaapi'
-_PARAMS="-r 60 -c $_ENCODING -f $_OUTFILE"
+_PARAMS="-r 60 -f ${_OUTFILE}"
 
 # NOTE: Rofi
 __ICON_SCREEN=""
@@ -103,6 +103,20 @@ wf-notify() {
   notify-send -i video-x-generic "WF Recorder" "${_msg}"
 }
 
+set-encoding() {
+  # NOTE: List of prefered video encodings to check and use
+  local _prefered_encodings=(av1_nvenc h264_nvenc h264_vaapi)
+
+  for encoding in "${_prefered_encodings[@]}"; do
+    if ffmpeg -hide_banner -encoders | grep -Eq "^\sV.*${encoding}"; then
+      _ENCODING="${encoding}"
+      break
+    fi
+  done
+
+  _PARAMS="-c ${_ENCODING} ${_PARAMS}"
+}
+
 set-mode() {
   _MODE="$(select-mode-rofi)"
   if [ "${_MODE}" = "${__ICON_AREA}" ]; then
@@ -140,6 +154,7 @@ recording() {
 }
 
 start-recording() {
+  echo "Running: wf-recorder ${_PARAMS}"
   echo "${_PARAMS}" | xargs wf-recorder 1>"${_OUTFILE}.log" 2>&1 &
   wf-notify started
 }
@@ -165,6 +180,7 @@ if recording; then
   __WAYBAR_SLEEP_TIMER=0.4
   stop-recording
 else
+  set-encoding
   set-mode
   set-sound
   if [[ "${_TIMER}" -gt "0" ]]; then
