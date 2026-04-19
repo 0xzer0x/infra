@@ -10,7 +10,7 @@ in
     ../../features/programming
     ../../features/colorscheme
     ../../features/desktop
-    ./nix.nix
+    ../../common/nvidia.nix
     ./virtualization.nix
     ./hyprland.nix
     ./waybar.nix

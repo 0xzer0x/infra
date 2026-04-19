@@ -62,8 +62,8 @@
 
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware = {
-    graphics.enable = true;
     nvidia.open = true;
     nvidia-container-toolkit.enable = true;
+    graphics.enable = true;
   };
 }
