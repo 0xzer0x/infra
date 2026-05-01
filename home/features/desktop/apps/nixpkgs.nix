@@ -25,7 +25,7 @@ in
       qalculate-gtk
       qbittorrent
       localsend
-      bottles
+      stable.bottles
       stable.gimp
       stable.tenacity
       stable.kdePackages.kdenlive
