@@ -5,7 +5,6 @@
     inputs.sops-nix.nixosModules.sops
     inputs.home-manager.nixosModules.home-manager
     ./users
-    ./synapse
     ./sops.nix
     ./boot.nix
     ./system.nix
