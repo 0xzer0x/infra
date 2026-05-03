@@ -56,6 +56,7 @@ in
       "containers"
       "virtualization"
       "nettools"
+      "monitoring"
       "go-pray"
       "rss"
       "ai"

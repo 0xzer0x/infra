@@ -23,6 +23,7 @@
     ./virtualization.nix
     ./multimedia.nix
     ./nettools.nix
+    ./monitoring.nix
     ./rss.nix
     ./ai.nix
   ];
@@ -59,12 +60,10 @@
   home.packages = with pkgs; [
     file
     procps
-    duf
     gum
     yq-go
     ttyper
     libva-utils
-    lsof
     go-task
     pinentry-qt
     pwgen
