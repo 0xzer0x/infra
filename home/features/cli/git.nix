@@ -25,10 +25,6 @@ in
               email = "11070545-0xzer0x@users.noreply.gitlab.com";
               signingKey = "D7AFCE504088C562CB23D7A6B00C69DE35648C40";
             };
-            synapseUser = {
-              email = "yfathy@synapse-analytics.io";
-              signingKey = "95ED403730DF2BFEE61D97DE66660F342809060D";
-            };
           in
           [
             {
@@ -36,16 +32,8 @@ in
               contents.user = githubUser;
             }
             {
-              condition = "hasconfig:remote.*.url:git@gitlab.com-0xzer0x:**/**";
+              condition = "hasconfig:remote.*.url:git@gitlab.com:**/**";
               contents.user = gitlabUser;
-            }
-            {
-              condition = "hasconfig:remote.*.url:git@gitlab.com-yfathy:synapse-analytics/**";
-              contents.user = synapseUser;
-            }
-            {
-              condition = "hasconfig:remote.*.url:git@gitlab.internal.synapse-analytics.io:**/**";
-              contents.user = synapseUser;
             }
           ];
       };

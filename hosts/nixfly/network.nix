@@ -1,11 +1,9 @@
-{ config, lib, ... }:
+{ config, ... }:
 
 let
   inherit (config.networking) hostName;
   homeWifiSSID = "Pluto";
   homeWifiSecret = "networking/home-wifi/psk";
-  synapseWifiSSID = "Synapse Analytics";
-  synapseWifiSecret = "networking/synapse-wifi/psk";
   wifiProfile =
     {
       wifiSSID,
@@ -38,13 +36,9 @@ in
 {
   sops.secrets = {
     "${homeWifiSecret}" = { };
-    "${synapseWifiSecret}" = {
-      sopsFile = ../../secrets/hosts/${hostName}.yml;
-    };
   };
   sops.templates."networkmanager-${hostName}.env".content = ''
     HOMEWIFIPSK=${config.sops.placeholder."${homeWifiSecret}"}
-    SYNAPSEWIFIPSK=${config.sops.placeholder."${synapseWifiSecret}"}
   '';
 
   networking.networkmanager.ensureProfiles = {
@@ -54,12 +48,6 @@ in
         hiddenSSID = true;
         wifiSSID = homeWifiSSID;
         pskVar = "HOMEWIFIPSK";
-      };
-
-      synapse-wifi = wifiProfile {
-        hiddenSSID = false;
-        wifiSSID = synapseWifiSSID;
-        pskVar = "SYNAPSEWIFIPSK";
       };
     };
   };
