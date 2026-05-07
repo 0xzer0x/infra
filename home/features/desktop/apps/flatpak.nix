@@ -20,6 +20,7 @@ in
         "org.gtk.Gtk3theme.adw-gtk3-dark"
         "io.github._0xzer0x.qurancompanion"
         "com.rustdesk.RustDesk"
+        "com.ktechpit.whatsie"
       ];
 
       overrides = {
