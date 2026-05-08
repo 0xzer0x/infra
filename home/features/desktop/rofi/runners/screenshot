@@ -62,7 +62,7 @@ _print_options() {
     -theme-str "window { width: 25%; }" \
     -theme-str "mainbox { children: [ message, listview ]; }" \
     -theme-str "listview {columns: 5; lines: 1;}" \
-    -theme-str "element-text { font: 'GeistMono NFM, ${__ICON_FONT_SIZE}'; horizontal-align: 0.5; }" < <(echo -e "${__OPTION_SCREEN}\n${__OPTION_SELECTION}\n${__OPTION_WINDOW}\n${__OPTION_SCREEN5}\n${__OPTION_SCREEN10}"))"
+    -theme-str "element-text { font: 'JetBrainsMono NFM, ${__ICON_FONT_SIZE}'; horizontal-align: 0.5; }" < <(echo -e "${__OPTION_SCREEN}\n${__OPTION_SELECTION}\n${__OPTION_WINDOW}\n${__OPTION_SCREEN5}\n${__OPTION_SCREEN10}"))"
 }
 
 _parse_selection() {

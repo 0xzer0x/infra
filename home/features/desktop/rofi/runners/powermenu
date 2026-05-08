@@ -34,7 +34,7 @@ confirm_rofi() {
     -kb-row-down "Control+l" \
     -theme-str 'window { width: 20%; }' \
     -theme-str 'mainbox { children: [ "message", "listview" ]; }' \
-    -theme-str "element-text { font: 'GeistMono NFM, ${__ICON_FONT_SIZE}'; horizontal-align: 0.5; }" \
+    -theme-str "element-text { font: 'JetBrainsMono NFM, ${__ICON_FONT_SIZE}'; horizontal-align: 0.5; }" \
     -theme-str 'listview { columns: 2; lines: 1; }' \
     -theme-str 'element-text { horizontal-align: 0.5; }' \
     -theme-str 'textbox { horizontal-align: 0.5; }'
@@ -53,7 +53,7 @@ _print_options() {
       -theme-str "window { width: 25%; }" \
       -theme-str "mainbox { children: [ message, listview ]; }" \
       -theme-str "listview { columns: 5; lines: 1; }" \
-      -theme-str "element-text { font: 'GeistMono NFM, ${__ICON_FONT_SIZE}'; horizontal-align: 0.5; }")"
+      -theme-str "element-text { font: 'JetBrainsMono NFM, ${__ICON_FONT_SIZE}'; horizontal-align: 0.5; }")"
 }
 
 __confirm_selection() {

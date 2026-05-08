@@ -58,7 +58,7 @@ in
           "SF Arabic"
         ];
         monospace = [
-          "GeistMono Nerd Font"
+          "JetBrainsMono Nerd Font"
           "Vazir Code"
         ];
         emoji = [ "Noto Color Emoji" ];

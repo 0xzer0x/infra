@@ -8,7 +8,7 @@
     enableDefaultPackages = true;
     packages = with pkgs; [
       adwaita-fonts
-      nerd-fonts.geist-mono
+      nerd-fonts.jetbrains-mono
     ];
     fontconfig = {
       enable = true;
@@ -18,7 +18,7 @@
       defaultFonts = {
         serif = [ "Adwaita Sans" ];
         sansSerif = [ "Adwaita Sans" ];
-        monospace = [ "GeistMono Nerd Font" ];
+        monospace = [ "JetBrainsMono Nerd Font" ];
       };
     };
   };
