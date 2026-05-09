@@ -175,7 +175,11 @@ in
           style = "bold peach";
         };
 
-        perl.symbol = " ";
+        perl = {
+          symbol = " ";
+          format = " [$symbol($version)]($style)";
+        };
+
         php.symbol = " ";
         pijul_channel.symbol = " ";
 
