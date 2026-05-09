@@ -18,8 +18,11 @@ in
     home.packages = with pkgs; [
       ffmpeg
       libisoburn
-      gowall
       decktape
+      gowall
+      # WARN: Required for gowall upscale feature
+      # Ref: https://achno.github.io/gowall-docs/imageUpscaling/#warning--known-issues
+      realesrgan-ncnn-vulkan
     ];
 
     home.sessionVariables = {
