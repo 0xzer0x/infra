@@ -180,7 +180,11 @@ in
           format = " [$symbol($version)]($style)";
         };
 
-        php.symbol = " ";
+        php = {
+          format = " [$symbol($version)]($style)";
+          symbol = " ";
+        };
+
         pijul_channel.symbol = " ";
 
         python = {
