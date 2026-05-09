@@ -17,6 +17,9 @@ in
       duf
       lsof
       sysstat
+      perf
+      bcc
+      flamegraph
     ];
   };
 }
