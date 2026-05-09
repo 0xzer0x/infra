@@ -95,6 +95,7 @@ in
         "image/png" = [ "imv.desktop" ];
         "image/webp" = [ "imv.desktop" ];
         "image/gif" = [ "imv.desktop" ];
+        "image/svg" = [ "imv.desktop" ];
         "inode/directory" = [ "nemo.desktop" ];
         "text/html" = [ "zen-beta.desktop" ];
         "text/plain" = [ "org.xfce.mousepad.desktop" ];
