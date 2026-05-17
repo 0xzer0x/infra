@@ -33,15 +33,36 @@ let
   zathura = lib.getExe pkgs.zathura;
   restart-waybar = "${configHome}/hypr/scripts/restart-waybar";
 
+  mod = "SUPER";
+  mkBind =
+    {
+      key,
+      action,
+      flags ? { },
+    }:
+    {
+      _args = [
+        key
+        (lib.generators.mkLuaInline action)
+        flags
+      ];
+    };
+  mkBindList = bindAttrList: map mkBind bindAttrList;
   workspaceBinds = builtins.concatLists (
     builtins.genList (
       x:
       let
         key = toString (x + 1 - (((x + 1) / 10) * 10));
       in
-      [
-        "$MOD, ${key}, workspace, ${toString (x + 1)}"
-        "$MOD SHIFT, ${key}, movetoworkspace, ${toString (x + 1)}"
+      mkBindList [
+        {
+          key = "${mod} + ${key}";
+          action = "hl.dsp.focus({ workspace = ${toString (x + 1)} })";
+        }
+        {
+          key = "${mod} + SHIFT + ${key}";
+          action = "hl.dsp.window.move({ workspace = ${toString (x + 1)} })";
+        }
       ]
     ) 10
   );
@@ -50,106 +71,284 @@ in
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
       settings = {
-        "$MOD" = "SUPER";
-
-        bind = workspaceBinds ++ [
-          # ============== Navigation =============== #
-          "$MOD, H, movefocus, l"
-          "$MOD, J, movefocus, d"
-          "$MOD, K, movefocus, u"
-          "$MOD, L, movefocus, r"
-          "$MOD SHIFT, H, movewindow, l"
-          "$MOD SHIFT, J, movewindow, d"
-          "$MOD SHIFT, K, movewindow, u"
-          "$MOD SHIFT, L, movewindow, r"
-          # Special workspace (scratchpad)
-          "$MOD, S, togglespecialworkspace, magic"
-          "$MOD SHIFT, S, movetoworkspace, special:magic"
-          # Scroll through existing workspaces with mod + scroll
-          "$MOD, mouse_down, workspace, e+1"
-          "$MOD, mouse_up, workspace, e-1"
-          # ============== Essentials =============== #
-          # Terminal
-          "$MOD SHIFT, Return, exec, ${term}"
-          # Restart Waybar
-          "$MOD SHIFT, W, exec, ${restart-waybar}"
-          # File manager
-          "$MOD, T, exec, ${files}"
-          # Floating
-          "$MOD, space, togglefloating,"
-          # Clipboard manager
-          "$MOD, V, exec, ${clipboard}"
-          # Fullscreen
-          "$MOD, F, fullscreenstate,3 3"
-          "$MOD SHIFT, F, fullscreenstate,0 3"
-          # Lauchers
-          "$MOD, P, exec, ${menu}"
-          "$MOD SHIFT, backspace, exec, ${powermenu}"
-          # Screenshot and screenrecording
-          ",Print, exec, ${screenshot}"
-          "$MOD, Print, exec, ${screenrec}"
-          # Emoji picker
-          "$MOD, period, exec, ${pickemoji}"
-          # Password manager
-          "$MOD, menu, exec, ${passmenu}"
-          # Quick password generator
-          "$MOD SHIFT, P, exec, passgen"
-          # Quit
-          "$MOD, Q, killactive,"
-          "CTRLALT, Delete, exit,"
-          # ============== Resizing =============== #
-          # Equal tile sizes
-          "CTRL_$MOD, E, layoutmsg, mfact exact 0.5"
-          # ============== Multimedia =============== #
-          "$MOD, F9, exec, ${voltoggle}"
-          ",XF86AudioMute, exec, ${voltoggle}"
-          ",XF86AudioMicMute, exec, ${mictoggle}"
-          # ============== Submaps =============== #
-          "$MOD, O, submap, launch  "
-        ];
-
-        binde = [
-          # ============== Navigation =============== #
-          "$MOD, bracketleft, cyclenext, prev"
-          "$MOD, bracketright, cyclenext, next"
-          # ============== Multimedia =============== #
-          "$MOD, F10, exec, ${voldown}"
-          "$MOD, F11, exec, ${volup}"
-          ",XF86AudioRaiseVolume, exec, ${volup}"
-          ",XF86AudioLowerVolume, exec, ${voldown}"
-          # ============== Resizing =============== #
-          "CTRL_$MOD, L, resizeactive, 10 0"
-          "CTRL_$MOD, H, resizeactive, -10 0"
-          "CTRL_$MOD, K, resizeactive, 0 -10"
-          "CTRL_$MOD, J, resizeactive, 0 10"
-        ];
-
-        bindm = [
-          # ============== Navigation =============== #
-          # Move/resize windows with mod + LMB/RMB and dragging
-          "$MOD, mouse:272, movewindow"
-          "$MOD, mouse:273, resizewindow"
-        ];
+        bind =
+          workspaceBinds
+          ++ (mkBindList [
+            # ============== Navigation =============== #
+            {
+              key = "${mod} + H";
+              action = ''hl.dsp.focus({ direction = "l" })'';
+            }
+            {
+              key = "${mod} + J";
+              action = ''hl.dsp.focus({ direction = "d" })'';
+            }
+            {
+              key = "${mod} + K";
+              action = ''hl.dsp.focus({ direction = "u" })'';
+            }
+            {
+              key = "${mod} + L";
+              action = ''hl.dsp.focus({ direction = "r" })'';
+            }
+            {
+              key = "${mod} + bracketleft";
+              action = ''hl.dsp.window.cycle_next({ next = "prev", tiled = true, floating = true })'';
+            }
+            {
+              key = "${mod} + bracketright";
+              action = ''hl.dsp.window.cycle_next({ next = "next", tiled = true, floating = true })'';
+            }
+            {
+              key = "${mod} + SHIFT + H";
+              action = ''hl.dsp.window.move({ direction = "l" })'';
+            }
+            {
+              key = "${mod} + SHIFT + J";
+              action = ''hl.dsp.window.move({ direction = "d" })'';
+            }
+            {
+              key = "${mod} + SHIFT + K";
+              action = ''hl.dsp.window.move({ direction = "u" })'';
+            }
+            {
+              key = "${mod} + SHIFT + L";
+              action = ''hl.dsp.window.move({ direction = "r" })'';
+            }
+            {
+              key = "${mod} + mouse:272";
+              action = "hl.dsp.window.drag()";
+              flags.mouse = true;
+            }
+            # Special workspace (scratchpad)
+            {
+              key = "${mod} + S";
+              action = ''hl.dsp.workspace.toggle_special("hidden")'';
+            }
+            {
+              key = "${mod} + SHIFT + S";
+              action = ''hl.dsp.window.move({ workspace = "special:hidden" })'';
+            }
+            # Scroll through existing workspaces with mod + scroll
+            {
+              key = "${mod} + mouse_up";
+              action = ''hl.dsp.focus({ workspace = "e-1" })'';
+            }
+            {
+              key = "${mod} + mouse_down";
+              action = ''hl.dsp.focus({ workspace = "e+1" })'';
+            }
+            # ============== Essentials =============== #
+            # Terminal
+            {
+              key = "${mod} + SHIFT + Return";
+              action = ''hl.dsp.exec_cmd("${term}")'';
+            }
+            # Restart Waybar
+            {
+              key = "${mod} + SHIFT + W";
+              action = ''hl.dsp.exec_cmd("${restart-waybar}")'';
+            }
+            # File manager
+            {
+              key = "${mod} + T";
+              action = ''hl.dsp.exec_cmd("${files}")'';
+            }
+            # Floating
+            {
+              key = "${mod} + T";
+              action = "hl.dsp.window.float()";
+            }
+            # Clipboard manager
+            {
+              key = "${mod} + V";
+              action = ''hl.dsp.exec_cmd("${clipboard}")'';
+            }
+            # Fullscreen
+            {
+              key = "${mod} + F";
+              action = ''hl.dsp.window.fullscreen({ mode = "fullscreen" })'';
+            }
+            {
+              key = "${mod} + SHIFT + F";
+              action = ''hl.dsp.window.fullscreen({ mode = "maximized" })'';
+            }
+            # Lauchers
+            {
+              key = "${mod} + P";
+              action = ''hl.dsp.exec_cmd("${menu}")'';
+            }
+            {
+              key = "${mod} + SHIFT + backspace";
+              action = ''hl.dsp.exec_cmd("${powermenu}")'';
+            }
+            # Screenshot and screenrecording
+            {
+              key = "Print";
+              action = ''hl.dsp.exec_cmd("${screenshot}")'';
+            }
+            {
+              key = "${mod} + Print";
+              action = ''hl.dsp.exec_cmd("${screenrec}")'';
+            }
+            # Emoji picker
+            {
+              key = "${mod} + period";
+              action = ''hl.dsp.exec_cmd("${pickemoji}")'';
+            }
+            # Password manager
+            {
+              key = "${mod} + menu";
+              action = ''hl.dsp.exec_cmd("${passmenu}")'';
+            }
+            # Quick password generator
+            {
+              key = "${mod} + SHIFT + P";
+              action = ''hl.dsp.exec_cmd("passgen")'';
+            }
+            # Quit
+            {
+              key = "${mod} + Q";
+              action = "hl.dsp.window.close()";
+            }
+            {
+              key = "CTRL + ALT + Delete";
+              action = "hl.dsp.exit()";
+            }
+            # ============== Resizing =============== #
+            # Equal tile sizes
+            {
+              key = "CTRL + ${mod} + E";
+              action = ''hl.dsp.layout("mfact exact 0.5")'';
+            }
+            {
+              key = "CTRL + ${mod} + H";
+              action = "hl.dsp.window.resize({ relative = true, x = -10, y = 0 })";
+              flags.repeating = true;
+            }
+            {
+              key = "CTRL + ${mod} + J";
+              action = "hl.dsp.window.resize({ relative = true, x = 0, y = 10 })";
+              flags.repeating = true;
+            }
+            {
+              key = "CTRL + ${mod} + K";
+              action = "hl.dsp.window.resize({ relative = true, x = 0, y = -10 })";
+              flags.repeating = true;
+            }
+            {
+              key = "CTRL + ${mod} + L";
+              action = "hl.dsp.window.resize({ relative = true, x = 10, y = 0 })";
+              flags.repeating = true;
+            }
+            {
+              key = "${mod} + mouse:273";
+              action = "hl.dsp.window.resize()";
+              flags.mouse = true;
+            }
+            # ============== Multimedia =============== #
+            {
+              key = "${mod} + F9";
+              action = ''hl.dsp.exec_cmd("${voltoggle}")'';
+            }
+            {
+              key = "XF86AudioMute";
+              action = ''hl.dsp.exec_cmd("${voltoggle}")'';
+            }
+            {
+              key = "XF86AudioMicMute";
+              action = ''hl.dsp.exec_cmd("${mictoggle}")'';
+            }
+            {
+              key = "${mod} + F10";
+              action = ''hl.dsp.exec_cmd("${voldown}")'';
+              flags.repeating = true;
+            }
+            {
+              key = "XF86AudioLowerVolume";
+              action = ''hl.dsp.exec_cmd("${voldown}")'';
+              flags.repeating = true;
+            }
+            {
+              key = "${mod} + F11";
+              action = ''hl.dsp.exec_cmd("${volup}")'';
+              flags.repeating = true;
+            }
+            {
+              key = "XF86AudioRaiseVolume";
+              action = ''hl.dsp.exec_cmd("${volup}")'';
+              flags.repeating = true;
+            }
+            # ============== Submaps =============== #
+            {
+              key = "${mod} + O";
+              action = ''hl.dsp.submap("launch ")'';
+            }
+          ]);
       };
 
       submaps = {
-        "launch  " = {
+        "launch " = {
           settings = {
-            bind = [
-              "$MOD, O, submap, reset"
-              ", escape, submap, reset"
-              ", B, exec, ${browser}"
-              ", B, submap, reset"
-              ", C, exec, ${code}"
-              ", C, submap, reset"
-              ", M, exec, ${mousepad}"
-              ", M, submap, reset"
-              ", N, exec, ${notes}"
-              ", N, submap, reset"
-              ", S, exec, ${slack}"
-              ", S, submap, reset"
-              ", Z, exec, ${zathura}"
-              ", Z, submap, reset"
+            bind = mkBindList [
+              {
+                key = "escape";
+                action = ''hl.dsp.submap("reset")'';
+              }
+              {
+                key = "B";
+                action = ''
+                  function()
+                    hl.dispatch(hl.dsp.exec_cmd("${browser}"))
+                    hl.dispatch(hl.dsp.submap("reset"))
+                  end
+                '';
+              }
+              {
+                key = "C";
+                action = ''
+                  function()
+                    hl.dispatch(hl.dsp.exec_cmd("${code}"))
+                    hl.dispatch(hl.dsp.submap("reset"))
+                  end
+                '';
+              }
+              {
+                key = "M";
+                action = ''
+                  function()
+                    hl.dispatch(hl.dsp.exec_cmd("${mousepad}"))
+                    hl.dispatch(hl.dsp.submap("reset"))
+                  end
+                '';
+              }
+              {
+                key = "N";
+                action = ''
+                  function()
+                    hl.dispatch(hl.dsp.exec_cmd("${notes}"))
+                    hl.dispatch(hl.dsp.submap("reset"))
+                  end
+                '';
+              }
+              {
+                key = "S";
+                action = ''
+                  function()
+                    hl.dispatch(hl.dsp.exec_cmd("${slack}"))
+                    hl.dispatch(hl.dsp.submap("reset"))
+                  end
+                '';
+              }
+              {
+                key = "Z";
+                action = ''
+                  function()
+                    hl.dispatch(hl.dsp.exec_cmd("${zathura}"))
+                    hl.dispatch(hl.dsp.submap("reset"))
+                  end
+                '';
+              }
             ];
           };
         };

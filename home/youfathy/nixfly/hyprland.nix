@@ -8,12 +8,34 @@ in
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland.settings = {
       monitor = [
-        "eDP-1,1920x1080@60,0x0,1"
-        ",preferred,auto,1,mirror,eDP-1"
+        {
+          output = "eDP-1";
+          mode = "1920x1080@60";
+          position = "0x0";
+          scale = 1;
+        }
+        {
+          output = "";
+          mode = "preferred";
+          position = "auto";
+          scale = 1;
+          mirror = "eDP-1";
+        }
       ];
-      binde = [
-        ",XF86MonBrightnessUp, exec, brightness inc"
-        ",XF86MonBrightnessDown, exec, brightness dec"
+
+      bind = [
+        {
+          _args = [
+            "XF86MonBrightnessUp"
+            (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("brightness inc")'')
+          ];
+        }
+        {
+          _args = [
+            "XF86MonBrightnessDown"
+            (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("brightness dec")'')
+          ];
+        }
       ];
     };
   };

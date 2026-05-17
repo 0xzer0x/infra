@@ -16,29 +16,65 @@ in
 {
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland.settings = {
-      layerrule = [
-        # NOTE: Remove border around hyprshot screenshots
-        "match:namespace selection, no_anim on"
+      layer_rule = [
+        # FIX: Remove border around hyprshot screenshots
         # NOTE: No animations for rofi
-        "match:namespace rofi, no_anim on"
+        {
+          match.namespace = "^(selection|rofi)$";
+          no_anim = true;
+        }
       ];
       # NOTE: Smart gaps
-      workspace = [
-        "w[tv1], gapsout:0, gapsin:0"
-        "f[1], gapsout:0, gapsin:0"
+      workspace_rule = [
+        {
+          workspace = "w[tv1]";
+          gaps_in = 0;
+          gaps_out = 0;
+        }
+        {
+          workspace = "f[1]";
+          gaps_in = 0;
+          gaps_out = 0;
+        }
       ];
-      windowrule = [
+      window_rule = [
         # NOTE: Smart gaps
-        "match:float 0, match:workspace w[tv1], border_size 0"
-        "match:float 0, match:workspace w[tv1], rounding 0"
-        "match:float 0, match:workspace f[1], border_size 0"
-        "match:float 0, match:workspace f[1], rounding 0"
-        # NOTE: Custom rules
-        "match:title ^(flameshot), no_anim on"
-        "match:initial_class (${builtins.concatStringsSep "|" floatingWindows}), float on"
-        "match:initial_class (Wiremix), center on"
-        "match:initial_class (Wiremix), size 800 500"
-        "match:initial_class ^(com\\.github\\.wwmm\\.easyeffects)$, workspace special:magic"
+        {
+          match = {
+            workspace = "w[tv1]";
+            float = false;
+          };
+          border_size = 0;
+          rounding = 0;
+        }
+        {
+          match = {
+            workspace = "f[1]";
+            float = false;
+          };
+          border_size = 0;
+          rounding = 0;
+        }
+        {
+          match.title = "^(flameshot)$";
+          no_anim = true;
+        }
+        {
+          match.initial_class = "^(${builtins.concatStringsSep "|" floatingWindows})$";
+          float = true;
+        }
+        {
+          match.initial_class = "^(Wiremix)$";
+          center = true;
+          size = [
+            800
+            500
+          ];
+        }
+        {
+          match.initial_class = "^(com\\.github\\.wwmm\\.easyeffects)$";
+          workspace = "special:hidden";
+        }
       ];
     };
   };
