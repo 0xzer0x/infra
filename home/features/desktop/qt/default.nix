@@ -23,13 +23,7 @@ in
     qt = {
       enable = true;
       platformTheme.name = "qtct";
-      style = {
-        name = "Darkly";
-        package = with pkgs; [
-          darkly-qt5
-          darkly
-        ];
-      };
+      style.name = "breeze";
     };
 
     # NOTE: Fix KDE applications theming and icons
