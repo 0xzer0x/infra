@@ -108,7 +108,7 @@ _parse_selection() {
     ;;
   "${__ICON_LOGOUT}")
     if [[ "${XDG_CURRENT_DESKTOP}" == 'Hyprland' ]]; then
-      hyprctl dispatch exit
+      hyprctl dispatch "hl.dsp.exit()"
     elif [[ "${XDG_CURRENT_DESKTOP}" == 'sway' || "${XDG_CURRENT_DESKTOP}" == "swayfx-nvidia" ]]; then
       swaymsg exit
     fi
