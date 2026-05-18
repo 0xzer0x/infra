@@ -156,7 +156,7 @@ in
             }
             # Floating
             {
-              key = "${mod} + T";
+              key = "${mod} + space";
               action = "hl.dsp.window.float()";
             }
             # Clipboard manager
