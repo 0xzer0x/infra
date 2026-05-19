@@ -7,10 +7,10 @@ let
     "yad"
     "nm-connection-editor"
     "xdg-desktop-portal-gtk"
-    "mousepad"
     "nm-applet"
     "blueman-manager"
     "Wiremix"
+    "org.xfce.mousepad"
   ];
 in
 {
