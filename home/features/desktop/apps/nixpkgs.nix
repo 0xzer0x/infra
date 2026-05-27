@@ -25,6 +25,7 @@ in
       qalculate-gtk
       qbittorrent
       localsend
+      whatsie
       stable.bottles
       stable.gimp
       stable.tenacity
