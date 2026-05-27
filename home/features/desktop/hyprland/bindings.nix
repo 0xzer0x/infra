@@ -30,6 +30,7 @@ let
   slack = "${lib.getExe pkgs.slack} --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland";
   notes = "${lib.getExe pkgs.obsidian} --enable-features=WaylandWindowDecorations";
   mousepad = lib.getExe pkgs.mousepad;
+  whatsapp = lib.getExe pkgs.whatsie;
   zathura = lib.getExe pkgs.zathura;
   restart-waybar = "${configHome}/hypr/scripts/restart-waybar";
 
@@ -336,6 +337,15 @@ in
                 action = ''
                   function()
                     hl.dispatch(hl.dsp.exec_cmd("${slack}"))
+                    hl.dispatch(hl.dsp.submap("reset"))
+                  end
+                '';
+              }
+              {
+                key = "W";
+                action = ''
+                  function()
+                    hl.dispatch(hl.dsp.exec_cmd("${whatsapp}"))
                     hl.dispatch(hl.dsp.submap("reset"))
                   end
                 '';
