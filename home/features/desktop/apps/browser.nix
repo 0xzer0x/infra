@@ -94,7 +94,7 @@ in
           "zen.welcome-screen.seen" = true;
           "zen.theme.accent-color" = "#181825";
           "zen.theme.gradient.show-custom-colors" = true;
-          "zen.theme.content-element-separation" = 6;
+          "zen.theme.content-element-separation" = 0;
           "zen.urlbar.behavior" = "normal";
           "zen.urlbar.replace-newtab" = false;
           "zen.view.experimental-no-window-controls" = true;
@@ -102,6 +102,7 @@ in
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         };
 
+        spacesForce = true;
         spaces = {
           Space = {
             id = "f1b6fb21-0b09-42c9-8850-9c5598917783";
@@ -190,7 +191,7 @@ in
         };
 
         userContent = ''
-          /* Catppuccin Mocha Blue userContent.css*/
+          /* Catppuccin Mocha Blue userContent.css */
           @media (prefers-color-scheme: dark) {
 
             /* Common variables affecting all pages */
@@ -349,7 +350,7 @@ in
         '';
 
         userChrome = ''
-          /* Catppuccin Mocha Blue userChrome.css*/
+          /* Catppuccin Mocha Blue userChrome.css */
           @media (prefers-color-scheme: dark) {
             :root {
               --zen-colors-primary: #313244 !important;
