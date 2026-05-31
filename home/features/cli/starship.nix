@@ -98,6 +98,13 @@ in
           format = "([\\($all_status$ahead_behind\\)]($style))";
         };
 
+        gcloud = {
+          disabled = true;
+          symbol = " ";
+          style = "bold blue";
+          format = " [$symbol$account(@$domain)(\\($region\\))]($style)";
+        };
+
         golang = {
           symbol = " ";
           style = "bold sapphire";
