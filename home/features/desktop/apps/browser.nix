@@ -114,13 +114,19 @@ in
         spaces = {
           Space = {
             id = "f1b6fb21-0b09-42c9-8850-9c5598917783";
-            theme.colors = [
-              {
-                red = 24;
-                green = 24;
-                blue = 37;
-              }
-            ];
+            theme = {
+              type = "gradient";
+              opacity = 1.0;
+              colors = [
+                {
+                  algorithm = "floating";
+                  type = "explicit-lightness";
+                  red = 24;
+                  green = 24;
+                  blue = 37;
+                }
+              ];
+            };
           };
         };
 
@@ -273,8 +279,10 @@ in
                 --zen-primary-color: #89b4fa !important;
               }
 
-              groupbox , moz-card{
+              groupbox, moz-card {
                 background: #1e1e2e !important;
+                padding: 1.6rem !important;
+                border-radius: 8px !important;
               }
 
               button,
@@ -361,7 +369,10 @@ in
         userChrome = ''
           /* Catppuccin Mocha Blue userChrome.css */
           @media (prefers-color-scheme: dark) {
-            :root {
+            :root,
+            :host,
+            :host *, :root *, *, * *,
+            .container, .sticky-container, #toolbar, #prefs {
               --zen-colors-primary: #313244 !important;
               --zen-primary-color: #89b4fa !important;
               --zen-colors-secondary: #313244 !important;
@@ -376,6 +387,7 @@ in
               --newtab-text-primary-color: #cdd6f4 !important;
               --arrowpanel-color: #cdd6f4 !important;
               --arrowpanel-background: #1e1e2e !important;
+              --zen-dialog-background: #1e1e2e !important;
               --sidebar-text-color: #cdd6f4 !important;
               --lwt-sidebar-text-color: #cdd6f4 !important;
               --lwt-sidebar-background-color: #11111b !important;
@@ -384,10 +396,17 @@ in
               --zen-themed-toolbar-bg: #181825 !important;
               --zen-main-browser-background: #181825 !important;
               --toolbox-bgcolor-inactive: #181825 !important;
+              --zen-themed-toolbar-bg-transparent: #181825 !important;
             }
 
             .sidebar-placesTree {
               background-color: #1e1e2e !important;
+            }
+
+            #historySwipeAnimationPreviousArrow,
+            #historySwipeAnimationNextArrow {
+              --swipe-nav-icon-primary-color: #f2cdcd !important;
+              --swipe-nav-icon-accent-color: #1e1e2e!important;
             }
 
             #zen-workspaces-button {
@@ -482,6 +501,18 @@ in
 
             #commonDialog {
               background-color: #181825 !important;
+            }
+
+            #zen-toast-container .zen-toast label,
+            #zen-toast-container .zen-toast button .button-icon,
+            #urlbar-search-mode-indicator,
+            .urlbarView .urlbarView-row[selected] *,
+            .urlbarView .urlbarView-row[selected] .urlbarView-title-separator::before {
+              color: #1e1e2e !important;
+            }
+
+            #zen-browser-background {
+              --zen-main-browser-background: #181825 !important;
             }
           }
         '';
