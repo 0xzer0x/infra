@@ -89,6 +89,7 @@ in
       profiles.default = {
         id = 0;
         isDefault = true;
+
         settings = {
           "browser.tabs.closeWindowWithLastTab" = false;
           "zen.welcome-screen.seen" = true;
@@ -101,6 +102,13 @@ in
           "zen.workspaces.open-new-tab-if-last-unpinned-tab-is-closed" = true;
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         };
+
+        mods = [
+          # NOTE: Cleaner Bookmark Menu
+          "b0f635d7-c3bf-4709-af68-4712f0e5b2e5"
+          # NOTE: Floating Status Bar
+          "906c6915-5677-48ff-9bfc-096a02a72379"
+        ];
 
         spacesForce = true;
         spaces = {
@@ -115,6 +123,7 @@ in
             ];
           };
         };
+
         search = {
           default = "duckduckgo";
           engines =
