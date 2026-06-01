@@ -15,7 +15,7 @@ in
       enable = true;
 
       settings = {
-        model = "opencode/big-pickle";
+        model = "opencode-go/kimi-k2.6";
         permission = {
           "*" = "ask";
         };
