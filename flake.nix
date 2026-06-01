@@ -15,7 +15,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # NOTE: Flatpaks
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/v0.7.0";
     # NOTE: User dotfiles management
     home-manager = {
       url = "github:nix-community/home-manager";
