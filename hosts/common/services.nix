@@ -41,9 +41,7 @@
       useTextGreeter = true;
       settings = {
         default_session = {
-          command = ''
-            ${lib.getExe pkgs.tuigreet} -rtg "Welcome Back" -c start-hyprland
-          '';
+          command = ''${lib.getExe pkgs.tuigreet} -rtg "Welcome Back" -c start-hyprland'';
         };
       };
     };
