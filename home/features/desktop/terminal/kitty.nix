@@ -22,6 +22,7 @@ in
         shell = "tmux -N";
         tab_bar_style = "hidden";
         confirm_os_window_close = 0;
+        auto_reload_config = -1;
       };
     };
   };
