@@ -15,7 +15,7 @@ in
       enable = true;
 
       settings = {
-        model = "opencode-go/kimi-k2.6";
+        model = "opencode-go/minimax-m3";
         permission = {
           "*" = "ask";
         };
