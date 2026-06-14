@@ -130,6 +130,17 @@ in
           };
         };
 
+        pinsForce = true;
+        pinsForceAction = "remove";
+        pins = {
+          new-tab = {
+            id = "064435f9-4618-44d6-b1a3-acb101c0620b";
+            url = "moz-extension://182c3701-b192-4c91-9574-6324d00b8ca8/index.html";
+            isEssential = true;
+            position = 1;
+          };
+        };
+
         search = {
           default = "duckduckgo";
           engines =
