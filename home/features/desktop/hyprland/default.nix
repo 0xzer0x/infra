@@ -65,9 +65,9 @@ in
         source = ./scripts;
         recursive = true;
       };
-      "hypr/wall.png" = {
+      "hypr/wall.jpg" = {
         enable = true;
-        source = ./wall.png;
+        source = ./wall.jpg;
       };
     };
 

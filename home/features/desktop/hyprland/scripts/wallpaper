@@ -4,4 +4,4 @@ if ! awww query 1>/dev/null 2>&1; then
   awww-daemon &
 fi
 
-awww img -t none "${XDG_CONFIG_HOME:-${HOME}/.config}/hypr/wall.png"
+awww img -t none "${XDG_CONFIG_HOME:-${HOME}/.config}/hypr/wall.jpg"
