@@ -19,18 +19,10 @@ in
         {
           on = [
             "g"
-            "u"
+            "W"
           ];
-          run = "cd /mnt/ssd/UNI";
-          desc = "Go to /mnt/ssd/UNI";
-        }
-        {
-          on = [
-            "g"
-            "b"
-          ];
-          run = "cd /mnt/ssd/Work/books";
-          desc = "Go to /mnt/ssd/Work/books";
+          run = "cd /mnt/ssd/Work";
+          desc = "Go to /mnt/ssd/Work";
         }
       ];
     };
