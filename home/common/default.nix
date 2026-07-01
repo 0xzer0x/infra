@@ -22,6 +22,7 @@
     config = {
       allowUnfree = true;
       allowUnfreePredicate = _: true;
+      permittedInsecurePackages = [ "pnpm-10.29.2" ];
     };
 
     overlays =

@@ -31,7 +31,7 @@ in
         ubuntu-sans
         amiri
         scheherazade-new
-        vazir-fonts
+        vazirmatn
         vazir-code-font
         noto-fonts
         noto-fonts-color-emoji
