@@ -185,11 +185,11 @@ in
             }
             # Screenshot and screenrecording
             {
-              key = "Print";
+              key = "${mod} + C";
               action = ''hl.dsp.exec_cmd("${screenshot}")'';
             }
             {
-              key = "${mod} + Print";
+              key = "${mod} + SHIFT + C";
               action = ''hl.dsp.exec_cmd("${screenrec}")'';
             }
             # Emoji picker
