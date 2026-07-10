@@ -1,7 +1,10 @@
 {
   networking = {
-    nftables.enable = true;
-    firewall.enable = false;
     networkmanager.enable = true;
+    nftables.enable = true;
+    firewall = {
+      enable = true;
+      allowPing = false;
+    };
   };
 }
