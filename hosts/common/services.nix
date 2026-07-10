@@ -35,6 +35,9 @@
     # Tailscale VPN
     tailscale.enable = true;
 
+    # Cloudflare WARP
+    cloudflare-warp.enable = true;
+
     # Display manager (greetd + tuigreet)
     greetd = {
       enable = true;
