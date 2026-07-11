@@ -207,6 +207,11 @@ in
               key = "${mod} + SHIFT + P";
               action = ''hl.dsp.exec_cmd("passgen")'';
             }
+            # Toggle WARP
+            {
+              key = "${mod} + W";
+              action = ''hl.dsp.exec_cmd("warper")'';
+            }
             # Quit
             {
               key = "${mod} + Q";

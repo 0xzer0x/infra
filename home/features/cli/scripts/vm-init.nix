@@ -3,8 +3,6 @@
 pkgs.writeShellScriptBin "vm-init" ''
   set -euo pipefail
 
-  VIRT_HOME=/mnt/ssd/Virtualization
-
   __SCRIPT_DIR="$(cd "$(dirname "$(realpath "''${0}")")" && pwd)"
   __CI_DATA_DIR="''${VIRT_HOME:-''${__SCRIPT_DIR}}/cidata"
   __IMG_DIR="''${VIRT_HOME:-''${__SCRIPT_DIR}}/img"
@@ -27,6 +25,15 @@ pkgs.writeShellScriptBin "vm-init" ''
   )
 
   __validate_deps() {
+    local -a _required_env=(VIRT_HOME)
+
+    for _envvar in "''${_required_env[@]}"; do
+      if [ -z "''${!_envvar}" ]; then
+        printf "Required environment variable is not set: %s\n" "''${_envvar}"
+        exit 1
+      fi
+    done
+
     for cmd in gum virt-install virsh; do
       if ! command -v "''${cmd}" &>/dev/null; then
         printf 'Required command not found: %s\n' "''${cmd}"
