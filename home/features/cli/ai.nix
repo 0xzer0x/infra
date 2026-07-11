@@ -15,7 +15,7 @@ in
       enable = true;
 
       settings = {
-        model = "opencode-go/minimax-m3";
+        model = "opencode/big-pickle";
         permission = {
           "*" = "ask";
         };
