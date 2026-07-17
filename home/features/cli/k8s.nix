@@ -33,7 +33,6 @@ in
       kubernetes
       krew
       kubernetes-helm
-      minikube
       kind
       k3d
     ];
