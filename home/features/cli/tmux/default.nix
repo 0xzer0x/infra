@@ -190,6 +190,8 @@ in
         set -gF copy-mode-current-match-style "bg=#{@thm_red} fg=#{@thm_bg}"
 
         # configure status modules
+        set -g message-style "align=left,width=100%,fill=#181825"
+        set -g message-command-style "align=left,width=100%,fill=#181825"
         set -g window-status-separator ""
         set -g status-right ""
         set -g status-left-length 0
