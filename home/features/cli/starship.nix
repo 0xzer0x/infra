@@ -22,13 +22,15 @@ in
         add_newline = false;
         command_timeout = 1000;
 
+        docker_context.symbol = " ";
+        rust.symbol = " ";
+        os.symbols.NixOS = " ";
+
         aws = {
           disabled = true;
           symbol = " ";
-          format = " [$symbol($profile)(\\($region\\))(\\[$duration\\])]($style)";
+          format = " [$symbol($profile)( \\($region\\))]($style)";
         };
-
-        buf.symbol = " ";
 
         c = {
           symbol = " ";
@@ -40,21 +42,15 @@ in
           format = " [$symbol($version)]($style)";
         };
 
-        conda.symbol = " ";
-
         container = {
           symbol = "⬢ ";
           format = " [$symbol\\[$name\\]]($style)";
         };
 
-        crystal.symbol = " ";
-
         cmd_duration = {
           style = "bold yellow";
           format = " [󱦟 $duration]($style)";
         };
-
-        dart.symbol = " ";
 
         deno = {
           symbol = "🦕";
@@ -66,13 +62,6 @@ in
           truncation_length = 1;
           style = "bold teal";
         };
-
-        docker_context.symbol = " ";
-
-        elixir.symbol = " ";
-        elm.symbol = " ";
-        fennel.symbol = " ";
-        fossil_branch.symbol = " ";
 
         git_branch = {
           symbol = " ";
@@ -111,17 +100,6 @@ in
           format = " [$symbol($version)]($style)";
         };
 
-        gradle = {
-          symbol = " ";
-          style = "bold sky";
-          format = " [$symbol($version)]($style)";
-        };
-
-        guix_shell.symbol = " ";
-        haskell.symbol = " ";
-        haxe.symbol = " ";
-        hg_branch.symbol = " ";
-
         helm = {
           symbol = "󰠳 ";
           format = " [$symbol($version)]($style)";
@@ -134,19 +112,10 @@ in
           format = " [$ssh_symbol$hostname]($style)";
         };
 
-        java = {
-          symbol = " ";
-          style = "red";
-          format = " [\${symbol}(\${version})]($style)";
-        };
-
         jobs = {
           style = "bold sapphire";
           format = " [$symbol$number]($style)";
         };
-
-        julia.symbol = " ";
-        kotlin.symbol = " ";
 
         kubernetes = {
           disabled = false;
@@ -160,10 +129,6 @@ in
           format = " [$symbol($version)]($style)";
         };
 
-        memory_usage.symbol = "󰍛 ";
-        meson.symbol = "󰔷 ";
-        nim.symbol = "󰆥 ";
-
         nix_shell = {
           symbol = " ";
           format = " [$symbol$state(\\($name\\))]($style)";
@@ -174,25 +139,11 @@ in
           format = " [$symbol($version)]($style)";
         };
 
-        ocaml.symbol = " ";
-
         package = {
           symbol = " ";
           format = " [$symbol$version]($style)";
           style = "bold peach";
         };
-
-        perl = {
-          symbol = " ";
-          format = " [$symbol($version)]($style)";
-        };
-
-        php = {
-          format = " [$symbol($version)]($style)";
-          symbol = " ";
-        };
-
-        pijul_channel.symbol = " ";
 
         python = {
           symbol = " ";
@@ -200,82 +151,16 @@ in
           style = "bold yellow";
         };
 
-        rlang.symbol = "󰟔 ";
-        ruby.symbol = " ";
-        rust.symbol = " ";
-        scala.symbol = " ";
-        swift.symbol = " ";
-
         terraform = {
           symbol = "󱁢 ";
           style = "bold mauve";
           format = " [$symbol$workspace]($style)";
         };
 
-        typst = {
-          symbol = "t ";
-          style = "bold sapphire";
-          format = " [$symbol($version)]($style)";
-        };
-
         username = {
           style_root = "bold red";
           style_user = "bold yellow";
           format = " [ $user]($style)";
-        };
-
-        vagrant = {
-          symbol = " ";
-          style = "bold blue";
-          format = " [$symbol($version)]($style)";
-        };
-
-        zig.symbol = " ";
-
-        os.symbols = {
-          Alpaquita = " ";
-          Alpine = " ";
-          AlmaLinux = " ";
-          Amazon = " ";
-          Android = " ";
-          Arch = " ";
-          Artix = " ";
-          CentOS = " ";
-          Debian = " ";
-          DragonFly = " ";
-          Emscripten = " ";
-          EndeavourOS = " ";
-          Fedora = " ";
-          FreeBSD = " ";
-          Garuda = "󰛓 ";
-          Gentoo = " ";
-          HardenedBSD = "󰞌 ";
-          Illumos = "󰈸 ";
-          Kali = " ";
-          Linux = " ";
-          Mabox = " ";
-          Macos = " ";
-          Manjaro = " ";
-          Mariner = " ";
-          MidnightBSD = " ";
-          Mint = " ";
-          NetBSD = " ";
-          NixOS = " ";
-          OpenBSD = "󰈺 ";
-          openSUSE = " ";
-          OracleLinux = "󰌷 ";
-          Pop = " ";
-          Raspbian = " ";
-          Redhat = " ";
-          RedHatEnterprise = " ";
-          RockyLinux = " ";
-          Redox = "󰀘 ";
-          Solus = "󰠳 ";
-          SUSE = " ";
-          Ubuntu = " ";
-          Unknown = " ";
-          Void = " ";
-          Windows = "󰍲 ";
         };
       };
     };
