@@ -39,19 +39,8 @@
   };
 
   programs = {
+    fish.enable = true;
     nix-ld.enable = true;
-
-    zsh = {
-      enable = true;
-      enableCompletion = true;
-      enableBashCompletion = true;
-      autosuggestions.enable = true;
-      syntaxHighlighting.enable = true;
-    };
-
-    fish = {
-      enable = true;
-    };
 
     gnupg.agent = {
       enable = true;
