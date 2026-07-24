@@ -18,16 +18,15 @@ in
   ];
 
   config = mkIf cfg.enable {
-    xdg.configFile."tmux/tmux-nerd-font-window-name.yml" = {
-      source = ./tmux-nerd-font-window-name.yml;
-    };
-
     programs.tmux = {
       enable = true;
       sensibleOnTop = false;
+      terminal = "tmux-256color";
+      baseIndex = 1;
+      escapeTime = 0;
+      keyMode = "vi";
 
       plugins = with pkgs; [
-        { plugin = tmux-nerd-font-window-name; }
         {
           plugin = tmuxPlugins.fingers;
           extraConfig = ''
@@ -46,30 +45,18 @@ in
         # ║ ║╠═╝ ║ ║║ ║║║║╚═╗
         # ╚═╝╩   ╩ ╩╚═╝╝╚╝╚═╝
         # -------------------
-        set -g default-terminal "tmux-256color"
         # True color support
         set -ga terminal-features ",*256col*:RGB"
         # Undercurl support
         set -ga terminal-overrides ',*:Smulx=\E[4::%p1%dm'
         # Undercurl colors
         set -ga terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'
-        # Automatic window renaming
-        set -g automatic-rename on
         # Allow programs to change the window name
         set -g allow-rename off
         # Destroy window when program exits
         set -g remain-on-exit off
-        # Set the time in milliseconds for which tmux waits after an escape is input to
-        # determine if it is part of a function or meta key sequences.
-        set -g escape-time 0
-        # Enable mouse support
-        set -g mouse on
         # Automatic renumbering of windows
         set -g renumber-windows on
-        # Initial window index
-        set -g base-index 1
-        # Copy mode default bindings
-        set -g mode-keys vi
         # Status bar position
         set -g status-position bottom
         # Prefix mode keybind
@@ -211,8 +198,8 @@ in
         # ╠═╝║  ║ ║║ ╦║║║║╚═╗
         # ╩  ╩═╝╚═╝╚═╝╩╝╚╝╚═╝
         # -------------------
-        # keyboard-driven url/copy mode
-        run-shell '${pkgs.tmuxPlugins.fingers}/share/tmux-plugins/tmux-fingers/tmux-fingers.tmux'
+        # Re-source tmux-fingers plugin since plugins are sourced before extra config and we erase all binds in our extra config
+        run-shell '${pkgs.tmuxPlugins.fingers.rtp}'
       '';
     };
 
