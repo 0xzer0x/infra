@@ -25,6 +25,7 @@ in
       baseIndex = 1;
       escapeTime = 0;
       keyMode = "vi";
+      mouse = true;
 
       plugins = with pkgs; [
         {
