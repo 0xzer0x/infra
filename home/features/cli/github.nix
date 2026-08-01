@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.features.cli.github;
@@ -17,7 +22,22 @@ in
       };
 
       # NOTE: TUI dashboard plugin
-      gh-dash.enable = true;
+      gh-dash = {
+        enable = true;
+        settings = {
+          keybindings.prs =
+            let
+              tuicr = lib.getExe pkgs.tuicr;
+            in
+            [
+              {
+                name = "Code review";
+                key = "C";
+                command = "${tuicr} pr {{ .PrNumber }}";
+              }
+            ];
+        };
+      };
     };
   };
 }

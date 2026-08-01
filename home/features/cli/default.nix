@@ -73,5 +73,6 @@
     sops
     nix-output-monitor
     nvd
+    tuicr
   ];
 }
