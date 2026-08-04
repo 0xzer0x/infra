@@ -58,7 +58,6 @@ in
           DontCheckDefaultBrowser = true;
           OfferToSaveLogins = false;
           HardwareAcceleration = true;
-          SearchEngines.Default = "DuckDuckGo";
 
           ExtensionSettings = mkExtensionSettings {
             "uBlock0@raymondhill.net" = "ublock-origin";
@@ -142,7 +141,8 @@ in
         };
 
         search = {
-          default = "duckduckgo";
+          force = true;
+          default = "ddg";
           engines =
             let
               nixSnowflakeIcon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
