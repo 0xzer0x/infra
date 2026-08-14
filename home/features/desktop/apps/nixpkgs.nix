@@ -25,7 +25,6 @@ in
       qbittorrent
       localsend
       whatsie
-      legcord
       stable.bottles
       stable.gimp
       stable.tenacity
@@ -34,9 +33,7 @@ in
 
     # NOTE: Media player
     catppuccin.mpv.enable = false;
-    home.sessionVariables = {
-      VIDEO = "mpv";
-    };
+    home.sessionVariables.VIDEO = "mpv";
     programs.mpv = {
       enable = true;
       scripts = with pkgs; [
@@ -54,6 +51,9 @@ in
     };
 
     programs = {
+      # NOTE: Discord
+      vesktop.enable = true;
+
       # NOTE: Image viewer
       imv = {
         enable = true;
