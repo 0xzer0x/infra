@@ -17,7 +17,6 @@ in
       signal-desktop
       tutanota-desktop
       obsidian
-      legcord
       slack
       droidcam
       v4l-utils
@@ -26,6 +25,7 @@ in
       qbittorrent
       localsend
       whatsie
+      legcord
       stable.bottles
       stable.gimp
       stable.tenacity

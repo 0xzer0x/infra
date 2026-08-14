@@ -28,10 +28,10 @@ in
     home.packages = with pkgs; [
       clipman
       wl-clipboard
-      wf-recorder
       wlr-randr
       ydotool
       qt6.qtwayland
+      stable.wf-recorder
     ];
   };
 }
