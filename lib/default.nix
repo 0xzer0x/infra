@@ -5,7 +5,7 @@ let
   enableFeatures =
     features:
     builtins.listToAttrs (
-      builtins.map (name: {
+      map (name: {
         inherit name;
         value = {
           enable = true;

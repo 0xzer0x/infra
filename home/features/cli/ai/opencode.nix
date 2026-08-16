@@ -5,10 +5,10 @@
 }:
 
 let
-  cfg = config.features.cli.ai;
+  cfg = config.features.cli.opencode;
 in
 {
-  options.features.cli.ai.enable = lib.mkEnableOption "Enable AI CLI utilities";
+  options.features.cli.opencode.enable = lib.mkEnableOption "Enable Opencode configuration";
 
   config = lib.mkIf cfg.enable {
     programs.opencode = {

@@ -6,6 +6,7 @@
     ./tmux
     ./scripts
     ./go-pray
+    ./ai
     ./env.nix
     ./starship.nix
     ./nvim.nix
@@ -25,7 +26,6 @@
     ./nettools.nix
     ./monitoring.nix
     ./rss.nix
-    ./ai.nix
   ];
 
   # NOTE: Use programs.<name>.enable whenever possible instead of using home.packages

@@ -63,7 +63,7 @@ in
       "monitoring"
       "go-pray"
       "rss"
-      "ai"
+      "opencode"
     ];
   };
 }
