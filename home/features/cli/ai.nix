@@ -15,7 +15,7 @@ in
       enable = true;
 
       settings = {
-        model = "opencode-go/minimax-m3";
+        model = "opencode-go/kimi-k3";
         plugin = [ "@leohenon/opencode-vim-plugin" ];
         permission = {
           "*" = "ask";
