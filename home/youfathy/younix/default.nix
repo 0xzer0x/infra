@@ -24,7 +24,6 @@ in
     terminal = "kitty";
     # NOTE: Enabled features
     programmingFeatures = [
-      "cuda"
       "cpp"
       "go"
       "rust"
