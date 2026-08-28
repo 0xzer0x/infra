@@ -52,7 +52,10 @@ in
 
     programs = {
       # NOTE: Discord
-      vesktop.enable = true;
+      vesktop = {
+        enable = true;
+        package = pkgs.stable.vesktop;
+      };
 
       # NOTE: Image viewer
       imv = {
