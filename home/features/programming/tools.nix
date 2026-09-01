@@ -23,7 +23,6 @@ in
     };
 
     home.packages = with pkgs; [
-      devenv
       posting
     ];
 
