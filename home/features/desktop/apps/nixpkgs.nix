@@ -54,7 +54,6 @@ in
       # NOTE: Discord
       vesktop = {
         enable = true;
-        package = pkgs.stable.vesktop;
       };
 
       # NOTE: Image viewer
