@@ -22,6 +22,7 @@ in
       enable = true;
       sensibleOnTop = false;
       terminal = "tmux-256color";
+      focusEvents = true;
       baseIndex = 1;
       escapeTime = 0;
       keyMode = "vi";
