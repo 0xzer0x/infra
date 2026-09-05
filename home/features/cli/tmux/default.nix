@@ -8,6 +8,7 @@
 with lib;
 let
   cfg = config.features.cli.tmux;
+  yaziEnabled = config.features.cli.yazi.enable;
 in
 {
   options.features.cli.tmux.enable = mkEnableOption "Enable TMUX configuration";
@@ -64,6 +65,11 @@ in
         # Prefix mode keybind
         set -g prefix C-g
 
+        ${
+          # NOTE: Yazi Tmux fixes
+          lib.optionalString yaziEnabled "set -g allow-passthrough on"
+        }
+
         # user options
         set -g @copy_mode_on_scroll 1
         set -g @mouse_drag_enter_copy_mode 1
@@ -77,16 +83,13 @@ in
         unbind -T prefix -a
 
         # ---- root key-table ----
-        bind -T root -N 'Reload configuration'      M-r source-file ~/.config/tmux/tmux.conf
+        bind -T root -N 'Reload configuration'                                             M-r source-file ~/.config/tmux/tmux.conf
         bind -T root -N 'Move focus left, changing windows if current pane is leftmost'    M-h if -F '#{?#{>:#{last_window_index},1},#{pane_at_left},}' 'select-window -p' 'select-pane -ZL'
         bind -T root -N 'Move focus right, changing windows if current pane is rightmost'  M-l if -F '#{?#{>:#{last_window_index},1},#{pane_at_right},}' 'select-window -n' 'select-pane -ZR'
-        bind -T root -N 'Move focus to down pane'   M-j select-pane -ZD
-        bind -T root -N 'Move focus to up pane'     M-k select-pane -ZU
-        bind -T root -N 'Spread panes evenly'       M-= select-layout -E
-        bind -T root -N 'Switch to previous layout' M-[ select-layout -p
-        bind -T root -N 'Switch to next layout'     M-] select-layout -n
-        bind -T root -N 'Switch to vi copy mode'              WheelUpPane if -F "#{@copy_mode_on_scroll}" "copy-mode" "send-keys -M WheelUpPane"
-        bind -T root -N 'Start a new selection in copy mode'  MouseDrag1Pane if -F "#{@mouse_drag_enter_copy_mode}" "copy-mode -M" "send-keys -M MouseDrag1Pane"
+        bind -T root -N 'Move focus to down pane'                                          M-j select-pane -ZD
+        bind -T root -N 'Move focus to up pane'                                            M-k select-pane -ZU
+        bind -T root -N 'Switch to vi copy mode'                                           WheelUpPane if -F "#{@copy_mode_on_scroll}" "copy-mode" "send-keys -M WheelUpPane"
+        bind -T root -N 'Start a new selection in copy mode'                               MouseDrag1Pane if -F "#{@mouse_drag_enter_copy_mode}" "copy-mode -M" "send-keys -M MouseDrag1Pane"
 
         # ---- prefix key-table ----
         bind -T prefix -N 'Switch to pane mode'      p switchc -T pane-mode \; refresh-client -S
@@ -102,6 +105,9 @@ in
         # ---- pane-mode key-table ----
         bind -T pane-mode -N 'Create a new pane below the current one'           d split-window -vc "#{pane_current_path}" -l 50%
         bind -T pane-mode -N 'Create a new pane to the right of the current one' r split-window -hc "#{pane_current_path}" -l 50%
+        bind -T pane-mode -N 'Spread panes evenly'                               = select-layout -E
+        bind -T pane-mode -N 'Switch to previous layout'                         [ select-layout -p\; switchc -T pane-mode
+        bind -T pane-mode -N 'Switch to next layout'                             ] select-layout -n\; switchc -T pane-mode
         bind -T pane-mode -N 'Swap the active pane with the pane above it'       K if -F "#{!=:#{&&:#{pane_at_bottom},#{pane_at_top}},1}" "swap-pane -Zt '{up-of}' ; select-pane -Zt '{up-of}'" \; switchc -T pane-mode
         bind -T pane-mode -N 'Swap the active pane with the pane below it'       J if -F "#{!=:#{&&:#{pane_at_bottom},#{pane_at_top}},1}" "swap-pane -Zt '{down-of}' ; select-pane -Zt '{down-of}'" \; switchc -T pane-mode
         bind -T pane-mode -N 'Swap the active pane with the pane to its right'   L if -F "#{!=:#{&&:#{pane_at_left},#{pane_at_right}},1}" "swap-pane -Zt '{right-of}' ; select-pane -Zt '{right-of}'" \; switchc -T pane-mode
