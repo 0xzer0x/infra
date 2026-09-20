@@ -38,8 +38,10 @@ pkgs.writeShellScriptBin "warper" ''
       local _old_state="$(_current_warp_state)"
       if [ "''${_old_state}" = "connected" ]; then
         ${warp-cli} disconnect
+        __WARP_STATE="disconnected"
       else
         ${warp-cli} connect
+        __WARP_STATE="connecting"
       fi
       ;;
     *)
@@ -48,7 +50,6 @@ pkgs.writeShellScriptBin "warper" ''
       ;;
     esac
 
-    __WARP_STATE="$(_current_warp_state)"
     _notify_state
   }
 
