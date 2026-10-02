@@ -11,19 +11,18 @@
       flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
     in
     {
+      registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
       settings = {
-        experimental-features = [
-          "nix-command"
-          "flakes"
-        ];
+        nix-path = lib.mapAttrsToList (flakeName: _: "${flakeName}=flake:${flakeName}") flakeInputs;
         trusted-users = [ "@wheel" ];
         use-xdg-base-directories = true;
         auto-optimise-store = true;
         min-free = 32212254720;
+        experimental-features = [
+          "nix-command"
+          "flakes"
+        ];
       };
-
-      registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
-      nixPath = lib.mapAttrsToList (flakeName: _: "${flakeName}=flake:${flakeName}") flakeInputs;
     };
 
   nixpkgs = {

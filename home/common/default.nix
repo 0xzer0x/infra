@@ -1,7 +1,5 @@
 {
   config,
-  lib,
-  pkgs,
   outputs,
   ...
 }:
@@ -10,19 +8,15 @@
   # NOTE: Import custom-defined home-manager modules
   imports = builtins.attrValues outputs.homeManagerModules;
 
-  nix = {
-    package = lib.mkDefault pkgs.nix;
-    settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-  };
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   nixpkgs = {
     config = {
       allowUnfree = true;
       allowUnfreePredicate = _: true;
-      permittedInsecurePackages = [ "pnpm-10.29.2" ];
     };
 
     overlays =
@@ -48,7 +42,4 @@
       music = "${config.home.homeDirectory}/Audio";
     };
   };
-
-  # NOTE: Set default shell
-  features.cli.shell.default = "fish";
 }

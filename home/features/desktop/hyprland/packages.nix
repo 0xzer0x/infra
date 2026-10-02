@@ -27,7 +27,7 @@ in
       pavucontrol
       ffmpegthumbnailer
       seahorse
-      gcr
+      gcr_4
       poppler-utils
       gthumb
       nemo-with-extensions

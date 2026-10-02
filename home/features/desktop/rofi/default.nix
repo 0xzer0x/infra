@@ -23,14 +23,14 @@ in
     programs = {
       rofi = {
         enable = true;
-        modes = [
-          "drun"
-          "run"
-          "window"
-        ];
         plugins = [ pkgs.rofi-emoji ];
+        settings = {
+          modes = [
+            "drun"
+            "run"
+            "window"
+          ];
 
-        extraConfig = {
           # NOTE: Vim-like navigation in vertical menus
           kb-row-up = "Control+k";
           kb-row-down = "Control+j";
