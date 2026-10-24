@@ -62,6 +62,9 @@ in
         set -g renumber-windows on
         # Status bar position
         set -g status-position bottom
+        # Enable extended keys (required for Pi agent)
+        set -g extended-keys on
+        set -g extended-keys-format csi-u
         # Prefix mode keybind
         set -g prefix C-g
 
