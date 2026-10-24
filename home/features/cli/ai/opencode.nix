@@ -15,25 +15,44 @@ in
       enable = true;
 
       settings = {
-        model = "opencode-go/kimi-k3";
-        plugin = [ "@leohenon/opencode-vim-plugin" ];
+        plugins = [ "@leohenon/opencode-vim-plugin@beta" ];
+        model = "sovereigneg/kimi-k3";
+        providers = {
+          sovereigneg = {
+            name = "SovereignEG";
+            package = "@ai-sdk/openai-compatible";
+            settings = {
+              baseURL = "https://backend.sovereigneg.com/v1";
+              apiKey = "{env:SOVEREIGNEG_API_KEY}";
+            };
+            models = {
+              kimi-k3 = {
+                name = "Kimi K3 (EG)";
+                family = "Kimi";
+              };
+            };
+          };
+        };
         permission = {
           "*" = "ask";
         };
       };
 
-      tui = {
-        plugin = [
-          [
-            "@leohenon/opencode-vim-plugin"
-            {
+      cli = {
+        theme = {
+          name = "catppuccin";
+        };
+        plugins = [
+          {
+            package = "@leohenon/opencode-vim-plugin@beta";
+            options = {
               enabled = true;
               toggle_key = "ctrl+shift+v";
               indicator = true;
               vim_enter_submit = false;
               vim_insert_after_submit = false;
-            }
-          ]
+            };
+          }
         ];
         keybinds = {
           leader = "ctrl+o";
