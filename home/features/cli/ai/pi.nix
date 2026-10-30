@@ -23,6 +23,10 @@ in
             apiKey = "\${SOVEREIGNEG_API_KEY}";
             models = [
               {
+                id = "SovereignEG/Qwen3.8-27B-FP8";
+                name = "Qwen3.8-27B-FP8 (EG)";
+              }
+              {
                 id = "kimi-k3";
                 name = "Kimi K3 (EG)";
               }

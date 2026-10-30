@@ -30,6 +30,11 @@ in
                 name = "Kimi K3 (EG)";
                 family = "Kimi";
               };
+              "qwen3.8-27b-fp8" = {
+                modelID = "SovereignEG/Qwen3.8-27B-FP8";
+                name = "Qwen3.8-27B-FP8 (EG)";
+                family = "Qwen";
+              };
             };
           };
         };
