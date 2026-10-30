@@ -49,14 +49,6 @@ in
           clipboardMirror = "all";
           exCommand.piDispatch = true;
         };
-        piClaudePermissions = {
-          defaultMode = "default";
-          shiftTabOptions = [
-            "default"
-            "plan"
-            "acceptEdits"
-          ];
-        };
       };
 
       keybindings = {
