@@ -25,10 +25,12 @@ in
               {
                 id = "SovereignEG/Qwen3.8-27B-FP8";
                 name = "Qwen3.8-27B-FP8 (EG)";
+                contextWindow = 32768;
               }
               {
                 id = "kimi-k3";
                 name = "Kimi K3 (EG)";
+                contextWindow = 1000000;
               }
             ];
           };
