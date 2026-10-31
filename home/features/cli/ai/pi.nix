@@ -46,7 +46,7 @@ in
           "npm:pi-vim"
           "npm:pi-mcp-adapter"
           "npm:pi-web-access"
-          "npm:@pi-unipi/workflow"
+          "npm:@adeildo/pi-ask-permission"
           "npm:@firstpick/pi-themes-bundle"
         ];
         piVim = {
