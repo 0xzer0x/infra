@@ -62,6 +62,7 @@ in
       "monitoring"
       "go-pray"
       "rss"
+      "mcp"
       "opencode"
       "pi"
     ];

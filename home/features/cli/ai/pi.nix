@@ -41,10 +41,12 @@ in
         theme = "catppuccin-mocha";
         defaultProvider = "sovereigneg";
         defaultModel = "kimi-k3";
+        extensions = [ "-builtin:mcp" ];
         packages = [
           "npm:pi-vim"
+          "npm:pi-mcp-adapter"
           "npm:pi-web-access"
-          "npm:@zackify/pi-claude-permissions"
+          "npm:@pi-unipi/workflow"
           "npm:@firstpick/pi-themes-bundle"
         ];
         piVim = {
