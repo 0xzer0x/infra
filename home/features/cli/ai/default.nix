@@ -9,7 +9,6 @@ let
 in
 {
   imports = [
-    ./opencode.nix
     ./pi.nix
   ];
 

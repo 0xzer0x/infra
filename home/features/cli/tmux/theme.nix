@@ -105,7 +105,7 @@ let
     kind = "󱃾";
     limactl = "";
     gopass = "󰟵";
-    opencode = "";
+    pi = "";
   };
   iconTable = concatStringsSep "" (
     mapAttrsToList (cmd: icon: "#{?#{==:#{pane_current_command},${cmd}},${icon},}") icons

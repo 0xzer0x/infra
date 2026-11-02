@@ -63,7 +63,6 @@ in
       "go-pray"
       "rss"
       "mcp"
-      "opencode"
       "pi"
     ];
   };
