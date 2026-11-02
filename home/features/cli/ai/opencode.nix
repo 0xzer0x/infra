@@ -16,7 +16,7 @@ in
 
       settings = {
         plugins = [ "@leohenon/opencode-vim-plugin@beta" ];
-        model = "sovereigneg/kimi-k3";
+        model = "sovereigneg/kimi-k2.6";
         providers = {
           sovereigneg = {
             name = "SovereignEG";
@@ -26,9 +26,23 @@ in
               apiKey = "{env:SOVEREIGNEG_API_KEY}";
             };
             models = {
-              kimi-k3 = {
-                name = "Kimi K3 (EG)";
+              "kimi-k2.6" = {
+                name = "Kimi K2.6 (EG)";
                 family = "Kimi";
+                limit = {
+                  context = 262000;
+                };
+              };
+              "kimi-k3.1-pro" = {
+                name = "Kimi K3.1 Pro (EG)";
+                family = "Kimi";
+                limit = {
+                  context = 1000000;
+                };
+              };
+              "deepseek-v4-flash" = {
+                name = "DeepSeek v4 Flash (EG)";
+                family = "DeepSeek";
                 limit = {
                   context = 1000000;
                 };
