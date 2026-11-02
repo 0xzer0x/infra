@@ -15,9 +15,7 @@
       };
     };
 
-    # NOTE: Silent boot process
-    consoleLogLevel = 3;
-    initrd.verbose = false;
+    consoleLogLevel = 4;
     kernelParams = [
       "quiet"
       "splash"
