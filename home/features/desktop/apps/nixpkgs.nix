@@ -13,7 +13,6 @@ in
 {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      onlyoffice-desktopeditors
       signal-desktop
       tutanota-desktop
       obsidian
@@ -25,6 +24,7 @@ in
       qbittorrent
       localsend
       whatsie
+      stable.libreoffice
       stable.bottles
       stable.gimp
       stable.tenacity
