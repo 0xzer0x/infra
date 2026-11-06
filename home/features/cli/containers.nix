@@ -16,9 +16,7 @@ in
     programs = {
       docker-cli = {
         enable = true;
-        configDir = ".config/docker";
       };
-      lazydocker.enable = true;
     };
 
     home.packages = with pkgs; [
