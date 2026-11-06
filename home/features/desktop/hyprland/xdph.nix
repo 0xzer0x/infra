@@ -6,12 +6,8 @@ let
 in
 {
   config = mkIf cfg.enable {
-    xdg.configFile."hypr/xdph.conf" = {
-      text = ''
-        screencopy {
-            max_fps = 60
-        }
-      '';
+    wayland.windowManager.hyprland.xdph.settings.screencopy = {
+      max_fps = 60;
     };
   };
 }

@@ -73,6 +73,17 @@ in
           ];
         }
         {
+          match.initial_class = "^(warp-taskbar)$";
+          center = true;
+          maximize = false;
+          fullscreen = false;
+          fullscreen_state = "0 2";
+          size = [
+            750
+            800
+          ];
+        }
+        {
           match.initial_class = "^(com\\.github\\.wwmm\\.easyeffects)$";
           workspace = "special:hidden";
         }

@@ -71,6 +71,8 @@ in
       };
     };
 
+    programs.hyprland-qt-support.enable = true;
+
     catppuccin.hyprland.enable = false;
     wayland.windowManager.hyprland = {
       enable = true;
