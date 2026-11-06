@@ -10,7 +10,8 @@ let
     "nm-applet"
     "blueman-manager"
     "Wiremix"
-    "org.xfce.mousepad"
+    "warp-taskbar"
+    "org\\.xfce\\.mousepad"
   ];
 in
 {
