@@ -11,6 +11,7 @@ let
     "blueman-manager"
     "Wiremix"
     "warp-taskbar"
+    "hyprland-share-picker"
     "org\\.xfce\\.mousepad"
   ];
 in
