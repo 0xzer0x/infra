@@ -67,6 +67,12 @@ in
       interactiveShellInit = ''
         set -U fish_greeting
         fish_vi_key_bindings
+
+        # NOTE: mise is self-managed due to the fast rate of update
+        set _local_mise_path "$HOME/.local/bin/mise"
+        if [ -f "$_local_mise_path" ] && [ -x "$_local_mise_path" ];
+          "$_local_mise_path" activate fish | source
+        end
       '';
     };
   };
