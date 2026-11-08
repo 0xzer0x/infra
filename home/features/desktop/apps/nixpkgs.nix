@@ -27,8 +27,6 @@ in
       stable.libreoffice
       stable.bottles
       stable.gimp
-      stable.tenacity
-      stable.kdePackages.kdenlive
     ];
 
     # NOTE: Media player
