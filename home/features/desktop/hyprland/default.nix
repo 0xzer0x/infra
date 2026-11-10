@@ -59,15 +59,21 @@ in
   ];
 
   config = mkIf cfg.enable {
-    xdg.configFile = {
-      "hypr/scripts" = {
-        enable = true;
-        source = ./scripts;
-        recursive = true;
+    xdg = {
+      configFile = {
+        "hypr/scripts" = {
+          enable = true;
+          source = ./scripts;
+          recursive = true;
+        };
+        "hypr/wall.png" = {
+          enable = true;
+          source = ./wall.png;
+        };
       };
-      "hypr/wall.png" = {
-        enable = true;
-        source = ./wall.png;
+
+      portal = {
+        extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
       };
     };
 
