@@ -74,6 +74,14 @@ in
           ];
         }
         {
+          match.initial_class = "^(hyprland-share-picker)$";
+          center = true;
+          size = [
+            950
+            550
+          ];
+        }
+        {
           match.initial_class = "^(warp-taskbar)$";
           center = true;
           maximize = false;
